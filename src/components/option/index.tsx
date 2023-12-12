@@ -1,6 +1,6 @@
 import { FC, useContext } from "react";
 import { IOption } from "../../model/IOption";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 import { Context } from "../../main";
 
 interface OptionProps {

@@ -1,0 +1,19 @@
+.search {
+  margin-bottom: 10px;
+  position: relative;
+  &__icon {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
+  &__input {
+    border: none;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+    width: 100%;
+    font-size: 14px;
+    padding: 10px 10px 10px 40px;
+  }
+  &__input:focus {
+    outline: none;
+  }
+}

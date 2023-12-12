@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { ICategories } from "../../model/ICategories";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 import CloseModal from "../../assets/icons/CloseModal";
 import { Option } from "../option";
 import { OptionFilter } from "../optionFilter";

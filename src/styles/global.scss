@@ -23,6 +23,12 @@ body {
   max-width: 500px;
   margin: 0 auto;
   color: #303030;
+
+  @media (max-width: 367px) {
+    .page__wrapper {
+      padding: 0px 10px;
+    }
+  }
 }
 
 .page__wrapper {
@@ -33,10 +39,4 @@ body {
   border-bottom: 1px solid rgb(46, 138, 230);
   color: rgb(46, 138, 230);
   font-weight: 500;
-}
-
-@media (max-width: 367px) {
-  .page__wrapper {
-    padding: 0px 10px;
-  }
 }

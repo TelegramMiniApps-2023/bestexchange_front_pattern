@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import ReactDOM from "react-dom/client";
-import "./styles/global.css";
+import "./styles/global.scss";
 import App from "./App";
 import OptionStore from "./store/store";
 

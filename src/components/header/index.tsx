@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { publicRoutes } from "../../assets/routes";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 import { Link, useLocation } from "react-router-dom";
 import { MAIN_ROUTE } from "../../assets/consts";
 

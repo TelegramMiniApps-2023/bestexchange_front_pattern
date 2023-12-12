@@ -1,6 +1,6 @@
 import { ExchangerCard } from "../exchangerCard";
 import { Select } from "../select";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 import ChangeIcon from "../../assets/icons/ChangeIcon";
 import { useContext, useEffect } from "react";
 import { observer } from "mobx-react-lite";

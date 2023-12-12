@@ -1,5 +1,5 @@
 import { FC, useContext, useState } from "react";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 import { Modal } from "../modal";
 import ArrowDown from "../../assets/icons/ArrowDown";
 import { Context } from "../../main";

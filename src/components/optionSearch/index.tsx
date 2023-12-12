@@ -1,6 +1,6 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import SearchIcon from "../../assets/icons/SearchIcon";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 
 interface SearchInputProps {
   type: string;
@@ -8,6 +8,7 @@ interface SearchInputProps {
 
 export const SearchInput: FC<SearchInputProps> = ({ type }) => {
   const [value, setValue] = useState("");
+  console.log(type);
   return (
     <div className={styles.search}>
       <div className={styles.search__icon}>
