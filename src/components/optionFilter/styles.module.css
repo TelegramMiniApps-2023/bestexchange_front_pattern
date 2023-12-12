@@ -1,0 +1,15 @@
+.filter {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 0px;
+  width: 100%;
+  overflow: auto;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+}
+.filter__item {
+  padding-right: 20px;
+  padding-bottom: 10px;
+  white-space: nowrap;
+  font-size: 14px;
+  cursor: pointer;
+}
