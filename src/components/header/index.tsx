@@ -1,10 +1,10 @@
-import { FC } from "react";
-import { publicRoutes } from "../../assets/routes";
-import styles from "./styles.module.scss";
+import { FC, memo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { MAIN_ROUTE } from "../../assets/consts";
+import { publicRoutes } from "../../assets/routes";
+import styles from "./styles.module.scss";
 
-export const Header: FC = () => {
+export const Header: FC = memo(() => {
   const location = useLocation();
 
   return (
@@ -31,4 +31,4 @@ export const Header: FC = () => {
       </div>
     </div>
   );
-};
+});
