@@ -1,4 +1,6 @@
-export const ServicesPage = () => {
+import { memo } from "react";
+
+export const ServicesPage = memo(() => {
   return (
     <div className="page__wrapper">
       <h1
@@ -13,4 +15,4 @@ export const ServicesPage = () => {
       </h1>
     </div>
   );
-};
+});

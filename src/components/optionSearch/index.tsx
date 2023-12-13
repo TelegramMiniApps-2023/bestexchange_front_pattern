@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, memo, useState } from "react";
 import SearchIcon from "../../assets/icons/SearchIcon";
 import styles from "./styles.module.scss";
 
@@ -6,7 +6,7 @@ interface SearchInputProps {
   type: string;
 }
 
-export const SearchInput: FC<SearchInputProps> = ({ type }) => {
+export const SearchInput: FC<SearchInputProps> = memo(({ type }) => {
   const [value, setValue] = useState("");
   return (
     <div className={styles.search}>
@@ -22,4 +22,4 @@ export const SearchInput: FC<SearchInputProps> = ({ type }) => {
       />
     </div>
   );
-};
+});
