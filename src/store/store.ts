@@ -10,8 +10,6 @@ export default class OptionStore {
     error: string;
     isLoading: boolean;
   } | null;
-  _filteredOptions: ICategories | null;
-  _filteredAvailables: ICategories | null;
   _available: {
     data: ICategories;
     error: string;
@@ -24,14 +22,14 @@ export default class OptionStore {
     error: string;
     isLoading: boolean;
   } | null;
+  _filter: string | null;
   constructor() {
     this._options = null;
-    this._filteredOptions = null;
     this._available = null;
-    this._filteredAvailables = null;
     this._get = null;
     this._give = null;
     this._exchangers = null;
+    this._filter = null;
     makeAutoObservable(this);
   }
 
@@ -49,6 +47,9 @@ export default class OptionStore {
     this._give = this._get;
     this._get = get;
   };
+  setFilter = (category: string | null) => {
+    this._filter = category;
+  };
 
   // async
   setOptions = async () => {
@@ -64,7 +65,6 @@ export default class OptionStore {
         error: "",
         isLoading: false,
       };
-      this._filteredOptions = data;
     } catch (error) {
       this._options = {
         data: {},
@@ -86,7 +86,6 @@ export default class OptionStore {
         error: "",
         isLoading: false,
       };
-      this._filteredAvailables = data;
     } catch (error) {
       this._available = {
         data: {},
@@ -134,5 +133,8 @@ export default class OptionStore {
   }
   get get() {
     return this._get;
+  }
+  get filter() {
+    return this._filter;
   }
 }

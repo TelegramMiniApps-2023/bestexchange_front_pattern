@@ -8,7 +8,6 @@ interface SearchInputProps {
 
 export const SearchInput: FC<SearchInputProps> = ({ type }) => {
   const [value, setValue] = useState("");
-  console.log(type);
   return (
     <div className={styles.search}>
       <div className={styles.search__icon}>

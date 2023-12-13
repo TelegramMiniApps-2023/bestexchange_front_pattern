@@ -10,9 +10,15 @@ interface ModalProps {
   options?: ICategories;
   handleModal: () => void;
   type: string;
+  filter: string | null;
 }
 
-export const Modal: FC<ModalProps> = ({ options, handleModal, type }) => {
+export const Modal: FC<ModalProps> = ({
+  options,
+  handleModal,
+  type,
+  filter,
+}) => {
   return (
     <div className={styles.modal}>
       <span className={styles.modal__close}>
@@ -25,16 +31,25 @@ export const Modal: FC<ModalProps> = ({ options, handleModal, type }) => {
             <OptionFilter categories={options} />
           </div>
           <div className={styles.modal__options}>
-            {Object.keys(options).map((category) =>
-              options[category]?.map((option) => (
-                <Option
-                  key={option.code_name}
-                  option={option}
-                  handleModal={handleModal}
-                  type={type}
-                />
-              ))
-            )}
+            {filter
+              ? options[filter]?.map((option) => (
+                  <Option
+                    key={option.code_name}
+                    option={option}
+                    handleModal={handleModal}
+                    type={type}
+                  />
+                ))
+              : Object.keys(options).map((category) =>
+                  options[category]?.map((option) => (
+                    <Option
+                      key={option.code_name}
+                      option={option}
+                      handleModal={handleModal}
+                      type={type}
+                    />
+                  ))
+                )}
           </div>
         </div>
       ) : (

@@ -15,6 +15,7 @@ export const Select: FC<SelectProps> = observer(({ type }) => {
   const [show, setShow] = useState(false);
   const handleModal = () => {
     setShow(!show);
+    store.setFilter(null);
   };
 
   return (
@@ -49,6 +50,7 @@ export const Select: FC<SelectProps> = observer(({ type }) => {
             options={store.options.data}
             handleModal={handleModal}
             type={type}
+            filter={store.filter}
           />
         )}
         {type === "get" && store.available?.data && (
@@ -56,6 +58,7 @@ export const Select: FC<SelectProps> = observer(({ type }) => {
             options={store.available.data}
             handleModal={handleModal}
             type={type}
+            filter={store.filter}
           />
         )}
       </div>
