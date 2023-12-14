@@ -21,6 +21,8 @@ export const Main = memo(() => {
     to: get?.code_name,
   });
 
+  // временно
+
   return (
     <div className={styles.main}>
       <div className={styles.title}>
@@ -48,7 +50,7 @@ export const Main = memo(() => {
           </div>
         </div>
         <div className={styles.exchangers}>
-          {get && give && (
+          {get && give && !exchangers && (
             <div className={styles.exchangers__btn} onClick={() => refetch()}>
               Далее
             </div>
