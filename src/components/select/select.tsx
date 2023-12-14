@@ -12,22 +12,26 @@ interface SelectProps {
   type: string;
 }
 
-export const Select: FC<SelectProps> = memo(({ type }) => {
+export const Select: FC<SelectProps> = ({ type }) => {
   // const { store } = useContext(Context);
 
-  const [show, setShow] = useState(false);
-  const options = queryClient.getQueryData<Categories>(optionsKey);
-  const availableDirection = queryClient.getQueryData<Categories>(availableKey);
   // Zustand
   const setFilter = useFiltersStore((state) => state.setFilter);
   const filter = useFiltersStore((state) => state.filter);
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
 
+  const [show, setShow] = useState(false);
+  const options = queryClient.getQueryData<Categories>(optionsKey);
+  const availableDirection = queryClient.getQueryData<Categories>([
+    availableKey,
+    give?.code_name,
+  ]);
+
   const handleModal = useCallback(() => {
-    setShow(!show);
+    setShow((prevShow) => !prevShow);
     setFilter(null);
-  }, [setFilter, show]);
+  }, [setFilter]);
 
   return (
     <div className={styles.select}>
@@ -75,4 +79,4 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
       </div>
     </div>
   );
-});
+};

@@ -11,16 +11,16 @@ interface SelectsState {
 
 export const useSelectsStore = create<SelectsState>()(
   devtools(
-    persist(
-      (set) => ({
-        giveSelect: null,
-        getSelect: null,
-        setGiveSelect: (option) => set({ giveSelect: option }),
-        setGetSelect: (option) => set({ getSelect: option }),
-      }),
-      { name: "selectsStore" }
-    )
+
+    (set) => ({
+      giveSelect: null,
+      getSelect: null,
+      setGiveSelect: (option) => set({ giveSelect: option }),
+      setGetSelect: (option) => set({ getSelect: option }),
+    }),
+    { name: "selectsStore" }
   )
+
 );
 
 interface FiltersState {
