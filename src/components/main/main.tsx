@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useFetchExchangers, useFetchOptions } from "../../api/api";
 import ChangeIcon from "../../assets/icons/ChangeIcon";
 import { useSelectsStore } from "../../store";
@@ -6,7 +7,7 @@ import { Loader } from "../loader/loader";
 import { Select } from "../select/select";
 import styles from "./styles.module.scss";
 
-export const Main = () => {
+export const Main = memo(() => {
   //Zustand
   useFetchOptions();
   const give = useSelectsStore((state) => state.giveSelect);
@@ -74,4 +75,4 @@ export const Main = () => {
       </div>
     </div>
   );
-};
+});
