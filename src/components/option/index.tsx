@@ -1,7 +1,6 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import { IOption } from "../../model/IOption";
 import styles from "./styles.module.scss";
-import { Context } from "../../main";
 
 interface OptionProps {
   option: IOption;
@@ -10,18 +9,18 @@ interface OptionProps {
 }
 
 export const Option: FC<OptionProps> = ({ option, handleModal, type }) => {
-  const { store } = useContext(Context);
+  // const { store } = useContext(Context);
   return (
     <div
       className={styles.option}
       onClick={() => {
         if (type === "give") {
-          store.setGet(null);
-          store.setGive(option);
-          store.setAvailable();
-          store.clearExchangers();
+          // store.setGet(null);
+          // store.setGive(option);
+          // store.setAvailable();
+          // store.clearExchangers();
         } else {
-          store.setGet(option);
+          // store.setGet(option);
         }
         handleModal();
       }}
