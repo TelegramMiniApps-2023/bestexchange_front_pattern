@@ -4,13 +4,20 @@ import { ExchangerCard } from "../exchangerCard";
 import { Loader } from "../loader";
 import { Select } from "../select";
 import styles from "./styles.module.scss";
+import ChangeIcon from "../../assets/icons/ChangeIcon";
+import { useContext, useEffect } from "react";
+import { Loader } from "../loader";
+import { Context } from "../../main";
+import { useSelectsStore } from "../../store";
 
 export const Main = () => {
-  const {
-    data: exchangers,
-    refetch,
-    isLoading,
-  } = useFetchExchangers({ from: "", to: "" });
+  const { store } = useContext(Context);
+  useEffect(() => {
+    store.setOptions();
+  }, []);
+  //Zustand
+  const give = useSelectsStore((state) => state.giveSelect);
+  const get = useSelectsStore((state) => state.getSelect);
 
   return (
     <div className={styles.main}>
@@ -39,11 +46,15 @@ export const Main = () => {
           </div>
         </div>
         <div className={styles.exchangers}>
-          <div className={styles.exchangers__btn} onClick={() => refetch()}>
-            Далее
-          </div>
-
-          {isLoading ? (
+          {get && give && !store.exchangers && (
+            <div
+              className={styles.exchangers__btn}
+              onClick={() => store.setExchangers()}
+            >
+              Далее
+            </div>
+          )}
+          {store.exchangers?.isLoading ? (
             <div style={{ textAlign: "center" }}>
               <Loader />
             </div>
@@ -51,7 +62,7 @@ export const Main = () => {
             exchangers && (
               <div className={styles.exchangers__body}>
                 <div className={styles.exchangers__title}>
-                  Лучшие курсы {"give?.name"} на {"get?.name"}
+                  Лучшие курсы {give?.name} на {get?.name}
                 </div>
                 <div className={styles.exchangers__cards}>
                   {exchangers.map((card) => (
