@@ -1,17 +1,17 @@
+import { useFetchExchangers } from "../../api/api";
+import ChangeIcon from "../../assets/icons/ChangeIcon";
 import { ExchangerCard } from "../exchangerCard";
+import { Loader } from "../loader";
 import { Select } from "../select";
 import styles from "./styles.module.scss";
-import ChangeIcon from "../../assets/icons/ChangeIcon";
-import { useContext, useEffect } from "react";
-import { observer } from "mobx-react-lite";
-import { Loader } from "../loader";
-import { Context } from "../../main";
 
-export const Main = observer(() => {
-  const { store } = useContext(Context);
-  useEffect(() => {
-    store.setOptions();
-  }, []);
+export const Main = () => {
+  const {
+    data: exchangers,
+    refetch,
+    isLoading,
+  } = useFetchExchangers({ from: "", to: "" });
+
   return (
     <div className={styles.main}>
       <div className={styles.title}>
@@ -28,9 +28,9 @@ export const Main = observer(() => {
           </div>
           <div
             className={styles.selects__icon}
-            onClick={() => {
-              store.get && store.give && store.switchOptions();
-            }}
+            // onClick={() => {
+            //   store.get && store.give && store.switchOptions();
+            // }}
           >
             <ChangeIcon width="30px" height="30px" fill="#fff" />
           </div>
@@ -39,26 +39,22 @@ export const Main = observer(() => {
           </div>
         </div>
         <div className={styles.exchangers}>
-          {store.get && store.give && !store.exchangers && (
-            <div
-              className={styles.exchangers__btn}
-              onClick={() => store.setExchangers()}
-            >
-              Далее
-            </div>
-          )}
-          {store.exchangers?.isLoading ? (
+          <div className={styles.exchangers__btn} onClick={() => refetch()}>
+            Далее
+          </div>
+
+          {isLoading ? (
             <div style={{ textAlign: "center" }}>
               <Loader />
             </div>
           ) : (
-            store.exchangers && (
+            exchangers && (
               <div className={styles.exchangers__body}>
                 <div className={styles.exchangers__title}>
-                  Лучшие курсы {store.give?.name} на {store.get?.name}
+                  Лучшие курсы {"give?.name"} на {"get?.name"}
                 </div>
                 <div className={styles.exchangers__cards}>
-                  {store.exchangers.data.map((card) => (
+                  {exchangers.map((card) => (
                     <ExchangerCard key={card.id} card={card} />
                   ))}
                 </div>
@@ -69,4 +65,4 @@ export const Main = observer(() => {
       </div>
     </div>
   );
-});
+};
