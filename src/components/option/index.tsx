@@ -2,6 +2,7 @@ import { FC, useContext } from "react";
 import { IOption } from "../../model/IOption";
 import styles from "./styles.module.scss";
 import { Context } from "../../main";
+import { useSelectsStore } from "../../store";
 
 interface OptionProps {
   option: IOption;
@@ -11,17 +12,21 @@ interface OptionProps {
 
 export const Option: FC<OptionProps> = ({ option, handleModal, type }) => {
   const { store } = useContext(Context);
+
+  // Zustand
+  const setGive = useSelectsStore((state) => state.setGiveSelect);
+  const setGet = useSelectsStore((state) => state.setGetSelect);
   return (
     <div
       className={styles.option}
       onClick={() => {
         if (type === "give") {
-          store.setGet(null);
-          store.setGive(option);
+          setGet(null);
+          setGive(option);
           store.setAvailable();
           store.clearExchangers();
         } else {
-          store.setGet(option);
+          setGet(option);
         }
         handleModal();
       }}

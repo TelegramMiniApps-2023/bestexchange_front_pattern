@@ -3,15 +3,19 @@ import { Select } from "../select";
 import styles from "./styles.module.scss";
 import ChangeIcon from "../../assets/icons/ChangeIcon";
 import { useContext, useEffect } from "react";
-import { observer } from "mobx-react-lite";
 import { Loader } from "../loader";
 import { Context } from "../../main";
+import { useSelectsStore } from "../../store";
 
-export const Main = observer(() => {
+export const Main = () => {
   const { store } = useContext(Context);
   useEffect(() => {
     store.setOptions();
   }, []);
+  //Zustand
+  const give = useSelectsStore((state) => state.giveSelect);
+  const get = useSelectsStore((state) => state.getSelect);
+
   return (
     <div className={styles.main}>
       <div className={styles.title}>
@@ -28,9 +32,9 @@ export const Main = observer(() => {
           </div>
           <div
             className={styles.selects__icon}
-            onClick={() => {
-              store.get && store.give && store.switchOptions();
-            }}
+            // onClick={() => {
+            //   store.get && store.give && store.switchOptions();
+            // }}
           >
             <ChangeIcon width="30px" height="30px" fill="#fff" />
           </div>
@@ -39,7 +43,7 @@ export const Main = observer(() => {
           </div>
         </div>
         <div className={styles.exchangers}>
-          {store.get && store.give && !store.exchangers && (
+          {get && give && !store.exchangers && (
             <div
               className={styles.exchangers__btn}
               onClick={() => store.setExchangers()}
@@ -55,7 +59,7 @@ export const Main = observer(() => {
             store.exchangers && (
               <div className={styles.exchangers__body}>
                 <div className={styles.exchangers__title}>
-                  Лучшие курсы {store.give?.name} на {store.get?.name}
+                  Лучшие курсы {give?.name} на {get?.name}
                 </div>
                 <div className={styles.exchangers__cards}>
                   {store.exchangers.data.map((card) => (
@@ -69,4 +73,4 @@ export const Main = observer(() => {
       </div>
     </div>
   );
-});
+};

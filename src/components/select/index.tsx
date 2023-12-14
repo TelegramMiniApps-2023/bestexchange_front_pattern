@@ -3,19 +3,26 @@ import styles from "./styles.module.scss";
 import { Modal } from "../modal";
 import ArrowDown from "../../assets/icons/ArrowDown";
 import { Context } from "../../main";
-import { observer } from "mobx-react-lite";
+import { useFiltersStore, useSelectsStore } from "../../store";
 
 interface SelectProps {
   type: string;
 }
 
-export const Select: FC<SelectProps> = observer(({ type }) => {
+export const Select: FC<SelectProps> = ({ type }) => {
   const { store } = useContext(Context);
 
   const [show, setShow] = useState(false);
+
+  // Zustand
+  const setFilter = useFiltersStore((state) => state.setFilter);
+  const filter = useFiltersStore((state) => state.filter);
+  const give = useSelectsStore((state) => state.giveSelect);
+  const get = useSelectsStore((state) => state.getSelect);
+
   const handleModal = () => {
     setShow(!show);
-    store.setFilter(null);
+    setFilter(null);
   };
 
   return (
@@ -25,7 +32,7 @@ export const Select: FC<SelectProps> = observer(({ type }) => {
       </p>
       <div
         className={
-          !store.give && type === "get"
+          !give && type === "get"
             ? `${styles.select__input} ${styles.active}`
             : styles.select__input
         }
@@ -33,10 +40,10 @@ export const Select: FC<SelectProps> = observer(({ type }) => {
           handleModal();
         }}
       >
-        {type === "give" && store.give ? (
-          store.give.name
-        ) : store.get ? (
-          store.get.name
+        {type === "give" && give ? (
+          give.name
+        ) : get ? (
+          get.name
         ) : (
           <span>Не выбрано...</span>
         )}
@@ -50,7 +57,7 @@ export const Select: FC<SelectProps> = observer(({ type }) => {
             options={store.options.data}
             handleModal={handleModal}
             type={type}
-            filter={store.filter}
+            filter={filter}
           />
         )}
         {type === "get" && store.available?.data && (
@@ -58,10 +65,10 @@ export const Select: FC<SelectProps> = observer(({ type }) => {
             options={store.available.data}
             handleModal={handleModal}
             type={type}
-            filter={store.filter}
+            filter={filter}
           />
         )}
       </div>
     </div>
   );
-});
+};
