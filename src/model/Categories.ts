@@ -1,5 +1,5 @@
-import { IOption } from "./IOption";
+import { Options } from "./Options";
 
 export interface Categories {
-  [category: string]: IOption[];
+  [category: string]: Options[];
 }
