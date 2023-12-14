@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useState } from "react";
+import { FC, memo, useCallback, useEffect, useState } from "react";
 import ArrowDown from "../../assets/icons/ArrowDown";
 import { useFiltersStore, useSelectsStore } from "../../store";
 
@@ -7,6 +7,7 @@ import styles from "./styles.module.scss";
 import { queryClient } from "../../api/queryClient";
 import { availableKey, optionsKey } from "../../assets/consts";
 import { Categories } from "../../model/Categories";
+import { useFetchAvailable } from "../../api/api";
 
 interface SelectProps {
   type: string;
@@ -20,13 +21,17 @@ export const Select: FC<SelectProps> = ({ type }) => {
   const filter = useFiltersStore((state) => state.filter);
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
+  console.log(give?.code_name);
 
   const [show, setShow] = useState(false);
   const options = queryClient.getQueryData<Categories>(optionsKey);
-  const availableDirection = queryClient.getQueryData<Categories>([
-    availableKey,
-    give?.code_name,
-  ]);
+  const { data: availableDirection } = useFetchAvailable({
+    base: give?.code_name,
+  });
+  // const availableDirection = queryClient.getQueryData<Categories>([
+  //   availableKey,
+  //   give?.code_name,
+  // ]);
 
   const handleModal = useCallback(() => {
     setShow((prevShow) => !prevShow);
