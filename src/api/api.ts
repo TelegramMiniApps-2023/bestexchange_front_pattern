@@ -26,10 +26,10 @@ export const useFetchAvailable = ({ base }: ReqFetchAvailableDto) => {
   const fetchAvailable = async () => (await $host.get<Categories>(`/api/available_directions?base=${base}`)).data
 
   const queryResult = useQuery({
-    queryKey: [availableKey],
+    queryKey: [availableKey, base],
     queryFn: fetchAvailable,
     staleTime: 60 * 1000 * 5,
-    enabled: false
+
   })
   return queryResult
 };
