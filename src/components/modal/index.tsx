@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { ICategories } from "../../model/ICategories";
+import { Categories } from "../../model/Categories";
 import styles from "./styles.module.scss";
 import CloseModal from "../../assets/icons/CloseModal";
 import { Option } from "../option";
@@ -7,7 +7,7 @@ import { OptionFilter } from "../optionFilter";
 import { SearchInput } from "../optionSearch";
 
 interface ModalProps {
-  options?: ICategories;
+  options?: Categories;
   handleModal: () => void;
   type: string;
   filter: string | null;
