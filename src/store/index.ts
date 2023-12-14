@@ -1,12 +1,12 @@
 import { create } from "zustand";
-import { IOption } from "../model/IOption";
+import { Options } from "../model/Options";
 import { devtools, persist } from "zustand/middleware";
 
 interface SelectsState {
-  giveSelect: IOption | null;
-  getSelect: IOption | null;
-  setGiveSelect: (option: IOption | null) => void;
-  setGetSelect: (option: IOption | null) => void;
+  giveSelect: Options | null;
+  getSelect: Options | null;
+  setGiveSelect: (option: Options | null) => void;
+  setGetSelect: (option: Options | null) => void;
 }
 
 export const useSelectsStore = create<SelectsState>()(
