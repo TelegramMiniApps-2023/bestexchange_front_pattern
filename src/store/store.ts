@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import { ICategories } from "../model/ICategories";
 import { IExchanger } from "../model/IExchanger";
-import { IOption } from "../model/IOption";
+import { IOption } from "../model/Options";
 import { fetchAvailable, fetchExchangers, fetchOptions } from "../api/api";
 
 export default class OptionStore {

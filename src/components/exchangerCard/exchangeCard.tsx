@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { IExchanger } from "../../model/IExchanger";
+import { Exchanger } from "../../model/Exchanger";
 import styles from "./styles.module.scss";
 import ArrowRight from "../../assets/icons/ArrowRight";
 
 interface ExchangerCardProps {
-  card: IExchanger;
+  card: Exchanger;
 }
 
 export const ExchangerCard: FC<ExchangerCardProps> = ({ card }) => {

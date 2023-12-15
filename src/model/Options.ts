@@ -1,4 +1,4 @@
-export interface IOption {
+export interface Options {
   name: string;
   code_name: string;
   type_valute: string;

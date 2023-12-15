@@ -1,17 +1,28 @@
-import { ExchangerCard } from "../exchangerCard";
-import { Select } from "../select";
-import styles from "./styles.module.scss";
+import { memo } from "react";
+import { useFetchExchangers, useFetchOptions } from "../../api/api";
 import ChangeIcon from "../../assets/icons/ChangeIcon";
-import { useContext, useEffect } from "react";
-import { observer } from "mobx-react-lite";
-import { Loader } from "../loader";
-import { Context } from "../../main";
+import { useSelectsStore } from "../../store";
+import { ExchangerCard } from "../exchangerCard/exchangeCard";
+import { Loader } from "../loader/loader";
+import { Select } from "../select/select";
+import styles from "./styles.module.scss";
 
-export const Main = observer(() => {
-  const { store } = useContext(Context);
-  useEffect(() => {
-    store.setOptions();
-  }, []);
+export const Main = memo(() => {
+  //Zustand
+  useFetchOptions();
+  const give = useSelectsStore((state) => state.giveSelect);
+  const get = useSelectsStore((state) => state.getSelect);
+  const {
+    data: exchangers,
+    isLoading,
+    refetch,
+  } = useFetchExchangers({
+    from: give?.code_name,
+    to: get?.code_name,
+  });
+
+  // временно
+
   return (
     <div className={styles.main}>
       <div className={styles.title}>
@@ -28,9 +39,9 @@ export const Main = observer(() => {
           </div>
           <div
             className={styles.selects__icon}
-            onClick={() => {
-              store.get && store.give && store.switchOptions();
-            }}
+            // onClick={() => {
+            //   store.get && store.give && store.switchOptions();
+            // }}
           >
             <ChangeIcon width="30px" height="30px" fill="#fff" />
           </div>
@@ -39,26 +50,23 @@ export const Main = observer(() => {
           </div>
         </div>
         <div className={styles.exchangers}>
-          {store.get && store.give && !store.exchangers && (
-            <div
-              className={styles.exchangers__btn}
-              onClick={() => store.setExchangers()}
-            >
+          {get && give && !exchangers && (
+            <div className={styles.exchangers__btn} onClick={() => refetch()}>
               Далее
             </div>
           )}
-          {store.exchangers?.isLoading ? (
+          {isLoading ? (
             <div style={{ textAlign: "center" }}>
               <Loader />
             </div>
           ) : (
-            store.exchangers && (
+            exchangers && (
               <div className={styles.exchangers__body}>
                 <div className={styles.exchangers__title}>
-                  Лучшие курсы {store.give?.name} на {store.get?.name}
+                  Лучшие курсы {give?.name} на {get?.name}
                 </div>
                 <div className={styles.exchangers__cards}>
-                  {store.exchangers.data.map((card) => (
+                  {exchangers.map((card) => (
                     <ExchangerCard key={card.id} card={card} />
                   ))}
                 </div>

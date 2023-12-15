@@ -1,4 +1,4 @@
-export interface IExchanger {
+export interface Exchanger {
   id: number;
   name: string;
   partner_link: string;
