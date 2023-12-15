@@ -1,10 +1,10 @@
-import { FC, memo } from "react";
+import { FC } from "react";
 import { Categories } from "../../model/Categories";
 import styles from "./styles.module.scss";
 import CloseModal from "../../assets/icons/CloseModal";
 
 import { OptionFilter } from "../optionFilter/optionFilter";
-import { SearchInput } from "../optionSearch";
+import { SearchInput } from "../optionSearch/optionSearch";
 import { Option } from "../option/option";
 
 interface ModalProps {
