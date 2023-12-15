@@ -1,140 +1,43 @@
-import { makeAutoObservable } from "mobx";
-import { ICategories } from "../model/ICategories";
-import { IExchanger } from "../model/IExchanger";
-import { IOption } from "../model/Options";
-import { fetchAvailable, fetchExchangers, fetchOptions } from "../api/api";
+import { create } from "zustand";
+import { Options } from "../model/Options";
+import { devtools } from "zustand/middleware";
 
-export default class OptionStore {
-  _options: {
-    data: ICategories;
-    error: string;
-    isLoading: boolean;
-  } | null;
-  _available: {
-    data: ICategories;
-    error: string;
-    isLoading: boolean;
-  } | null;
-  _get: IOption | null;
-  _give: IOption | null;
-  _exchangers: {
-    data: IExchanger[];
-    error: string;
-    isLoading: boolean;
-  } | null;
-  _filter: string | null;
-  constructor() {
-    this._options = null;
-    this._available = null;
-    this._get = null;
-    this._give = null;
-    this._exchangers = null;
-    this._filter = null;
-    makeAutoObservable(this);
-  }
-
-  setGive = (option: IOption | null) => {
-    this._give = option;
-  };
-  setGet = (option: IOption | null) => {
-    this._get = option;
-  };
-  clearExchangers = () => {
-    this._exchangers = null;
-  };
-  switchOptions = () => {
-    const get = this._give;
-    this._give = this._get;
-    this._get = get;
-  };
-  setFilter = (category: string | null) => {
-    this._filter = category;
-  };
-
-  // async
-  setOptions = async () => {
-    try {
-      this._options = {
-        data: {},
-        error: "",
-        isLoading: true,
-      };
-      const data = await fetchOptions();
-      this._options = {
-        data: data,
-        error: "",
-        isLoading: false,
-      };
-    } catch (error) {
-      this._options = {
-        data: {},
-        error: "Что-то пошло не так...",
-        isLoading: false,
-      };
-    }
-  };
-  setAvailable = async () => {
-    try {
-      this._available = {
-        data: {},
-        error: "",
-        isLoading: true,
-      };
-      const data = await fetchAvailable(this._give?.code_name);
-      this._available = {
-        data: data,
-        error: "",
-        isLoading: false,
-      };
-    } catch (error) {
-      this._available = {
-        data: {},
-        error: "Что-то пошло не так...",
-        isLoading: false,
-      };
-    }
-  };
-  setExchangers = async () => {
-    try {
-      this._exchangers = {
-        data: [],
-        error: "",
-        isLoading: true,
-      };
-      const data = await fetchExchangers(
-        this._give?.code_name,
-        this._get?.code_name
-      );
-      this._exchangers = {
-        data: data,
-        error: "",
-        isLoading: false,
-      };
-    } catch (error) {
-      this._exchangers = {
-        data: [],
-        error: "Что-то пошло не так...",
-        isLoading: false,
-      };
-    }
-  };
-
-  get options() {
-    return this._options;
-  }
-  get available() {
-    return this._available;
-  }
-  get exchangers() {
-    return this._exchangers;
-  }
-  get give() {
-    return this._give;
-  }
-  get get() {
-    return this._get;
-  }
-  get filter() {
-    return this._filter;
-  }
+interface SelectsState {
+  giveSelect: Options | null;
+  getSelect: Options | null;
+  setGiveSelect: (option: Options | null) => void;
+  setGetSelect: (option: Options | null) => void;
+  switchOptions: () => void;
 }
+
+export const useSelectsStore = create<SelectsState>()(
+  devtools(
+    (set) => ({
+      giveSelect: null,
+      getSelect: null,
+      setGiveSelect: (option) => set({ giveSelect: option }),
+      setGetSelect: (option) => set({ getSelect: option }),
+      switchOptions: () => {
+        set((state) => {
+          const get = state.giveSelect;
+          return { giveSelect: state.getSelect, getSelect: get };
+        });
+      },
+    }),
+    { name: "selectsStore" }
+  )
+);
+
+interface FiltersState {
+  filter: string | null;
+  search: string;
+  setFilter: (category: string | null) => void;
+  setSearch: (value: string) => void;
+}
+
+export const useFiltersStore = create<FiltersState>()((set) => ({
+  filter: null,
+  search: "",
+  setFilter: (category) => set({ filter: category }),
+  setSearch: (value) => set({ search: value }),
+}));

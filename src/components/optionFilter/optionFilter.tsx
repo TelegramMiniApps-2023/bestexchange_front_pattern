@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { useFiltersStore } from "../../store";
+import { useFiltersStore } from "../../store/store";
 import styles from "./styles.module.scss";
 import { Categories } from "../../model/Categories";
 

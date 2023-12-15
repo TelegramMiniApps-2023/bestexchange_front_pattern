@@ -1,7 +1,7 @@
 import { FC, memo, useState } from "react";
 import SearchIcon from "../../assets/icons/SearchIcon";
 import styles from "./styles.module.scss";
-import { useFiltersStore } from "../../store";
+import { useFiltersStore } from "../../store/store";
 
 interface SearchInputProps {
   type: string;

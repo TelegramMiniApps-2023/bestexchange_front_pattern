@@ -1,6 +1,6 @@
 import { FC, memo, useCallback, useEffect, useState } from "react";
 import ArrowDown from "../../assets/icons/ArrowDown";
-import { useFiltersStore, useSelectsStore } from "../../store";
+import { useFiltersStore, useSelectsStore } from "../../store/store";
 
 import { Modal } from "../modal/modal";
 import styles from "./styles.module.scss";
