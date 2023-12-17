@@ -1,5 +1,4 @@
 import { FC } from "react";
-
 import { useFiltersStore } from "../../store";
 import styles from "./styles.module.scss";
 import { Categories } from "../../model/Categories";
@@ -9,13 +8,23 @@ interface OptionFilterProps {
 }
 
 export const OptionFilter: FC<OptionFilterProps> = ({ categories }) => {
-  // Zustand
   const filter = useFiltersStore((state) => state.filter);
   const setFilter = useFiltersStore((state) => state.setFilter);
+  const search = useFiltersStore((state) => state.search);
 
   const handleCategory = (category: string | null) => {
     setFilter(category);
   };
+
+  // Фильтрация категорий на основе поисковой строки
+  const filteredCategories = Object.keys(categories).filter(
+    (category) =>
+      category.toLowerCase().includes(search.toLowerCase()) ||
+      categories[category]?.some((option) =>
+        option.name.toLowerCase().includes(search.toLowerCase())
+      )
+  );
+
   return (
     <div className={styles.filter}>
       <div
@@ -28,7 +37,7 @@ export const OptionFilter: FC<OptionFilterProps> = ({ categories }) => {
       >
         Все
       </div>
-      {Object.keys(categories).map((category, index) => (
+      {filteredCategories.map((category, index) => (
         <div
           onClick={() => handleCategory(category)}
           key={index}
