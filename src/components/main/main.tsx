@@ -42,13 +42,15 @@ export const Main = memo(() => {
           <div className={styles.select}>
             <Select type="give" />
           </div>
-          <div
-            className={styles.selects__icon}
-            onClick={() => {
-              get && give && handleSwitch();
-            }}
-          >
-            <ChangeIcon width="30px" height="30px" fill="#fff" />
+          <div className={styles.selects__icon}>
+            <ChangeIcon
+              width="30px"
+              height="30px"
+              fill="#fff"
+              onClick={() => {
+                get && give && handleSwitch();
+              }}
+            />
           </div>
           <div className={styles.select}>
             <Select type="get" />
