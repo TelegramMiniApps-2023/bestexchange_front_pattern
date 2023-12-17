@@ -7,7 +7,7 @@ interface SelectsState {
   getSelect: Options | null;
   setGiveSelect: (option: Options | null) => void;
   setGetSelect: (option: Options | null) => void;
-  switchOptions: () => void;
+  switchOptions: () => Promise<void>;
 }
 
 export const useSelectsStore = create<SelectsState>()(
@@ -17,7 +17,7 @@ export const useSelectsStore = create<SelectsState>()(
       getSelect: null,
       setGiveSelect: (option) => set({ giveSelect: option }),
       setGetSelect: (option) => set({ getSelect: option }),
-      switchOptions: () => {
+      switchOptions: async () => {
         set((state) => {
           const get = state.giveSelect;
           return { giveSelect: state.getSelect, getSelect: get };

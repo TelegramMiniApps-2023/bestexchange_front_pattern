@@ -14,16 +14,26 @@ export const ExchangersList: FC<ExchangersListProps> = memo(
     const get = useSelectsStore((state) => state.getSelect);
 
     return (
-      <div className={styles.exchangers__body}>
-        <div className={styles.exchangers__title}>
-          Лучшие курсы {give?.name} на {get?.name}
-        </div>
-        <div className={styles.exchangers__cards}>
-          {exchangers.map((card) => (
-            <ExchangerCard key={card.id} card={card} />
-          ))}
-        </div>
-      </div>
+      <>
+        {exchangers.length === 0 ? (
+          <div
+            style={{ textAlign: "center", maxWidth: "80%", margin: "0 auto" }}
+          >
+            Список пуст... Вы можете выбрать другие параметры
+          </div>
+        ) : (
+          <div className={styles.exchangers__body}>
+            <div className={styles.exchangers__title}>
+              Лучшие курсы {give?.name} на {get?.name}
+            </div>
+            <div className={styles.exchangers__cards}>
+              {exchangers.map((card) => (
+                <ExchangerCard key={card.id} card={card} />
+              ))}
+            </div>
+          </div>
+        )}
+      </>
     );
   }
 );

@@ -13,6 +13,10 @@ export const Main = memo(() => {
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
   const switchOptions = useSelectsStore((state) => state.switchOptions);
+  const handleSwitch = async () => {
+    await switchOptions();
+    await refetch();
+  };
   const {
     data: exchangers,
     isLoading,
@@ -41,7 +45,7 @@ export const Main = memo(() => {
           <div
             className={styles.selects__icon}
             onClick={() => {
-              get && give && switchOptions();
+              get && give && handleSwitch();
             }}
           >
             <ChangeIcon width="30px" height="30px" fill="#fff" />
