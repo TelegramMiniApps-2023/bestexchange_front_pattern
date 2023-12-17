@@ -21,7 +21,6 @@ export const Select: FC<SelectProps> = ({ type }) => {
   const filter = useFiltersStore((state) => state.filter);
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
-  console.log(give?.code_name);
 
   const [show, setShow] = useState(false);
   const options = queryClient.getQueryData<Categories>(optionsKey);
