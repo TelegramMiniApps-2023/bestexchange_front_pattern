@@ -1,13 +1,11 @@
-import { FC, memo, useState } from "react";
+import { FC, memo } from "react";
 import SearchIcon from "../../assets/icons/SearchIcon";
 import styles from "./styles.module.scss";
 import { useFiltersStore } from "../../store/store";
 
-interface SearchInputProps {
-  type: string;
-}
+interface SearchInputProps {}
 
-export const SearchInput: FC<SearchInputProps> = memo(({ type }) => {
+export const SearchInput: FC<SearchInputProps> = memo(() => {
   const value = useFiltersStore((state) => state.search);
   const setValue = useFiltersStore((state) => state.setSearch);
   return (

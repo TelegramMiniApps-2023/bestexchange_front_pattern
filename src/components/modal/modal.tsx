@@ -23,42 +23,37 @@ export const Modal: FC<ModalProps> = ({
 }) => {
   const search = useFiltersStore((state) => state.search);
   // const setFilter = useFiltersStore((state) => state.setFilter);
+
+  const filteredOptions = filter
+    ? options?.[filter]?.filter((option) =>
+        option.name.toLowerCase().includes(search.toLowerCase())
+      )
+    : Object.values(options || {}).flatMap((category) =>
+        category.filter((option) =>
+          option.name.toLowerCase().includes(search.toLowerCase())
+        )
+      );
   return (
     <Popup closeModal={handleModal}>
       {options && Object.keys(options).length > 0 ? (
         <div className={styles.modal__body}>
-          <SearchInput type={type} />
+          <SearchInput />
           <div className={styles.modal__filter}>
             <OptionFilter categories={options} />
           </div>
           <div className={styles.modal__options}>
-            {filter
-              ? options[filter]
-                  ?.filter((option) =>
-                    option.name.toLowerCase().includes(search.toLowerCase())
-                  )
-                  .map((option) => (
-                    <Option
-                      key={option.code_name}
-                      option={option}
-                      handleModal={handleModal}
-                      type={type}
-                    />
-                  ))
-              : Object.keys(options).map((category) =>
-                  options[category]
-                    ?.filter((option) =>
-                      option.name.toLowerCase().includes(search.toLowerCase())
-                    )
-                    .map((option) => (
-                      <Option
-                        key={option.code_name}
-                        option={option}
-                        handleModal={handleModal}
-                        type={type}
-                      />
-                    ))
-                )}
+            {filteredOptions && filteredOptions?.length > 0 ? (
+              filteredOptions.map((option) => (
+                <Option
+                  key={option.code_name}
+                  option={option}
+                  handleModal={handleModal}
+                  type={type}
+                />
+              ))
+            ) : (
+              <div className={styles.modal__empty}>Список пуст...</div>
+            )}
           </div>
         </div>
       ) : (

@@ -14,10 +14,9 @@ interface SelectProps {
 }
 
 export const Select: FC<SelectProps> = ({ type }) => {
-  // const { store } = useContext(Context);
-
   // Zustand
   const setFilter = useFiltersStore((state) => state.setFilter);
+  const setSearch = useFiltersStore((state) => state.setSearch);
   const filter = useFiltersStore((state) => state.filter);
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
@@ -27,6 +26,7 @@ export const Select: FC<SelectProps> = ({ type }) => {
   const { data: availableDirection } = useFetchAvailable({
     base: give?.code_name,
   });
+
   // const availableDirection = queryClient.getQueryData<Categories>([
   //   availableKey,
   //   give?.code_name,
@@ -35,6 +35,7 @@ export const Select: FC<SelectProps> = ({ type }) => {
   const handleModal = useCallback(() => {
     setShow((prevShow) => !prevShow);
     setFilter(null);
+    setSearch("");
   }, [setFilter]);
 
   return (
