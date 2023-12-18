@@ -1,17 +1,22 @@
 import { memo } from "react";
 import { useFetchExchangers, useFetchOptions } from "../../api/api";
 import ChangeIcon from "../../assets/icons/ChangeIcon";
-import { useSelectsStore } from "../../store";
-import { ExchangerCard } from "../exchangerCard/exchangeCard";
+import { useSelectsStore } from "../../store/store";
 import { Loader } from "../loader/loader";
 import { Select } from "../select/select";
 import styles from "./styles.module.scss";
+import { ExchangersList } from "../exchangersList/exchangersList";
 
 export const Main = memo(() => {
   //Zustand
   useFetchOptions();
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
+  const switchOptions = useSelectsStore((state) => state.switchOptions);
+  const handleSwitch = async () => {
+    await switchOptions();
+    await refetch();
+  };
   const {
     data: exchangers,
     isLoading,
@@ -37,20 +42,22 @@ export const Main = memo(() => {
           <div className={styles.select}>
             <Select type="give" />
           </div>
-          <div
-            className={styles.selects__icon}
-            // onClick={() => {
-            //   store.get && store.give && store.switchOptions();
-            // }}
-          >
-            <ChangeIcon width="30px" height="30px" fill="#fff" />
+          <div className={styles.selects__icon}>
+            <ChangeIcon
+              width="30px"
+              height="30px"
+              fill="#fff"
+              onClick={() => {
+                get && give && handleSwitch();
+              }}
+            />
           </div>
           <div className={styles.select}>
             <Select type="get" />
           </div>
         </div>
         <div className={styles.exchangers}>
-          {get && give && !exchangers && (
+          {get && give && !exchangers && !isLoading && (
             <div className={styles.exchangers__btn} onClick={() => refetch()}>
               Далее
             </div>
@@ -60,18 +67,7 @@ export const Main = memo(() => {
               <Loader />
             </div>
           ) : (
-            exchangers && (
-              <div className={styles.exchangers__body}>
-                <div className={styles.exchangers__title}>
-                  Лучшие курсы {give?.name} на {get?.name}
-                </div>
-                <div className={styles.exchangers__cards}>
-                  {exchangers.map((card) => (
-                    <ExchangerCard key={card.id} card={card} />
-                  ))}
-                </div>
-              </div>
-            )
+            exchangers && <ExchangersList exchangers={exchangers} />
           )}
         </div>
       </div>

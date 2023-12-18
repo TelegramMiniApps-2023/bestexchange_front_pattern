@@ -1,6 +1,6 @@
 import { FC, memo, useCallback, useEffect, useState } from "react";
 import ArrowDown from "../../assets/icons/ArrowDown";
-import { useFiltersStore, useSelectsStore } from "../../store";
+import { useFiltersStore, useSelectsStore } from "../../store/store";
 
 import { Modal } from "../modal/modal";
 import styles from "./styles.module.scss";
@@ -14,20 +14,19 @@ interface SelectProps {
 }
 
 export const Select: FC<SelectProps> = ({ type }) => {
-  // const { store } = useContext(Context);
-
   // Zustand
   const setFilter = useFiltersStore((state) => state.setFilter);
+  const setSearch = useFiltersStore((state) => state.setSearch);
   const filter = useFiltersStore((state) => state.filter);
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
-  console.log(give?.code_name);
 
   const [show, setShow] = useState(false);
   const options = queryClient.getQueryData<Categories>(optionsKey);
   const { data: availableDirection } = useFetchAvailable({
     base: give?.code_name,
   });
+
   // const availableDirection = queryClient.getQueryData<Categories>([
   //   availableKey,
   //   give?.code_name,
@@ -36,6 +35,7 @@ export const Select: FC<SelectProps> = ({ type }) => {
   const handleModal = useCallback(() => {
     setShow((prevShow) => !prevShow);
     setFilter(null);
+    setSearch("");
   }, [setFilter]);
 
   return (

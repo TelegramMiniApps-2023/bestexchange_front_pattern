@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 
-import { useSelectsStore } from "../../store";
+import { useSelectsStore } from "../../store/store";
 import styles from "./styles.module.scss";
 import { useFetchAvailable } from "../../api/api";
 import { Options } from "../../model/Options";
