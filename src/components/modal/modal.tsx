@@ -45,7 +45,7 @@ export const Modal: FC<ModalProps> = ({
             {filteredOptions && filteredOptions?.length > 0 ? (
               filteredOptions.map((option) => (
                 <Option
-                  key={option.code_name}
+                  key={option.id}
                   option={option}
                   handleModal={handleModal}
                   type={type}
