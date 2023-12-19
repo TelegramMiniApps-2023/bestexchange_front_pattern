@@ -12,13 +12,10 @@ export const ExchangersList: FC<ExchangersListProps> = memo(
   ({ exchangers }) => {
     const give = useSelectsStore((state) => state.giveSelect);
     const get = useSelectsStore((state) => state.getSelect);
-
     return (
       <>
         {exchangers.length === 0 ? (
-          <div
-            style={{ textAlign: "center", maxWidth: "80%", margin: "0 auto" }}
-          >
+          <div className={styles.empty}>
             Список пуст... Вы можете выбрать другие параметры
           </div>
         ) : (
@@ -27,9 +24,10 @@ export const ExchangersList: FC<ExchangersListProps> = memo(
               Лучшие курсы {give?.name} на {get?.name}
             </div>
             <div className={styles.exchangers__cards}>
-              {exchangers.map((card) => (
-                <ExchangerCard key={card.id} card={card} />
-              ))}
+              {exchangers &&
+                exchangers.map((card) => (
+                  <ExchangerCard key={card.id} card={card} />
+                ))}
             </div>
           </div>
         )}

@@ -17,39 +17,42 @@ import { $host } from "./base";
 //   return queryResult
 // };
 
-// тип для получение доступных направлений 
+// тип для получение доступных направлений
 type ReqFetchAvailableDto = {
-  base: string | undefined
-}
+  base: string | undefined;
+};
 //запрос на получение доступных направлений
 export const useFetchAvailable = ({ base }: ReqFetchAvailableDto) => {
-  const fetchAvailable = async () => (await $host.get<Categories>(`/api/no_cash/available_valutes?base=${base}`)).data
+  const fetchAvailable = async () =>
+    (await $host.get<Categories>(`/api/no_cash/available_valutes?base=${base}`))
+      .data;
 
   const queryResult = useQuery({
     queryKey: [availableKey, base],
     queryFn: fetchAvailable,
     staleTime: 60 * 1000 * 5,
-
-
-
-  })
-  return queryResult
+  });
+  return queryResult;
 };
-
 
 //тип для получения обменников на основе выбранных валют
 type ReqFetchExchangersDto = {
-  from: string | undefined,
-  to: string | undefined
-}
+  from: string | undefined;
+  to: string | undefined;
+};
 //запрос на получение обменников на основе выбранных валют
 export const useFetchExchangers = ({ from, to }: ReqFetchExchangersDto) => {
-  const fetchExchangers = async () => (await $host.get<Exchanger[]>(`/api/no_cash/directions?valute_from=${from}&valute_to=${to}`)).data
+  const fetchExchangers = async () =>
+    (
+      await $host.get<Exchanger[]>(
+        `/api/no_cash/directions?valute_from=${from}&valute_to=${to}`
+      )
+    ).data;
   const queryResult = useQuery({
     queryKey: [exchangersKey],
     queryFn: fetchExchangers,
     staleTime: 60 * 1000 * 5,
     enabled: false,
-  })
-  return queryResult
+  });
+  return queryResult;
 };

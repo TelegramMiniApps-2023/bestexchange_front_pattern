@@ -23,6 +23,7 @@ export const Main = memo(() => {
   const {
     data: exchangers,
     isLoading,
+    isFetching,
     refetch,
   } = useFetchExchangers({
     from: give?.code_name,
@@ -65,7 +66,7 @@ export const Main = memo(() => {
               Далее
             </div>
           )}
-          {isLoading ? (
+          {isLoading || isFetching ? (
             <div style={{ textAlign: "center" }}>
               <Loader />
             </div>
