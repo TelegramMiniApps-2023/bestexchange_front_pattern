@@ -22,7 +22,7 @@ export const Select: FC<SelectProps> = ({ type }) => {
   const get = useSelectsStore((state) => state.getSelect);
 
   const [show, setShow] = useState(false);
-  const options = queryClient.getQueryData<Categories>(optionsKey);
+  const options = queryClient.getQueryData<Categories>([availableKey, "all"]);
   const { data: availableDirection } = useFetchAvailable({
     base: give?.code_name,
   });
@@ -36,7 +36,7 @@ export const Select: FC<SelectProps> = ({ type }) => {
     setShow((prevShow) => !prevShow);
     setFilter(null);
     setSearch("");
-  }, [setFilter]);
+  }, [setFilter, setSearch]);
 
   return (
     <div className={styles.select}>
