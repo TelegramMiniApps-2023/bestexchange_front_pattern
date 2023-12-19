@@ -1,15 +1,18 @@
-import { memo } from "react";
-import { useFetchExchangers, useFetchOptions } from "../../api/api";
+import { memo, useEffect } from "react";
+import { useFetchAvailable, useFetchExchangers } from "../../api/api";
 import ChangeIcon from "../../assets/icons/ChangeIcon";
 import { useSelectsStore } from "../../store/store";
+import { ExchangersList } from "../exchangersList/exchangersList";
 import { Loader } from "../loader/loader";
 import { Select } from "../select/select";
 import styles from "./styles.module.scss";
-import { ExchangersList } from "../exchangersList/exchangersList";
 
 export const Main = memo(() => {
   //Zustand
-  useFetchOptions();
+  const { refetch: refetchAvailable } = useFetchAvailable({ base: "all" });
+  useEffect(() => {
+    refetchAvailable();
+  }, [refetchAvailable]);
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
   const switchOptions = useSelectsStore((state) => state.switchOptions);
