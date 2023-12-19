@@ -1,11 +1,11 @@
-import { FC, memo, useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useState } from "react";
 import ArrowDown from "../../assets/icons/ArrowDown";
 import { useFiltersStore, useSelectsStore } from "../../store/store";
 
 import { Modal } from "../modal/modal";
 import styles from "./styles.module.scss";
 import { queryClient } from "../../api/queryClient";
-import { availableKey, optionsKey } from "../../assets/consts";
+import { availableKey } from "../../assets/consts";
 import { Categories } from "../../model/Categories";
 import { useFetchAvailable } from "../../api/api";
 
