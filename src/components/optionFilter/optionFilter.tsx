@@ -25,7 +25,7 @@ export const OptionFilter: FC<OptionFilterProps> = ({ categories }) => {
 
   useEffect(() => {
     setFilter(null);
-  }, [search]);
+  }, [search, setFilter]);
 
   return (
     <div className={styles.filter}>
