@@ -10,7 +10,11 @@ export const Header: FC = memo(() => {
   return (
     <div className={styles.header}>
       <div className={styles.header__wrapper}>
-        <Link className={styles.header__logo} to={MAIN_ROUTE}>
+        <Link
+          data-testid="main-link"
+          className={styles.header__logo}
+          to={MAIN_ROUTE}
+        >
           <img src="/logo.png" alt="logo" />
           <span>Money Exchange</span>
         </Link>

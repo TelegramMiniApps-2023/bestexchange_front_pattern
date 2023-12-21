@@ -1,11 +1,11 @@
-import { FC, memo } from "react";
+import { FC } from "react";
 
+import { queryClient } from "../../api/queryClient";
+import { exchangersKey } from "../../assets/consts";
+import { Options } from "../../model/Options";
 import { useSelectsStore } from "../../store/store";
 import styles from "./styles.module.scss";
-import { useFetchAvailable } from "../../api/api";
-import { Options } from "../../model/Options";
-import { queryClient } from "../../api/queryClient";
-import { availableKey, exchangersKey } from "../../assets/consts";
+import { useFetchExchangers } from "../../api/api";
 
 interface OptionProps {
   option: Options;
@@ -15,24 +15,30 @@ interface OptionProps {
 
 export const Option: FC<OptionProps> = ({ option, handleModal, type }) => {
   // Zustand
-  const { giveSelect, setGetSelect, setGiveSelect } = useSelectsStore(
-    (state) => state
-  );
+  const { setGetSelect, setGiveSelect } = useSelectsStore((state) => state);
+
+  // рефетч
+  const give = useSelectsStore((state) => state.giveSelect);
+  const get = useSelectsStore((state) => state.getSelect);
+  const { refetch } = useFetchExchangers({
+    from: give?.code_name,
+    to: get?.code_name,
+  });
 
   const handleChangeDirection = () => {
     if (type === "give") {
       setGiveSelect(option);
       setGetSelect(null);
       queryClient.removeQueries(exchangersKey);
-      // refetch();
     } else {
+      if (get) {
+        refetch();
+      }
       setGetSelect(option);
     }
     handleModal();
   };
-  // const { refetch } = useFetchAvailable({
-  //   base: giveSelect?.code_name,
-  // });
+
   return (
     <div className={styles.option} onClick={() => handleChangeDirection()}>
       <div className={styles.option__img}>

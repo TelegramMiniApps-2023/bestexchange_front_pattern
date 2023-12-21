@@ -13,8 +13,4 @@ import "./styles/global.scss";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
-root.render(
-  // <Context.Provider value={{ store: new OptionStore() }}>
-  <App />
-  // </Context.Provider>
-);
+root.render(<App />);

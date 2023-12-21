@@ -23,7 +23,9 @@ export const Main = memo(() => {
   const {
     data: exchangers,
     isLoading,
+    isFetching,
     refetch,
+    error,
   } = useFetchExchangers({
     from: give?.code_name,
     to: get?.code_name,
@@ -51,7 +53,7 @@ export const Main = memo(() => {
               height="30px"
               fill="#fff"
               onClick={() => {
-                get && give && handleSwitch();
+                // get && give && handleSwitch();
               }}
             />
           </div>
@@ -65,9 +67,13 @@ export const Main = memo(() => {
               Далее
             </div>
           )}
-          {isLoading ? (
+          {isLoading || isFetching ? (
             <div style={{ textAlign: "center" }}>
               <Loader />
+            </div>
+          ) : error ? (
+            <div className={styles.empty}>
+              Список пуст... Вы можете выбрать другие параметры
             </div>
           ) : (
             exchangers && <ExchangersList exchangers={exchangers} />
