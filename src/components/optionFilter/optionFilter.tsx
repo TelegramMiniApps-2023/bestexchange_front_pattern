@@ -2,6 +2,7 @@ import { FC, useEffect } from "react";
 import { useFiltersStore } from "../../store/store";
 import styles from "./styles.module.scss";
 import { Categories } from "../../model/Categories";
+import { Tabs } from "../ui/tabs";
 
 interface OptionFilterProps {
   categories: Categories;
@@ -41,19 +42,12 @@ export const OptionFilter: FC<OptionFilterProps> = ({ categories }) => {
           Все
         </div>
       )}
-      {filteredCategories.map((category, index) => (
-        <div
-          onClick={() => handleCategory(category)}
-          key={index}
-          className={
-            category === filter
-              ? `${styles.filter__item} ${styles.active}`
-              : styles.filter__item
-          }
-        >
-          {category}
-        </div>
-      ))}
+      <Tabs
+        onTabClick={handleCategory}
+        tabs={filteredCategories}
+        className={styles.filter}
+        filter={filter}
+      />
     </div>
   );
 };
