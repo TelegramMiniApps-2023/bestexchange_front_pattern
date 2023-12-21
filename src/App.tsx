@@ -12,7 +12,7 @@ const App: FC = (): ReactElement => {
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Header />
-          <AppRouter />
+          <AppRouter data-testid="approuter" />
         </BrowserRouter>
       </QueryClientProvider>
     </div>
