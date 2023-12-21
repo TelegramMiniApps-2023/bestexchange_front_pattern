@@ -1,6 +1,6 @@
-export interface IOption {
+export interface Options {
+  id: number,
   name: string;
   code_name: string;
-  type_valute: string;
   icon_url: string;
 }

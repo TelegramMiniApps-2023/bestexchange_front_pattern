@@ -1,13 +1,13 @@
-import { FC, useState } from "react";
+import { FC, memo } from "react";
 import SearchIcon from "../../assets/icons/SearchIcon";
 import styles from "./styles.module.scss";
+import { useFiltersStore } from "../../store/store";
 
-interface SearchInputProps {
-  type: string;
-}
+interface SearchInputProps {}
 
-export const SearchInput: FC<SearchInputProps> = ({ type }) => {
-  const [value, setValue] = useState("");
+export const SearchInput: FC<SearchInputProps> = memo(() => {
+  const value = useFiltersStore((state) => state.search);
+  const setValue = useFiltersStore((state) => state.setSearch);
   return (
     <div className={styles.search}>
       <div className={styles.search__icon}>
@@ -22,4 +22,4 @@ export const SearchInput: FC<SearchInputProps> = ({ type }) => {
       />
     </div>
   );
-};
+});

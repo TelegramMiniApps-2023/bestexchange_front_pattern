@@ -1,6 +1,8 @@
-export const ServicesPage = () => {
+import { memo } from "react";
+
+export const ServicesPage = memo(() => {
   return (
-    <div className="page__wrapper">
+    <div data-testid="services-page" className="page__wrapper">
       <h1
         style={{
           display: "flex",
@@ -13,4 +15,4 @@ export const ServicesPage = () => {
       </h1>
     </div>
   );
-};
+});

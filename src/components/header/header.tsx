@@ -1,16 +1,20 @@
-import { FC } from "react";
-import { publicRoutes } from "../../assets/routes";
-import styles from "./styles.module.scss";
+import { FC, memo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { MAIN_ROUTE } from "../../assets/consts";
+import { publicRoutes } from "../../assets/routes";
+import styles from "./styles.module.scss";
 
-export const Header: FC = () => {
+export const Header: FC = memo(() => {
   const location = useLocation();
 
   return (
     <div className={styles.header}>
       <div className={styles.header__wrapper}>
-        <Link className={styles.header__logo} to={MAIN_ROUTE}>
+        <Link
+          data-testid="main-link"
+          className={styles.header__logo}
+          to={MAIN_ROUTE}
+        >
           <img src="/logo.png" alt="logo" />
           <span>Money Exchange</span>
         </Link>
@@ -31,4 +35,4 @@ export const Header: FC = () => {
       </div>
     </div>
   );
-};
+});
