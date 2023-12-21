@@ -1,11 +1,10 @@
-import { FC, memo } from "react";
+import { FC } from "react";
 
+import { queryClient } from "../../api/queryClient";
+import { exchangersKey } from "../../assets/consts";
+import { Options } from "../../model/Options";
 import { useSelectsStore } from "../../store/store";
 import styles from "./styles.module.scss";
-import { useFetchAvailable } from "../../api/api";
-import { Options } from "../../model/Options";
-import { queryClient } from "../../api/queryClient";
-import { availableKey, exchangersKey } from "../../assets/consts";
 
 interface OptionProps {
   option: Options;
@@ -15,9 +14,7 @@ interface OptionProps {
 
 export const Option: FC<OptionProps> = ({ option, handleModal, type }) => {
   // Zustand
-  const { giveSelect, setGetSelect, setGiveSelect } = useSelectsStore(
-    (state) => state
-  );
+  const { setGetSelect, setGiveSelect } = useSelectsStore((state) => state);
 
   const handleChangeDirection = () => {
     if (type === "give") {
@@ -30,9 +27,7 @@ export const Option: FC<OptionProps> = ({ option, handleModal, type }) => {
     }
     handleModal();
   };
-  // const { refetch } = useFetchAvailable({
-  //   base: giveSelect?.code_name,
-  // });
+
   return (
     <div className={styles.option} onClick={() => handleChangeDirection()}>
       <div className={styles.option__img}>
