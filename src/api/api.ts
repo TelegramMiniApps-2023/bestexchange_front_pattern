@@ -16,6 +16,8 @@ import { $host } from "./base";
 type ReqFetchAvailableDto = {
   base: string | undefined;
 };
+// todo добавить что бы не было много запрос в случае ошибки 
+
 //запрос на получение доступных направлений
 export const useFetchAvailable = ({ base = "all" }: ReqFetchAvailableDto) => {
   const fetchAvailable = async () =>
@@ -27,15 +29,17 @@ export const useFetchAvailable = ({ base = "all" }: ReqFetchAvailableDto) => {
     queryFn: fetchAvailable,
     staleTime: 60 * 1000 * 5,
     enabled: true,
+    retry: false,
   });
   return queryResult;
 };
-
+// todo 
 //тип для получения обменников на основе выбранных валют
 type ReqFetchExchangersDto = {
   from: string | undefined;
   to: string | undefined;
 };
+//todo отмена запроса если fetchAvailable провалился
 //запрос на получение обменников на основе выбранных валют
 export const useFetchExchangers = ({ from, to }: ReqFetchExchangersDto) => {
   const fetchExchangers = async () =>
@@ -50,6 +54,7 @@ export const useFetchExchangers = ({ from, to }: ReqFetchExchangersDto) => {
     queryFn: fetchExchangers,
     staleTime: 60 * 1000 * 5,
     enabled: false,
+    retry: false
   });
   return queryResult;
 };
