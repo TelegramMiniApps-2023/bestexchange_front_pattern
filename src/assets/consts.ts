@@ -14,3 +14,6 @@ export const countriesKey = 'Countries'
 export const citiesKey = 'Cities'
 export const availableValutesKey = 'AvailableValutes'
 export const directionCashKey = 'directionCashKey'
+
+// DirectionTabs type valute
+export const directionTabsValute = ['Безналичные', 'Наличные']
