@@ -33,7 +33,7 @@ export const Select: FC<SelectProps> = ({ type }) => {
 
   useEffect(() => {
     if (error) {
-      setGiveSelect(null);
+      // setGiveSelect(null);
       setGetSelect(null);
     }
   }, [error]);
@@ -79,7 +79,7 @@ export const Select: FC<SelectProps> = ({ type }) => {
             filter={filter}
           />
         )}
-        {type === "get" && availableDirection && (
+        {type === "get" && (
           <Modal
             options={availableDirection}
             handleModal={handleModal}
