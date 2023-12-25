@@ -1,25 +1,21 @@
 import { memo, useEffect } from "react";
 import { useFetchAvailable, useFetchExchangers } from "../../api/api";
-import ChangeIcon from "../../assets/icons/ChangeIcon";
 import { useSelectsStore } from "../../store/store";
 import { ExchangersList } from "../exchangersList/exchangersList";
 import { Loader } from "../loader/loader";
 import { Select } from "../select/select";
 import styles from "./styles.module.scss";
+import { Switcher } from "../switcher/switcher";
 
 export const Main = memo(() => {
-  //Zustand
-  const { refetch: refetchAvailable } = useFetchAvailable({ base: "all" });
-  useEffect(() => {
-    refetchAvailable();
-  }, [refetchAvailable]);
+  // const { refetch: refetchAvailable } = useFetchAvailable({ base: "all" });
+  // useEffect(() => {
+  //   refetchAvailable();
+  // }, [refetchAvailable]);
+
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
-  const switchOptions = useSelectsStore((state) => state.switchOptions);
-  const handleSwitch = async () => {
-    await switchOptions();
-    await refetch();
-  };
+
   const {
     data: exchangers,
     isLoading,
@@ -44,33 +40,18 @@ export const Main = memo(() => {
       </div>
       <div className={styles.main__body}>
         <div className={styles.selects}>
-          <div className={styles.select}>
-            <Select type="give" />
-          </div>
-          <div className={styles.selects__icon}>
-            <ChangeIcon
-              width="30px"
-              height="30px"
-              fill="#fff"
-              onClick={() => {
-                // get && give && handleSwitch();
-              }}
-            />
-          </div>
-          <div className={styles.select}>
-            <Select type="get" />
-          </div>
+          <Select type="give" />
+          <Switcher give={give} get={get} refetch={refetch} />
+          <Select type="get" />
         </div>
         <div className={styles.exchangers}>
-          {get && give && !exchangers && !isLoading && (
+          {/* {get && give && !exchangers && !isLoading && (
             <div className={styles.exchangers__btn} onClick={() => refetch()}>
               Далее
             </div>
-          )}
+          )} */}
           {isLoading || isFetching ? (
-            <div style={{ textAlign: "center" }}>
-              <Loader />
-            </div>
+            <Loader />
           ) : error ? (
             <div className={styles.empty}>
               Список пуст... Вы можете выбрать другие параметры

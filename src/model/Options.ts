@@ -1,5 +1,5 @@
 export interface Options {
-  id: number,
+  id: number;
   name: string;
   code_name: string;
   icon_url: string;

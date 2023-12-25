@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import ArrowDown from "../../assets/icons/ArrowDown";
 import { useFiltersStore, useSelectsStore } from "../../store/store";
 
@@ -20,14 +20,23 @@ export const Select: FC<SelectProps> = ({ type }) => {
   const filter = useFiltersStore((state) => state.filter);
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
+  const setGiveSelect = useSelectsStore((state) => state.setGiveSelect);
+  const setGetSelect = useSelectsStore((state) => state.setGetSelect);
 
   const [show, setShow] = useState(false);
   // const { data:options } = useFetchAvailable({ base: "all" });
   const options = queryClient.getQueryData<Categories>([availableKey, "all"]);
 
-  const { data: availableDirection } = useFetchAvailable({
+  const { data: availableDirection, error } = useFetchAvailable({
     base: give?.code_name,
   });
+
+  useEffect(() => {
+    if (error) {
+      setGiveSelect(null);
+      setGetSelect(null);
+    }
+  }, [error]);
 
   const handleModal = useCallback(() => {
     setShow((prevShow) => !prevShow);
@@ -52,7 +61,7 @@ export const Select: FC<SelectProps> = ({ type }) => {
       >
         {type === "give" && give ? (
           give.name
-        ) : get ? (
+        ) : get && !error ? (
           get.name
         ) : (
           <span>Не выбрано...</span>
