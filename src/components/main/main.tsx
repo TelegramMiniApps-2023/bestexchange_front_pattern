@@ -6,6 +6,7 @@ import { ExchangersList } from "../exchangersList/exchangersList";
 import { Loader } from "../loader/loader";
 import { Select } from "../select/select";
 import styles from "./styles.module.scss";
+import { DirectionTabs } from "../directionTabs";
 
 export const Main = memo(() => {
   //Zustand
@@ -33,6 +34,7 @@ export const Main = memo(() => {
 
   return (
     <div className={styles.main}>
+      <DirectionTabs />
       <div className={styles.title}>
         <p className={styles.title__title}>Lorem ipsum dolor sit amet.</p>
         <p className={styles.title__text}>
