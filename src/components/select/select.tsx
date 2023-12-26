@@ -8,6 +8,7 @@ import { availableKey } from "../../assets/consts";
 import { Categories } from "../../model/Categories";
 import { Modal } from "../modal/modal";
 import styles from "./styles.module.scss";
+import clsx from "clsx";
 
 interface SelectProps {
   type: string;
@@ -50,11 +51,9 @@ export const Select: FC<SelectProps> = ({ type }) => {
         {type === "give" ? "Выберите что отдаёте" : "Выберите что получаете"}
       </p>
       <div
-        className={
-          !give && type === "get"
-            ? `${styles.select__input} ${styles.active}`
-            : styles.select__input
-        }
+        className={clsx(styles.select__input, {
+          [styles.active]: !give && type === "get",
+        })}
         onClick={() => {
           handleModal();
         }}
@@ -70,7 +69,7 @@ export const Select: FC<SelectProps> = ({ type }) => {
           <ArrowDown width="20px" height="20px" fill="#fff" />
         </span>
       </div>
-      <div className={show ? `${styles.modal} ${styles.active}` : styles.modal}>
+      <div className={clsx(styles.modal, { [styles.active]: show })}>
         {type === "give" && options && (
           <Modal
             options={options}
