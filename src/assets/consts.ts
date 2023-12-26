@@ -1,3 +1,5 @@
+import { TabsItem } from "../components/ui/tabs/tabs";
+
 // App routes
 export const MAIN_ROUTE = "/";
 export const ABOUT_ROUTE = "/about";
@@ -14,4 +16,13 @@ export const availableValutesKey = "AvailableValutes";
 export const directionCashKey = "directionCashKey";
 
 // DirectionTabs type valute
-export const directionTabsValute = ["Безналичные", "Наличные"];
+export const directionTabsValute: TabsItem[] = [
+    {
+        value: 'noCash',
+        content: "Безналичные"
+    },
+    {
+        value: 'cash',
+        content: "Наличные"
+    },
+];
