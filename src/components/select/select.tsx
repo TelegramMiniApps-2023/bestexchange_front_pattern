@@ -51,7 +51,7 @@ export const Select: FC<SelectProps> = ({ type }) => {
       </p>
       <div
         className={
-          !give && type === "get"
+          (!availableDirection && type === "get") || (!give && type === "get")
             ? `${styles.select__input} ${styles.active}`
             : styles.select__input
         }
