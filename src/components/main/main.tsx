@@ -1,5 +1,7 @@
 import { memo } from "react";
 import { useFetchExchangers } from "../../api/api";
+import { memo } from "react";
+import { useFetchExchangers } from "../../api/api";
 import { useSelectsStore } from "../../store/store";
 import { ExchangersList } from "../exchangersList/exchangersList";
 import { Loader } from "../loader/loader";
@@ -7,6 +9,7 @@ import { Select } from "../select/select";
 import { Switcher } from "../switcher/switcher";
 import styles from "./styles.module.scss";
 import { DirectionTabs } from "../directionTabs";
+import styles from "./styles.module.scss";
 
 export const Main = memo(() => {
   // const { refetch: refetchAvailable } = useFetchAvailable({ base: "all" });
