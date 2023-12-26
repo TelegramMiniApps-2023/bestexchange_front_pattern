@@ -1,49 +1,21 @@
 .main {
-  .title {
-    padding: 25px 0px;
-    text-align: center;
-    &__title {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-    &__text {
-      font-size: 16px;
-      font-weight: 400;
-      color: #909090;
-    }
-  }
-  &__body {
-  }
   .selects {
-    background: rgba(14, 67, 121, 1);
+    background: rgba(14, 67, 121, 0.1);
+    border: 1.5px solid rgba(0, 255, 133, 1);
     color: #fff;
     padding: 20px;
-    border-radius: 15px;
+    border-radius: 25px;
   }
   .exchangers {
     padding: 25px 0px;
-    &__btn {
-      margin: 0 auto;
-      width: 70vw;
-      max-width: 300px;
-      padding: 15px;
-      background: rgb(75, 188, 75);
-      color: #fff;
-      text-align: center;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 16px;
-      cursor: pointer;
-      margin-bottom: 25px;
-    }
   }
   .empty {
     text-align: center;
+    font-size: 12px;
     max-width: 80%;
     margin: 0 auto;
     line-height: 1.7;
-    font-weight: 500;
-    color: rgba(0, 0, 0, 0.4);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.4);
   }
 }

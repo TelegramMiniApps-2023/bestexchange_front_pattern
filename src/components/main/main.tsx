@@ -6,6 +6,7 @@ import { Loader } from "../loader/loader";
 import { Select } from "../select/select";
 import styles from "./styles.module.scss";
 import { Switcher } from "../switcher/switcher";
+import { DirectionTabs } from "../directionTabs";
 
 export const Main = memo(() => {
   // const { refetch: refetchAvailable } = useFetchAvailable({ base: "all" });
@@ -31,13 +32,7 @@ export const Main = memo(() => {
 
   return (
     <div className={styles.main}>
-      <div className={styles.title}>
-        <p className={styles.title__title}>Lorem ipsum dolor sit amet.</p>
-        <p className={styles.title__text}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis nisi
-          voluptates ad at molestias inventore et odio aliquid quis quidem?
-        </p>
-      </div>
+      <DirectionTabs />
       <div className={styles.main__body}>
         <div className={styles.selects}>
           <Select type="give" />
@@ -45,11 +40,6 @@ export const Main = memo(() => {
           <Select type="get" />
         </div>
         <div className={styles.exchangers}>
-          {/* {get && give && !exchangers && !isLoading && (
-            <div className={styles.exchangers__btn} onClick={() => refetch()}>
-              Далее
-            </div>
-          )} */}
           {isLoading || isFetching ? (
             <Loader />
           ) : error ? (

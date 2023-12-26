@@ -19,8 +19,8 @@ export const Switcher: FC<SwitcherProps> = ({ refetch, give, get }) => {
   return (
     <div className={styles.switcher__icon}>
       <ChangeIcon
-        width="30px"
-        height="30px"
+        width="40px"
+        height="40px"
         fill="#fff"
         onClick={() => {
           get && give && handleSwitch();

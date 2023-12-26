@@ -11,12 +11,12 @@ type TabsProps = {
   filter?: string | null;
 };
 export const Tabs = memo((props: TabsProps) => {
-  const { onTabClick, tabs, filter } = props;
+  const { onTabClick, tabs, filter, className } = props;
   return (
     <div className={clsx(styles.tabs)}>
       {tabs.map((tab) => (
         <div
-          className={clsx(styles.tabs__item, {
+          className={clsx(styles.tabs__item, className, {
             [styles.active]: filter === tab,
           })}
           onClick={() => onTabClick(tab)}

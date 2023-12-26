@@ -47,7 +47,7 @@ export const Select: FC<SelectProps> = ({ type }) => {
   return (
     <div className={styles.select}>
       <p className={styles.select__label}>
-        {type === "give" ? "Выберите что отдаёте" : "Выберите что получаете"}
+        {type === "give" ? "Отдаю" : "Получаю"}
       </p>
       <div
         className={
@@ -64,11 +64,11 @@ export const Select: FC<SelectProps> = ({ type }) => {
         ) : get && !error ? (
           get.name
         ) : (
-          <span>Не выбрано...</span>
+          <span>Выберите валюту</span>
         )}
-        <span className={styles.input__icon}>
+        {/* <span className={styles.input__icon}>
           <ArrowDown width="20px" height="20px" fill="#fff" />
-        </span>
+        </span> */}
       </div>
       <div className={show ? `${styles.modal} ${styles.active}` : styles.modal}>
         {type === "give" && options && (

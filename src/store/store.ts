@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { Options } from "../model/Options";
 import { devtools } from "zustand/middleware";
+import { directionTabsValute } from "../assets/consts";
 
 interface SelectsState {
   giveSelect: Options | null;
@@ -42,4 +43,15 @@ export const useFiltersStore = create<FiltersState>()((set) => ({
   search: "",
   setFilter: (category) => set({ filter: category }),
   setSearch: (value) => set({ search: value }),
+}));
+
+//Store for DirectionTabs component, switch cash/noCash
+type DirectionTabs = {
+  typeValute: string;
+  setTypeValute: (valute: string) => void;
+};
+
+export const useDirectionTabsStore = create<DirectionTabs>()((set) => ({
+  typeValute: directionTabsValute[0],
+  setTypeValute: (valute) => set({ typeValute: valute }),
 }));
