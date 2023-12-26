@@ -1,14 +1,10 @@
-import { FC, memo, useCallback, useEffect, useState } from "react";
-import {
-  useDirectionTabsStore,
-  useFiltersStore,
-  useSelectsStore,
-} from "../../store/store";
 import clsx from "clsx";
+import { FC, memo, useCallback, useEffect, useState } from "react";
 import { useFetchAvailable } from "../../api/api";
 import { queryClient } from "../../api/queryClient";
 import { availableKey } from "../../assets/consts";
 import { Categories } from "../../model/Categories";
+import { useFiltersStore, useSelectsStore } from "../../store/store";
 import { Modal } from "../modal/modal";
 import { SelectCard } from "../selectCard";
 import styles from "./styles.module.scss";
@@ -22,7 +18,7 @@ interface SelectProps {
 export const Select: FC<SelectProps> = memo(({ type }) => {
   // Zustand
   //NoCash
-  const { typeValute } = useDirectionTabsStore((state) => state);
+
   const setFilter = useFiltersStore((state) => state.setFilter);
   const setSearch = useFiltersStore((state) => state.setSearch);
   const filter = useFiltersStore((state) => state.filter);
@@ -53,7 +49,6 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
 
   return (
     <>
-      {typeValute === "cash" && <div>Выбор страны</div>}
       <SelectCard
         error={error}
         get={get}
