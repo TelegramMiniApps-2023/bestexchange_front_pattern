@@ -25,18 +25,19 @@ export const Option: FC<OptionProps> = ({ option, handleModal, type }) => {
     to: get?.code_name,
   });
 
-  const handleChangeDirection = () => {
+  const handleChangeDirection = async () => {
+    handleModal();
     if (type === "give") {
       setGiveSelect(option);
       setGetSelect(null);
       queryClient.removeQueries(exchangersKey);
     } else {
-      if (get) {
-        refetch();
-      }
-      setGetSelect(option);
+      await setGetSelect(option);
+      await refetch();
+      // if (get) {
+      //   await refetch();
+      // }
     }
-    handleModal();
   };
 
   return (
