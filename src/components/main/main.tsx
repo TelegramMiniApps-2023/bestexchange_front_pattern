@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useEffect } from "react";
 import { useFetchExchangers } from "../../api/api";
 import { useSelectsStore } from "../../store/store";
 import { DirectionTabs } from "../directionTabs";
@@ -16,6 +16,7 @@ export const Main = memo(() => {
 
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
+  const setGetSelect = useSelectsStore((state) => state.setGetSelect);
 
   const {
     data: exchangers,
@@ -27,6 +28,13 @@ export const Main = memo(() => {
     from: give?.code_name,
     to: get?.code_name,
   });
+
+  useEffect(() => {
+    if (error) {
+      // setGiveSelect(null);
+      setGetSelect(null);
+    }
+  }, [error]);
 
   // временно
 

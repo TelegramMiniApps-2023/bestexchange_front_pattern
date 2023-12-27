@@ -60,9 +60,10 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
         give={give}
         handleModal={handleModal}
         type={type}
+        availableDirection={availableDirection}
       />
       <div className={clsx(styles.modal, { [styles.active]: show })}>
-        {type === "give" && options && (
+        {type === "give" && (
           <Modal
             options={options}
             handleModal={handleModal}
