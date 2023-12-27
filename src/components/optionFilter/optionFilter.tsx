@@ -1,4 +1,5 @@
 import { FC, memo, useEffect } from "react";
+import IconRight from "../../assets/icons/IconRight";
 import { Categories } from "../../model/Categories";
 import { useFiltersStore } from "../../store/store";
 import { Tabs } from "../ui/tabs";
@@ -18,42 +19,41 @@ export const OptionFilter: FC<OptionFilterProps> = memo(({ categories }) => {
     setFilter(category);
   };
 
-  // Фильтрация категорий на основе поисковой строки
   const filteredCategories = Object.keys(categories).filter((category) =>
     categories[category]?.some((option) =>
       option.name.toLowerCase().includes(search.toLowerCase())
     )
   );
-  const tabsItem: TabsItem[] = filteredCategories.map((category) => ({
-    value: category,
-    content: category,
-  }));
 
-  console.log(filteredCategories);
+  const tabsItem: TabsItem[] = [
+    { value: null, content: "Все" },
+    ...filteredCategories.map((category) => ({
+      value: category,
+      content: category,
+    })),
+  ];
+
+  const handleNextTab = () => {
+    const currentIndex = tabsItem.findIndex((tab) => tab.value === filter);
+    const nextIndex = (currentIndex + 1) % tabsItem.length;
+    console.log(nextIndex);
+    setFilter(tabsItem[nextIndex].value);
+  };
+
   useEffect(() => {
     setFilter(null);
   }, [search, setFilter]);
 
   return (
-    <div className={styles.filter}>
-      {filteredCategories.length > 0 && (
-        <div
-          className={
-            !filter
-              ? `${styles.filter__item} ${styles.active}`
-              : styles.filter__item
-          }
-          onClick={() => handleCategory(null)}
-        >
-          Все
-        </div>
-      )}
+    <div className={styles.filterWrapper}>
       <Tabs
-        onTabClick={(tab) => handleCategory(tab.content)}
+        onTabClick={(tab) => handleCategory(tab.value)}
         tabs={tabsItem}
-        className={styles.filter}
+        classNameTab={styles.filter}
         filter={filter}
+        classNameTabItem={styles.filter_tab_item}
       />
+      <IconRight className={styles.nextTab} onClick={handleNextTab} />
     </div>
   );
 });
