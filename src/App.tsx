@@ -5,15 +5,19 @@ import { BrowserRouter } from "react-router-dom";
 import { QueryClientProvider } from "react-query";
 import { queryClient } from "./api/queryClient";
 import { Header } from "./components/header/header";
+import { MainPage } from "./pages/Main";
 
 const App: FC = (): ReactElement => {
   return (
     <div className="main__wrapper">
-      <QueryClientProvider client={queryClient}>
+      {/* <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Header />
           <AppRouter data-testid="approuter" />
         </BrowserRouter>
+      </QueryClientProvider> */}
+      <QueryClientProvider client={queryClient}>
+        <MainPage />
       </QueryClientProvider>
     </div>
   );

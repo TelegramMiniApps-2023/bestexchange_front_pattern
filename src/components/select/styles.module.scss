@@ -1,12 +1,12 @@
 .select {
   &__label {
-    font-size: 14px;
+    font-size: 20px;
     margin-bottom: 15px;
   }
   &__input {
-    border-radius: 10px;
+    border-radius: 20px;
     background: rgba(255, 255, 255, 0.15);
-    padding: 10px 15px;
+    padding: 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -20,14 +20,14 @@
       pointer-events: none;
     }
   }
-  .input__icon {
-    width: 20px;
-    height: 20px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  // .input__icon {
+  //   width: 20px;
+  //   height: 20px;
+  //   color: white;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  // }
 }
 
 .modal {

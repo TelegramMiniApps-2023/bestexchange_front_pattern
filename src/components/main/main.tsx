@@ -1,11 +1,10 @@
 import { memo, useEffect } from "react";
-import { useFetchAvailable, useFetchExchangers } from "../../api/api";
+import { useFetchExchangers } from "../../api/api";
 import { useSelectsStore } from "../../store/store";
-import { ExchangersList } from "../exchangersList/exchangersList";
-import { Loader } from "../loader/loader";
-import { Select } from "../select/select";
+import { DirectionTabs } from "../directionTabs";
+import { SelectsForm } from "../selectsForm";
+import { ExchangerLoader } from "../exchangerLoader";
 import styles from "./styles.module.scss";
-import { Switcher } from "../switcher/switcher";
 
 export const Main = memo(() => {
   // const { refetch: refetchAvailable } = useFetchAvailable({ base: "all" });
@@ -15,6 +14,7 @@ export const Main = memo(() => {
 
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
+  const setGetSelect = useSelectsStore((state) => state.setGetSelect);
 
   const {
     data: exchangers,
@@ -27,39 +27,26 @@ export const Main = memo(() => {
     to: get?.code_name,
   });
 
+  useEffect(() => {
+    if (error) {
+      // setGiveSelect(null);
+      setGetSelect(null);
+    }
+  }, [error]);
+
   // временно
 
   return (
     <div className={styles.main}>
-      <div className={styles.title}>
-        <p className={styles.title__title}>Lorem ipsum dolor sit amet.</p>
-        <p className={styles.title__text}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis nisi
-          voluptates ad at molestias inventore et odio aliquid quis quidem?
-        </p>
-      </div>
+      <DirectionTabs />
       <div className={styles.main__body}>
-        <div className={styles.selects}>
-          <Select type="give" />
-          <Switcher give={give} get={get} refetch={refetch} />
-          <Select type="get" />
-        </div>
-        <div className={styles.exchangers}>
-          {/* {get && give && !exchangers && !isLoading && (
-            <div className={styles.exchangers__btn} onClick={() => refetch()}>
-              Далее
-            </div>
-          )} */}
-          {isLoading || isFetching ? (
-            <Loader />
-          ) : error ? (
-            <div className={styles.empty}>
-              Список пуст... Вы можете выбрать другие параметры
-            </div>
-          ) : (
-            exchangers && <ExchangersList exchangers={exchangers} />
-          )}
-        </div>
+        <SelectsForm get={get} give={give} refetch={refetch} />
+        <ExchangerLoader
+          error={error}
+          exchangers={exchangers}
+          isFetching={isFetching}
+          isLoading={isLoading}
+        />
       </div>
     </div>
   );

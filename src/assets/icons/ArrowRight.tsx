@@ -8,7 +8,7 @@ const ArrowRight = (props: any) => (
     {...props}
   >
     <path
-      stroke="#606060"
+      stroke="#fff"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.5}
