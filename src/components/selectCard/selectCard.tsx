@@ -3,6 +3,8 @@ import { Options } from "../../model/Options";
 import styles from "./selectCard.module.scss";
 import { memo } from "react";
 import { Categories } from "../../model/Categories";
+import { directionTabsValute } from "../../assets/consts";
+import { useCashStore } from "../../store/store";
 
 type SelectCardProps = {
   type: "give" | "get";
@@ -11,9 +13,20 @@ type SelectCardProps = {
   get: Options | null;
   error: unknown;
   availableDirection?: Categories;
+  typeValute: string;
 };
 export const SelectCard = memo((props: SelectCardProps) => {
-  const { give, handleModal, type, error, get, availableDirection } = props;
+  const {
+    give,
+    handleModal,
+    type,
+    error,
+    get,
+    availableDirection,
+    typeValute,
+  } = props;
+  // location from CashStore
+  const { country, city } = useCashStore((state) => state);
   return (
     <div className={styles.select}>
       <p className={styles.select__label}>
@@ -23,7 +36,8 @@ export const SelectCard = memo((props: SelectCardProps) => {
         className={clsx(styles.select__input, {
           [styles.active]:
             (!give && type === "get") ||
-            (!availableDirection && type === "get"),
+            (!availableDirection && type === "get") ||
+            (!country && !city && typeValute === directionTabsValute[1].value),
         })}
         onClick={() => {
           handleModal();
@@ -36,9 +50,6 @@ export const SelectCard = memo((props: SelectCardProps) => {
         ) : (
           <span>Выберите валюту</span>
         )}
-        {/* <span className={styles.input__icon}>
-                        <ArrowDown width="20px" height="20px" fill="#fff" />
-                    </span> */}
       </div>
     </div>
   );

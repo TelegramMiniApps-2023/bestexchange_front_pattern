@@ -4,7 +4,11 @@ import { useFetchAvailable } from "../../api/api";
 import { queryClient } from "../../api/queryClient";
 import { availableKey } from "../../assets/consts";
 import { Categories } from "../../model/Categories";
-import { useFiltersStore, useSelectsStore } from "../../store/store";
+import {
+  useDirectionTabsStore,
+  useFiltersStore,
+  useSelectsStore,
+} from "../../store/store";
 import { Modal } from "../modal/modal";
 import { SelectCard } from "../selectCard";
 import styles from "./styles.module.scss";
@@ -25,6 +29,7 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
   const setGetSelect = useSelectsStore((state) => state.setGetSelect);
+  const typeValute = useDirectionTabsStore((state) => state.typeValute);
 
   const [show, setShow] = useState(false);
   // const { data:options } = useFetchAvailable({ base: "all" });
@@ -56,6 +61,7 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
         handleModal={handleModal}
         type={type}
         availableDirection={availableDirection}
+        typeValute={typeValute}
       />
       <div className={clsx(styles.modal, { [styles.active]: show })}>
         {type === "give" && (
