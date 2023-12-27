@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Categories } from "../../model/Categories";
 import styles from "./styles.module.scss";
 
-import { Option } from "../option/option";
+import { ValuteCard } from "../valuteCard/valuteCard";
 import { OptionFilter } from "../optionFilter/optionFilter";
 import { SearchInput } from "../optionSearch/optionSearch";
 import { Popup } from "../ui/popup";
@@ -44,7 +44,7 @@ export const Modal: FC<ModalProps> = ({
           <div className={styles.modal__options}>
             {filteredOptions && filteredOptions?.length > 0 ? (
               filteredOptions.map((option) => (
-                <Option
+                <ValuteCard
                   key={option.id}
                   option={option}
                   handleModal={handleModal}

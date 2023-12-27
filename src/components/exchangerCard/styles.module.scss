@@ -1,16 +1,21 @@
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .card {
   margin-bottom: 15px;
   padding-bottom: 15px;
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: transform 0.15s ease-in;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 15px;
 
   &:hover {
-    border-bottom: 1.5px solid rgb(46, 138, 230);
     transform: translateX(5px);
   }
   &:active {
-    border-bottom: 1.5px solid rgb(46, 138, 230);
     transform: translateX(5px);
   }
   &__body {
@@ -18,7 +23,7 @@
   &__name {
     font-size: 16px;
     font-weight: 600;
-    color: rgb(31, 104, 176);
+    color: rgba(255, 255, 255, 0.7);
   }
   &__info {
     display: grid;
@@ -38,7 +43,8 @@
   justify-content: center;
   align-items: center;
   &__name {
-    font-weight: 500;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
   }
   &__img {
     height: 30px;
@@ -52,7 +58,7 @@
 .range {
   font-size: 12px;
   font-weight: 500;
-  color: brown;
+  color: rgba(255, 255, 255, 0.4);
   &__count {
   }
 }

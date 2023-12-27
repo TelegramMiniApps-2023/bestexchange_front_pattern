@@ -16,7 +16,7 @@ body {
 }
 
 .main__wrapper {
-  background: #fff;
+  background: #000;
   height: 100%;
   width: 100vw;
   min-height: 100dvh;
@@ -35,8 +35,10 @@ body {
   padding: 0px 15px;
 }
 
-.active__category {
-  border-bottom: 1px solid rgb(46, 138, 230);
-  color: rgb(46, 138, 230);
-  font-weight: 500;
+.directionTab {
+  background: #fff;
+  border-radius: 20px;
+  padding: 15px 20px;
+  font-size: 16px;
+  text-align: center;
 }

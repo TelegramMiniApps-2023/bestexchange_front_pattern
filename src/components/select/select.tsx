@@ -1,26 +1,29 @@
-import { FC, useCallback, useEffect, useState } from "react";
-import ArrowDown from "../../assets/icons/ArrowDown";
-import { useFiltersStore, useSelectsStore } from "../../store/store";
-
+import clsx from "clsx";
+import { FC, memo, useCallback, useEffect, useState } from "react";
 import { useFetchAvailable } from "../../api/api";
 import { queryClient } from "../../api/queryClient";
 import { availableKey } from "../../assets/consts";
 import { Categories } from "../../model/Categories";
+import { useFiltersStore, useSelectsStore } from "../../store/store";
 import { Modal } from "../modal/modal";
+import { SelectCard } from "../selectCard";
 import styles from "./styles.module.scss";
 
 interface SelectProps {
-  type: string;
+  type: "give" | "get";
+  // Верхние табы наличные/безналичные
+  // typeExchange?: "cash" | "noCash";
 }
 
-export const Select: FC<SelectProps> = ({ type }) => {
+export const Select: FC<SelectProps> = memo(({ type }) => {
   // Zustand
+  //NoCash
+
   const setFilter = useFiltersStore((state) => state.setFilter);
   const setSearch = useFiltersStore((state) => state.setSearch);
   const filter = useFiltersStore((state) => state.filter);
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
-  const setGiveSelect = useSelectsStore((state) => state.setGiveSelect);
   const setGetSelect = useSelectsStore((state) => state.setGetSelect);
 
   const [show, setShow] = useState(false);
@@ -45,33 +48,17 @@ export const Select: FC<SelectProps> = ({ type }) => {
   }, [setFilter, setSearch]);
 
   return (
-    <div className={styles.select}>
-      <p className={styles.select__label}>
-        {type === "give" ? "Выберите что отдаёте" : "Выберите что получаете"}
-      </p>
-      <div
-        className={
-          !give && type === "get"
-            ? `${styles.select__input} ${styles.active}`
-            : styles.select__input
-        }
-        onClick={() => {
-          handleModal();
-        }}
-      >
-        {type === "give" && give ? (
-          give.name
-        ) : get && !error ? (
-          get.name
-        ) : (
-          <span>Не выбрано...</span>
-        )}
-        <span className={styles.input__icon}>
-          <ArrowDown width="20px" height="20px" fill="#fff" />
-        </span>
-      </div>
-      <div className={show ? `${styles.modal} ${styles.active}` : styles.modal}>
-        {type === "give" && options && (
+    <>
+      <SelectCard
+        error={error}
+        get={get}
+        give={give}
+        handleModal={handleModal}
+        type={type}
+        availableDirection={availableDirection}
+      />
+      <div className={clsx(styles.modal, { [styles.active]: show })}>
+        {type === "give" && (
           <Modal
             options={options}
             handleModal={handleModal}
@@ -88,6 +75,6 @@ export const Select: FC<SelectProps> = ({ type }) => {
           />
         )}
       </div>
-    </div>
+    </>
   );
-};
+});
