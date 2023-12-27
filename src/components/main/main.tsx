@@ -2,10 +2,8 @@ import { memo, useEffect } from "react";
 import { useFetchExchangers } from "../../api/api";
 import { useSelectsStore } from "../../store/store";
 import { DirectionTabs } from "../directionTabs";
-import { ExchangersList } from "../exchangersList/exchangersList";
-import { Loader } from "../loader/loader";
-import { Select } from "../select/select";
-import { Switcher } from "../switcher/switcher";
+import { SelectsForm } from "../selectsForm";
+import { ExchangerLoader } from "../exchangerLoader";
 import styles from "./styles.module.scss";
 
 export const Main = memo(() => {
@@ -42,22 +40,13 @@ export const Main = memo(() => {
     <div className={styles.main}>
       <DirectionTabs />
       <div className={styles.main__body}>
-        <div className={styles.selects}>
-          <Select type="give" />
-          <Switcher give={give} get={get} refetch={refetch} />
-          <Select type="get" />
-        </div>
-        <div className={styles.exchangers}>
-          {isLoading || isFetching ? (
-            <Loader />
-          ) : error ? (
-            <div className={styles.empty}>
-              Список пуст... Вы можете выбрать другие параметры
-            </div>
-          ) : (
-            exchangers && <ExchangersList exchangers={exchangers} />
-          )}
-        </div>
+        <SelectsForm get={get} give={give} refetch={refetch} />
+        <ExchangerLoader
+          error={error}
+          exchangers={exchangers}
+          isFetching={isFetching}
+          isLoading={isLoading}
+        />
       </div>
     </div>
   );
