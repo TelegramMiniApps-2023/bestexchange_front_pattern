@@ -1,0 +1,24 @@
+.location {
+  margin-bottom: 20px;
+  &__title {
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+    display: flex;
+  }
+}
+
+.modal {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+.active {
+  opacity: 1;
+  visibility: visible;
+}

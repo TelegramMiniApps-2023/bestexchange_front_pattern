@@ -27,7 +27,7 @@ export const useFetchAvailable = ({ base = "all" }: ReqFetchAvailableDto) => {
   const queryResult = useQuery({
     queryKey: [availableKey, base],
     queryFn: fetchAvailable,
-    staleTime: 60 * 1000 * 5,
+    cacheTime: Infinity,
     enabled: true,
     retry: false,
   });

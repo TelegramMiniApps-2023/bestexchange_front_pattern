@@ -1,0 +1,31 @@
+.country {
+  &__title {
+    padding: 20px 15px;
+    border-radius: 30px;
+    // background: rgba(255, 255, 255, 0.6);
+    background: rgba(0, 0, 0, 0.1);
+    position: relative;
+    cursor: pointer;
+
+    p {
+      max-width: 95%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    span {
+      font-size: 14px;
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-left: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
