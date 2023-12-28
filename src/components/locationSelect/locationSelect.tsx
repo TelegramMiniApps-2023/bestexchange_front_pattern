@@ -10,10 +10,7 @@ interface LocationSelectProps {
   typeValute: string;
 }
 
-export const LocationSelect: FC<LocationSelectProps> = ({
-  countries,
-  typeValute,
-}) => {
+export const LocationSelect: FC<LocationSelectProps> = ({ countries }) => {
   const [show, setShow] = useState(false);
   const handleModal = useCallback(() => {
     setShow((prevShow) => !prevShow);
@@ -31,7 +28,6 @@ export const LocationSelect: FC<LocationSelectProps> = ({
           setSearch("");
         }}
       >
-        {/* <span>icon</span> */}
         {location
           ? `${location.location.country}, ${location.location.city.name}`
           : "Выберите страну и город"}

@@ -21,13 +21,13 @@ export const DirectionTabs = memo(() => {
 
   const onTabClick = useCallback(
     (tab: TabsItem) => {
-      setTypeValute(tab.value);
       setGetSelect(null);
       setGiveSelect(null);
       // setCountry(null);
       // setCity(null);
       setLocation(null);
       clearExchangers();
+      setTypeValute(tab.value!);
     },
     [setTypeValute]
   );
@@ -39,12 +39,13 @@ export const DirectionTabs = memo(() => {
   };
 
   return (
-    <div className={styles.direction_tabs}>
+    <div className={styles.direction_wrapper}>
       <Tabs
         tabs={valuteTypeTabs}
         onTabClick={onTabClick}
         filter={typeValute}
-        className="directionTab"
+        classNameTab={styles.direction_tabs}
+        classNameTabItem={styles.direction_tabs_item}
       />
     </div>
   );
