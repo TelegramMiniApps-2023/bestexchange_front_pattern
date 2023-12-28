@@ -14,17 +14,17 @@ export const LocationSelect: FC<LocationSelectProps> = ({
   typeValute,
 }) => {
   const [show, setShow] = useState(false);
-  const handleModal = () => {
-    setShow(!show);
-  };
+  const handleModal = useCallback(() => {
+    setShow((prevShow) => !prevShow);
+  }, []);
   return (
-    <div
-      className={styles.location}
-      onClick={() => {
-        handleModal();
-      }}
-    >
-      <div className={styles.location__title}>
+    <div className={styles.location}>
+      <div
+        className={styles.location__title}
+        onClick={() => {
+          handleModal();
+        }}
+      >
         <span>icon</span>Выберите страну и город
       </div>
       <div className={clsx(styles.modal, { [styles.active]: show })}>
