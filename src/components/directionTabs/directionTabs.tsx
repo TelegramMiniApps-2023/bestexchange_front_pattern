@@ -26,7 +26,7 @@ export const DirectionTabs = memo(() => {
       setGiveSelect(null);
       // setCountry(null);
       // setCity(null);
-      // setLocation(null);
+      setLocation(null);
       clearExchangers();
     },
     [setTypeValute]
