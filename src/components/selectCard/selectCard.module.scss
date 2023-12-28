@@ -1,42 +1,37 @@
 .select {
-    &__label {
-      font-size: 20px;
-      margin-bottom: 15px;
+  &__label {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  &__input {
+    border-radius: 30px;
+    font-size: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 1);
+    &.active {
+      opacity: 0.3;
+      pointer-events: none;
     }
-    &__input {
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.15);
-      padding: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      span {
-        color: rgba(255, 255, 255, 0.6);
-      }
-      &.active {
-        opacity: 0.3;
-        pointer-events: none;
-      }
+    &.selected {
+      background: rgba(72, 172, 71, 1);
+      // color: #000;
+      font-weight: 500;
     }
-    // .input__icon {
-    //   width: 20px;
-    //   height: 20px;
-    //   color: white;
-    //   display: flex;
-    //   justify-content: center;
-    //   align-items: center;
-    // }
   }
-  
-  .modal {
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-  }
-  .active {
-    opacity: 1;
-    visibility: visible;
-  }
-  
+}
+
+.modal {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+.active {
+  opacity: 1;
+  visibility: visible;
+}

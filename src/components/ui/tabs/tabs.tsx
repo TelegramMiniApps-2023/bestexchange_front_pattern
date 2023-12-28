@@ -1,27 +1,41 @@
-// export type TabsItem = {
-//   value: string;
+// tabs.tsx
 
 import clsx from "clsx";
-import styles from "./tabs.module.scss";
 import { memo } from "react";
+import styles from "./tabs.module.scss";
+
 export type TabsItem = {
-  value: string;
+  value: string | null;
   content: string;
 };
+
 type TabsProps = {
   onTabClick: (tab: TabsItem) => void;
   tabs: TabsItem[];
-  className?: string;
+  classNameTab?: string;
+  classNameTabItem?: string;
   filter?: string | null;
+  activeTabIndex?: number;
+  offsetX?: number;
 };
+
 export const Tabs = memo((props: TabsProps) => {
-  const { onTabClick, tabs, filter, className } = props;
+  const {
+    onTabClick,
+    tabs,
+    filter,
+    classNameTab,
+    classNameTabItem,
+    activeTabIndex = 0,
+    offsetX = 0,
+  } = props;
 
   return (
-    <div className={clsx(styles.tabs)}>
+    <div className={clsx(styles.tabs, classNameTab)}>
       {tabs.map((tab) => (
         <div
-          className={clsx(styles.tabs__item, className, {
+          style={{ transform: `translateX(${offsetX}px)` }}
+          className={clsx(styles.tabs__item, classNameTabItem, {
             [styles.active]: filter === tab.value,
           })}
           onClick={() => onTabClick(tab)}
