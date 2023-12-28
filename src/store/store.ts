@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { Options } from "../model/Options";
-import { City, Country } from "../model";
+import { City } from "../model";
 
 interface SelectsState {
   giveSelect: Options | null;
@@ -58,16 +58,19 @@ export const useDirectionTabsStore = create<DirectionTabs>()((set) => ({
 }));
 
 //Store for cash direction
+type Location = {
+  location: {
+    country: string;
+    city: City;
+  };
+};
+
 interface CashState {
-  country: Country | null;
-  city: City | null;
-  setCountry: (country: Country | null) => void;
-  setCity: (city: City | null) => void;
+  location: Location | null;
+  setLocation: (location: Location | null) => void;
 }
 
 export const useCashStore = create<CashState>()((set) => ({
-  country: null,
-  city: null,
-  setCountry: (country) => set({ country: country }),
-  setCity: (city) => set({ city: city }),
+  location: null,
+  setLocation: (location) => set({ location: location }),
 }));

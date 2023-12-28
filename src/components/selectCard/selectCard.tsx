@@ -26,7 +26,7 @@ export const SelectCard = memo((props: SelectCardProps) => {
     typeValute,
   } = props;
   // location from CashStore
-  const { country, city } = useCashStore((state) => state);
+  const { location } = useCashStore((state) => state);
   return (
     <div className={styles.select}>
       <p className={styles.select__label}>
@@ -37,19 +37,19 @@ export const SelectCard = memo((props: SelectCardProps) => {
           [styles.active]:
             (!give && type === "get") ||
             (!availableDirection && type === "get") ||
-            (!country && !city && typeValute === directionTabsValute[1].value),
+            (!location && typeValute === directionTabsValute[1].value),
+          [styles.selected]:
+            (type === "give" && give) || (type === "get" && get),
         })}
         onClick={() => {
           handleModal();
         }}
       >
-        {type === "give" && give ? (
-          give.name
-        ) : get && !error ? (
-          get.name
-        ) : (
-          <span>Выберите валюту</span>
-        )}
+        {type === "give" && give
+          ? give.name
+          : get && !error
+          ? get.name
+          : "Выберите валюту"}
       </div>
     </div>
   );

@@ -15,6 +15,8 @@ export const Main = memo(() => {
   //   refetchAvailable();
   // }, [refetchAvailable]);
 
+  // fetch
+
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
   const setGetSelect = useSelectsStore((state) => state.setGetSelect);

@@ -1,0 +1,19 @@
+.city {
+  &__title {
+    padding: 10px 15px;
+    border-radius: 30px;
+    // background: rgba(255, 255, 255, 0.6);
+    background: rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin: 10px 0px;
+    cursor: pointer;
+
+    p {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+}

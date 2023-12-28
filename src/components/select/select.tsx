@@ -5,6 +5,7 @@ import { queryClient } from "../../api/queryClient";
 import { availableKey } from "../../assets/consts";
 import { Categories } from "../../model/Categories";
 import {
+  useCashStore,
   useDirectionTabsStore,
   useFiltersStore,
   useSelectsStore,
@@ -20,16 +21,12 @@ interface SelectProps {
 }
 
 export const Select: FC<SelectProps> = memo(({ type }) => {
-  // Zustand
-  //NoCash
-
-  const setFilter = useFiltersStore((state) => state.setFilter);
-  const setSearch = useFiltersStore((state) => state.setSearch);
-  const filter = useFiltersStore((state) => state.filter);
+  const { setFilter, setSearch, filter } = useFiltersStore((state) => state);
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
   const setGetSelect = useSelectsStore((state) => state.setGetSelect);
   const typeValute = useDirectionTabsStore((state) => state.typeValute);
+  // const location = useCashStore(state=>state.location)
 
   const [show, setShow] = useState(false);
   // const { data:options } = useFetchAvailable({ base: "all" });
