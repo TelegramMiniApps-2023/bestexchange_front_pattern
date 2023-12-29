@@ -16,17 +16,6 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
   handleModal,
 }) => {
   // cities search
-  // const search = useFiltersStore((state) => state.search);
-  // const filteredOptions = countries
-  //   .map((country) => ({
-  //     ...country,
-  //     cities: country.cities.filter((city) =>
-  //       city.name.toLowerCase().includes(search.toLowerCase())
-  //     ),
-  //   }))
-  //   .filter((country) => country.cities.length > 0);
-
-  // countries and cities search
   const search = useFiltersStore((state) => state.search.toLowerCase());
   const filteredOptions = countries
     .map((country) => {

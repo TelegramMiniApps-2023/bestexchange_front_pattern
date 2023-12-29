@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { City } from "../../model";
+import { City, Country } from "../../model";
 import styles from "./cityCard.module.scss";
 import { useCashStore, useSelectsStore } from "../../store/store";
 
 interface CityCardProps {
   city: City;
-  country: string;
+  country: Country;
   handleModal: () => void;
 }
 

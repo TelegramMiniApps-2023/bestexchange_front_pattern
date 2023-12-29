@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { Options } from "../model/Options";
-import { City } from "../model";
+import { City, Country } from "../model";
 
 interface SelectsState {
   giveSelect: Options | null;
@@ -60,7 +60,7 @@ export const useDirectionTabsStore = create<DirectionTabs>()((set) => ({
 //Store for cash direction
 type Location = {
   location: {
-    country: string;
+    country: Country;
     city: City;
   };
 };

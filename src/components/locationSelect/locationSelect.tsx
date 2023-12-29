@@ -9,6 +9,7 @@ import {
 } from "../../store/store";
 import { useFetchCashCountries } from "../../api/api";
 import { directionTabsValute } from "../../assets/consts";
+import SearchIcon from "../../assets/icons/SearchIcon";
 
 interface LocationSelectProps {}
 
@@ -37,9 +38,18 @@ export const LocationSelect: FC<LocationSelectProps> = () => {
     >
       <div className={styles.location__body}>
         <div className={styles.location__title} onClick={handleShowModal}>
-          {location
-            ? `${location.location.country}, ${location.location.city.name}`
-            : "Выберите страну и город"}
+          <div className={styles.location__icon}>
+            {location?.location ? (
+              <img src={location?.location.country.icon_url} />
+            ) : (
+              <SearchIcon width="30px" height="30px" fill="#fff" />
+            )}
+          </div>
+          <p>
+            {location
+              ? `${location.location.country.name}, ${location.location.city.name}`
+              : "Выберите страну и город"}
+          </p>
         </div>
         <div className={clsx(styles.modal, { [styles.active]: show })}>
           {countries && (
