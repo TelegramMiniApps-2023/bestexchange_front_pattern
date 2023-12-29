@@ -48,15 +48,7 @@ export const Main = memo(() => {
   return (
     <div className={styles.main}>
       <DirectionTabs />
-      {countries && (
-        <div
-          className={clsx(styles.location, {
-            [styles.active]: typeValute === directionTabsValute[1].value,
-          })}
-        >
-          <LocationSelect typeValute={typeValute} countries={countries} />
-        </div>
-      )}
+      <LocationSelect />
       <div className={styles.main__body}>
         <SelectsForm get={get} give={give} refetch={refetch} />
         <ExchangerLoader

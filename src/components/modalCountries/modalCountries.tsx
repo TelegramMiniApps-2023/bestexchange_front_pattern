@@ -50,18 +50,22 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
     <Popup closeModal={handleModal}>
       <div className={styles.title}>Выбор страны и города</div>
       <SearchInput />
-      <div className={styles.countries}>
-        {filteredOptions.map(
-          (country) =>
-            country && (
-              <CountryCard
-                key={country.id}
-                country={country}
-                handleModal={handleModal}
-              />
-            )
-        )}
-      </div>
+      {filteredOptions.length > 0 ? (
+        <div className={styles.countries}>
+          {filteredOptions.map(
+            (country) =>
+              country && (
+                <CountryCard
+                  key={country.id}
+                  country={country}
+                  handleModal={handleModal}
+                />
+              )
+          )}
+        </div>
+      ) : (
+        <div>Ничего не найдено...</div>
+      )}
     </Popup>
   );
 };
