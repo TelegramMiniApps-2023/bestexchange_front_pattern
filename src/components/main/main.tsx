@@ -5,6 +5,7 @@ import { DirectionTabs } from "../directionTabs";
 import { SelectsForm } from "../selectsForm";
 import { ExchangerLoader } from "../exchangerLoader";
 import styles from "./styles.module.scss";
+import { ResultArrow } from "../resultArrow";
 
 export const Main = memo(() => {
   // const { refetch: refetchAvailable } = useFetchAvailable({ base: "all" });
@@ -20,13 +21,14 @@ export const Main = memo(() => {
     data: exchangers,
     isLoading,
     isFetching,
+    isSuccess,
     refetch,
     error,
   } = useFetchExchangers({
     from: give?.code_name,
     to: get?.code_name,
   });
-
+  console.log(isSuccess);
   useEffect(() => {
     if (error) {
       // setGiveSelect(null);
@@ -41,6 +43,9 @@ export const Main = memo(() => {
       <DirectionTabs />
       <div className={styles.main__body}>
         <SelectsForm get={get} give={give} refetch={refetch} />
+        <div className={styles.main_resultArrow}>
+          <ResultArrow isLoading isSuccess />
+        </div>
         <ExchangerLoader
           error={error}
           exchangers={exchangers}
