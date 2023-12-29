@@ -27,7 +27,7 @@ export const Main = memo(() => {
     to: get?.code_name,
     city: location?.location?.city.code_name,
   });
-
+  console.log(isSuccess);
   useEffect(() => {
     if (error) {
       setGetSelect(null);
