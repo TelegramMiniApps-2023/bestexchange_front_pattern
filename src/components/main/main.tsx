@@ -22,6 +22,7 @@ export const Main = memo(() => {
     isLoading,
     isFetching,
     isSuccess,
+
     refetch,
     error,
   } = useFetchExchangers({
