@@ -6,6 +6,7 @@ import { SelectsForm } from "../selectsForm";
 import { ExchangerLoader } from "../exchangerLoader";
 import styles from "./styles.module.scss";
 import { LocationSelect } from "../locationSelect";
+import { ResultArrow } from "../resultArrow";
 
 export const Main = memo(() => {
   const give = useSelectsStore((state) => state.giveSelect);
@@ -18,6 +19,7 @@ export const Main = memo(() => {
     data: exchangers,
     isLoading,
     isFetching,
+    isSuccess,
     refetch,
     error,
   } = useFetchExchangers({
@@ -25,7 +27,7 @@ export const Main = memo(() => {
     to: get?.code_name,
     city: location?.location?.city.code_name,
   });
-
+  console.log(isSuccess);
   useEffect(() => {
     if (error) {
       setGetSelect(null);
@@ -38,6 +40,9 @@ export const Main = memo(() => {
       <LocationSelect />
       <div className={styles.main__body}>
         <SelectsForm get={get} give={give} refetch={refetch} />
+        <div className={styles.main_resultArrow}>
+          <ResultArrow isLoading isSuccess />
+        </div>
         <ExchangerLoader
           error={error}
           exchangers={exchangers}
