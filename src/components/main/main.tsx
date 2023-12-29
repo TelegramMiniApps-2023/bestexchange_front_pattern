@@ -9,47 +9,47 @@ import { LocationSelect } from "../locationSelect";
 import { ResultArrow } from "../resultArrow";
 
 export const Main = memo(() => {
-    const give = useSelectsStore((state) => state.giveSelect);
-    const get = useSelectsStore((state) => state.getSelect);
-    const setGetSelect = useSelectsStore((state) => state.setGetSelect);
+  const give = useSelectsStore((state) => state.giveSelect);
+  const get = useSelectsStore((state) => state.getSelect);
+  const setGetSelect = useSelectsStore((state) => state.setGetSelect);
 
-    const { location } = useCashStore((state) => state);
+  const { location } = useCashStore((state) => state);
 
-    const {
-        data: exchangers,
-        isLoading,
-        isFetching,
-        isSuccess,
-        refetch,
-        error,
-    } = useFetchExchangers({
-        from: give?.code_name,
-        to: get?.code_name,
-        city: location?.location?.city.code_name,
-    });
+  const {
+    data: exchangers,
+    isLoading,
+    isFetching,
+    isSuccess,
+    refetch,
+    error,
+  } = useFetchExchangers({
+    from: give?.code_name,
+    to: get?.code_name,
+    city: location?.location?.city.code_name,
+  });
 
-    useEffect(() => {
-        if (error) {
-            setGetSelect(null);
-        }
-    }, [error, setGetSelect]);
+  useEffect(() => {
+    if (error) {
+      setGetSelect(null);
+    }
+  }, [error, setGetSelect]);
 
-    return (
-        <div className={styles.main}>
-            <DirectionTabs />
-            <LocationSelect />
-            <div className={styles.main__body}>
-                <SelectsForm get={get} give={give} refetch={refetch} />
-                <div className={styles.resultArrow}>
-                    <ResultArrow isSuccess={isSuccess} />
-                </div>
-                <ExchangerLoader
-                    error={error}
-                    exchangers={exchangers}
-                    isFetching={isFetching}
-                    isLoading={isLoading}
-                />
-            </div>
+  return (
+    <div className={styles.main}>
+      <DirectionTabs />
+      <LocationSelect />
+      <div className={styles.main__body}>
+        <SelectsForm get={get} give={give} refetch={refetch} />
+        <div className={styles.resultArrow}>
+          <ResultArrow isSuccess={isSuccess} />
         </div>
-    );
+        <ExchangerLoader
+          error={error}
+          exchangers={exchangers}
+          isFetching={isFetching}
+          isLoading={isLoading}
+        />
+      </div>
+    </div>
+  );
 });
