@@ -1,13 +1,11 @@
 import { memo, useEffect } from "react";
-import { useFetchCashCountries, useFetchExchangers } from "../../api/api";
-import { useDirectionTabsStore, useSelectsStore } from "../../store/store";
+import { useFetchExchangers } from "../../api/api";
+import { useSelectsStore } from "../../store/store";
 import { DirectionTabs } from "../directionTabs";
 import { SelectsForm } from "../selectsForm";
 import { ExchangerLoader } from "../exchangerLoader";
 import styles from "./styles.module.scss";
 import { LocationSelect } from "../locationSelect";
-import clsx from "clsx";
-import { directionTabsValute } from "../../assets/consts";
 
 export const Main = memo(() => {
   // const { refetch: refetchAvailable } = useFetchAvailable({ base: "all" });
@@ -15,15 +13,9 @@ export const Main = memo(() => {
   //   refetchAvailable();
   // }, [refetchAvailable]);
 
-  // fetch
-
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
   const setGetSelect = useSelectsStore((state) => state.setGetSelect);
-
-  // Countries fetching
-  const { data: countries } = useFetchCashCountries();
-  const typeValute = useDirectionTabsStore((state) => state.typeValute);
 
   const {
     data: exchangers,
@@ -42,8 +34,6 @@ export const Main = memo(() => {
       setGetSelect(null);
     }
   }, [error]);
-
-  // временно
 
   return (
     <div className={styles.main}>
