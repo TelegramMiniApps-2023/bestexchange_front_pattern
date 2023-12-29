@@ -17,7 +17,6 @@ export const DirectionTabs = memo(() => {
   const { setGetSelect, setGiveSelect } = useSelectsStore((state) => state);
   // const { setCountry, setCity } = useCashStore((state) => state);
   const { setLocation } = useCashStore((state) => state);
-  console.log(typeValute);
 
   const onTabClick = useCallback(
     (tab: TabsItem) => {
