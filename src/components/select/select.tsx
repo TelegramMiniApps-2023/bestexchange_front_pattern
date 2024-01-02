@@ -27,13 +27,18 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
   const setGetSelect = useSelectsStore((state) => state.setGetSelect);
   const typeValute = useDirectionTabsStore((state) => state.typeValute);
   // const location = useCashStore(state=>state.location)
-
+  const city = useCashStore((state) => state.location);
   const [show, setShow] = useState(false);
   // const { data:options } = useFetchAvailable({ base: "all" });
-  const options = queryClient.getQueryData<Categories>([availableKey, "all"]);
+  const options = queryClient.getQueryData<Categories>([
+    availableKey,
+    "all",
+    city?.location.city.code_name,
+  ]);
 
   const { data: availableDirection, error } = useFetchAvailable({
     base: give?.code_name,
+    city: city?.location.city.code_name,
   });
 
   useEffect(() => {
@@ -57,7 +62,7 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
         give={give}
         handleModal={handleModal}
         type={type}
-        availableDirection={availableDirection}
+        availableDirection={options}
         typeValute={typeValute}
       />
       <div className={clsx(styles.modal, { [styles.active]: show })}>
