@@ -1,6 +1,6 @@
 import { memo, useEffect } from "react";
 import { useFetchExchangers } from "../../api/api";
-import { useSelectsStore } from "../../store/store";
+import { useCashStore, useSelectsStore } from "../../store/store";
 import { DirectionTabs } from "../directionTabs";
 import { SelectsForm } from "../selectsForm";
 import { ExchangerLoader } from "../exchangerLoader";
@@ -17,6 +17,8 @@ export const Main = memo(() => {
   const get = useSelectsStore((state) => state.getSelect);
   const setGetSelect = useSelectsStore((state) => state.setGetSelect);
 
+  const { location } = useCashStore((state) => state);
+
   const {
     data: exchangers,
     isLoading,
@@ -26,6 +28,7 @@ export const Main = memo(() => {
   } = useFetchExchangers({
     from: give?.code_name,
     to: get?.code_name,
+    city: location?.location?.city.code_name,
   });
 
   useEffect(() => {
