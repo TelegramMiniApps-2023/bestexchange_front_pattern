@@ -14,7 +14,7 @@
   transition: opacity 0.3s ease-in, transform 0.2s ease-in-out;
 }
 
-.active {
+.location__active {
   position: static;
   opacity: 1;
   visibility: visible;

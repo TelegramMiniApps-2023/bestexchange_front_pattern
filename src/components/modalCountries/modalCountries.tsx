@@ -16,17 +16,6 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
   handleModal,
 }) => {
   // cities search
-  // const search = useFiltersStore((state) => state.search);
-  // const filteredOptions = countries
-  //   .map((country) => ({
-  //     ...country,
-  //     cities: country.cities.filter((city) =>
-  //       city.name.toLowerCase().includes(search.toLowerCase())
-  //     ),
-  //   }))
-  //   .filter((country) => country.cities.length > 0);
-
-  // countries and cities search
   const search = useFiltersStore((state) => state.search.toLowerCase());
   const filteredOptions = countries
     .map((country) => {
@@ -50,18 +39,22 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
     <Popup closeModal={handleModal}>
       <div className={styles.title}>Выбор страны и города</div>
       <SearchInput />
-      <div className={styles.countries}>
-        {filteredOptions.map(
-          (country) =>
-            country && (
-              <CountryCard
-                key={country.id}
-                country={country}
-                handleModal={handleModal}
-              />
-            )
-        )}
-      </div>
+      {filteredOptions.length > 0 ? (
+        <div className={styles.countries}>
+          {filteredOptions.map(
+            (country) =>
+              country && (
+                <CountryCard
+                  key={country.id}
+                  country={country}
+                  handleModal={handleModal}
+                />
+              )
+          )}
+        </div>
+      ) : (
+        <div>Ничего не найдено...</div>
+      )}
     </Popup>
   );
 };

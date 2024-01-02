@@ -15,20 +15,25 @@ import { $host } from "./base";
 
 type ReqFetchAvailableDto = {
   base: string | undefined;
+  city?: string;
 };
 // todo добавить что бы не было много запрос в случае ошибки 
 
 //запрос на получение доступных направлений
-export const useFetchAvailable = ({ base = "all" }: ReqFetchAvailableDto) => {
+export const useFetchAvailable = ({ base = "all", city }: ReqFetchAvailableDto) => {
+
+  const apiUrl = city
+    ? `/api/available_valutes?city=${city}&base=${base}`
+    : `/api/available_valutes?base=${base}`;
   const fetchAvailable = async () =>
-    (await $host.get<Categories>(`/api/no_cash/available_valutes?base=${base}`))
+    (await $host.get<Categories>(apiUrl))
       .data;
 
   const queryResult = useQuery({
-    queryKey: [availableKey, base],
+    queryKey: [availableKey, base, city],
     queryFn: fetchAvailable,
-    cacheTime: Infinity,
     enabled: true,
+    cacheTime: Infinity,
     retry: false,
   });
   return queryResult;
@@ -38,19 +43,39 @@ export const useFetchAvailable = ({ base = "all" }: ReqFetchAvailableDto) => {
 type ReqFetchExchangersDto = {
   from: string | undefined;
   to: string | undefined;
+  city?: string | undefined;
 };
 //todo отмена запроса если fetchAvailable провалился
 //запрос на получение обменников на основе выбранных валют
-export const useFetchExchangers = ({ from, to }: ReqFetchExchangersDto) => {
-  const fetchExchangers = async () =>
-    (
-      await $host.get<Exchanger[]>(
-        `/api/no_cash/directions?valute_from=${from}&valute_to=${to}`
-      )
-    ).data;
+export const useFetchExchangers = ({ from, to, city }: ReqFetchExchangersDto) => {
+
+  const apiUrl = city
+    ? `api/directions?city=${city}&valute_from=${from}&valute_to=${to}`
+    : `api/directions?valute_from=${from}&valute_to=${to}`;
+  const fetchExchangers = async () => (
+    await $host.get<DirectionCash[]>(
+      apiUrl
+    )
+  ).data;
+
+  // if (city) {
+  //   return (
+  //     await $host.get<DirectionCash[]>(
+  //       apiUrl
+  //     )
+  //   ).data;
+
+  // }
+  // return (
+  //   await $host.get<Exchanger[]>(
+  //     apiUrl
+  //   )
+  // ).data;
+
+
 
   const queryResult = useQuery({
-    queryKey: [exchangersKey],
+    queryKey: [exchangersKey, city],
     queryFn: fetchExchangers,
     staleTime: 60 * 1000 * 5,
     enabled: false,
@@ -74,23 +99,23 @@ export const useFetchCashCountries = () => {
   return queryResult;
 };
 //запрос на получение доступных городов на освное выбранной страны
-type ReqFetchAvailableCitiesDto = {
-  country: string;
-};
-export const useFetchCashAvailableCities = ({
-  country,
-}: ReqFetchAvailableCitiesDto) => {
-  const fetchExchangers = async () =>
-    (await $host.get<City[]>(`/api/cash/available_cities?country=${country}`))
-      .data;
-  const queryResult = useQuery({
-    queryKey: [citiesKey, country],
-    queryFn: fetchExchangers,
-    staleTime: 60 * 1000 * 5,
-    enabled: true,
-  });
-  return queryResult;
-};
+// type ReqFetchAvailableCitiesDto = {
+//   country: string;
+// };
+// export const useFetchCashAvailableCities = ({
+//   country,
+// }: ReqFetchAvailableCitiesDto) => {
+//   const fetchExchangers = async () =>
+//     (await $host.get<City[]>(`/api/cash/available_cities?country=${country}`))
+//       .data;
+//   const queryResult = useQuery({
+//     queryKey: [citiesKey, country],
+//     queryFn: fetchExchangers,
+//     staleTime: 60 * 1000 * 5,
+//     enabled: true,
+//   });
+//   return queryResult;
+// };
 // запрос на получение доступных валют
 type ReqFetchAvailableValutesDto = {
   city: string;

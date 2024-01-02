@@ -3,7 +3,7 @@ import { FC, memo } from "react";
 import { queryClient } from "../../api/queryClient";
 import { exchangersKey } from "../../assets/consts";
 import { Options } from "../../model/Options";
-import { useSelectsStore } from "../../store/store";
+import { useCashStore, useSelectsStore } from "../../store/store";
 import styles from "./styles.module.scss";
 import { useFetchExchangers } from "../../api/api";
 
@@ -21,9 +21,13 @@ export const ValuteCard: FC<ValuteCardProps> = memo(
     // рефетч
     const give = useSelectsStore((state) => state.giveSelect);
     const get = useSelectsStore((state) => state.getSelect);
+    const city = useCashStore(
+      (state) => state.location?.location.city.code_name
+    );
     const { refetch } = useFetchExchangers({
       from: give?.code_name,
       to: get?.code_name,
+      city,
     });
 
     const handleChangeDirection = async () => {
