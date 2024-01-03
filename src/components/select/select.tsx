@@ -16,8 +16,6 @@ import styles from "./styles.module.scss";
 
 interface SelectProps {
   type: "give" | "get";
-  // Верхние табы наличные/безналичные
-  // typeExchange?: "cash" | "noCash";
 }
 
 export const Select: FC<SelectProps> = memo(({ type }) => {
@@ -26,10 +24,8 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
   const get = useSelectsStore((state) => state.getSelect);
   const setGetSelect = useSelectsStore((state) => state.setGetSelect);
   const typeValute = useDirectionTabsStore((state) => state.typeValute);
-  // const location = useCashStore(state=>state.location)
   const city = useCashStore((state) => state.location);
   const [show, setShow] = useState(false);
-  // const { data:options } = useFetchAvailable({ base: "all" });
   const options = queryClient.getQueryData<Categories>([
     availableKey,
     "all",
@@ -43,7 +39,6 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
 
   useEffect(() => {
     if (error) {
-      // setGiveSelect(null);
       setGetSelect(null);
     }
   }, [error]);
