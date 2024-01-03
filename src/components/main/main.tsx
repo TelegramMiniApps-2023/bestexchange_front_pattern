@@ -8,11 +8,6 @@ import styles from "./styles.module.scss";
 import { LocationSelect } from "../locationSelect";
 
 export const Main = memo(() => {
-  // const { refetch: refetchAvailable } = useFetchAvailable({ base: "all" });
-  // useEffect(() => {
-  //   refetchAvailable();
-  // }, [refetchAvailable]);
-
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
   const setGetSelect = useSelectsStore((state) => state.setGetSelect);
@@ -33,7 +28,6 @@ export const Main = memo(() => {
 
   useEffect(() => {
     if (error) {
-      // setGiveSelect(null);
       setGetSelect(null);
     }
   }, [error]);

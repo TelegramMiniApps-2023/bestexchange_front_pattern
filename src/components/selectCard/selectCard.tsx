@@ -36,7 +36,9 @@ export const SelectCard = memo((props: SelectCardProps) => {
         className={clsx(styles.select__input, {
           [styles.active]:
             (!give && type === "get") ||
-            (!availableDirection && type === "get") ||
+            // (!availableDirection && type === "get") ||
+            (!availableDirection && type === "give") ||
+            (error && type === "get") ||
             (!location && typeValute === directionTabsValute[1].value),
           [styles.selected]:
             (type === "give" && give) || (type === "get" && get),
