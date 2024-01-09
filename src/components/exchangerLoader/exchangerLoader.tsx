@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { Exchanger } from "../../model/Exchanger";
 import { ExchangersList } from "../exchangersList/exchangersList";
-import { Loader } from "../loader/loader";
+import { Loader } from "../ui/loader/loader";
 import styles from "./exchangerLoader.module.scss";
 type ExchangerLoaderProps = {
   isLoading: boolean;

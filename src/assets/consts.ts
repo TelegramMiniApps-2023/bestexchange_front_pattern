@@ -1,10 +1,5 @@
 import { TabsItem } from "../components/ui/tabs/tabs";
 
-// App routes
-export const MAIN_ROUTE = "/";
-export const ABOUT_ROUTE = "/about";
-export const SERVICES_ROUTE = "/services";
-
 // Query chache key no cash
 export const optionsKey = "Options";
 export const availableKey = "Available";

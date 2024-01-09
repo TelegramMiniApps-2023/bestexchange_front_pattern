@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Popup } from "../ui/popup";
 import { Country } from "../../model";
 import { CountryCard } from "../countryCard";
@@ -35,6 +35,24 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
     })
     .filter((country) => country !== null);
 
+    // accrodion logic
+    const [accordionStates, setAccordionStates] = useState<{ [key: number]: boolean }>({});
+  const handleAccordion = (countryId: number | null) => {
+    if (!countryId) {
+      setAccordionStates({});
+    } else {setAccordionStates((prevStates) => {
+      const newStates: { [key: number]: boolean } = { ...prevStates };
+      Object.keys(newStates).forEach((key) => {
+        const numericKey = parseInt(key, 10);
+        if (!isNaN(numericKey) && numericKey !== countryId) {
+          newStates[numericKey] = false;
+        }
+      });
+      newStates[countryId] = !prevStates[countryId];
+      return newStates;
+    });}
+  };
+
   return (
     <Popup closeModal={handleModal}>
       <div className={styles.title}>Выбор страны и города</div>
@@ -48,6 +66,8 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
                   key={country.id}
                   country={country}
                   handleModal={handleModal}
+                  accordion={accordionStates[country.id] || false}
+                  setAccordion={() => handleAccordion(country.id)}
                 />
               )
           )}

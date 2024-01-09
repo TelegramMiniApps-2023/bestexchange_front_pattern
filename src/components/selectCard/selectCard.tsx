@@ -25,7 +25,6 @@ export const SelectCard = memo((props: SelectCardProps) => {
     availableDirection,
     typeValute,
   } = props;
-  // location from CashStore
   const { location } = useCashStore((state) => state);
   return (
     <div className={styles.select}>
@@ -36,7 +35,6 @@ export const SelectCard = memo((props: SelectCardProps) => {
         className={clsx(styles.select__input, {
           [styles.active]:
             (!give && type === "get") ||
-            // (!availableDirection && type === "get") ||
             (!availableDirection && type === "give") ||
             (error && type === "get") ||
             (!location && typeValute === directionTabsValute[1].value),
@@ -50,7 +48,7 @@ export const SelectCard = memo((props: SelectCardProps) => {
         {type === "give" && give
           ? give.name
           : get && !error
-          ? get.name
+          ? get.name : error ? "Направление недоступно"
           : "Выберите валюту"}
       </div>
     </div>
