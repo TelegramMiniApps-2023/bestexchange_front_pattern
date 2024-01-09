@@ -1,21 +1,40 @@
 .filter {
-  display: grid;
-  grid-auto-flow: column;
-  gap: 0px;
-  width: 100%;
-  overflow: auto;
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
-  gap: 20px;
-  &__item {
-    padding-bottom: 10px;
-    white-space: nowrap;
+    display: flex;
+    border-bottom: 0.5px solid #00000033;
+    width: 100%;
+    border-radius: 15px;
+    background-color: gray;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+
+}
+
+.filter_tab_item {
+    padding-inline: 10px;
+    text-wrap: nowrap;
     font-size: 14px;
     cursor: pointer;
+    border-right: 1px solid black;
     font-weight: 500;
     color: rgba(0, 0, 0, 0.7);
-  }
+    transition: translate;
+    transition-property: transform;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+    user-select: none;
+
 }
-.active {
-  border-bottom: 2.5px solid blue;
-  color: blue;
+
+.filter_tab_item::last-of-type {
+    border-right: none
+}
+
+.nextTab {
+    cursor: pointer;
+
+}
+
+.filterWrapper {
+    display: flex;
 }

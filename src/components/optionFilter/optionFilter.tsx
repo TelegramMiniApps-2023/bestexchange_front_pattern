@@ -1,59 +1,92 @@
-import { FC, memo, useEffect } from "react";
+import { FC, memo, useEffect, useMemo, useState } from "react";
+import IconRight from "../../assets/icons/IconRight";
 import { Categories } from "../../model/Categories";
 import { useFiltersStore } from "../../store/store";
 import { Tabs } from "../ui/tabs";
 import { TabsItem } from "../ui/tabs/tabs";
 import styles from "./styles.module.scss";
-
+import { IconLeft } from "../../assets/icons/IconLeft";
+import { Carousel, ScrollingCarousel } from '@trendyol-js/react-carousel';
+import { Tab } from "../ui/tabs/tabsItem";
 interface OptionFilterProps {
-  categories: Categories;
+    categories: Categories;
 }
 
 export const OptionFilter: FC<OptionFilterProps> = memo(({ categories }) => {
-  const filter = useFiltersStore((state) => state.filter);
-  const setFilter = useFiltersStore((state) => state.setFilter);
-  const search = useFiltersStore((state) => state.search);
+    const filter = useFiltersStore((state) => state.filter);
+    const setFilter = useFiltersStore((state) => state.setFilter);
+    const search = useFiltersStore((state) => state.search);
+    // const [activeTabIndex, setActiveTabIndex] = useState(0);
+    const [offsetX, setOffsetX] = useState(0);
 
-  const handleCategory = (category: string | null) => {
-    setFilter(category);
-  };
+    const filteredCategories = Object.keys(categories).filter((category) =>
+        categories[category]?.some((option) =>
+            option.name.toLowerCase().includes(search.toLowerCase())
+        )
+    );
 
-  // Фильтрация категорий на основе поисковой строки
-  const filteredCategories = Object.keys(categories).filter((category) =>
-    categories[category]?.some((option) =>
-      option.name.toLowerCase().includes(search.toLowerCase())
-    )
-  );
-  const tabsItem: TabsItem[] = filteredCategories.map((category) => ({
-    value: category,
-    content: category,
-  }));
+    const tabsItem: TabsItem[] = useMemo(
+        () => [
+            { value: null, content: "Все" },
+            ...filteredCategories.map((category) => ({
+                value: category,
+                content: category,
+            })),
+        ],
+        [filteredCategories]
+    );
 
-  console.log(filteredCategories);
-  useEffect(() => {
-    setFilter(null);
-  }, [search, setFilter]);
+    const handleCategory = (category: string | null) => {
+        setFilter(category);
+        //if (tabsItem.length < 3) return;
+        //if (category === null) {
+        //    setOffsetX(0);
+        //    return;
+        //}
 
-  return (
-    <div className={styles.filter}>
-      {filteredCategories.length > 0 && (
-        <div
-          className={
-            !filter
-              ? `${styles.filter__item} ${styles.active}`
-              : styles.filter__item
-          }
-          onClick={() => handleCategory(null)}
-        >
-          Все
-        </div>
-      )}
-      <Tabs
-        onTabClick={(tab) => handleCategory(tab.content)}
-        tabs={tabsItem}
-        className={styles.filter}
-        filter={filter}
-      />
-    </div>
-  );
+        //const categoryIndex = tabsItem.findIndex((tab) => tab.value === category);
+        //setOffsetX(-100 * categoryIndex);
+    };
+    //const handleNextTab = () => {
+    //    if (tabsItem.length < 3) return;
+    //    setOffsetX((currentOffset) => {
+    //        const newOffset = currentOffset - 100;
+    //        const maxOffset = -(100 * tabsItem.length - 1);
+    //        return Math.max(newOffset, maxOffset);
+    //    });
+    //};
+    //const handlePrevTab = () => {
+    //    setOffsetX((currentOffset) => {
+    //        const newOffset = currentOffset + 100;
+
+    //        return Math.min(newOffset, 0);
+    //    });
+    //};
+
+    //useEffect(() => {
+    //    setFilter(null);
+    //    setOffsetX(0);
+    //}, [search, setFilter]);
+
+    return (
+        //<div className={styles.filterWrapper}>
+        //{/*<IconLeft className={styles.nextTab} onClick={handlePrevTab} />*/}
+
+        //{/*<Tabs
+        //        onTabClick={(tab) => handleCategory(tab.value)}
+        //        tabs={tabsItem}
+        //        classNameTab={styles.filter}
+        //        filter={filter}
+        //        classNameTabItem={styles.filter_tab_item}
+        //        // activeTabIndex={activeTabIndex}
+        //        offsetX={offsetX}
+        //    />*/}
+        <Carousel dynamic infinite={false} show={2.5} slide={1} swiping className={styles.filter} leftArrow={<IconLeft />} rightArrow={<IconRight />}>
+            {tabsItem.map(tab => <Tab onTabClick={(tab) => handleCategory(tab.value)} classNameTabItem={styles.filter_tab_item} tab={tab} filter={filter} key={tab.content} />)}
+        </Carousel>
+
+
+        //    {/*<IconRight className={styles.nextTab} onClick={handleNextTab} />*/}
+        //</div>
+    );
 });
