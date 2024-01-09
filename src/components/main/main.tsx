@@ -1,4 +1,4 @@
-import { memo, useEffect } from "react";
+import { memo, useCallback, useEffect } from "react";
 import { useFetchExchangers } from "../../api/api";
 import { useCashStore, useSelectsStore } from "../../store/store";
 import { DirectionTabs } from "../directionTabs";
@@ -19,8 +19,6 @@ export const Main = memo(() => {
     data: exchangers,
     isLoading,
     isFetching,
-    isSuccess,
-
     refetch,
     error,
   } = useFetchExchangers({
@@ -28,7 +26,7 @@ export const Main = memo(() => {
     to: get?.code_name,
     city: location?.location?.city.code_name,
   });
-  console.log(isSuccess);
+
   useEffect(() => {
     if (error) {
       setGetSelect(null);
@@ -41,9 +39,6 @@ export const Main = memo(() => {
       <LocationSelect />
       <div className={styles.main__body}>
         <SelectsForm get={get} give={give} refetch={refetch} />
-        <div className={styles.main_resultArrow}>
-          <ResultArrow isLoading isSuccess />
-        </div>
         <ExchangerLoader
           error={error}
           exchangers={exchangers}

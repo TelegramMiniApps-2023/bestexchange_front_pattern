@@ -6,7 +6,8 @@ import { Tabs } from "../ui/tabs";
 import { TabsItem } from "../ui/tabs/tabs";
 import styles from "./styles.module.scss";
 import { IconLeft } from "../../assets/icons/IconLeft";
-
+import { Carousel, ScrollingCarousel } from "@trendyol-js/react-carousel";
+import { Tab } from "../ui/tabs/tabsItem";
 interface OptionFilterProps {
   categories: Categories;
 }
@@ -37,49 +38,71 @@ export const OptionFilter: FC<OptionFilterProps> = memo(({ categories }) => {
 
   const handleCategory = (category: string | null) => {
     setFilter(category);
-    if (tabsItem.length < 3) return;
-    if (category === null) {
-      setOffsetX(0);
-      return;
-    }
+    //if (tabsItem.length < 3) return;
+    //if (category === null) {
+    //    setOffsetX(0);
+    //    return;
+    //}
 
-    const categoryIndex = tabsItem.findIndex((tab) => tab.value === category);
-    setOffsetX(-100 * categoryIndex);
+    //const categoryIndex = tabsItem.findIndex((tab) => tab.value === category);
+    //setOffsetX(-100 * categoryIndex);
   };
-  const handleNextTab = () => {
-    if (tabsItem.length < 3) return;
-    setOffsetX((currentOffset) => {
-      const newOffset = currentOffset - 100;
-      const maxOffset = -(100 * tabsItem.length - 1);
-      return Math.max(newOffset, maxOffset);
-    });
-  };
-  const handlePrevTab = () => {
-    setOffsetX((currentOffset) => {
-      const newOffset = currentOffset + 100;
+  //const handleNextTab = () => {
+  //    if (tabsItem.length < 3) return;
+  //    setOffsetX((currentOffset) => {
+  //        const newOffset = currentOffset - 100;
+  //        const maxOffset = -(100 * tabsItem.length - 1);
+  //        return Math.max(newOffset, maxOffset);
+  //    });
+  //};
+  //const handlePrevTab = () => {
+  //    setOffsetX((currentOffset) => {
+  //        const newOffset = currentOffset + 100;
 
-      return Math.min(newOffset, 0);
-    });
-  };
+  //        return Math.min(newOffset, 0);
+  //    });
+  //};
 
-  useEffect(() => {
-    setFilter(null);
-    setOffsetX(0);
-  }, [search, setFilter]);
+  //useEffect(() => {
+  //    setFilter(null);
+  //    setOffsetX(0);
+  //}, [search, setFilter]);
 
   return (
-    <div className={styles.filterWrapper}>
-      <IconLeft className={styles.nextTab} onClick={handlePrevTab} />
-      <Tabs
-        onTabClick={(tab) => handleCategory(tab.value)}
-        tabs={tabsItem}
-        classNameTab={styles.filter}
-        filter={filter}
-        classNameTabItem={styles.filter_tab_item}
-        // activeTabIndex={activeTabIndex}
-        offsetX={offsetX}
-      />
-      <IconRight className={styles.nextTab} onClick={handleNextTab} />
-    </div>
+    //<div className={styles.filterWrapper}>
+    //{/*<IconLeft className={styles.nextTab} onClick={handlePrevTab} />*/}
+
+    //{/*<Tabs
+    //        onTabClick={(tab) => handleCategory(tab.value)}
+    //        tabs={tabsItem}
+    //        classNameTab={styles.filter}
+    //        filter={filter}
+    //        classNameTabItem={styles.filter_tab_item}
+    //        // activeTabIndex={activeTabIndex}
+    //        offsetX={offsetX}
+    //    />*/}
+    <Carousel
+      dynamic
+      infinite={false}
+      show={2.5}
+      slide={1}
+      swiping
+      className={styles.filter}
+      leftArrow={<IconLeft />}
+      rightArrow={<IconRight />}
+    >
+      {tabsItem.map((tab) => (
+        <Tab
+          onTabClick={(tab) => handleCategory(tab.value)}
+          classNameTabItem={styles.filter_tab_item}
+          tab={tab}
+          filter={filter}
+          key={tab.content}
+        />
+      ))}
+    </Carousel>
+
+    //    {/*<IconRight className={styles.nextTab} onClick={handleNextTab} />*/}
+    //</div>
   );
 });

@@ -1,22 +1,25 @@
 import { memo } from "react";
-import { IconUp } from "../../assets/icons/IconUp";
-import { Button } from "../ui/button";
-import styles from "./resultArrow.module.scss";
 import { IconDown } from "../../assets/icons/IconDown";
+import { IconUp } from "../../assets/icons/IconUp";
+import styles from "./resultArrow.module.scss";
+import clsx from "clsx";
 type ResultArrowProps = {
-  isLoading?: boolean;
-  isSuccess?: boolean;
+  isSuccess: boolean;
 };
 export const ResultArrow = (props: ResultArrowProps) => {
-  const { isLoading, isSuccess } = props;
+  const { isSuccess } = props;
 
   return (
-    <Button className={styles.iconContainer}>
+    <div
+      className={clsx(styles.arrowResultContainer, {
+        [styles.activeResultContainer]: isSuccess,
+      })}
+    >
       {isSuccess ? (
-        <IconDown className={styles.arrow} />
+        <IconDown className={styles.arrowIcon} />
       ) : (
-        <IconUp className={styles.arrow} />
+        <IconUp className={styles.arrowIcon} />
       )}
-    </Button>
+    </div>
   );
 };
