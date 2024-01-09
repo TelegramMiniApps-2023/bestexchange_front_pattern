@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { memo } from "react";
 import styles from "./tabs.module.scss";
 import { Tab } from "./tabsItem";
-
+import { memo } from "react";
 export type TabsItem = {
   value: string | null;
   content: string;

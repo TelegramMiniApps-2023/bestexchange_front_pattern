@@ -43,7 +43,28 @@ export const OptionFilter: FC<OptionFilterProps> = memo(({ categories }) => {
     //    setOffsetX(0);
     //    return;
     //}
+    const handleCategory = (category: string | null) => {
+      setFilter(category);
+      //if (tabsItem.length < 3) return;
+      //if (category === null) {
+      //    setOffsetX(0);
+      //    return;
+      //}
 
+      //const categoryIndex = tabsItem.findIndex((tab) => tab.value === category);
+      //setOffsetX(-100 * categoryIndex);
+    };
+    //const handleNextTab = () => {
+    //    if (tabsItem.length < 3) return;
+    //    setOffsetX((currentOffset) => {
+    //        const newOffset = currentOffset - 100;
+    //        const maxOffset = -(100 * tabsItem.length - 1);
+    //        return Math.max(newOffset, maxOffset);
+    //    });
+    //};
+    //const handlePrevTab = () => {
+    //    setOffsetX((currentOffset) => {
+    //        const newOffset = currentOffset + 100;
     //const categoryIndex = tabsItem.findIndex((tab) => tab.value === category);
     //setOffsetX(-100 * categoryIndex);
   };
@@ -63,10 +84,10 @@ export const OptionFilter: FC<OptionFilterProps> = memo(({ categories }) => {
   //    });
   //};
 
-  //useEffect(() => {
-  //    setFilter(null);
-  //    setOffsetX(0);
-  //}, [search, setFilter]);
+  useEffect(() => {
+    setFilter(null);
+    setOffsetX(0);
+  }, [search, setFilter]);
 
   return (
     //<div className={styles.filterWrapper}>
