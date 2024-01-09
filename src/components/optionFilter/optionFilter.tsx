@@ -9,32 +9,32 @@ import { IconLeft } from "../../assets/icons/IconLeft";
 import { Carousel, ScrollingCarousel } from "@trendyol-js/react-carousel";
 import { Tab } from "../ui/tabs/tabsItem";
 interface OptionFilterProps {
-  categories: Categories;
+    categories: Categories;
 }
 
 export const OptionFilter: FC<OptionFilterProps> = memo(({ categories }) => {
-  const filter = useFiltersStore((state) => state.filter);
-  const setFilter = useFiltersStore((state) => state.setFilter);
-  const search = useFiltersStore((state) => state.search);
-  // const [activeTabIndex, setActiveTabIndex] = useState(0);
-  const [offsetX, setOffsetX] = useState(0);
+    const filter = useFiltersStore((state) => state.filter);
+    const setFilter = useFiltersStore((state) => state.setFilter);
+    const search = useFiltersStore((state) => state.search);
+    // const [activeTabIndex, setActiveTabIndex] = useState(0);
+    const [offsetX, setOffsetX] = useState(0);
 
-  const filteredCategories = Object.keys(categories).filter((category) =>
-    categories[category]?.some((option) =>
-      option.name.toLowerCase().includes(search.toLowerCase())
-    )
-  );
+    const filteredCategories = Object.keys(categories).filter((category) =>
+        categories[category]?.some((option) =>
+            option.name.toLowerCase().includes(search.toLowerCase())
+        )
+    );
 
-  const tabsItem: TabsItem[] = useMemo(
-    () => [
-      { value: null, content: "Все" },
-      ...filteredCategories.map((category) => ({
-        value: category,
-        content: category,
-      })),
-    ],
-    [filteredCategories]
-  );
+    const tabsItem: TabsItem[] = useMemo(
+        () => [
+            { value: null, content: "Все" },
+            ...filteredCategories.map((category) => ({
+                value: category,
+                content: category,
+            })),
+        ],
+        [filteredCategories]
+    );
 
   const handleCategory = (category: string | null) => {
     setFilter(category);
@@ -59,50 +59,28 @@ export const OptionFilter: FC<OptionFilterProps> = memo(({ categories }) => {
   //    setOffsetX((currentOffset) => {
   //        const newOffset = currentOffset + 100;
 
-  //        return Math.min(newOffset, 0);
-  //    });
-  //};
+      return Math.min(newOffset, 0);
+    });
+  };
 
-  //useEffect(() => {
-  //    setFilter(null);
-  //    setOffsetX(0);
-  //}, [search, setFilter]);
+  useEffect(() => {
+    setFilter(null);
+    setOffsetX(0);
+  }, [search, setFilter]);
 
   return (
-    //<div className={styles.filterWrapper}>
-    //{/*<IconLeft className={styles.nextTab} onClick={handlePrevTab} />*/}
-
-    //{/*<Tabs
-    //        onTabClick={(tab) => handleCategory(tab.value)}
-    //        tabs={tabsItem}
-    //        classNameTab={styles.filter}
-    //        filter={filter}
-    //        classNameTabItem={styles.filter_tab_item}
-    //        // activeTabIndex={activeTabIndex}
-    //        offsetX={offsetX}
-    //    />*/}
-    <Carousel
-      dynamic
-      infinite={false}
-      show={2.5}
-      slide={1}
-      swiping
-      className={styles.filter}
-      leftArrow={<IconLeft />}
-      rightArrow={<IconRight />}
-    >
-      {tabsItem.map((tab) => (
-        <Tab
-          onTabClick={(tab) => handleCategory(tab.value)}
-          classNameTabItem={styles.filter_tab_item}
-          tab={tab}
-          filter={filter}
-          key={tab.content}
-        />
-      ))}
-    </Carousel>
-
-    //    {/*<IconRight className={styles.nextTab} onClick={handleNextTab} />*/}
-    //</div>
+    <div className={styles.filterWrapper}>
+      <IconLeft className={styles.nextTab} onClick={handlePrevTab} />
+      <Tabs
+        onTabClick={(tab) => handleCategory(tab.value)}
+        tabs={tabsItem}
+        classNameTab={styles.filter}
+        filter={filter}
+        classNameTabItem={styles.filter_tab_item}
+        // activeTabIndex={activeTabIndex}
+        offsetX={offsetX}
+      />
+      <IconRight className={styles.nextTab} onClick={handleNextTab} />
+    </div>
   );
 });

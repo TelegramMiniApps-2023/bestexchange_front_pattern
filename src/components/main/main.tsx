@@ -24,19 +24,20 @@ export const Main = memo(() => {
   } = useFetchExchangers({
     from: give?.code_name,
     to: get?.code_name,
-    city: location?.location?.city.code_name,
   });
 
   useEffect(() => {
     if (error) {
+      // setGiveSelect(null);
       setGetSelect(null);
     }
   }, [error]);
 
+  // временно
+
   return (
     <div className={styles.main}>
       <DirectionTabs />
-      <LocationSelect />
       <div className={styles.main__body}>
         <SelectsForm get={get} give={give} refetch={refetch} />
         <ExchangerLoader
