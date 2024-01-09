@@ -19,9 +19,8 @@ export const Main = memo(() => {
     data: exchangers,
     isLoading,
     isFetching,
-    isSuccess,
-
     refetch,
+    isSuccess,
     error,
   } = useFetchExchangers({
     from: give?.code_name,
