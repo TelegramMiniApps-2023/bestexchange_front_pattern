@@ -53,7 +53,7 @@ export const LocationSelect: FC<LocationSelectProps> = () => {
         </div>
         <div className={clsx(styles.modal, { [styles.active]: show })}>
           {countries && (
-            <ModalCountries countries={countries} handleModal={handleModal}/>
+            <ModalCountries show={show} countries={countries} handleModal={handleModal}/>
           )}
         </div>
       </div>

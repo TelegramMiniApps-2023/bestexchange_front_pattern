@@ -9,7 +9,7 @@ interface CountryCardProps {
   country: Country;
   handleModal: () => void;
   accordion: boolean;
-  setAccordion: (id: number | null) => void;
+  setAccordion: (id: number) => void;
 }
 
 export const CountryCard: FC<CountryCardProps> = ({ country, handleModal, accordion, setAccordion  }) => {

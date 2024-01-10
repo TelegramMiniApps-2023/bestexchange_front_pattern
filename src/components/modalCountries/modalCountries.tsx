@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Popup } from "../ui/popup";
 import { Country } from "../../model";
 import { CountryCard } from "../countryCard";
@@ -9,11 +9,13 @@ import { useFiltersStore } from "../../store/store";
 interface ModalCountriesProps {
   handleModal: () => void;
   countries: Country[];
+  show: boolean;
 }
 
 export const ModalCountries: FC<ModalCountriesProps> = ({
   countries,
   handleModal,
+  show
 }) => {
   // cities search
   const search = useFiltersStore((state) => state.search.toLowerCase());
@@ -35,12 +37,10 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
     })
     .filter((country) => country !== null);
 
-    // accrodion logic
-    const [accordionStates, setAccordionStates] = useState<{ [key: number]: boolean }>({});
-  const handleAccordion = (countryId: number | null) => {
-    if (!countryId) {
-      setAccordionStates({});
-    } else {setAccordionStates((prevStates) => {
+  // accrodion logic
+  const [accordionStates, setAccordionStates] = useState<{ [key: number]: boolean }>({});
+  const handleAccordion = (countryId: number) => {
+      setAccordionStates((prevStates) => {
       const newStates: { [key: number]: boolean } = { ...prevStates };
       Object.keys(newStates).forEach((key) => {
         const numericKey = parseInt(key, 10);
@@ -50,8 +50,13 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
       });
       newStates[countryId] = !prevStates[countryId];
       return newStates;
-    });}
+    })
   };
+
+  // clear accordions when modal closed
+  useEffect(() => {
+    setAccordionStates({});
+  }, [show]);
 
   return (
     <Popup closeModal={handleModal}>
