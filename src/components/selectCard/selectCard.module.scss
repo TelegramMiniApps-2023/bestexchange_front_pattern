@@ -1,9 +1,10 @@
 .select {
-  &__label {
+  h2 {
     font-size: 20px;
     margin-bottom: 15px;
   }
-  &__input {
+  button {
+    width: 100%;
     border-radius: 30px;
     font-size: 20px;
     background: rgba(255, 255, 255, 0.3);
@@ -14,14 +15,18 @@
     align-items: center;
     cursor: pointer;
     color: rgba(255, 255, 255, 1);
+
     &.active {
       opacity: 0.3;
       pointer-events: none;
     }
     &.selected {
       background: rgba(72, 172, 71, 1);
-      // color: #000;
       font-weight: 500;
+    }
+
+    p {
+
     }
   }
 }

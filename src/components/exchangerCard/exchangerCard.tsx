@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Exchanger } from "../../model/Exchanger";
-import styles from "./styles.module.scss";
+import styles from "./exchangerCard.module.scss";
 import ArrowRight from "../../assets/icons/ArrowRight";
 
 interface ExchangerCardProps {

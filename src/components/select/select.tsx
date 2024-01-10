@@ -12,7 +12,7 @@ import {
 } from "../../store/store";
 import { Modal } from "../modal/modal";
 import { SelectCard } from "../selectCard";
-import styles from "./styles.module.scss";
+import styles from "./select.module.scss";
 
 interface SelectProps {
   type: "give" | "get";

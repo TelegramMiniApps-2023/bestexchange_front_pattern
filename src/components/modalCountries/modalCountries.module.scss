@@ -1,11 +1,25 @@
-.title {
-  font-size: 20px;
-  color: rgba(72, 172, 71, 1);
-  margin-bottom: 15px;
-  font-weight: 500;
-}
-
-.countries {
+.countriesPopup {
+  height: 100%;
+  
+  h2 {
+    font-size: 20px;
+    color: rgba(72, 172, 71, 1);
+    margin-bottom: 15px;
+    font-weight: 500;
+  } 
+  
+  ul {
   height: calc(100% - 80px);
   overflow-y: auto;
+  }
+
+  p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 16px;
+    color: #909090;
+    margin-top: 30px;
+  }
 }

@@ -1,7 +1,7 @@
 import { FC, ReactElement } from "react";
 import { QueryClientProvider } from "react-query";
 import { queryClient } from "./api/queryClient";
-import { MainPage } from "./pages/Main";
+import { MainPage } from "./pages";
 
 const App: FC = (): ReactElement => {
   return (

@@ -1,4 +1,4 @@
-.option {
+.valute {
   display: grid;
   grid-template: 1fr / minmax(30px, 40px) 1fr;
   justify-content: space-between;
@@ -17,7 +17,7 @@
     border-bottom: 1.5px solid rgb(46, 138, 230);
     transform: scale(0.985);
   }
-  &__img {
+  div {
     position: relative;
     height: 25vh;
     max-height: 40px;
@@ -31,15 +31,16 @@
       object-position: center;
     }
   }
-  &__body {
-  }
-  &__name {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-  &__code {
-    font-size: 12px;
-    font-weight: 400;
+  section {
+
+    &__name {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    &__code {
+      font-size: 12px;
+      font-weight: 400;
+    }
   }
 }

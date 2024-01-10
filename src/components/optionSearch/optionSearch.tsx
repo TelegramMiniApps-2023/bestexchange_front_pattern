@@ -1,25 +1,24 @@
 import { FC, memo } from "react";
 import SearchIcon from "../../assets/icons/SearchIcon";
-import styles from "./styles.module.scss";
+import styles from "./optionSearch.module.scss";
 import { useFiltersStore } from "../../store/store";
 
-interface SearchInputProps {}
+interface OptionSearchProps {}
 
-export const SearchInput: FC<SearchInputProps> = memo(() => {
+export const OptionSearch: FC<OptionSearchProps> = memo(() => {
   const value = useFiltersStore((state) => state.search);
   const setValue = useFiltersStore((state) => state.setSearch);
   return (
-    <div className={styles.search}>
-      <div className={styles.search__icon}>
+    <section className={styles.search}>
+      <span>
         <SearchIcon width="20px" height="20px" />
-      </div>
+      </span>
       <input
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className={styles.search__input}
         type="text"
         placeholder="Поиск..."
       />
-    </div>
+    </section>
   );
 });

@@ -4,8 +4,8 @@ import { useCashStore, useSelectsStore } from "../../store/store";
 import { DirectionTabs } from "../directionTabs";
 import { SelectsForm } from "../selectsForm";
 import { ExchangerLoader } from "../exchangerLoader";
-import styles from "./styles.module.scss";
 import { LocationSelect } from "../locationSelect";
+import styles from "./main.module.scss";
 
 export const Main = memo(() => {
   const give = useSelectsStore((state) => state.giveSelect);
@@ -33,10 +33,10 @@ export const Main = memo(() => {
   }, [error]);
 
   return (
-    <div className={styles.main}>
+    <main className={styles.main}>
       <DirectionTabs />
       <LocationSelect />
-      <div className={styles.main__body}>
+      <div className={styles.container}>
         <SelectsForm get={get} give={give} refetch={refetch} />
         <ExchangerLoader
           error={error}
@@ -45,6 +45,6 @@ export const Main = memo(() => {
           isLoading={isLoading}
         />
       </div>
-    </div>
+    </main>
   );
 });

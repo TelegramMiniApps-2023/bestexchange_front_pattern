@@ -10,11 +10,11 @@ type PopupProps = {
 export const Popup = (props: PopupProps) => {
   const { closeModal, children } = props;
   return (
-    <div className={styles.modal}>
+    <section className={styles.modal}>
       <span className={styles.modal__close}>
         <CloseModal width="20px" height="20px" onClick={closeModal} />
       </span>
       {children}
-    </div>
+    </section>
   );
 };

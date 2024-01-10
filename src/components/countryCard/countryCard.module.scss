@@ -2,7 +2,8 @@
   margin: 5px 0px;
   overflow: hidden;
   position: relative;
-  &__title {
+  
+  header {
     padding: 20px 15px;
     border-radius: 30px;
     background: rgba(0, 0, 0, 0.1);
@@ -11,7 +12,7 @@
     display: flex;
     align-items: center;
 
-    .country__icon {
+    div {
       width: 30px;
       height: 30px;
       margin-right: 10px;
@@ -31,7 +32,7 @@
       font-weight: 500;
     }
 
-    .accordion__icon {
+    span {
       font-size: 14px;
       position: absolute;
       right: 15px;
@@ -43,19 +44,8 @@
       align-items: center;
     }
   }
-  // .accordion {
-  //   width: 100%;
-  //   display: none;
-  //   height: calc(100% - 30px);
-  //   overflow-y: auto;
-  // }
-
-  // .active {
-  //   display: block;
-  //   visibility: visible;
-  //   transition: all 1s ease-out;
-  // }
-  .accordion {
+  
+  section {
     overflow: hidden;
     max-height: 0;
     opacity: 0;

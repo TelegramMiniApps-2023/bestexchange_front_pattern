@@ -4,7 +4,7 @@ import { Categories } from "../../model/Categories";
 import { useFiltersStore } from "../../store/store";
 import { Tabs } from "../ui/tabs";
 import { TabsItem } from "../ui/tabs/tabs";
-import styles from "./styles.module.scss";
+import styles from "./optionFilter.module.scss";
 import { IconLeft } from "../../assets/icons/IconLeft";
 
 interface OptionFilterProps {
