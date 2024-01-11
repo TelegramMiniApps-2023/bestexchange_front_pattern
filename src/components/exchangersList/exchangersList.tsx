@@ -13,11 +13,11 @@ export const ExchangersList: FC<ExchangersListProps> = memo(
     const give = useSelectsStore((state) => state.giveSelect);
     const get = useSelectsStore((state) => state.getSelect);
     return (
-      <section className={styles.exchangers__body}>
-        <h3>
+      <section className={styles.exchangersList}>
+        <div className={styles.title}>
           Лучшие курсы {give?.name} на {get?.name}
-        </h3>
-        <div>
+        </div>
+        <div className={styles.list}>
           {exchangers &&
             exchangers.map((card) => (
               <ExchangerCard key={card.id} card={card} />

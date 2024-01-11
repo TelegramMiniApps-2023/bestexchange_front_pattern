@@ -1,8 +1,8 @@
 const ArrowRight = (props: any) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={64}
-    height={64}
+    width={30}
+    height={30}
     fill="none"
     viewBox="-2.4 -2.4 28.8 28.8"
     {...props}

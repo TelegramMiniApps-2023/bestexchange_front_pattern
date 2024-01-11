@@ -19,7 +19,7 @@ export const CountryCard: FC<CountryCardProps> = ({
   setAccordion,
 }) => {
   return (
-    <li className={styles.country}>
+    <div className={styles.country}>
       <header
         className={clsx({ [styles.active_country]: accordion })}
         onClick={() => setAccordion(country.id)}
@@ -28,11 +28,11 @@ export const CountryCard: FC<CountryCardProps> = ({
           <img src={country.icon_url} alt={`Иконка ${country.name}`} />
         </div>
         <p>{country.name}</p>
-        <span>
+        <i>
           {accordion && (
             <ArrowDown color="#606060" width="25px" height="25px" />
           )}
-        </span>
+        </i>
       </header>
       <section className={clsx({ [styles.active]: accordion })}>
         <ul>
@@ -46,6 +46,6 @@ export const CountryCard: FC<CountryCardProps> = ({
           ))}
         </ul>
       </section>
-    </li>
+    </div>
   );
 };

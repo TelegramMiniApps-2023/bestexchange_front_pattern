@@ -37,8 +37,9 @@ export const Modal: FC<ModalProps> = ({
       <section className={styles.valutesPopup}>
         {options && Object.keys(options).length > 0 ? (
           <>
-            <OptionSearch />
+            <h3>{type === "give" ? "ОТДАЮ" : "ПОЛУЧАЮ"}</h3>
             <OptionFilter categories={options} />
+            <OptionSearch />
             <ul>
               {filteredOptions && filteredOptions?.length > 0 ? (
                 filteredOptions.map((option) => (

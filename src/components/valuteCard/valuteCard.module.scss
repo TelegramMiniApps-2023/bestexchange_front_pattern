@@ -17,7 +17,7 @@
     border-bottom: 1.5px solid rgb(46, 138, 230);
     transform: scale(0.985);
   }
-  div {
+  figure {
     position: relative;
     height: 25vh;
     max-height: 40px;
@@ -32,15 +32,18 @@
     }
   }
   section {
+    color: #303030;
 
-    &__name {
-      font-size: 14px;
+    h3 {
+      color: inherit;
+      font-size: 18px;
       font-weight: 600;
       margin-bottom: 10px;
     }
-    &__code {
+    h4 {
       font-size: 12px;
       font-weight: 400;
+      margin: 0;
     }
   }
 }

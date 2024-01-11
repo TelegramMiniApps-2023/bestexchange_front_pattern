@@ -39,30 +39,17 @@ export const ValuteCard: FC<ValuteCardProps> = memo(
       } else {
         await setGetSelect(option);
         await refetch();
-        // if (get) {
-        //   await refetch();
-        // }
       }
     };
 
     return (
-      // <div className={styles.option} onClick={() => handleChangeDirection()}>
-      //   <div className={styles.option__img}>
-      //     <img src={option.icon_url} alt="icon" />
-      //   </div>
-      //   <div className={styles.option__body}>
-      //     <div className={styles.option__name}>{option.name}</div>
-      //     <div className={styles.option__code}>{option.code_name}</div>
-      //   </div>
-      // </div>
-
       <li className={styles.valute} onClick={() => handleChangeDirection()}>
-        <div>
+        <figure>
           <img src={option.icon_url} alt="icon" />
-        </div>
+        </figure>
         <section>
           <h3>{option.name}</h3>
-          <p>{option.code_name}</p>
+          <h4>{option.code_name}</h4>
         </section>
       </li>
     );

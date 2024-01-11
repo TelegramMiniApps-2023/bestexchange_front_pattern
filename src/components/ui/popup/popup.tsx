@@ -11,9 +11,9 @@ export const Popup = (props: PopupProps) => {
   const { closeModal, children } = props;
   return (
     <section className={styles.modal}>
-      <span className={styles.modal__close}>
+      <i>
         <CloseModal width="20px" height="20px" onClick={closeModal} />
-      </span>
+      </i>
       {children}
     </section>
   );

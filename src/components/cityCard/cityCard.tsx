@@ -29,7 +29,7 @@ export const CityCard: FC<CityCardProps> = ({ city, country, handleModal }) => {
 
   return (
     <li className={styles.city} onClick={handleChangeLocation}>
-      <p>{city.name}</p>
+      <h3>{city.name}</h3>
     </li>
   );
 };

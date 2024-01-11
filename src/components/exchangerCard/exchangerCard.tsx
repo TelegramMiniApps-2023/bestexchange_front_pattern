@@ -9,34 +9,32 @@ interface ExchangerCardProps {
 
 export const ExchangerCard: FC<ExchangerCardProps> = ({ card }) => {
   return (
-    <a href={card.partner_link} target="_blank" rel="noopener noreferrer">
-      <div className={styles.card}>
-        <div className={styles.card__body}>
-          <div className={styles.card__name}>{card.name}</div>
-          <div className={styles.card__info}>
-            <div className={styles.valute}>
-              <div className={styles.valute__img}>
-                <img src={card.icon_valute_from} alt="logo" />
-              </div>
-              <p className={styles.valute__name}>{card.valute_from}</p>
-            </div>
-            <div className={styles.card__arrow}>
-              <ArrowRight width="25px" height="25px" />
-            </div>
-            <div className={styles.valute}>
-              <div className={styles.valute__img}>
-                <img src={card.icon_valute_to} alt="logo" />
-              </div>
-              <p className={styles.valute__name}>{card.valute_to}</p>
-            </div>
-          </div>
-          <div className={styles.range}>
-            <div className={styles.range__count}>
-              от {card.min_amount} до {card.max_amount}
-            </div>
-          </div>
+    // <a href={card.partner_link} target="_blank" rel="noopener noreferrer">
+    // </a>
+    <article className={styles.exchangerItem}>
+      <header>
+        <hgroup>
+          <h2>{card.name}</h2>
+          <h3>Онлайн обмен</h3>
+        </hgroup>
+      </header>
+      <hr />
+      <footer>
+        <div className={styles.exchangerRate}>
+          <p>
+            <mark>{card.in_count}</mark> {card.valute_from}
+          </p>
+          <i className={styles.arrow}>
+            <ArrowRight />
+          </i>
+          <p>
+            {card.out_count} {card.valute_to}
+          </p>
         </div>
-      </div>
-    </a>
+        <span>
+          Обмен {card.min_amount} до {card.max_amount}
+        </span>
+      </footer>
+    </article>
   );
 };

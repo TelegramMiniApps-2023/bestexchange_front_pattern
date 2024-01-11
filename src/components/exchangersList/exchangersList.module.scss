@@ -1,11 +1,13 @@
-.exchangers__body {
-  h3 {
-    font-size: 12px;
+.exchangersList {
+  .title {
+    font-size: 16px;
     font-weight: 500;
     text-align: center;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0px 5%;
+    line-height: 1.5;
   }
-  div {
-    padding: 15px 0px;
+  .list {
+    padding: 25px 0px;
   }
 }
