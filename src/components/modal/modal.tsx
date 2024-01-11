@@ -58,8 +58,7 @@ export const Modal: FC<ModalProps> = ({
         </div>
       ) : (
         <div className={styles.modal__empty}>
-          <div style={{ fontSize: "74px", marginBottom: "20px" }}>:{"("}</div>
-          <div>Список пуст...</div>
+          <div>Для данного направления на данный момент нет доступных валют</div>
         </div>
       )}
     </Popup>
