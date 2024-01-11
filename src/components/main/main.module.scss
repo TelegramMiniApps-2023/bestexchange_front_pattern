@@ -1,5 +1,11 @@
 .main {
   position: relative;
   .container {
+
+    .resultArrow {
+      display: flex;
+      justify-content: center;
+      margin-top: -10px;
+    }
   }
 }
