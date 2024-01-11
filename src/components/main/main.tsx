@@ -2,10 +2,11 @@ import { memo, useEffect } from "react";
 import { useFetchExchangers } from "../../api/api";
 import { useCashStore, useSelectsStore } from "../../store/store";
 import { DirectionTabs } from "../directionTabs";
-import { SelectsForm } from "../selectsForm";
 import { ExchangerLoader } from "../exchangerLoader";
 import { LocationSelect } from "../locationSelect";
 import styles from "./main.module.scss";
+import { ResultArrow } from "../resultArrow";
+import { SelectsForm } from "../selectsForm";
 
 export const Main = memo(() => {
   const give = useSelectsStore((state) => state.giveSelect);
@@ -19,18 +20,19 @@ export const Main = memo(() => {
     isLoading,
     isFetching,
     refetch,
+    isSuccess,
     error,
   } = useFetchExchangers({
     from: give?.code_name,
     to: get?.code_name,
     city: location?.location?.city.code_name,
   });
-
+  console.log(isSuccess);
   useEffect(() => {
     if (error) {
       setGetSelect(null);
     }
-  }, [error]);
+  }, [error, setGetSelect]);
 
   return (
     <main className={styles.main}>
@@ -38,6 +40,9 @@ export const Main = memo(() => {
       <LocationSelect />
       <div className={styles.container}>
         <SelectsForm get={get} give={give} refetch={refetch} />
+        <div className={styles.resultArrow}>
+          <ResultArrow isSuccess={isSuccess} />
+        </div>
         <ExchangerLoader
           error={error}
           exchangers={exchangers}
