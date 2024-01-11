@@ -10,7 +10,8 @@
   background: rgba(255, 255, 255, 1);
   color: #303030;
   z-index: 99;
-  &__close {
+  
+  i {
     position: absolute;
     right: 20px;
     top: 15px;

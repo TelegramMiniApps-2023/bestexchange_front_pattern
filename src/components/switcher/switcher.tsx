@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Options } from "../../model/Options";
 import { useSelectsStore } from "../../store/store";
 import ChangeIcon from "../../assets/icons/ChangeIcon";
-import styles from "./styles.module.css";
+import styles from "./switcher.module.css";
 
 interface SwitcherProps {
   refetch: () => void;
@@ -17,7 +17,7 @@ export const Switcher: FC<SwitcherProps> = ({ refetch, give, get }) => {
     await refetch();
   };
   return (
-    <div className={styles.switcher__icon}>
+    <i className={styles.switcher__icon}>
       <ChangeIcon
         width="40px"
         height="40px"
@@ -26,6 +26,6 @@ export const Switcher: FC<SwitcherProps> = ({ refetch, give, get }) => {
           get && give && handleSwitch();
         }}
       />
-    </div>
+    </i>
   );
 };

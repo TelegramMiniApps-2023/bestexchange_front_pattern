@@ -1,0 +1,33 @@
+:root{
+    --bg-color: #000;
+    --primary-color: linear-gradient(90deg, rgba(35,162,71,1) 28%, rgba(70,209,66,1) 99%);
+    --secondary-color: rgba(255, 255, 255, 0.3);
+   
+
+    //border-radius
+    --border-radius-s: 15px;
+    --border-radius-m: 30px;
+    --border-radius-full:50%;
+
+
+    //индексы
+    --modal-z-index: 1000;
+
+    
+
+    //directionTabs
+    --direction_tabs-padding: 50px;
+    --direction_tabs-margin-bottom:20px;
+    //seceltsForm
+    --seceltsForm-padding:20px;
+    
+    //countryCard
+    --countryCard-margin:5px 0px
+
+    
+
+
+    
+}
+//mixin border - radius
+//

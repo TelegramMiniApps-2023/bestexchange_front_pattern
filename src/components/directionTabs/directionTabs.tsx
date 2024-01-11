@@ -35,7 +35,7 @@ export const DirectionTabs = memo(() => {
   };
 
   return (
-    <div className={styles.direction_wrapper}>
+    <section className={styles.direction_wrapper}>
       <Tabs
         tabs={valuteTypeTabs}
         onTabClick={onTabClick}
@@ -43,6 +43,6 @@ export const DirectionTabs = memo(() => {
         classNameTab={styles.direction_tabs}
         classNameTabItem={styles.direction_tabs_item}
       />
-    </div>
+    </section>
   );
 });

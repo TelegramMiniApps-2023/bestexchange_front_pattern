@@ -1,12 +1,11 @@
 import { FC } from "react";
 import { Categories } from "../../model/Categories";
-import styles from "./styles.module.scss";
-
-import { ValuteCard } from "../valuteCard/valuteCard";
-import { OptionFilter } from "../optionFilter/optionFilter";
-import { SearchInput } from "../optionSearch/optionSearch";
+import { ValuteCard } from "../valuteCard";
+import { OptionFilter } from "../optionFilter";
+import { OptionSearch } from "../optionSearch";
 import { Popup } from "../ui/popup";
 import { useFiltersStore } from "../../store/store";
+import styles from "./modal.module.scss";
 
 interface ModalProps {
   options?: Categories;
@@ -35,32 +34,33 @@ export const Modal: FC<ModalProps> = ({
       );
   return (
     <Popup closeModal={handleModal}>
-      {options && Object.keys(options).length > 0 ? (
-        <div className={styles.modal__body}>
-          <SearchInput />
-          <div className={styles.modal__filter}>
+      <section className={styles.valutesPopup}>
+        {options && Object.keys(options).length > 0 ? (
+          <>
+            <h3>{type === "give" ? "ОТДАЮ" : "ПОЛУЧАЮ"}</h3>
             <OptionFilter categories={options} />
-          </div>
-          <div className={styles.modal__options}>
-            {filteredOptions && filteredOptions?.length > 0 ? (
-              filteredOptions.map((option) => (
-                <ValuteCard
-                  key={option.id}
-                  option={option}
-                  handleModal={handleModal}
-                  type={type}
-                />
-              ))
-            ) : (
-              <div className={styles.modal__empty}>Список пуст...</div>
-            )}
-          </div>
-        </div>
-      ) : (
-        <div className={styles.modal__empty}>
-          <div>Для данного направления на данный момент нет доступных валют</div>
-        </div>
-      )}
+            <OptionSearch />
+            <ul>
+              {filteredOptions && filteredOptions?.length > 0 ? (
+                filteredOptions.map((option) => (
+                  <ValuteCard
+                    key={option.id}
+                    option={option}
+                    handleModal={handleModal}
+                    type={type}
+                  />
+                ))
+              ) : (
+                <p className={styles.empty}>Нет доступных направлений</p>
+              )}
+            </ul>
+          </>
+        ) : (
+          <p className={styles.empty}>
+            Для данного направления на данный момент нет доступных валют
+          </p>
+        )}
+      </section>
     </Popup>
   );
 };

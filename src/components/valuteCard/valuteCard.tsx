@@ -4,7 +4,7 @@ import { queryClient } from "../../api/queryClient";
 import { exchangersKey } from "../../assets/consts";
 import { Options } from "../../model/Options";
 import { useCashStore, useSelectsStore } from "../../store/store";
-import styles from "./styles.module.scss";
+import styles from "./valuteCard.module.scss";
 import { useFetchExchangers } from "../../api/api";
 
 interface ValuteCardProps {
@@ -39,22 +39,19 @@ export const ValuteCard: FC<ValuteCardProps> = memo(
       } else {
         await setGetSelect(option);
         await refetch();
-        // if (get) {
-        //   await refetch();
-        // }
       }
     };
 
     return (
-      <div className={styles.option} onClick={() => handleChangeDirection()}>
-        <div className={styles.option__img}>
+      <li className={styles.valute} onClick={() => handleChangeDirection()}>
+        <figure>
           <img src={option.icon_url} alt="icon" />
-        </div>
-        <div className={styles.option__body}>
-          <div className={styles.option__name}>{option.name}</div>
-          <div className={styles.option__code}>{option.code_name}</div>
-        </div>
-      </div>
+        </figure>
+        <section>
+          <h3>{option.name}</h3>
+          <h4>{option.code_name}</h4>
+        </section>
+      </li>
     );
   }
 );

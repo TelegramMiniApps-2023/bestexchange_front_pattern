@@ -3,7 +3,7 @@ import { Popup } from "../ui/popup";
 import { Country } from "../../model";
 import { CountryCard } from "../countryCard";
 import styles from "./modalCountries.module.scss";
-import { SearchInput } from "../optionSearch/optionSearch";
+import { OptionSearch } from "../optionSearch";
 import { useFiltersStore } from "../../store/store";
 
 interface ModalCountriesProps {
@@ -15,7 +15,7 @@ interface ModalCountriesProps {
 export const ModalCountries: FC<ModalCountriesProps> = ({
   countries,
   handleModal,
-  show
+  show,
 }) => {
   // cities search
   const search = useFiltersStore((state) => state.search.toLowerCase());
@@ -38,9 +38,11 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
     .filter((country) => country !== null);
 
   // accrodion logic
-  const [accordionStates, setAccordionStates] = useState<{ [key: number]: boolean }>({});
+  const [accordionStates, setAccordionStates] = useState<{
+    [key: number]: boolean;
+  }>({});
   const handleAccordion = (countryId: number) => {
-      setAccordionStates((prevStates) => {
+    setAccordionStates((prevStates) => {
       const newStates: { [key: number]: boolean } = { ...prevStates };
       Object.keys(newStates).forEach((key) => {
         const numericKey = parseInt(key, 10);
@@ -50,7 +52,7 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
       });
       newStates[countryId] = !prevStates[countryId];
       return newStates;
-    })
+    });
   };
 
   // clear accordions when modal closed
@@ -60,10 +62,10 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
 
   return (
     <Popup closeModal={handleModal}>
-      <div className={styles.title}>Выбор страны и города</div>
-      <SearchInput />
+      {/* <h2 className={styles.title}>Выбор страны и города</h2>
+      <OptionSearch />
       {filteredOptions.length > 0 ? (
-        <div className={styles.countries}>
+        <ul className={styles.countries}>
           {filteredOptions.map(
             (country) =>
               country && (
@@ -76,10 +78,32 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
                 />
               )
           )}
-        </div>
+        </ul>
       ) : (
-        <div>Ничего не найдено...</div>
-      )}
+        <p>Ничего не найдено...</p>
+      )} */}
+      <section className={styles.countriesPopup}>
+        <h2 className={styles.title}>Выбор страны и города</h2>
+        <OptionSearch />
+        {filteredOptions.length > 0 ? (
+          <ul className={styles.countries}>
+            {filteredOptions.map(
+              (country) =>
+                country && (
+                  <CountryCard
+                    key={country.id}
+                    country={country}
+                    handleModal={handleModal}
+                    accordion={accordionStates[country.id] || false}
+                    setAccordion={() => handleAccordion(country.id)}
+                  />
+                )
+            )}
+          </ul>
+        ) : (
+          <p>Ничего не найдено...</p>
+        )}
+      </section>
     </Popup>
   );
 };

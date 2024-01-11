@@ -27,12 +27,10 @@ export const SelectCard = memo((props: SelectCardProps) => {
   } = props;
   const { location } = useCashStore((state) => state);
   return (
-    <div className={styles.select}>
-      <p className={styles.select__label}>
-        {type === "give" ? "Отдаю" : "Получаю"}
-      </p>
-      <div
-        className={clsx(styles.select__input, {
+    <section className={styles.select}>
+      <h2>{type === "give" ? "Отдаю" : "Получаю"}</h2>
+      <button
+        className={clsx({
           [styles.active]:
             (!give && type === "get") ||
             (!availableDirection && type === "give") ||
@@ -45,12 +43,16 @@ export const SelectCard = memo((props: SelectCardProps) => {
           handleModal();
         }}
       >
-        {type === "give" && give
-          ? give.name
-          : get && !error
-          ? get.name : error ? "Направление недоступно"
-          : "Выберите валюту"}
-      </div>
-    </div>
+        <p>
+          {type === "give" && give
+            ? give.name
+            : get && !error
+            ? get.name
+            : error
+            ? "Направление недоступно"
+            : "Выберите валюту"}
+        </p>
+      </button>
+    </section>
   );
 });

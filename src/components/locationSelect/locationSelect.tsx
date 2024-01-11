@@ -9,7 +9,7 @@ import {
 } from "../../store/store";
 import { useFetchCashCountries } from "../../api/api";
 import { directionTabsValute } from "../../assets/consts";
-import SearchIcon from "../../assets/icons/SearchIcon";
+import { MockCircle } from "../../assets/icons/mockCircle";
 
 interface LocationSelectProps {}
 
@@ -31,32 +31,35 @@ export const LocationSelect: FC<LocationSelectProps> = () => {
   };
 
   return (
-    <div
+    <section
       className={clsx(styles.location, {
         [styles.location__active]: typeValute === directionTabsValute[1].value,
       })}
     >
-      <div className={styles.location__body}>
-        <div className={styles.location__title} onClick={handleShowModal}>
-          <div className={styles.location__icon}>
-            {location?.location ? (
-              <img src={location?.location.country.icon_url} />
-            ) : (
-              <SearchIcon width="30px" height="30px" fill="#fff" />
-            )}
-          </div>
-          <p>
-            {location
-              ? `${location.location.country.name}, ${location.location.city.name}`
-              : "Выберите страну и город"}
-          </p>
-        </div>
-        <div className={clsx(styles.modal, { [styles.active]: show })}>
-          {countries && (
-            <ModalCountries show={show} countries={countries} handleModal={handleModal}/>
+      <figure onClick={handleShowModal}>
+        <div>
+          {location?.location ? (
+            <img src={location?.location.country.icon_url} />
+          ) : (
+            <span></span>
+            // <MockCircle /> надо пофиксить потом
           )}
         </div>
+        <figcaption>
+          {location
+            ? `${location.location.country.name}, ${location.location.city.name}`
+            : "Выберите страну и город"}
+        </figcaption>
+      </figure>
+      <div className={clsx(styles.modal, { [styles.active]: show })}>
+        {countries && (
+          <ModalCountries
+            show={show}
+            countries={countries}
+            handleModal={handleModal}
+          />
+        )}
       </div>
-    </div>
+    </section>
   );
 };

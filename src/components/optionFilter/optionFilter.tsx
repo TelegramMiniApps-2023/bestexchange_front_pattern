@@ -6,8 +6,8 @@ import IconRight from "../../assets/icons/IconRight";
 import { Categories } from "../../model/Categories";
 import { useFiltersStore } from "../../store/store";
 import { TabsItem } from "../ui/tabs/tabs";
+import styles from "./optionFilter.module.scss";
 import { Tab } from "../ui/tabs/tab";
-import styles from "./styles.module.scss";
 interface OptionFilterProps {
   categories: Categories;
 }

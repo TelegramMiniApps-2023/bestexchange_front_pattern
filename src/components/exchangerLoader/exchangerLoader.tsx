@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Exchanger } from "../../model/Exchanger";
-import { ExchangersList } from "../exchangersList/exchangersList";
+import { ExchangersList } from "../exchangersList";
 import { Loader } from "../ui/loader/loader";
 import styles from "./exchangerLoader.module.scss";
 type ExchangerLoaderProps = {
@@ -12,16 +12,14 @@ type ExchangerLoaderProps = {
 export const ExchangerLoader = memo((props: ExchangerLoaderProps) => {
   const { error, exchangers, isFetching, isLoading } = props;
   return (
-    <div className={styles.exchangers}>
+    <section className={styles.exchangers}>
       {isLoading || isFetching ? (
         <Loader />
       ) : error ? (
-        <div className={styles.empty}>
-          Список пуст... Вы можете выбрать другие параметры
-        </div>
+        <h3>Список пуст... Вы можете выбрать другие параметры</h3>
       ) : (
         exchangers && <ExchangersList exchangers={exchangers} />
       )}
-    </div>
+    </section>
   );
 });

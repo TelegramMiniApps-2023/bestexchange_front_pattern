@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { IconDown } from "../../assets/icons/IconDown";
 import { IconUp } from "../../assets/icons/IconUp";
 import styles from "./resultArrow.module.scss";

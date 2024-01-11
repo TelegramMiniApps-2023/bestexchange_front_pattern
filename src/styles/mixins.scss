@@ -1,0 +1,50 @@
+$sizes: ("xs": 320px, "sm": 576px, "md": 768px, "lg": 992px, "xl": 1200px);
+
+@mixin media($minmax, $media) {
+  @if map-has-key($sizes, $media) {
+    $resolution: map-get($sizes, $media);
+    @media only screen and (#{$minmax}-width: $resolution) {
+      @content;
+    }
+  } @else {
+    @error "Invalid media size: #{$media}. Check your $sizes map.";
+  }
+}
+
+
+//mixin for border radius
+@mixin border-radius($radius, $direction: all, $color: initial) {
+    @if $direction == all {
+      border-radius: $radius;
+      @if $color != initial {
+        background-color: $color; 
+      }
+    } @else if $direction == top {
+      border-top-left-radius: $radius;
+      border-top-right-radius: $radius;
+    } @else if $direction == top-right {
+      border-top-right-radius: $radius;
+    } @else if $direction == right {
+      border-top-right-radius: $radius;
+      border-bottom-right-radius: $radius;
+    } @else if $direction == bottom-right {
+      border-bottom-right-radius: $radius;
+    } @else if $direction == bottom {
+      border-bottom-left-radius: $radius;
+      border-bottom-right-radius: $radius;
+    } @else if $direction == bottom-left {
+      border-bottom-left-radius: $radius;
+    } @else if $direction == left {
+      border-top-left-radius: $radius;
+      border-bottom-left-radius: $radius;
+    } @else if $direction == top-left {
+      border-top-left-radius: $radius;
+    } @else {
+      @error "Invalid direction for border-radius mixin: #{$direction}.";
+    }
+  
+    @if $color != initial {
+      border: 1px solid $color; 
+    }
+};
+  
