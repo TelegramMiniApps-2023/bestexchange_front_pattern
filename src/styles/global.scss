@@ -1,13 +1,13 @@
+@import 'mixins.scss';
 @import "reset.scss";
 @import "variables.scss";
 @import "fonts.scss";
-
 
 * {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  font-family: var(--font-family-main);
+  font-family: var(--font-family-regular);
 }
 
 html {
