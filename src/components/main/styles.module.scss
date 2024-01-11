@@ -1,22 +1,31 @@
 .main {
-  position: relative;
-  &__body {
+  &_resultArrow{
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
   }
 }
 
 .location {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  visibility: hidden;
-  // transform: translateY(-100%);
-  transition: opacity 0.3s ease-in, transform 0.2s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    // transform: translateY(-100%);
+    transition: opacity 0.3s ease-in, transform 0.2s ease-in-out;
 }
 
 .location__active {
-  position: static;
-  opacity: 1;
-  visibility: visible;
-  // transform: translateY(0);
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    // transform: translateY(0);
 }
+
+.resultArrow {
+    display: flex;
+    justify-content: center;
+    margin: -10px;
+  }
+

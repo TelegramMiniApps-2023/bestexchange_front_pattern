@@ -1,26 +1,44 @@
 .filter {
-  display: flex;
-  gap: 50px;
-  border-bottom: 0.5px solid #00000033;
-  overflow-x: scroll;
-  width: 100%;
+    border-bottom: 0.5px solid #00000033;
+    width: 100%;
+    border-radius: 15px;
+    background-color: gray; 
+    padding: 10px;   
 }
-.filter_tab_item{
-  padding-bottom: 10px;
-  text-wrap: nowrap;
-  font-size: 14px;
-  cursor: pointer;
-  font-weight: 500;
-  color: rgba(0, 0, 0, 0.7);
-  transition: translate;
-  transition-property: transform;
-  transition-duration: 300ms;
-  transition-timing-function: ease-in-out;
-}
-.nextTab{
-  cursor: pointer;
+
+.filter_tab_item {
+    display:flex;
+    justify-content: center;
+    text-wrap: nowrap;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.7);
+    transition: translate;
+    transition-property: transform;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+    user-select: none;
+    border-radius: 10px;
+    border:none
 
 }
-.filterWrapper{
-  display: flex;
+.partialTab {
+    width: 50%; 
+    overflow: hidden;
+  }
+.filter_tab_item::last-of-type {
+    border-right: none
+}
+
+.nextTab {
+    cursor: pointer;
+    &Disabled{
+        display: none;
+    }
+
+}
+
+.filterWrapper {
+    display: flex;
 }
