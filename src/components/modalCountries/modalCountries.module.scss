@@ -6,6 +6,6 @@
 }
 
 .countries {
-  max-height: 85vh;
-  overflow-y: scroll;
+  height: calc(100% - 80px);
+  overflow-y: auto;
 }

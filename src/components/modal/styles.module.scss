@@ -1,13 +1,13 @@
 .modal {
   &__body {
+    height: 100%;
   }
   &__filter {
     padding: 20px 0px;
   }
   &__options {
-    max-height: 80vh;
-    // max-height: 100%;
-    overflow-y: scroll;
+    height: calc(100% - 100px);
+    overflow-y: auto;
   }
   &__empty {
     display: flex;
