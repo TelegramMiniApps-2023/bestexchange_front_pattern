@@ -27,7 +27,7 @@ export const CountryCard: FC<CountryCardProps> = ({
         <div>
           <img src={country.icon_url} alt={`Иконка ${country.name}`} />
         </div>
-        <p>{country.name}</p>
+        <h3>{country.name}</h3>
         <i>
           {accordion && (
             <ArrowDown color="#606060" width="25px" height="25px" />

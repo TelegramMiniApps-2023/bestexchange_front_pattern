@@ -1,88 +1,3 @@
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.card {
-  margin-bottom: 15px;
-  padding-bottom: 15px;
-  cursor: pointer;
-  transition: transform 0.15s ease-in;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
-  padding: 15px;
-
-  &:hover {
-    transform: translateX(5px);
-  }
-  &:active {
-    transform: translateX(5px);
-  }
-  &__body {
-  }
-  &__name {
-    font-size: 16px;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.7);
-  }
-  &__info {
-    display: grid;
-    grid-template: 1fr / 1fr minmax(50px, 70px) 1fr;
-    justify-content: space-between;
-    justify-items: center;
-    align-items: center;
-    font-size: 14px;
-    margin: 15px 0px;
-  }
-  &__arrow {
-  }
-}
-.valute {
-  display: grid;
-  grid-template: 1fr / minmax(30px, 40px) 1fr;
-  justify-content: center;
-  align-items: center;
-  &__name {
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.5);
-  }
-  &__img {
-    height: 30px;
-    width: 30px;
-    img {
-      height: 30px;
-      width: 30px;
-    }
-  }
-}
-.range {
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.4);
-  &__count {
-  }
-}
-
-@media (max-width: 367px) {
-  .valute__name {
-    font-weight: 600;
-    font-size: 12px;
-  }
-  .valute__img {
-    height: 25px;
-    width: 25px;
-    img {
-      height: 25px;
-      width: 25px;
-    }
-  }
-}
-
-
-
-
-
-
 .exchangerItem {
   margin-bottom: 15px;
   padding-bottom: 15px;
@@ -95,20 +10,16 @@ a {
   cursor: pointer;
   transition: transform 0.15s ease-in;
 
-  &:hover {
-    transform: translateX(5px);
-  }
-  &:active {
-    transform: translateX(5px);
-  }
+  &:hover {transform: translateX(5px)}
+  &:active {transform: translateX(5px)}
 
-  header {
-    hgroup {
-      h2 {
+  > header {
+    > hgroup {
+      > h2 {
         font-size: 28px;
         font-weight: 600;
       }
-      h3 {
+      > h3 {
         color: rgba(72, 172, 71, 1);
         font-size: 18px;
         text-align: left;
@@ -117,35 +28,28 @@ a {
     }
   }
 
-  hr {
-    margin: 10px 0;
-  }
+  > hr {margin: 10px 0}
 
-  footer {
+  > footer {
     .exchangerRate {
       display: flex;
-      // grid-template: 1fr / 1fr minmax(50px, 70px) 1fr;
       align-items: center;
       padding: 0px;
 
-      p {
+      > p {
         font-size: 20px;
         color: rgba(255, 255, 255, 0.7);
 
-        mark {
+        > mark {
           background: none;
           color: #fff;
           font-weight: 900;
         }
       }
 
-      i {
-        margin: 0px 10px;
-      }
+      > i {margin: 0px 10px}
     }
 
-    span {
-      color: rgba(72, 172, 71, 1);
-    }
+    > span {color: rgba(72, 172, 71, 1)}
   }
 }

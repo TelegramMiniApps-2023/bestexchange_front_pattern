@@ -2,21 +2,19 @@
   margin: 15px 0px;
   position: relative;
 
-  span {
+  > span {
     display: inline;
     position: absolute;
     left: 10px;
     top: 10px;
   }
   
-  input {
+  > input {
     border: none;
     border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
     width: 100%;
     font-size: 14px;
     padding: 10px 10px 10px 40px;
-    &:focus {
-      outline: none;
-    }
+    &:focus {outline: none}
   }
 }

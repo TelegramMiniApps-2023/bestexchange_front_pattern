@@ -9,7 +9,7 @@ export const ResultArrow = (props: ResultArrowProps) => {
   const { isSuccess } = props;
 
   return (
-    <div
+    <section
       className={clsx(styles.arrowResultContainer, {
         [styles.activeResultContainer]: isSuccess,
       })}
@@ -19,6 +19,6 @@ export const ResultArrow = (props: ResultArrowProps) => {
       ) : (
         <IconUp className={styles.arrowIcon} />
       )}
-    </div>
+    </section>
   );
 };
