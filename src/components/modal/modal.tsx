@@ -6,6 +6,7 @@ import { OptionSearch } from "../optionSearch";
 import { Popup } from "../ui/popup";
 import { useFiltersStore } from "../../store/store";
 import styles from "./modal.module.scss";
+import { useTranslation } from "react-i18next";
 
 interface ModalProps {
   options?: Categories;
@@ -21,8 +22,9 @@ export const Modal: FC<ModalProps> = ({
   filter,
 }) => {
   const search = useFiltersStore((state) => state.search);
-  // const setFilter = useFiltersStore((state) => state.setFilter);
 
+  // const setFilter = useFiltersStore((state) => state.setFilter);
+  const { t } = useTranslation();
   const filteredOptions = filter
     ? options?.[filter]?.filter((option) =>
         option.name.toLowerCase().includes(search.toLowerCase())
@@ -37,7 +39,7 @@ export const Modal: FC<ModalProps> = ({
       <section className={styles.valutesPopup}>
         {options && Object.keys(options).length > 0 ? (
           <>
-            <h3>{type === "give" ? "ОТДАЮ" : "ПОЛУЧАЮ"}</h3>
+            <h3>{type === "give" ? t("ОТДАЮ") : t("ПОЛУЧАЮ")}</h3>
             <OptionFilter categories={options} />
             <OptionSearch />
             <ul>
@@ -51,13 +53,13 @@ export const Modal: FC<ModalProps> = ({
                   />
                 ))
               ) : (
-                <p className={styles.empty}>Нет доступных направлений</p>
+                <p className={styles.empty}>{t("Нет доступных направлений")}</p>
               )}
             </ul>
           </>
         ) : (
           <p className={styles.empty}>
-            Для данного направления на данный момент нет доступных валют
+            {t("Для данного направления на данный момент нет доступных валют")}
           </p>
         )}
       </section>
