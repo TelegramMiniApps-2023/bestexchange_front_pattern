@@ -7,12 +7,14 @@ import { LocationSelect } from "../locationSelect";
 import styles from "./main.module.scss";
 import { ResultArrow } from "../resultArrow";
 import { SelectsForm } from "../selectsForm";
+import { useTranslation } from "react-i18next";
+import { LanguageSwitcher } from "../languageSwitcher";
 
 export const Main = memo(() => {
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
   const setGetSelect = useSelectsStore((state) => state.setGetSelect);
-
+  const { i18n } = useTranslation();
   const { location } = useCashStore((state) => state);
 
   const {
@@ -49,6 +51,9 @@ export const Main = memo(() => {
           isFetching={isFetching}
           isLoading={isLoading}
         />
+        <div className={styles.languageSwitcher}>
+          <LanguageSwitcher />
+        </div>
       </div>
     </main>
   );
