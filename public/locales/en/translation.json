@@ -1,0 +1,24 @@
+{
+    "Перевод": "translate",
+    "Отдаю": "Give",
+    "ОТДАЮ": "GIVE",
+    "Получаю": "Get",
+    "ПОЛУЧАЮ": "GET",
+    "Безналичные":"Non-cash",
+    "Наличные": "Cash",
+    "Поиск...": "Search...",
+    "Все": "All",
+    "Выберите валюту": "Select currency",
+    "Выберите страну и город": "Select country and city",
+    "Выбор страны и города": "Select country and city",
+    "Направление недоступно": "Direction unavailable",
+    "Ничего не найдено...": "Nothing found...",
+    "Для данного направления на данный момент нет доступных валют": "There are currently no currencies available for this destination",
+    "Лучшие курсы": "Best courses",
+    "на": "on",
+    "Список пуст... Вы можете выбрать другие параметры": "The list is empty... You can select other options",
+    "Переключить на Русский":"Switch to Russia",
+    "Переключить на Английский":"Switch to Russia"
+
+
+}
