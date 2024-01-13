@@ -10,6 +10,7 @@ import {
 import { useFetchCashCountries } from "../../api/api";
 import { directionTabsValute } from "../../assets/consts";
 import { MockCircle } from "../../assets/icons/mockCircle";
+import { useTranslation } from "react-i18next";
 
 interface LocationSelectProps {}
 
@@ -21,7 +22,7 @@ export const LocationSelect: FC<LocationSelectProps> = () => {
 
   const { location } = useCashStore((state) => state);
   const setSearch = useFiltersStore((state) => state.setSearch);
-
+  const { t, i18n } = useTranslation();
   const { data: countries } = useFetchCashCountries();
   const typeValute = useDirectionTabsStore((state) => state.typeValute);
 
@@ -47,8 +48,16 @@ export const LocationSelect: FC<LocationSelectProps> = () => {
         </div>
         <figcaption>
           {location
-            ? `${location.location.country.name}, ${location.location.city.name}`
-            : "Выберите страну и город"}
+            ? `${
+                i18n.language === "ru"
+                  ? location.location.country.name.ru
+                  : location.location.country.name.en
+              }, ${
+                i18n.language === "ru"
+                  ? location.location.city.name.ru
+                  : location.location.city.name.en
+              }`
+            : t("Выберите страну и город")}
         </figcaption>
       </figure>
       <div className={clsx(styles.modal, { [styles.active]: show })}>

@@ -4,6 +4,7 @@ import { CityCard } from "../cityCard";
 import styles from "./countryCard.module.scss";
 import ArrowDown from "../../assets/icons/ArrowDown";
 import clsx from "clsx";
+import { useTranslation } from "react-i18next";
 
 interface CountryCardProps {
   country: Country;
@@ -18,6 +19,7 @@ export const CountryCard: FC<CountryCardProps> = ({
   accordion,
   setAccordion,
 }) => {
+  const { i18n } = useTranslation();
   return (
     <div className={styles.country}>
       <header
@@ -27,7 +29,7 @@ export const CountryCard: FC<CountryCardProps> = ({
         <div>
           <img src={country.icon_url} alt={`Иконка ${country.name}`} />
         </div>
-        <p>{country.name}</p>
+        <p>{i18n.language === "ru" ? country.name.ru : country.name.en}</p>
         <i>
           {accordion && (
             <ArrowDown color="#606060" width="25px" height="25px" />
