@@ -89,7 +89,7 @@ export const useFetchExchangers = ({ from, to, city }: ReqFetchExchangersDto) =>
 //запрос на получение стран
 export const useFetchCashCountries = () => {
   const fetchExchangers = async () =>
-    (await $host.get<Country[]>(`/api/cash/countries`)).data;
+    (await $host.get<Country[]>(`/api/cash/countries_multi`)).data;
   const queryResult = useQuery({
     queryKey: [countriesKey],
     queryFn: fetchExchangers,
