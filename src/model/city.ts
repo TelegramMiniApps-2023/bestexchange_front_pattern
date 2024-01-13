@@ -1,5 +1,7 @@
+import { Name } from "./country"
+
 export type City = {
     id: number,
-    name: string,
+    name: Name,
     code_name: string
 }
