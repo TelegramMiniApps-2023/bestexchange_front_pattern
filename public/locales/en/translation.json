@@ -18,7 +18,10 @@
     "на": "on",
     "Список пуст... Вы можете выбрать другие параметры": "The list is empty... You can select other options",
     "Переключить на Русский":"Switch to Russia",
-    "Переключить на Английский":"Switch to Russia"
+    "Переключить на Английский":"Switch to Russia",
+    "Онлайн обмен": "Online exchange",
+    "Обмен":"Exchange",
+    "до":"to"
 
 
 }

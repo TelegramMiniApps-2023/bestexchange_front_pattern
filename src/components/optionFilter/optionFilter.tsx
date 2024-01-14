@@ -31,7 +31,7 @@ export const OptionFilter: FC<OptionFilterProps> = memo(({ categories }) => {
         content: category,
       })),
     ],
-    [filteredCategories]
+    [filteredCategories, t]
   );
 
   const handleCategory = (category: string | null) => {
