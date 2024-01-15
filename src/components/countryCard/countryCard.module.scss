@@ -3,7 +3,7 @@
   overflow: hidden;
   position: relative;
   
-  header {
+  > header {
     padding: 20px 10px;
     border-radius: 30px;
     background: rgba(0, 0, 0, 0.1);
@@ -12,19 +12,19 @@
     display: flex;
     align-items: center;
 
-    div {
+    > div {
       width: 30px;
       height: 30px;
       margin-right: 10px;
       
-      img {
+      > img {
         width: 100%;
         height: 100%;
         object-fit: contain;
       }
     }
 
-    p {
+    > h3 {
       max-width: 95%;
       white-space: nowrap;
       overflow: hidden;
@@ -35,7 +35,7 @@
       color: inherit;
     }
 
-    i {
+    > i {
       font-size: 14px;
       position: absolute;
       right: 15px;
@@ -48,7 +48,7 @@
     }
   }
   
-  section {
+  > section {
     overflow: hidden;
     max-height: 0;
     opacity: 0;
@@ -58,6 +58,7 @@
       max-height: 100vh;
       opacity: 1;
       transition: max-height 0.7s ease-out, opacity 0.5s ease-out 0.1s;
+      overflow: auto;
   }
 
   .active_country {

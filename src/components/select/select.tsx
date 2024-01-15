@@ -50,7 +50,7 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
   }, [setFilter, setSearch]);
 
   return (
-    <>
+    <section>
       <SelectCard
         error={error}
         get={get}
@@ -78,6 +78,6 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
           />
         )}
       </div>
-    </>
+    </section>
   );
 });

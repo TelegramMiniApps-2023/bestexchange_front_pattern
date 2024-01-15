@@ -7,7 +7,7 @@
   transition: opacity 0.3s ease-in, transform 0.2s ease-in-out;
   margin-bottom: 20px;  
     
-    figure {
+    > figure {
     border-radius: 30px;
     background: rgba(255, 255, 255, 0.2);
     padding: 20px;
@@ -18,16 +18,16 @@
     display: flex;
     align-items: center;
 
-    div {
+    > div {
       width: 30px;
       height: 30px;
       transform: scale(1.8);
-      img {
+      > img {
         width: 100%;
         height: 100%;
         object-fit: contain;
       }
-      span {
+      > span {
         display: block;
         height: 100%;
         width: 100%;
@@ -35,9 +35,7 @@
         border: 3px solid #fff;
       }
     }
-    figcaption {
-      margin-left: 20px;
-    }
+    > figcaption {margin-left: 20px}
   }
 
   .modal {
