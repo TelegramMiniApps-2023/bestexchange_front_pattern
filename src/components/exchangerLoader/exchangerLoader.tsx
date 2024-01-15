@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { Exchanger } from "../../model/Exchanger";
 import { ExchangersList } from "../exchangersList";
-import { Loader } from "../ui/loader/loader";
+import { Loader } from "../ui/loader";
 import styles from "./exchangerLoader.module.scss";
 import { useTranslation } from "react-i18next";
 type ExchangerLoaderProps = {

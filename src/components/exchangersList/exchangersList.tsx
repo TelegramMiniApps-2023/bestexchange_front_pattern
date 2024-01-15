@@ -16,10 +16,10 @@ export const ExchangersList: FC<ExchangersListProps> = memo(
     const { t } = useTranslation();
     return (
       <section className={styles.exchangersList}>
-        <div className={styles.title}>
+        <h2>
           {t("Лучшие курсы")} {give?.name} {t("на")} {get?.name}
-        </div>
-        <div className={styles.list}>
+        </h2>
+        <div>
           {exchangers &&
             exchangers.map((card) => (
               <ExchangerCard key={card.id} card={card} />

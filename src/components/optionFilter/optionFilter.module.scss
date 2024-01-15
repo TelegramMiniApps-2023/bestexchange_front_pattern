@@ -27,9 +27,7 @@
     width: 50%; 
     overflow: hidden;
   }
-.filter_tab_item::last-of-type {
-    border-right: none
-}
+.filter_tab_item::last-of-type {border-right: none}
 
 .nextTab {
     cursor: pointer;
@@ -39,6 +37,4 @@
 
 }
 
-.filterWrapper {
-    display: flex;
-}
+.filterWrapper {display: flex}
