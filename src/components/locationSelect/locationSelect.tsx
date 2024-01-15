@@ -26,6 +26,15 @@ export const LocationSelect: FC<LocationSelectProps> = () => {
   const { data: countries } = useFetchCashCountries();
   const typeValute = useDirectionTabsStore((state) => state.typeValute);
 
+  const currentCountryName =
+    i18n.language === "ru"
+      ? location?.location.country.name.ru
+      : location?.location.country.name.en;
+  const currentCityName =
+    i18n.language === "ru"
+      ? location?.location.city.name.ru
+      : location?.location.city.name.en;
+
   const handleShowModal = () => {
     handleModal();
     setSearch("");
@@ -48,15 +57,7 @@ export const LocationSelect: FC<LocationSelectProps> = () => {
         </div>
         <figcaption>
           {location
-            ? `${
-                i18n.language === "ru"
-                  ? location.location.country.name.ru
-                  : location.location.country.name.en
-              }, ${
-                i18n.language === "ru"
-                  ? location.location.city.name.ru
-                  : location.location.city.name.en
-              }`
+            ? `${currentCountryName}, ${currentCityName}`
             : t("Выберите страну и город")}
         </figcaption>
       </figure>
