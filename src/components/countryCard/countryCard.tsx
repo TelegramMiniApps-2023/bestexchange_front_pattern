@@ -32,7 +32,7 @@ export const CountryCard: FC<CountryCardProps> = ({
         <h3>{i18n.language === "ru" ? country.name.ru : country.name.en}</h3>
         <i>
           {accordion && (
-            <ArrowDown color="#606060" width="25px" height="25px" />
+            <ArrowDown color="#111111" width="35px" height="35px" />
           )}
         </i>
       </header>

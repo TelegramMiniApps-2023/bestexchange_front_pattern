@@ -6,37 +6,42 @@
   visibility: hidden;
   transition: opacity 0.3s ease-in, transform 0.2s ease-in-out;
   margin-bottom: 20px;  
-    
-    > figure {
-    border-radius: 30px;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 20px;
+
+  > header {
+    padding: 10px;
+    border-radius: 12px;
+    background: #272826;
+    position: relative;
     cursor: pointer;
-    color: #fff;
-    font-weight: 500;
-    font-size: 18px;
     display: flex;
     align-items: center;
+    color: #ffffff;
 
-    > div {
-      width: 30px;
-      height: 30px;
-      transform: scale(1.8);
+      > div {
+          width: 30px;
+          height: 30px;
+          margin-right: 10px;
+
       > img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+          width: 100%;
+          height: 100%;
+          min-width: 30px;
+          min-height: 30px;
+          object-fit: contain;
+        }
       }
-      > span {
-        display: block;
-        height: 100%;
-        width: 100%;
-        border-radius: 50%;
-        border: 3px solid #fff;
+
+      > h3 {
+          max-width: 95%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-size: 18px;
+          font-weight: 400;
+          margin: 0;
+          color: inherit;
       }
     }
-    > figcaption {margin-left: 20px}
-  }
 
   .modal {
     opacity: 0;
