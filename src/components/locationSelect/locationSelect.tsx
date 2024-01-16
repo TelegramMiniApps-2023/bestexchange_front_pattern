@@ -9,7 +9,6 @@ import {
 } from "../../store/store";
 import { useFetchCashCountries } from "../../api/api";
 import { directionTabsValute } from "../../assets/consts";
-import { MockCircle } from "../../assets/icons/mockCircle";
 import { useTranslation } from "react-i18next";
 
 interface LocationSelectProps {}
@@ -46,21 +45,23 @@ export const LocationSelect: FC<LocationSelectProps> = () => {
         [styles.location__active]: typeValute === directionTabsValute[1].value,
       })}
     >
-      <figure onClick={handleShowModal}>
+      <header onClick={handleShowModal}>
         <div>
           {location?.location ? (
-            <img src={location?.location.country.icon_url} />
+            <img
+              src={location?.location.country.icon_url}
+              alt={`Иконка ${location?.location.country.name}`}
+            />
           ) : (
-            <span></span>
-            // <MockCircle /> надо пофиксить потом
+            <img src="/img/empty_select.png" alt={`Иконка`} />
           )}
         </div>
-        <figcaption>
+        <h3>
           {location
             ? `${currentCountryName}, ${currentCityName}`
             : t("Выберите страну и город")}
-        </figcaption>
-      </figure>
+        </h3>
+      </header>
       <div className={clsx(styles.modal, { [styles.active]: show })}>
         {countries && (
           <ModalCountries

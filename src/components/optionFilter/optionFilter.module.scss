@@ -1,9 +1,8 @@
 .filter {
-    border-bottom: 0.5px solid #00000033;
     width: 100%;
-    border-radius: 15px;
-    background-color: gray; 
-    padding: 10px;   
+    border-radius: 12px;
+    background: #585857;
+    padding: 12px;
 }
 
 .filter_tab_item {
@@ -13,7 +12,7 @@
     font-size: 14px;
     cursor: pointer;
     font-weight: 700;
-    color: rgba(0, 0, 0, 0.7);
+    color: #fff;
     transition: translate;
     transition-property: transform;
     transition-duration: 300ms;

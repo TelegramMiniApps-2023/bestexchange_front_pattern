@@ -13,13 +13,13 @@ export const OptionSearch: FC<OptionSearchProps> = memo(() => {
   return (
     <section className={styles.search}>
       <span>
-        <SearchIcon width="20px" height="20px" />
+        <SearchIcon width="30px" height="30px" />
       </span>
       <input
         value={value}
         onChange={(e) => setValue(e.target.value)}
         type="text"
-        placeholder={t("Поиск...")}
+        placeholder={t("Поиск")}
       />
     </section>
   );
