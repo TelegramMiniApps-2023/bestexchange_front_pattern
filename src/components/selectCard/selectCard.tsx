@@ -5,6 +5,7 @@ import { memo } from "react";
 import { Categories } from "../../model/Categories";
 import { directionTabsValute } from "../../assets/consts";
 import { useCashStore } from "../../store/store";
+import { useTranslation } from "react-i18next";
 
 type SelectCardProps = {
   type: "give" | "get";
@@ -26,9 +27,10 @@ export const SelectCard = memo((props: SelectCardProps) => {
     typeValute,
   } = props;
   const { location } = useCashStore((state) => state);
+  const { t } = useTranslation();
   return (
     <section className={styles.select}>
-      <h2>{type === "give" ? "Отдаю" : "Получаю"}</h2>
+      <h2>{type === "give" ? t("Отдаю") : t("Получаю")}</h2>
       <button
         className={clsx({
           [styles.active]:
@@ -49,8 +51,8 @@ export const SelectCard = memo((props: SelectCardProps) => {
             : get && !error
             ? get.name
             : error
-            ? "Направление недоступно"
-            : "Выберите валюту"}
+            ? t("Направление недоступно")
+            : t("Выберите валюту")}
         </p>
       </button>
     </section>

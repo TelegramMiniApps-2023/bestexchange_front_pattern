@@ -5,6 +5,7 @@ import { CountryCard } from "../countryCard";
 import styles from "./modalCountries.module.scss";
 import { OptionSearch } from "../optionSearch";
 import { useFiltersStore } from "../../store/store";
+import { useTranslation } from "react-i18next";
 
 interface ModalCountriesProps {
   handleModal: () => void;
@@ -19,15 +20,26 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
 }) => {
   // cities search
   const search = useFiltersStore((state) => state.search.toLowerCase());
+  const { t, i18n } = useTranslation();
+  const currentLanguage = (country: Country) => {
+    const language =
+      i18n.language === "ru" ? country?.name?.ru : country?.name?.en;
+    return language;
+  };
   const filteredOptions = countries
     .map((country) => {
-      const isCountryMatch = country.name.toLowerCase().includes(search);
+      const isCountryMatch =
+        i18n.language === "ru"
+          ? country?.name?.ru.toLowerCase().includes(search)
+          : country?.name?.en.toLowerCase().includes(search);
       const filteredCountry = {
         ...country,
         cities: isCountryMatch
           ? country.cities
           : country.cities.filter((city) =>
-              city.name.toLowerCase().includes(search)
+              i18n.language === "ru"
+                ? city?.name?.ru.toLowerCase().includes(search)
+                : city?.name?.en.toLowerCase().includes(search)
             ),
       };
       if (isCountryMatch || filteredCountry.cities.length > 0) {
@@ -61,9 +73,9 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
   }, [show]);
 
   return (
-    <Popup closeModal={handleModal}>
+    <Popup closeModal={handleModal} show={show}>
       <section className={styles.countriesPopup}>
-        <h2 className={styles.title}>Выбор страны и города</h2>
+        <h2 className={styles.title}>{t("Выбор страны и города")}</h2>
         <OptionSearch />
         {filteredOptions.length > 0 ? (
           <ul className={styles.countries}>
@@ -81,7 +93,7 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
             )}
           </ul>
         ) : (
-          <p>Ничего не найдено...</p>
+          <p>{t("Ничего не найдено...")}</p>
         )}
       </section>
     </Popup>
