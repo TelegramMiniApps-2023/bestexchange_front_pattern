@@ -76,7 +76,7 @@ export const Preloader: React.FC<ProgressProps> = ({
     to: async (next) => {
       await next({ opacity: 1, strokeWidth: strokeWidth - 15, radius: r });
     },
-    config: { duration: 500 },
+    config: { duration: 300 },
   });
 
   // Анимация для изменения opacity и strokeWidth шара
