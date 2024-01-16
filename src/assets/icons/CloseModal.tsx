@@ -6,7 +6,7 @@ const CloseModal = (props: any) => (
     {...props}
   >
     <path
-      stroke="#000"
+      stroke="#fff"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={2}

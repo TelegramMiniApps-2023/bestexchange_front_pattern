@@ -1,7 +1,7 @@
 // Switch.tsx
 
 import React, { forwardRef, useState } from "react";
-import styles from "./Switch.module.scss";
+import styles from "./switch.module.scss";
 
 export type SwitchChangeEventHandler = (
   checked: boolean,

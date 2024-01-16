@@ -3,7 +3,6 @@ import { FC, memo, useCallback, useEffect, useState } from "react";
 import { ResFetchAvailable, useFetchAvailable } from "../../api/api";
 import { queryClient } from "../../api/queryClient";
 import { availableKey } from "../../assets/consts";
-import { Categories } from "../../model/Categories";
 import {
   useCashStore,
   useDirectionTabsStore,
@@ -13,7 +12,6 @@ import {
 import { Modal } from "../modal/modal";
 import { SelectCard } from "../selectCard";
 import styles from "./select.module.scss";
-import { Options } from "../../model/Options";
 import { useTranslation } from "react-i18next";
 
 interface SelectProps {
@@ -73,6 +71,7 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
             handleModal={handleModal}
             type={type}
             filter={filter}
+            show={show}
           />
         )}
         {type === "get" && (
@@ -81,6 +80,7 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
             handleModal={handleModal}
             type={type}
             filter={filter}
+            show={show}
           />
         )}
       </div>

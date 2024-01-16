@@ -6,7 +6,6 @@ import styles from "./modalCountries.module.scss";
 import { OptionSearch } from "../optionSearch";
 import { useFiltersStore } from "../../store/store";
 import { useTranslation } from "react-i18next";
-import { Name } from "../../model/country";
 
 interface ModalCountriesProps {
   handleModal: () => void;
@@ -74,7 +73,7 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
   }, [show]);
 
   return (
-    <Popup closeModal={handleModal}>
+    <Popup closeModal={handleModal} show={show}>
       <section className={styles.countriesPopup}>
         <h2 className={styles.title}>{t("Выбор страны и города")}</h2>
         <OptionSearch />

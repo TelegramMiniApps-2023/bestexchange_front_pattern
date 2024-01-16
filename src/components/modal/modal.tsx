@@ -13,6 +13,7 @@ interface ModalProps {
   handleModal: () => void;
   type: string;
   filter: string | null;
+  show: boolean;
 }
 
 export const Modal: FC<ModalProps> = ({
@@ -20,6 +21,7 @@ export const Modal: FC<ModalProps> = ({
   handleModal,
   type,
   filter,
+  show,
 }) => {
   const search = useFiltersStore((state) => state.search);
 
@@ -35,7 +37,7 @@ export const Modal: FC<ModalProps> = ({
         )
       );
   return (
-    <Popup closeModal={handleModal}>
+    <Popup closeModal={handleModal} show={show}>
       <section className={styles.valutesPopup}>
         {options && Object.keys(options).length > 0 ? (
           <>
