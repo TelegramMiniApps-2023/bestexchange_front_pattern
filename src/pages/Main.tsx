@@ -19,7 +19,7 @@ export const MainPage = () => {
 
     setTimeout(() => {
       clearInterval(interval);
-    }, 3000);
+    }, 3500);
 
     return () => clearInterval(interval);
   }, []);
