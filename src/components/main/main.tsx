@@ -9,6 +9,7 @@ import { ResultArrow } from "../resultArrow";
 import { SelectsForm } from "../selectsForm";
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "../languageSwitcher";
+import { useSpringRef } from "react-spring";
 
 export const Main = memo(() => {
   const give = useSelectsStore((state) => state.giveSelect);
@@ -16,6 +17,8 @@ export const Main = memo(() => {
   const setGetSelect = useSelectsStore((state) => state.setGetSelect);
   const { i18n } = useTranslation();
   const { location } = useCashStore((state) => state);
+
+  const directionApi = useSpringRef();
 
   const {
     data: exchangers,
