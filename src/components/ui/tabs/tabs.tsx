@@ -15,10 +15,18 @@ type TabsProps = {
   filter?: string | null;
   activeTabIndex?: number;
   offsetX?: number;
+  classNameActiveDirection?: string;
 };
 
 export const Tabs = memo((props: TabsProps) => {
-  const { onTabClick, tabs, filter, classNameTab, classNameTabItem } = props;
+  const {
+    onTabClick,
+    tabs,
+    filter,
+    classNameTab,
+    classNameTabItem,
+    classNameActiveDirection,
+  } = props;
 
   return (
     <div className={clsx(styles.tabs, classNameTab)}>
@@ -29,6 +37,7 @@ export const Tabs = memo((props: TabsProps) => {
           tab={tab}
           filter={filter}
           key={tab.value}
+          classNameActiveDirection={classNameActiveDirection}
         />
       ))}
     </div>

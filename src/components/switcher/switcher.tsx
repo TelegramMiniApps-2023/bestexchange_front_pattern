@@ -21,7 +21,7 @@ export const Switcher: FC<SwitcherProps> = ({ refetch, give, get }) => {
       <ChangeIcon
         width="40px"
         height="40px"
-        fill={get ? "#00ff85" : "#606060"}
+        fill={get ? "#3CAE6A" : "#585857"}
         onClick={() => {
           get && give && handleSwitch();
         }}
