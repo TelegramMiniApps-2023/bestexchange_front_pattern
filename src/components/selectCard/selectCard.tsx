@@ -33,37 +33,39 @@ export const SelectCard = memo((props: SelectCardProps) => {
       <h2 className={clsx({ [styles.active_select]: give || get })}>
         {type === "give" ? t("Отдаю") : t("Получаю")}
       </h2>
-      <section
-        className={clsx({
-          [styles.active]:
-            (!give && type === "get") ||
-            (!availableDirection && type === "give") ||
-            (error && type === "get") ||
-            (!location && typeValute === directionTabsValute[1].value),
-          [styles.selected]:
-            (type === "give" && give) || (type === "get" && get),
-        })}
-        onClick={() => {
-          handleModal();
-        }}
-      >
-        <header>
-          <div>
-            {type === "give" && give ? (
-              <img src={give.icon_url} alt={`Иконка ${give.name}`} />
-            ) : get && !error ? (
-              <img src={get.icon_url} alt={`Иконка ${get.name}`} />
-            ) : (
-              <img src="/img/empty_select.png" alt={`Иконка`} />
-            )}
-          </div>
+      <section>
+        <header
+          onClick={() => {
+            handleModal();
+          }}
+          className={clsx({
+            [styles.empty]:
+              (!give && type === "get") ||
+              (!availableDirection && type === "give") ||
+              (error && type === "get") ||
+              (!location && typeValute === directionTabsValute[1].value),
+            [styles.selected]:
+              (type === "give" && give) || (type === "get" && get),
+          })}
+        >
+          {
+            <div>
+              {type === "give" && give ? (
+                <img src={give.icon_url} alt={`Иконка ${give.name}`} />
+              ) : get && !error ? (
+                <img src={get.icon_url} alt={`Иконка ${get.name}`} />
+              ) : (
+                <img src="/img/empty_select.png" alt={`Иконка`} />
+              )}
+            </div>
+          }
           <h3>
             {type === "give" && give
               ? give.name
               : get && !error
               ? get.name
               : error
-              ? t("Направление недоступно")
+              ? t("Недоступно")
               : t("Выберите валюту")}
           </h3>
         </header>

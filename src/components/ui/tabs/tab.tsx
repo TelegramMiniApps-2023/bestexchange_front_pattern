@@ -10,15 +10,24 @@ type TabsItemProps = {
   filter?: string | null;
   ref?: HTMLDivElement;
   offsetX?: number;
+  classNameActiveDirection?: string;
 };
 export const Tab = memo(
   forwardRef((props: TabsItemProps) => {
-    const { classNameTabItem, onTabClick, tab, filter, offsetX } = props;
+    const {
+      classNameTabItem,
+      classNameActiveDirection,
+      onTabClick,
+      tab,
+      filter,
+      offsetX,
+    } = props;
     return (
       <div
         style={{ transform: `translateX(${offsetX}px)` }}
         className={clsx(classNameTabItem, {
-          [styles.active]: filter === tab.value,
+          [classNameActiveDirection ? classNameActiveDirection : styles.active]:
+            filter === tab.value,
         })}
         onClick={() => onTabClick(tab)}
         key={tab.content}

@@ -5,17 +5,23 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease-in, transform 0.2s ease-in-out;
-  margin-bottom: 20px;  
+  margin-bottom: 20px;
+
+  &.location__active {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+  }
 
   > header {
-    padding: 10px;
-    border-radius: 12px;
-    background: #272826;
-    position: relative;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    color: #ffffff;
+     padding: 10px;
+     border-radius: 12px;
+     background: #272826;
+     position: relative;
+     cursor: pointer;
+     display: flex;
+     align-items: center;
+     color: #ffffff;
 
       > div {
           width: 30px;
@@ -52,10 +58,4 @@
     opacity: 1;
     visibility: visible;
   }
-}
-
-.location__active {
-  position: static;
-  opacity: 1;
-  visibility: visible;
 }

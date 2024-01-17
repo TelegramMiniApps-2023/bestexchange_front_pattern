@@ -55,6 +55,7 @@ export const DirectionTabs = memo(() => {
         filter={typeValute}
         classNameTab={styles.direction_tabs}
         classNameTabItem={styles.direction_tabs_item}
+        classNameActiveDirection={styles.active_direction}
       />
     </section>
   );
