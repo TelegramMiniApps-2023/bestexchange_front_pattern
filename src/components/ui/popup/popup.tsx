@@ -25,7 +25,7 @@ export const Popup = (props: PopupProps) => {
   return (
     <section className={styles.modal}>
       <i>
-        <CloseModal width="20px" height="20px" onClick={closeModal} />
+        <CloseModal width="25px" height="25px" onClick={closeModal} />
       </i>
       {children}
     </section>

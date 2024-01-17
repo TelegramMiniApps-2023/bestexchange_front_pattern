@@ -6,7 +6,7 @@ const SearchIcon = (props: any) => (
     {...props}
   >
     <path
-      stroke="#000"
+      stroke="#585857"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={2}

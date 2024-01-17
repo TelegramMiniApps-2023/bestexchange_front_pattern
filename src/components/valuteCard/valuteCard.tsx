@@ -44,13 +44,17 @@ export const ValuteCard: FC<ValuteCardProps> = memo(
 
     return (
       <li className={styles.valute} onClick={() => handleChangeDirection()}>
-        <figure>
-          <img src={option.icon_url} alt="icon" />
-        </figure>
-        <section>
-          <h3>{option.name}</h3>
-          <h4>{option.code_name}</h4>
-        </section>
+        <header>
+          <div>
+            <img src={option.icon_url} alt={`Иконка ${option.name}`} />
+          </div>
+          <h3>
+            {option.name}
+            <span className={styles.code}>
+              {option.code_name.toUpperCase()}
+            </span>
+          </h3>
+        </header>
       </li>
     );
   }

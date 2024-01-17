@@ -1,20 +1,33 @@
 .search {
-  margin: 15px 0px;
+  margin: 18px 0px;
   position: relative;
+  border: 1px solid #000;
+  border-radius: 12px;
+  padding: 10px 10px 10px 50px;
+  background: #111111;
+  width: 100%;
+  font-size: 18px;
+  color: #585857;
 
   > span {
-    display: inline;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
+    top: 50%;
     left: 10px;
-    top: 10px;
+    transform: translate(0, -50%);
   }
   
   > input {
     border: none;
-    border-bottom: 0.5px solid rgba(0, 0, 0, 0.2);
+    background: transparent;
+    color: #fff;
     width: 100%;
-    font-size: 14px;
-    padding: 10px 10px 10px 40px;
-    &:focus {outline: none}
+    font-size: inherit;
+
+    &:focus {
+      outline: none;
+    }
   }
 }
