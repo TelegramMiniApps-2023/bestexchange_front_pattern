@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Options } from "../../model/Options";
 import { useSelectsStore } from "../../store/store";
 import ChangeIcon from "../../assets/icons/ChangeIcon";
-import styles from "./switcher.module.css";
+import styles from "./switcher.module.scss";
 
 interface SwitcherProps {
   refetch: () => void;

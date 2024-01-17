@@ -1,0 +1,12 @@
+.languageSwitcher{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: var(--border-radius-m);
+  background-color: var(--secondary-color);
+  width: 400px;
+  height: 44px;
+  padding: 8px;
+  color:var(--text-color);
+  
+}

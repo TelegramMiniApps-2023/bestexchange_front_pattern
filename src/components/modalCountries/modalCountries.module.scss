@@ -1,19 +1,19 @@
 .countriesPopup {
   height: 100%;
   
-  h2 {
+  > h2 {
     font-size: 20px;
-    color: rgba(72, 172, 71, 1);
+    color: #2FAC66;
     margin-bottom: 15px;
     font-weight: 500;
   } 
   
-  ul {
-  height: calc(100% - 80px);
-  overflow-y: auto;
+  > ul {
+    height: calc(100% - 80px);
+    overflow-y: auto;
   }
 
-  p {
+  > p {
     display: flex;
     justify-content: center;
     align-items: center;

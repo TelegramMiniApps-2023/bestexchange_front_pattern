@@ -6,10 +6,10 @@ const CloseModal = (props: any) => (
     {...props}
   >
     <path
-      stroke="#000"
+      stroke="#2FAC66"
       strokeLinecap="round"
       strokeLinejoin="round"
-      strokeWidth={2}
+      strokeWidth={3}
       d="m21 21-9-9m0 0L3 3m9 9 9-9m-9 9-9 9"
     />
   </svg>

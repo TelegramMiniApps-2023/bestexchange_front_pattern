@@ -5,6 +5,7 @@ import { memo } from "react";
 import { Categories } from "../../model/Categories";
 import { directionTabsValute } from "../../assets/consts";
 import { useCashStore } from "../../store/store";
+import { useTranslation } from "react-i18next";
 
 type SelectCardProps = {
   type: "give" | "get";
@@ -26,10 +27,13 @@ export const SelectCard = memo((props: SelectCardProps) => {
     typeValute,
   } = props;
   const { location } = useCashStore((state) => state);
+  const { t } = useTranslation();
   return (
     <section className={styles.select}>
-      <h2>{type === "give" ? "Отдаю" : "Получаю"}</h2>
-      <button
+      <h2 className={clsx({ [styles.active_select]: give || get })}>
+        {type === "give" ? t("Отдаю") : t("Получаю")}
+      </h2>
+      <section
         className={clsx({
           [styles.active]:
             (!give && type === "get") ||
@@ -43,16 +47,27 @@ export const SelectCard = memo((props: SelectCardProps) => {
           handleModal();
         }}
       >
-        <p>
-          {type === "give" && give
-            ? give.name
-            : get && !error
-            ? get.name
-            : error
-            ? "Направление недоступно"
-            : "Выберите валюту"}
-        </p>
-      </button>
+        <header>
+          <div>
+            {type === "give" && give ? (
+              <img src={give.icon_url} alt={`Иконка ${give.name}`} />
+            ) : get && !error ? (
+              <img src={get.icon_url} alt={`Иконка ${get.name}`} />
+            ) : (
+              <img src="/img/empty_select.png" alt={`Иконка`} />
+            )}
+          </div>
+          <h3>
+            {type === "give" && give
+              ? give.name
+              : get && !error
+              ? get.name
+              : error
+              ? t("Направление недоступно")
+              : t("Выберите валюту")}
+          </h3>
+        </header>
+      </section>
     </section>
   );
 });

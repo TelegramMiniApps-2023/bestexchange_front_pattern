@@ -8,6 +8,7 @@ import { useFiltersStore } from "../../store/store";
 import { TabsItem } from "../ui/tabs/tabs";
 import styles from "./optionFilter.module.scss";
 import { Tab } from "../ui/tabs/tab";
+import { useTranslation } from "react-i18next";
 interface OptionFilterProps {
   categories: Categories;
 }
@@ -21,16 +22,16 @@ export const OptionFilter: FC<OptionFilterProps> = memo(({ categories }) => {
       option.name.toLowerCase().includes(search.toLowerCase())
     )
   );
-
+  const { t } = useTranslation();
   const tabsItem: TabsItem[] = useMemo(
     () => [
-      { value: null, content: "Все" },
+      { value: null, content: t("Все") },
       ...filteredCategories.map((category) => ({
         value: category,
         content: category,
       })),
     ],
-    [filteredCategories]
+    [filteredCategories, t]
   );
 
   const handleCategory = (category: string | null) => {
@@ -64,6 +65,7 @@ export const OptionFilter: FC<OptionFilterProps> = memo(({ categories }) => {
       className={styles.filter}
       tabbed={false}
       slidesToShow={2}
+      disableEdgeSwiping={true}
     >
       {tabsItem.map((tab) => (
         <Tab

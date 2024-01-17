@@ -1,4 +1,4 @@
-import { memo, useCallback } from "react";
+import { memo, useCallback, useMemo } from "react";
 import { directionTabsValute, exchangersKey } from "../../assets/consts";
 import {
   useCashStore,
@@ -9,11 +9,24 @@ import { Tabs } from "../ui/tabs";
 import styles from "./directionTabs.module.scss";
 import { TabsItem } from "../ui/tabs/tabs";
 import { useQueryClient } from "react-query";
+import { useTranslation } from "react-i18next";
 
 export const DirectionTabs = memo(() => {
-  const valuteTypeTabs = directionTabsValute;
   const { setTypeValute, typeValute } = useDirectionTabsStore((state) => state);
-
+  const { t } = useTranslation();
+  const directionTabs = useMemo<TabsItem[]>(
+    () => [
+      {
+        content: t(`${directionTabsValute[0].content}`),
+        value: directionTabsValute[0].value,
+      },
+      {
+        content: t(`${directionTabsValute[1].content}`),
+        value: directionTabsValute[1].value,
+      },
+    ],
+    [t]
+  );
   const { setGetSelect, setGiveSelect } = useSelectsStore((state) => state);
   const { setLocation } = useCashStore((state) => state);
 
@@ -37,7 +50,7 @@ export const DirectionTabs = memo(() => {
   return (
     <section className={styles.direction_wrapper}>
       <Tabs
-        tabs={valuteTypeTabs}
+        tabs={directionTabs}
         onTabClick={onTabClick}
         filter={typeValute}
         classNameTab={styles.direction_tabs}

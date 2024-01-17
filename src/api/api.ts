@@ -17,16 +17,20 @@ type ReqFetchAvailableDto = {
   base: string | undefined;
   city?: string;
 };
+export type ResFetchAvailable = {
+  ru: Categories;
+  en: Categories
+}
 // todo добавить что бы не было много запрос в случае ошибки 
 
 //запрос на получение доступных направлений
 export const useFetchAvailable = ({ base = "all", city }: ReqFetchAvailableDto) => {
 
   const apiUrl = city
-    ? `/api/available_valutes?city=${city}&base=${base}`
-    : `/api/available_valutes?base=${base}`;
+    ? `/api/available_valutes_multi?city=${city}&base=${base}`
+    : `/api/available_valutes_multi?base=${base}`;
   const fetchAvailable = async () =>
-    (await $host.get<Categories>(apiUrl))
+    (await $host.get<ResFetchAvailable>(apiUrl))
       .data;
 
   const queryResult = useQuery({
@@ -89,7 +93,7 @@ export const useFetchExchangers = ({ from, to, city }: ReqFetchExchangersDto) =>
 //запрос на получение стран
 export const useFetchCashCountries = () => {
   const fetchExchangers = async () =>
-    (await $host.get<Country[]>(`/api/cash/countries`)).data;
+    (await $host.get<Country[]>(`/api/cash/countries_multi`)).data;
   const queryResult = useQuery({
     queryKey: [countriesKey],
     queryFn: fetchExchangers,

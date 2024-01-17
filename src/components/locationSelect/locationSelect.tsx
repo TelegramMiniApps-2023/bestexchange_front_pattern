@@ -9,7 +9,7 @@ import {
 } from "../../store/store";
 import { useFetchCashCountries } from "../../api/api";
 import { directionTabsValute } from "../../assets/consts";
-import { MockCircle } from "../../assets/icons/mockCircle";
+import { useTranslation } from "react-i18next";
 
 interface LocationSelectProps {}
 
@@ -21,9 +21,18 @@ export const LocationSelect: FC<LocationSelectProps> = () => {
 
   const { location } = useCashStore((state) => state);
   const setSearch = useFiltersStore((state) => state.setSearch);
-
+  const { t, i18n } = useTranslation();
   const { data: countries } = useFetchCashCountries();
   const typeValute = useDirectionTabsStore((state) => state.typeValute);
+
+  const currentCountryName =
+    i18n.language === "ru"
+      ? location?.location.country.name.ru
+      : location?.location.country.name.en;
+  const currentCityName =
+    i18n.language === "ru"
+      ? location?.location.city.name.ru
+      : location?.location.city.name.en;
 
   const handleShowModal = () => {
     handleModal();
@@ -36,21 +45,23 @@ export const LocationSelect: FC<LocationSelectProps> = () => {
         [styles.location__active]: typeValute === directionTabsValute[1].value,
       })}
     >
-      <figure onClick={handleShowModal}>
+      <header onClick={handleShowModal}>
         <div>
           {location?.location ? (
-            <img src={location?.location.country.icon_url} />
+            <img
+              src={location?.location.country.icon_url}
+              alt={`Иконка ${location?.location.country.name}`}
+            />
           ) : (
-            <span></span>
-            // <MockCircle /> надо пофиксить потом
+            <img src="/img/empty_select.png" alt={`Иконка`} />
           )}
         </div>
-        <figcaption>
+        <h3>
           {location
-            ? `${location.location.country.name}, ${location.location.city.name}`
-            : "Выберите страну и город"}
-        </figcaption>
-      </figure>
+            ? `${currentCountryName}, ${currentCityName}`
+            : t("Выберите страну и город")}
+        </h3>
+      </header>
       <div className={clsx(styles.modal, { [styles.active]: show })}>
         {countries && (
           <ModalCountries
