@@ -22,17 +22,17 @@ export const ExchangerCard: FC<ExchangerCardProps> = ({ card }) => {
       </header>
       <hr />
       <footer>
-        <div className={styles.exchangerRate}>
-          <p>
-            <mark>{card.in_count}</mark> {card.valute_from}
-          </p>
-          <i className={styles.arrow}>
-            <ArrowRight />
-          </i>
-          <p>
-            {card.out_count} {card.valute_to}
-          </p>
-        </div>
+        <hgroup>
+          <h2>
+            {card.in_count} <span>{card.valute_from}</span>
+            <i>
+              <ArrowRight />
+            </i>
+          </h2>
+          <h2>
+            {card.out_count} <span>{card.valute_to}</span>
+          </h2>
+        </hgroup>
         <span>
           {t("Обмен")} {card.min_amount} {t("до")} {card.max_amount}
         </span>
