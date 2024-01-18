@@ -38,7 +38,7 @@ export const DirectionTabs = memo(() => {
       clearExchangers();
       setTypeValute(tab.value!);
     },
-    [setTypeValute]
+    [setGetSelect, setGiveSelect, setLocation, setTypeValute]
   );
 
   // clear exchangers data
@@ -60,6 +60,7 @@ export const DirectionTabs = memo(() => {
           to: { opacity: 1, transform: "translateY(0)" },
           config: { tension: 300, friction: 50 },
         }}
+        classNameActiveDirection={styles.active_direction}
       />
     </section>
   );
