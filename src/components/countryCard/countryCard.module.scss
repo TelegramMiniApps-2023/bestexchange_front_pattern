@@ -12,6 +12,14 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    transition: all 0.2s ease-in;
+
+    &:hover {
+      transform: scale(0.99);
+    }
+    &:active{
+      transform: scale(0.99);
+    }
 
     > div {
       width: 50px;
@@ -64,8 +72,8 @@
   }
 
   .active_country {
-    background: #2FAC66;
+    background: linear-gradient(0deg, #026B45 0%, #3CAE6A 109%);
     color: #111111;
-    border: 1px solid #6beea4;
+    border: 1px solid #2FAC66;
   }
 }

@@ -12,11 +12,14 @@
     text-overflow: ellipsis;
     font-size: 18px;
     font-weight: 500;
+    transition: all 0.1s ease-in;
+
+    &:hover {
+      transform: scale(0.99);
+    }
 
     &:active {
-      background: #2FAC66;
-      color: #111111;
-      border: 1px solid #6beea4;
+      transform: scale(0.99);
     }
   }
 }

@@ -22,6 +22,7 @@ type TabsProps = {
     to?: Record<string, unknown>;
     config?: Record<string, unknown>;
   };
+  classNameActiveDirection?: string;
 };
 
 export const Tabs = memo((props: TabsProps) => {
@@ -32,6 +33,7 @@ export const Tabs = memo((props: TabsProps) => {
     classNameTab,
     classNameTabItem,
     animationProps,
+    classNameActiveDirection,
   } = props;
 
   const trail = useTrail(tabs.length, {
@@ -48,6 +50,7 @@ export const Tabs = memo((props: TabsProps) => {
             tab={tabs[index]}
             filter={filter}
             key={tabs[index].value}
+            classNameActiveDirection={classNameActiveDirection}
           />
         </animated.div>
       ))}

@@ -1,9 +1,8 @@
 .exchangerItem {
   margin-bottom: 15px;
-  padding-bottom: 15px;
   cursor: pointer;
   transition: transform 0.15s ease-in;
-  background: rgba(255, 255, 255, 0.15);
+  background: #272826;
   border-radius: 30px;
   padding: 20px;
   color: #fff;
@@ -14,42 +13,47 @@
   &:active {transform: translateX(5px)}
 
   > header {
+    position: relative;
     > hgroup {
-      > h2 {
-        font-size: 28px;
-        font-weight: 600;
+      > h2 {font-size: 20px; font-weight: 600;
       }
       > h3 {
-        color: rgba(72, 172, 71, 1);
-        font-size: 18px;
+        color: #3CAE6A;
+        font-size: 14px;
         text-align: left;
         margin: 0;
       }
     }
   }
 
-  > hr {margin: 10px 0}
-
-  > footer {
-    .exchangerRate {
-      display: flex;
-      align-items: center;
-      padding: 0px;
-
-      > p {
-        font-size: 20px;
-        color: rgba(255, 255, 255, 0.7);
-
-        > mark {
-          background: none;
-          color: #fff;
-          font-weight: 900;
-        }
+  > hr {
+        margin: 10px -20px;
+        border-color: #585857;
       }
 
-      > i {margin: 0px 10px}
+  > footer {
+    > hgroup {
+      display: flex;
+      align-items: center;
+
+      > h2 {
+        font-size: 20px;
+        color: #ffffff;
+        position: relative;
+        padding-right: 55px;
+
+        > span {color: rgba(255, 255, 255, 0.7); font-size: 18px;
+        }
+        > i {
+          position: absolute;
+          right: 0;
+          top: 40%;
+          transform: translate(0, -40%);
+          margin: 0px 10px;
+        }
+      }
     }
 
-    > span {color: rgba(72, 172, 71, 1)}
+    > span {font-size: 14px; color: #3CAE6A}
   }
 }
