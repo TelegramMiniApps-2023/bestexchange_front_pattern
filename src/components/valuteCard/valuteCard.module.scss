@@ -15,14 +15,10 @@
     transition: all 0.2s ease-in;
 
     &:hover {
-      background: #3CAE6A;
-      color: #111111;
-      border: 1px solid #6beea4;
+      transform: scale(0.98);
     }
     &:active{
-      background: #3CAE6A;
-      color: #111111;
-      border: 1px solid #6beea4;
+      transform: scale(0.98);
     }
 
     > div {

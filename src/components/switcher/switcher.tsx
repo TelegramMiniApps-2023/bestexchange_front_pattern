@@ -3,6 +3,7 @@ import { Options } from "../../model/Options";
 import { useSelectsStore } from "../../store/store";
 import ChangeIcon from "../../assets/icons/ChangeIcon";
 import styles from "./switcher.module.scss";
+import clsx from "clsx";
 
 interface SwitcherProps {
   refetch: () => void;
@@ -17,15 +18,22 @@ export const Switcher: FC<SwitcherProps> = ({ refetch, give, get }) => {
     await refetch();
   };
   return (
-    <i className={styles.switcher__icon}>
-      <ChangeIcon
-        width="40px"
-        height="40px"
-        fill={get ? "#3CAE6A" : "#585857"}
+    <i
+      className={clsx(styles.switcher__icon, {
+        [styles.active]: get,
+      })}
+    >
+      <span
         onClick={() => {
           get && give && handleSwitch();
         }}
-      />
+      >
+        <ChangeIcon
+          width="30px"
+          height="30px"
+          fill={get ? "#272826 " : "#272826"}
+        />
+      </span>
     </i>
   );
 };
