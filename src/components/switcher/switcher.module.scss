@@ -1,46 +1,28 @@
 .switcher__icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 35px 0px;
-    position: relative;
+    padding: 35px 0px; position: relative;
+    display: flex; justify-content: center; align-items: center;
 
     > span {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: flex; justify-content: center; align-items: center;
       z-index: 2;
     }
 
     &::before {
       content: " ";
-      position: absolute;
-      top: 50%;
-      left: 50%;
+      padding: 22.5px; position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      border-radius: 50%;
-      padding: 22.5px;
-      background: #585857;
+      background: #585857; border-radius: 50%;
     }
 
     &::after {
       content: " ";
-      position: absolute;
-      top: 50%;
-      left: 50%;
+      padding: 2px; width: 100%; position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      width: 100%;
-      padding: 2px;
-      background: #585857;
-      border-radius: 5px;
+      background: #585857; border-radius: 5px;
     }
 
     &.active {
-      &::before {
-        background: #3CAE6A;
-      }
-      &::after {
-        background: #3CAE6A;
-      }
+      &::before {background: #3CAE6A;}
+      &::after {background: #3CAE6A;}
     }
 }
