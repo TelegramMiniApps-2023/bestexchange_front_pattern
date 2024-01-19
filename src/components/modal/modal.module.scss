@@ -2,25 +2,15 @@
     height: 100%;
 
     > h3 {
-      font-weight: 600;
-        margin-bottom: 15px;
-        font-weight: 600;
-        font-size: 20px;
-        color: #3CAE6A
+      color: #3CAE6A; font-size: 20px; font-weight: 600;
+      margin-bottom: 15px;
     }
   
-    > ul {
-      height: calc(100% - 150px);
-      overflow-y: auto;
-    }
+    > ul {height: calc(100% - 150px); overflow-y: auto;}
     
   .empty {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-size: 16px;
-    color: #909090;
-    margin-top: 30px;
+    color: #909090; font-size: 16px;
+    margin-top: 30px; 
+    display: flex; justify-content: center; align-items: center; flex-direction: column;
   }
 }

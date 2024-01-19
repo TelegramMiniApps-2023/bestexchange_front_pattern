@@ -1,25 +1,9 @@
 .city {
   > h3 {
-    padding: 15px 20px;
-    border-radius: 40px;
-    background: #585857;
-    position: relative;
-    cursor: pointer;
-    margin-top: 5px;
-    color: #fff;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 18px;
-    font-weight: 500;
+    color: #fff; font-size: 18px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap;
+    padding: 15px 20px; margin-top: 5px; position: relative; overflow: hidden;
+    background: #585857; border-radius: 40px;
+
     transition: all 0.1s ease-in;
-
-    &:hover {
-      transform: scale(0.99);
-    }
-
-    &:active {
-      transform: scale(0.99);
-    }
   }
 }
