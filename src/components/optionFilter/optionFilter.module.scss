@@ -10,7 +10,6 @@
     justify-content: center;
     text-wrap: nowrap;
     font-size: 14px;
-    cursor: pointer;
     font-weight: 700;
     color: #fff;
     // transition: translate;
@@ -30,7 +29,6 @@
 .filter_tab_item::last-of-type {border-right: none}
 
 .nextTab {
-    cursor: pointer;
     &Disabled{
         display: none;
     }
