@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { Popup } from "../ui/popup";
 import { Country } from "../../model";
 import { CountryCard } from "../countryCard";
@@ -67,9 +67,14 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
     });
   };
 
+  const ulRef = useRef<HTMLUListElement | null>(null);
+
   // clear accordions when modal closed
   useEffect(() => {
     setAccordionStates({});
+    if (ulRef.current && show) {
+      ulRef.current.scrollTop = 0;
+    }
   }, [show]);
 
   return (
@@ -78,7 +83,7 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
         <h2 className={styles.title}>{t("Выбор страны и города")}</h2>
         <OptionSearch />
         {filteredOptions.length > 0 ? (
-          <ul className={styles.countries}>
+          <ul className={styles.countries} ref={ulRef}>
             {filteredOptions.map(
               (country) =>
                 country && (

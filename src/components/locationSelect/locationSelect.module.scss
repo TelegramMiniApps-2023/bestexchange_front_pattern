@@ -10,7 +10,6 @@
       padding: 10px; position: relative;
       background: #272826; border-radius: 12px;  
       display: flex; align-items: center;
-     
 
       > figure {
         margin-right: 10px; width: 30px; height: 30px;
@@ -28,6 +27,8 @@
   .modal {
     opacity: 0; visibility: hidden;
     transition: all 0.3s ease;
+    z-index: 999;
+    position: relative;
   }
   .active {opacity: 1; visibility: visible;}
 }
