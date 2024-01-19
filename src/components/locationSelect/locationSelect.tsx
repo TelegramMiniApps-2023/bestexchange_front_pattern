@@ -46,7 +46,7 @@ export const LocationSelect: FC<LocationSelectProps> = () => {
       })}
     >
       <header onClick={handleShowModal}>
-        <div>
+        <figure>
           {location?.location ? (
             <img
               src={location?.location.country.icon_url}
@@ -55,7 +55,7 @@ export const LocationSelect: FC<LocationSelectProps> = () => {
           ) : (
             <img src="/img/empty_select.png" alt={`Иконка`} />
           )}
-        </div>
+        </figure>
         <h3>
           {location
             ? `${currentCountryName}, ${currentCityName}`

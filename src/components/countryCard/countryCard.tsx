@@ -26,9 +26,9 @@ export const CountryCard: FC<CountryCardProps> = ({
         className={clsx({ [styles.active_country]: accordion })}
         onClick={() => setAccordion(country.id)}
       >
-        <div>
+        <figure>
           <img src={country.icon_url} alt={`Иконка ${country.name}`} />
-        </div>
+        </figure>
         <h3>{i18n.language === "ru" ? country.name.ru : country.name.en}</h3>
         <i>
           {accordion && (

@@ -49,7 +49,7 @@ export const SelectCard = memo((props: SelectCardProps) => {
           })}
         >
           {
-            <div>
+            <figure>
               {type === "give" && give ? (
                 <img src={give.icon_url} alt={`Иконка ${give.name}`} />
               ) : get && !error ? (
@@ -57,7 +57,7 @@ export const SelectCard = memo((props: SelectCardProps) => {
               ) : (
                 <img src="/img/empty_select.png" alt={`Иконка`} />
               )}
-            </div>
+            </figure>
           }
           <h3>
             {type === "give" && give
