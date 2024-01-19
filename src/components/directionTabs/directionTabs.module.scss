@@ -1,22 +1,13 @@
 .direction_tabs {
-  margin: 0 auto;
-  padding-top: 50px;
-  margin-bottom: 20px;
-  display: grid;
-  gap: 10px;
-  grid-template: 1fr / 1fr 1fr;
+  margin: 0 auto; padding-top: 50px; margin-bottom: 20px;
+  display: grid; gap: 10px; grid-template: 1fr / 1fr 1fr;
 }
 .direction_tabs_item {
-  background: #585857;
-  color: #ffffff;
-  border-radius: 25px;
+  color: #ffffff; font-size: 20px; text-align: center;
   padding: 20px;
-  font-size: 20px;
-  text-align: center;
-  cursor: pointer;
+  background: #585857; border-radius: 25px;
 }
 .active_direction {
-  background: linear-gradient(0deg, #026B45 0%, #3CAE6A 109%);
-  border: 1px solid #2FAC66;
   color: #111111;
+  background: linear-gradient(0deg, #026B45 0%, #3CAE6A 109%); border: 1px solid #2FAC66;
 }

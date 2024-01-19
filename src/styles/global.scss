@@ -1,4 +1,4 @@
-@import 'mixins.scss';
+@import "mixins.scss";
 @import "reset.scss";
 @import "variables.scss";
 @import "fonts.scss";
@@ -22,7 +22,7 @@ body {
   background: #1a1a1a;
   height: 100%;
   width: 100vw;
-  min-height: 100dvh;
+  min-height: 100vh;
   max-width: 500px;
   margin: 0 auto;
   color: #303030;
