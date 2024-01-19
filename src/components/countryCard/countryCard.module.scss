@@ -5,12 +5,8 @@
   > header {
     padding: 10px; position: relative;
     background: #585857; border-radius: 40px;
-
     display: flex; align-items: center;
     transition: all 0.2s ease-in;
-
-    &:hover {transform: scale(0.99)}
-    &:active{transform: scale(0.99)}
 
     > figure {
       margin-right: 7px; width: 50px; height: 50px;
@@ -34,7 +30,7 @@
   > section {max-height: 0; overflow: hidden; opacity: 0;}
 
   .active {
-    max-height: 100vh; overflow: auto; opacity: 1;  
+    max-height: 200vh; overflow: auto; opacity: 1;  
     transition: max-height 0.7s ease-out, opacity 0.5s ease-out 0.1s;
   }
 

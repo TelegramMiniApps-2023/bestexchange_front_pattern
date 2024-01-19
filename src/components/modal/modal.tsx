@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useRef } from "react";
 import { Categories } from "../../model/Categories";
 import { ValuteCard } from "../valuteCard";
 import { OptionFilter } from "../optionFilter";
@@ -36,6 +36,14 @@ export const Modal: FC<ModalProps> = ({
           option.name.toLowerCase().includes(search.toLowerCase())
         )
       );
+
+  // scrollToTop
+  const ulRef = useRef<HTMLUListElement | null>(null);
+  useEffect(() => {
+    if (ulRef.current && show) {
+      ulRef.current.scrollTop = 0;
+    }
+  }, [show]);
   return (
     <Popup closeModal={handleModal} show={show}>
       <section className={styles.valutesPopup}>
@@ -44,7 +52,7 @@ export const Modal: FC<ModalProps> = ({
             <h3>{type === "give" ? t("ОТДАЮ") : t("ПОЛУЧАЮ")}</h3>
             <OptionFilter categories={options} />
             <OptionSearch />
-            <ul>
+            <ul ref={ulRef}>
               {filteredOptions && filteredOptions?.length > 0 ? (
                 filteredOptions.map((option) => (
                   <ValuteCard
