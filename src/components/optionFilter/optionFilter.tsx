@@ -66,6 +66,7 @@ export const OptionFilter: FC<OptionFilterProps> = memo(({ categories }) => {
       tabbed={false}
       slidesToShow={2}
       disableEdgeSwiping={true}
+      dragging={true}
     >
       {tabsItem.map((tab) => (
         <Tab

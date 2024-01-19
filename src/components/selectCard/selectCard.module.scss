@@ -3,9 +3,15 @@
     font-size: 22px;
     margin-bottom: 15px;
     font-weight: 600;
+    color: #3CAE6A;
+
+    &.active_select {
+      color: #3CAE6A;
+    }
   }
 
-  section {
+  > section {
+
       > header {
           padding: 15px;
           border-radius: 40px;
@@ -14,6 +20,16 @@
           cursor: pointer;
           display: flex;
           align-items: center;
+
+          &.empty {
+            opacity: 0.3;
+            pointer-events: none;
+          }
+          &.selected {
+            background: linear-gradient(0deg, #026B45 0%, #3CAE6A 109%);
+            border: 1px solid #2FAC66;
+            color: #111111;
+          }
 
       > div {
           width: 45px;
@@ -42,17 +58,4 @@
     }
   }
 
-}
-
-.modal {
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-}
-.active {
-  opacity: 1;
-  visibility: visible;
-}
-.active_select {
-  color: #2FAC66;
 }

@@ -1,7 +1,47 @@
 .switcher__icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 25px 0px;
-  cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 0px;
+    cursor: pointer;
+    position: relative;
+
+    > span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
+
+    &::before {
+      content: " ";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      padding: 22.5px;
+      background: #585857;
+    }
+
+    &::after {
+      content: " ";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      padding: 2px;
+      background: #585857;
+      border-radius: 5px;
+    }
+
+    &.active {
+      &::before {
+        background: #3CAE6A;
+      }
+      &::after {
+        background: #3CAE6A;
+      }
+    }
 }

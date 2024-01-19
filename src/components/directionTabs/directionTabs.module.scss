@@ -3,17 +3,20 @@
   padding-top: 50px;
   margin-bottom: 20px;
   display: grid;
-  grid-auto-flow: column;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  grid-template: 1fr / 1fr 1fr;
 }
 .direction_tabs_item {
-  background: #fff;
-  border-radius: 15px;
-  padding: 15px 20px;
-  font-size: 18px;
-  font-weight: 500;
+  background: #585857;
+  color: #ffffff;
+  border-radius: 25px;
+  padding: 20px;
+  font-size: 20px;
   text-align: center;
   cursor: pointer;
 }
-.direction_wrapper {margin: 0 auto}
+.active_direction {
+  background: linear-gradient(0deg, #026B45 0%, #3CAE6A 109%);
+  border: 1px solid #2FAC66;
+  color: #111111;
+}
