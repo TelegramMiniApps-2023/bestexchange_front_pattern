@@ -1,5 +1,5 @@
 .filter {
-    padding: 12px; width: 100%;
+    width: 100%;
     background: #585857; border-radius: 12px;
    
 }
@@ -8,6 +8,7 @@
 .filter_tab_item {
     color: #fff; font-size: 14px; font-weight: 700; text-wrap: nowrap;
     display:flex; justify-content: center;
+    padding: 12px;
     border-radius: 10px; border:none; user-select: none;
     transition: translate; transition-property: transform; transition-duration: 300ms; transition-timing-function: ease-in-out;
 }
