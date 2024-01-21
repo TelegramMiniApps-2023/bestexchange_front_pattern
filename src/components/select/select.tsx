@@ -22,8 +22,9 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
   const { setFilter, setSearch, filter } = useFiltersStore((state) => state);
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
-  const { i18n } = useTranslation();
   const setGetSelect = useSelectsStore((state) => state.setGetSelect);
+  const setGiveSelect = useSelectsStore((state) => state.setGiveSelect);
+  const { i18n } = useTranslation();
   const typeValute = useDirectionTabsStore((state) => state.typeValute);
   const city = useCashStore((state) => state.location);
   const [show, setShow] = useState(false);
@@ -47,6 +48,24 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
     }
   }, [error]);
 
+  useEffect(() => {
+    if (currentOptions) {
+      if (give) {
+        const currGive = Object.values(currentOptions)
+          .flat()
+          .filter((el) => el.id === give.id);
+        setGiveSelect(currGive[0]);
+      }
+    }
+    if (currentAvailableDirection) {
+      if (get) {
+        const currGet = Object.values(currentAvailableDirection)
+          .flat()
+          .filter((el) => el.id === get.id);
+        setGetSelect(currGet[0]);
+      }
+    }
+  }, [i18n.language]);
   const handleModal = useCallback(() => {
     setShow((prevShow) => !prevShow);
     setFilter(null);
