@@ -30,13 +30,6 @@ export const ValuteCard: FC<ValuteCardProps> = memo(
       to: get?.code_name,
       city,
     });
-    useEffect(() => {
-      if (type === "give") {
-        setGiveSelect(option);
-      } else {
-        setGetSelect(option);
-      }
-    }, [i18n.language]);
     const handleChangeDirection = async () => {
       handleModal();
       if (type === "give") {
