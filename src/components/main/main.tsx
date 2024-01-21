@@ -44,7 +44,12 @@ export const Main = memo(() => {
       <DirectionTabs />
       <LocationSelect />
       <div className={styles.container}>
-        <SelectsForm get={get} give={give} refetch={refetch} />
+        <SelectsForm
+          isSuccess={isSuccess}
+          get={get}
+          give={give}
+          refetch={refetch}
+        />
         <div className={styles.resultArrow}>
           <ResultArrow isSuccess={isSuccess} />
         </div>
