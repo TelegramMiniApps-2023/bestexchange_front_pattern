@@ -6,7 +6,7 @@
     "ПОЛУЧАЮ": "GET",
     "Безналичные":"Non-cash",
     "Наличные": "Cash",
-    "Поиск...": "Search...",
+    "Поиск": "Search",
     "Все": "All",
     "Выберите валюту": "Select currency",
     "Выберите страну и город": "Select country and city",
