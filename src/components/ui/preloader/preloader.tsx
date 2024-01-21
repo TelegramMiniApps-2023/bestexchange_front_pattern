@@ -22,6 +22,8 @@ type ProgressProps = {
   style?: React.CSSProperties;
   className?: string;
   suffix?: string;
+  width?: number;
+  height?: number;
 };
 
 export const Preloader: React.FC<ProgressProps> = ({
@@ -40,10 +42,12 @@ export const Preloader: React.FC<ProgressProps> = ({
   style,
   className,
   suffix = "%",
+  height = 200,
+  width = 200,
 }) => {
-  const width = 200;
   const center = width / 2;
-  const height = 200 || center + center * Math.cos(reduction * Math.PI);
+  const heightPreloader =
+    height || center + center * Math.cos(reduction * Math.PI);
   const [unique] = useState(() => Math.random().toString());
   const rotate = 90 + 180 * reduction;
   const r = center - strokeWidth / 2 - ballStrokeWidth / 2;
@@ -95,7 +99,7 @@ export const Preloader: React.FC<ProgressProps> = ({
   return (
     <div className={`${className} ${styles.progress}`} style={style}>
       <animated.svg
-        viewBox={`0 0 ${width} ${height}`}
+        viewBox={`0 0 ${width} ${heightPreloader}`}
         className={styles.svg}
         style={fadeInAnimation}
       >
