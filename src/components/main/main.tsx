@@ -32,7 +32,6 @@ export const Main = memo(() => {
     to: get?.code_name,
     city: location?.location?.city.code_name,
   });
-  console.log(isSuccess);
   useEffect(() => {
     if (error) {
       setGetSelect(null);
@@ -44,12 +43,7 @@ export const Main = memo(() => {
       <DirectionTabs />
       <LocationSelect />
       <div className={styles.container}>
-        <SelectsForm
-          isSuccess={isSuccess}
-          get={get}
-          give={give}
-          refetch={refetch}
-        />
+        <SelectsForm get={get} give={give} refetch={refetch} />
         <div className={styles.resultArrow}>
           <ResultArrow isSuccess={isSuccess} />
         </div>
