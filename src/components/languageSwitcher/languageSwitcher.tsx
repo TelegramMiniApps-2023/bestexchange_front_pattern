@@ -1,8 +1,8 @@
-import { useSpring, animated, easings } from "react-spring";
+import { memo } from "react";
 import { useTranslation } from "react-i18next";
+import { animated, useSpring } from "react-spring";
 import { Switch } from "../ui/switch";
 import styles from "./languageSwitcher.module.scss";
-import { memo } from "react";
 
 export const LanguageSwitcher = memo(() => {
   const { i18n, t } = useTranslation();
