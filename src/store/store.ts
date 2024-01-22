@@ -58,7 +58,7 @@ export const useDirectionTabsStore = create<DirectionTabs>()((set) => ({
 }));
 
 //Store for cash direction
-type Location = {
+export type Location = {
   location: {
     country: Country;
     city: City;
