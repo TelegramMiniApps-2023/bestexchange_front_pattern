@@ -81,7 +81,7 @@ export const useFetchExchangers = ({ from, to, city }: ReqFetchExchangersDto) =>
   const queryResult = useQuery({
     queryKey: [exchangersKey, city],
     queryFn: fetchExchangers,
-    staleTime: 60 * 1000 * 5,
+    cacheTime: Infinity,
     enabled: false,
     retry: false
   });
