@@ -18,8 +18,6 @@ export const Main = memo(() => {
   const { i18n } = useTranslation();
   const { location } = useCashStore((state) => state);
 
-  const directionApi = useSpringRef();
-
   const {
     data: exchangers,
     isLoading,
