@@ -1,6 +1,18 @@
 .languageSwitcher{
   color:var(--text-color);
-  padding: 8px; width: 400px; height: 44px;
+  padding: 8px; max-width: 400px; height: 44px; width: 80%;
   background-color: var(--secondary-color); border-radius: var(--border-radius-m);
   display: flex; align-items: center; justify-content: space-between;
+
+  > label {
+    font-size: 14px; margin-left: 10px;
+  }
+
+  @media (max-width: 420px) {
+    width: 90%;
+
+    > label {
+      font-size: 12px;
+    }
+  }
 }
