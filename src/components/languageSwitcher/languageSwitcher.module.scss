@@ -3,4 +3,7 @@
   padding: 8px; width: 400px; height: 44px;
   background-color: var(--secondary-color); border-radius: var(--border-radius-m);
   display: flex; align-items: center; justify-content: space-between;
+  .currentLanguage{
+    user-select: none;
+  }
 }

@@ -27,7 +27,7 @@ export const LanguageSwitcher = memo(() => {
 
   return (
     <animated.div style={spring} className={styles.languageSwitcher}>
-      <label>{currentLang}</label>
+      <label className={styles.currentLanguage}>{currentLang}</label>
       <Switch onClick={toggle} />
     </animated.div>
   );
