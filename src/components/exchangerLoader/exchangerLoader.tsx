@@ -37,8 +37,13 @@ export const ExchangerLoader = memo((props: ExchangerLoaderProps) => {
   return (
     <section className={styles.exchangers}>
       {isLoading || isFetching ? (
-        <div className={styles.preloader}>
-          <Preloader progress={0} strokeWidth={20} />
+        <div className={styles.preloaderWrapper}>
+          <Preloader
+            className={styles.preloader}
+            progress={0}
+            strokeWidth={20}
+            hideValue={true}
+          />
         </div>
       ) : error ? (
         <h3>{t("Список пуст... Вы можете выбрать другие параметры")}</h3>
