@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { FC, memo, useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { ResFetchAvailable, useFetchAvailable } from "../../api/api";
 import { queryClient } from "../../api/queryClient";
 import { availableKey } from "../../assets/consts";
@@ -12,7 +13,6 @@ import {
 import { Modal } from "../modal/modal";
 import { SelectCard } from "../selectCard";
 import styles from "./select.module.scss";
-import { useTranslation } from "react-i18next";
 
 interface SelectProps {
   type: "give" | "get";
@@ -47,13 +47,12 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
       setGetSelect(null);
     }
   }, [error]);
-
   useEffect(() => {
     if (currentOptions) {
       if (give) {
         const currGive = Object.values(currentOptions)
           .flat()
-          .filter((el) => el.id === give.id);
+          .filter((el) => el.code_name === give.code_name);
         setGiveSelect(currGive[0]);
       }
     }
@@ -61,7 +60,7 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
       if (get) {
         const currGet = Object.values(currentAvailableDirection)
           .flat()
-          .filter((el) => el.id === get.id);
+          .filter((el) => el.code_name === get.code_name);
         setGetSelect(currGet[0]);
       }
     }
