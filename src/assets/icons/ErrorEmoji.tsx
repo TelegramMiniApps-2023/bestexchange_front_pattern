@@ -1,5 +1,5 @@
 import * as React from "react";
-const ErrorEmoji = (props) => (
+const ErrorEmoji = (props: any) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     id="_\u0421\u043B\u043E\u0439_1"
