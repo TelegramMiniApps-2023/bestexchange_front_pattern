@@ -3,7 +3,7 @@ import { Exchanger } from "../../model/Exchanger";
 import { ExchangersList } from "../exchangersList";
 import { Loader } from "../ui/loader";
 import styles from "./exchangerLoader.module.scss";
-import { useTranslation } from "react-i18next";
+import { SystemError } from "../ui/systemError";
 type ExchangerLoaderProps = {
   isLoading: boolean;
   isFetching: boolean;
@@ -12,13 +12,14 @@ type ExchangerLoaderProps = {
 };
 export const ExchangerLoader = memo((props: ExchangerLoaderProps) => {
   const { error, exchangers, isFetching, isLoading } = props;
-  const { t } = useTranslation();
   return (
     <section className={styles.exchangers}>
       {isLoading || isFetching ? (
         <Loader />
       ) : error ? (
-        <h3>{t("Список пуст... Вы можете выбрать другие параметры")}</h3>
+        <div>
+          <SystemError direction={true} />
+        </div>
       ) : (
         exchangers && <ExchangersList exchangers={exchangers} />
       )}

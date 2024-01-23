@@ -16,13 +16,14 @@
     "Для данного направления на данный момент нет доступных валют": "There are currently no currencies available for this destination",
     "Лучшие курсы": "Best courses",
     "на": "on",
-    "Список пуст... Вы можете выбрать другие параметры": "The list is empty... You can select other options",
+    "Выбранное направление недоступно": "Selected direction is not available",
     "Переключить на Русский":"Switch to Russia",
     "Переключить на Английский":"Switch to Russia",
     "Онлайн обмен": "Online exchange",
     "Обмен":"Exchange",
     "до":"to",
-    "В г.": "In"
+    "В г.": "In",
+    "Системная ошибка": "System error"
 
 
 }
