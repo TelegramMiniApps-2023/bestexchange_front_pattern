@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSpring, animated, config, useTransition } from "react-spring";
 import styles from "./preloader.module.scss";
+import clsx from "clsx";
 
 type GradientStop = {
   stop: number;
@@ -117,7 +118,11 @@ export const Preloader: React.FC<ProgressProps> = ({
   });
 
   return (
-    <div className={`${className} ${styles.progress}`} style={style}>
+    <div
+      className={clsx(className, styles.progress)}
+      // className={`${className} ${styles.progress}`}
+      style={style}
+    >
       <animated.svg
         viewBox={`0 0 ${width} ${heightPreloader}`}
         className={styles.svg}
