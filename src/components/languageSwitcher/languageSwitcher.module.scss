@@ -6,6 +6,7 @@
 
   > label {
     font-size: 14px; margin-left: 10px;
+    user-select: none;
   }
 
   @media (max-width: 420px) {

@@ -18,8 +18,6 @@ export const Main = memo(() => {
   const { i18n } = useTranslation();
   const { location } = useCashStore((state) => state);
 
-  const directionApi = useSpringRef();
-
   const {
     data: exchangers,
     isLoading,
@@ -32,7 +30,6 @@ export const Main = memo(() => {
     to: get?.code_name,
     city: location?.location?.city.code_name,
   });
-  console.log(isSuccess);
   useEffect(() => {
     if (error) {
       setGetSelect(null);

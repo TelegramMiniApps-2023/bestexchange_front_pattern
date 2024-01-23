@@ -1,6 +1,8 @@
+import { Name } from "./country";
+
 export interface Exchanger {
   id: number;
-  name: string;
+  name: Name;
   partner_link: string;
   valute_from: string;
   icon_valute_from: string;

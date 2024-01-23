@@ -22,7 +22,7 @@ export const ExchangerCard: FC<ExchangerCardProps> = ({ card, location }) => {
       <a href={card.partner_link} target="_blank" rel="noopener noreferrer">
         <header>
           <hgroup>
-            <h2>{card.name}</h2>
+            <h2>{i18n.language === "ru" ? card.name.ru : card.name.en}</h2>
             <h3>
               {location ? `${t("В г.")} ${currentCityName}` : t("Онлайн обмен")}
             </h3>

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSpring, animated, config, useTransition } from "react-spring";
 import styles from "./preloader.module.scss";
+import clsx from "clsx";
 
 type GradientStop = {
   stop: number;
@@ -22,6 +23,8 @@ type ProgressProps = {
   style?: React.CSSProperties;
   className?: string;
   suffix?: string;
+  width?: number;
+  height?: number;
 };
 
 export const Preloader: React.FC<ProgressProps> = ({
@@ -40,16 +43,38 @@ export const Preloader: React.FC<ProgressProps> = ({
   style,
   className,
   suffix = "%",
+  height = 200,
+  width = 200,
 }) => {
-  const width = 200;
+  const [preloaderProgress = progress, setPreloaderProgress] = useState(0);
   const center = width / 2;
-  const height = 200 || center + center * Math.cos(reduction * Math.PI);
+  const heightPreloader =
+    height || center + center * Math.cos(reduction * Math.PI);
   const [unique] = useState(() => Math.random().toString());
   const rotate = 90 + 180 * reduction;
   const r = center - strokeWidth / 2 - ballStrokeWidth / 2;
   const circumference = Math.PI * r * 2;
-  const offset = (circumference * (100 - progress * (1 - reduction))) / 100;
+  const offset =
+    (circumference * (100 - preloaderProgress * (1 - reduction))) / 100;
   const rInner = r - 10;
+  useEffect(() => {
+    let prevProgress = 0;
+
+    const interval = setInterval(() => {
+      const randomIncrement = Math.ceil(Math.random() * 10);
+      const newProgress = Math.min(prevProgress + randomIncrement, 100);
+
+      setPreloaderProgress(newProgress);
+
+      prevProgress = newProgress;
+    }, 100);
+
+    setTimeout(() => {
+      clearInterval(interval);
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, []);
   // Анимация для изменения strokeDashoffset
   const offsetAnimation = useSpring({
     strokeDashoffset: offset,
@@ -93,9 +118,13 @@ export const Preloader: React.FC<ProgressProps> = ({
   });
 
   return (
-    <div className={`${className} ${styles.progress}`} style={style}>
+    <div
+      className={clsx(className, styles.progress)}
+      // className={`${className} ${styles.progress}`}
+      style={style}
+    >
       <animated.svg
-        viewBox={`0 0 ${width} ${height}`}
+        viewBox={`0 0 ${width} ${heightPreloader}`}
         className={styles.svg}
         style={fadeInAnimation}
       >
@@ -141,7 +170,7 @@ export const Preloader: React.FC<ProgressProps> = ({
             fill="#23a247"
             style={fadeInAnimation}
           >
-            {progress} {suffix}
+            {preloaderProgress} {suffix}
           </animated.text>
         )}
 
