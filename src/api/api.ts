@@ -54,8 +54,8 @@ type ReqFetchExchangersDto = {
 export const useFetchExchangers = ({ from, to, city }: ReqFetchExchangersDto) => {
 
   const apiUrl = city
-    ? `api/directions?city=${city}&valute_from=${from}&valute_to=${to}`
-    : `api/directions?valute_from=${from}&valute_to=${to}`;
+    ? `api/directions_multi?city=${city}&valute_from=${from}&valute_to=${to}`
+    : `api/directions_multi?valute_from=${from}&valute_to=${to}`;
   const fetchExchangers = async () => (
     await $host.get<DirectionCash[]>(
       apiUrl
@@ -81,7 +81,7 @@ export const useFetchExchangers = ({ from, to, city }: ReqFetchExchangersDto) =>
   const queryResult = useQuery({
     queryKey: [exchangersKey, city],
     queryFn: fetchExchangers,
-    staleTime: 60 * 1000 * 5,
+    cacheTime: Infinity,
     enabled: false,
     retry: false
   });

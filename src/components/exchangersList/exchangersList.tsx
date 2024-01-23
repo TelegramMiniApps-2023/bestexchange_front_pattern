@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { useSelectsStore } from "../../store/store";
+import { useCashStore, useSelectsStore } from "../../store/store";
 import styles from "./exchangersList.module.scss";
 import { Exchanger } from "../../model/Exchanger";
 import { ExchangerCard } from "../exchangerCard";
@@ -14,6 +14,7 @@ export const ExchangersList: FC<ExchangersListProps> = memo(
     const give = useSelectsStore((state) => state.giveSelect);
     const get = useSelectsStore((state) => state.getSelect);
     const { t } = useTranslation();
+    const location = useCashStore((state) => state.location);
     return (
       <section className={styles.exchangersList}>
         <h2>
@@ -22,7 +23,7 @@ export const ExchangersList: FC<ExchangersListProps> = memo(
         <div>
           {exchangers &&
             exchangers.map((card) => (
-              <ExchangerCard key={card.id} card={card} />
+              <ExchangerCard key={card.id} card={card} location={location} />
             ))}
         </div>
       </section>

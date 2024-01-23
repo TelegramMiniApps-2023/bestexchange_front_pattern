@@ -26,6 +26,9 @@ body {
   max-width: 500px;
   margin: 0 auto;
   color: #303030;
+  // background: url("/img/backPattern.svg") no-repeat;
+  // background-size: cover;
+  // background-attachment: scroll;
 
   @media (max-width: 367px) {
     .page__wrapper {

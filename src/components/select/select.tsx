@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { FC, memo, useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { ResFetchAvailable, useFetchAvailable } from "../../api/api";
 import { queryClient } from "../../api/queryClient";
 import { availableKey } from "../../assets/consts";
@@ -12,7 +13,6 @@ import {
 import { Modal } from "../modal/modal";
 import { SelectCard } from "../selectCard";
 import styles from "./select.module.scss";
-import { useTranslation } from "react-i18next";
 
 interface SelectProps {
   type: "give" | "get";
@@ -22,8 +22,9 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
   const { setFilter, setSearch, filter } = useFiltersStore((state) => state);
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
-  const { i18n } = useTranslation();
   const setGetSelect = useSelectsStore((state) => state.setGetSelect);
+  const setGiveSelect = useSelectsStore((state) => state.setGiveSelect);
+  const { i18n } = useTranslation();
   const typeValute = useDirectionTabsStore((state) => state.typeValute);
   const city = useCashStore((state) => state.location);
   const [show, setShow] = useState(false);
@@ -46,7 +47,24 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
       setGetSelect(null);
     }
   }, [error]);
-
+  useEffect(() => {
+    if (currentOptions) {
+      if (give) {
+        const currGive = Object.values(currentOptions)
+          .flat()
+          .filter((el) => el.code_name === give.code_name);
+        setGiveSelect(currGive[0]);
+      }
+    }
+    if (currentAvailableDirection) {
+      if (get) {
+        const currGet = Object.values(currentAvailableDirection)
+          .flat()
+          .filter((el) => el.code_name === get.code_name);
+        setGetSelect(currGet[0]);
+      }
+    }
+  }, [i18n.language]);
   const handleModal = useCallback(() => {
     setShow((prevShow) => !prevShow);
     setFilter(null);

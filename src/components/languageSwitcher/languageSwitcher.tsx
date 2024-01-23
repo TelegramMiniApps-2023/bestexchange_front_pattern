@@ -1,9 +1,10 @@
-import { useSpring, animated, easings } from "react-spring";
+import { memo } from "react";
 import { useTranslation } from "react-i18next";
+import { animated, useSpring } from "react-spring";
 import { Switch } from "../ui/switch";
 import styles from "./languageSwitcher.module.scss";
 
-export const LanguageSwitcher = () => {
+export const LanguageSwitcher = memo(() => {
   const { i18n, t } = useTranslation();
 
   const [spring, setSpring] = useSpring(() => ({
@@ -26,8 +27,8 @@ export const LanguageSwitcher = () => {
 
   return (
     <animated.div style={spring} className={styles.languageSwitcher}>
-      <label>{currentLang}</label>
+      <label className={styles.currentLanguage}>{currentLang}</label>
       <Switch onClick={toggle} />
     </animated.div>
   );
-};
+});
