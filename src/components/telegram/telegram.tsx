@@ -4,7 +4,8 @@ export const Telegram = () => {
   tg.enableClosingConfirmation();
   tg.expand();
   tg.ready();
-  console.log(tg);
-  console.log(tg?.WebAppUser?.id);
+  alert(tg?.WebAppUser?.id);
+  alert(tg?.initData);
+  alert(tg?.initDataUnsafe?.id);
   return <div></div>;
 };
