@@ -6,9 +6,9 @@ declare global {
           enableClosingConfirmation: () => void;
           expand: () => void;
           ready: () => void;
-          // WebAppUser: {
-          //   id: number;
-          // };
+          WebAppUser: {
+            id: number;
+          };
         };
       };
     }
