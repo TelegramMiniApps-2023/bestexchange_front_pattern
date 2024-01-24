@@ -9,6 +9,10 @@ declare global {
           WebAppUser: {
             id: number;
           };
+          initData: string;
+          initDataUnsafe: {
+            id: number
+          }
         };
       };
     }
