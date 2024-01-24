@@ -4,8 +4,12 @@ export const Telegram = () => {
   tg.enableClosingConfirmation();
   tg.expand();
   tg.ready();
-  alert(tg?.WebAppUser?.id);
-  alert(tg?.initData);
-  alert(tg?.initDataUnsafe?.id);
+
+  const alertKeysAndValues = (obj: { [key: string]: any }) => {
+    for (const [key, value] of Object.entries(obj)) {
+      alert(`${key}: ${value}`);
+    }
+  };
+  alertKeysAndValues(tg.initDataUnsafe.user);
   return <div></div>;
 };
