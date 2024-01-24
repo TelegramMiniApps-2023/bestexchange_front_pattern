@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Main } from "../components/main";
 import { Preloader } from "../components/ui/preloader/preloader";
 import styles from "./mainPage.module.scss";
+import { Telegram } from "../components/telegram";
+
 export const MainPage = () => {
   const [progress, setProgress] = useState(0);
   const [preloaderFinished, setPreloaderFinished] = useState(false);
@@ -27,6 +29,7 @@ export const MainPage = () => {
 
   return (
     <div data-testid="main-page" className="page__wrapper">
+      <Telegram />
       {preloaderFinished ? (
         <Main />
       ) : (
