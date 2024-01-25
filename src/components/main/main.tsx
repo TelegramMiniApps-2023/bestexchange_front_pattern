@@ -51,9 +51,9 @@ export const Main = memo(() => {
           isFetching={isFetching}
           isLoading={isLoading}
         />
-        <div className={styles.languageSwitcher}>
+        {/* <div className={styles.languageSwitcher}>
           <LanguageSwitcher />
-        </div>
+        </div> */}
       </div>
     </main>
   );

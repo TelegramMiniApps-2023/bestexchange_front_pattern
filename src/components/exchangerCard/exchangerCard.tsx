@@ -17,9 +17,19 @@ export const ExchangerCard: FC<ExchangerCardProps> = ({ card, location }) => {
       ? location?.location.city.name.ru
       : location?.location.city.name.en;
 
+  // telegram object
+  const tg = window.Telegram.WebApp;
+  const options = [{ try_instant_view: true }];
+  const openLink = (url: string) => tg.openLink(url, options);
+
   return (
     <article className={styles.exchangerItem}>
-      <a href={card.partner_link} target="_blank" rel="noopener noreferrer">
+      {/* <a href={card.partner_link} target="_blank" rel="noopener noreferrer"> */}
+      <a
+        onClick={() => openLink(card.partner_link)}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <header>
           <hgroup>
             <h2>{i18n.language === "ru" ? card.name.ru : card.name.en}</h2>
