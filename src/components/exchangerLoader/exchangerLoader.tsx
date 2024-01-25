@@ -1,9 +1,10 @@
-import { memo } from "react";
+import { memo, useEffect, useState } from "react";
 import { Exchanger } from "../../model/Exchanger";
 import { ExchangersList } from "../exchangersList";
-import { Loader } from "../ui/loader";
 import styles from "./exchangerLoader.module.scss";
-import { useTranslation } from "react-i18next";
+import { SystemError } from "../ui/systemError";
+import { Preloader } from "../ui/preloader";
+
 type ExchangerLoaderProps = {
   isLoading: boolean;
   isFetching: boolean;
@@ -12,13 +13,40 @@ type ExchangerLoaderProps = {
 };
 export const ExchangerLoader = memo((props: ExchangerLoaderProps) => {
   const { error, exchangers, isFetching, isLoading } = props;
-  const { t } = useTranslation();
+  // const [progress, setProgress] = useState(0);
+  // useEffect(() => {
+  //   let prevProgress = 0;
+
+  //   const interval = setInterval(() => {
+  //     const randomIncrement = Math.ceil(Math.random() * 10);
+  //     const newProgress = Math.min(prevProgress + randomIncrement, 100);
+
+  //     setProgress(newProgress);
+
+  //     prevProgress = newProgress;
+  //   }, 100);
+  //   if (prevProgress === 100) setProgress(0);
+  //   setTimeout(() => {
+  //     clearInterval(interval);
+  //   }, 3500);
+
+  //   return () => clearInterval(interval);
+  // }, [isLoading, isFetching]);
+  // console.log(progress);
   return (
     <section className={styles.exchangers}>
       {isLoading || isFetching ? (
-        <Loader />
+        <div className={styles.preloaderWrapper}>
+          <Preloader
+            className={styles.preloader}
+            progress={0}
+            strokeWidth={20}
+          />
+        </div>
       ) : error ? (
-        <h3>{t("Список пуст... Вы можете выбрать другие параметры")}</h3>
+        <div>
+          <SystemError direction={true} />
+        </div>
       ) : (
         exchangers && <ExchangersList exchangers={exchangers} />
       )}

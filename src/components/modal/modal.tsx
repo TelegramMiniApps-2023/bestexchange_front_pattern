@@ -7,6 +7,7 @@ import { Popup } from "../ui/popup";
 import { useFiltersStore } from "../../store/store";
 import styles from "./modal.module.scss";
 import { useTranslation } from "react-i18next";
+import { SystemError } from "../ui/systemError";
 
 interface ModalProps {
   options?: Categories;
@@ -50,8 +51,8 @@ export const Modal: FC<ModalProps> = ({
         {options && Object.keys(options).length > 0 ? (
           <>
             <h3>{type === "give" ? t("ОТДАЮ") : t("ПОЛУЧАЮ")}</h3>
-            <OptionFilter categories={options} />
             <OptionSearch />
+            <OptionFilter categories={options} />
             <ul ref={ulRef}>
               {filteredOptions && filteredOptions?.length > 0 ? (
                 filteredOptions.map((option) => (
@@ -68,9 +69,9 @@ export const Modal: FC<ModalProps> = ({
             </ul>
           </>
         ) : (
-          <p className={styles.empty}>
-            {t("Для данного направления на данный момент нет доступных валют")}
-          </p>
+          <div>
+            <SystemError direction={true} />
+          </div>
         )}
       </section>
     </Popup>

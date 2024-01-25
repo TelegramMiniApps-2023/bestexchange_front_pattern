@@ -4,7 +4,7 @@ const ArrowRight = (props: any) => (
     width={35}
     height={35}
     fill="none"
-    viewBox="0 0 25 25"
+    viewBox="0 0 25 20"
     {...props}
   >
     <path

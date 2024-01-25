@@ -1,0 +1,30 @@
+.error {
+    display: grid;
+    grid-template: 0.5fr 1fr / 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 25px 20px;
+    border-radius: 20px;
+    background: #272826;
+    color: #ffffff;
+
+    > p {
+        font-size: 14px;
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 1.5;
+    }
+    > div {
+        display: grid;
+        grid-template-columns: repeat(3, 50px);
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+
+        > svg {
+            width: 50px;
+            height: 50px;
+        }
+    }
+}
