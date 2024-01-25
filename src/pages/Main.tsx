@@ -3,6 +3,7 @@ import { Main } from "../components/main";
 import { Preloader } from "../components/ui/preloader/preloader";
 import styles from "./mainPage.module.scss";
 import { Telegram } from "../components/telegram";
+import clsx from "clsx";
 
 export const MainPage = () => {
   const [progress, setProgress] = useState(0);
@@ -37,7 +38,11 @@ export const MainPage = () => {
       {preloaderFinished ? (
         <Main />
       ) : (
-        <div className={styles.preloaderContainer}>
+        <div
+          className={clsx(styles.preloaderContainer, {
+            [styles.preloaderFullHeight]: tg.isExpanded,
+          })}
+        >
           <Preloader step={20} progress={progress} strokeWidth={20} />
         </div>
       )}
