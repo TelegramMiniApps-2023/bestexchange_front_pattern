@@ -1,9 +1,14 @@
+import { useEffect } from "react";
+
 export const Telegram = () => {
   // инициализация webapp
   const tg = window.Telegram.WebApp;
-  tg.enableClosingConfirmation();
-  tg.expand();
-  tg.ready();
+
+  useEffect(() => {
+    tg.enableClosingConfirmation();
+    tg.expand();
+    tg.ready();
+  }, []);
 
   // const alertKeysAndValues = (obj: { [key: string]: any }) => {
   //   for (const [key, value] of Object.entries(obj)) {

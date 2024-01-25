@@ -23,7 +23,8 @@ declare global {
               allows_write_to_pm: boolean;
               photo_url: string
             }
-          }
+          };
+          openLink: (url: string, options?: {try_instant_view: boolean}[]) => void;
         };
       };
     }
