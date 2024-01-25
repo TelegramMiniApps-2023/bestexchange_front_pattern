@@ -13,10 +13,11 @@ type SelectsFormCollapseProps = {
   get: Options | null;
   give: Options | null;
   isSuccess?: boolean;
+  toggleArrow?: () => void;
 };
 
 export const SelectsFormCollapse = (props: SelectsFormCollapseProps) => {
-  const { get, give, isSuccess } = props;
+  const { get, give, isSuccess, toggleArrow } = props;
   const { t, i18n } = useTranslation();
   const { location } = useCashStore((state) => state);
   const { setGetSelect, setGiveSelect } = useSelectsStore((state) => state);
@@ -55,7 +56,7 @@ export const SelectsFormCollapse = (props: SelectsFormCollapseProps) => {
   }, [i18n.language]);
 
   return (
-    <section className={styles.selectsCollapse}>
+    <section onClick={toggleArrow} className={styles.selectsCollapse}>
       <animated.div className={styles.select}>
         <div>
           <h2 className={styles.header}>{t("ОТДАЮ")}</h2>

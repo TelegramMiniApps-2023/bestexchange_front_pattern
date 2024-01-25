@@ -52,14 +52,14 @@ export const Main = memo(() => {
       <div className={styles.container}>
         <div>
           {collapsedForm ? (
-            <SelectsFormCollapse isSuccess={isSuccess} get={get} give={give} />
-          ) : (
-            <SelectsForm
+            <SelectsFormCollapse
+              toggleArrow={toggleArrow}
               isSuccess={isSuccess}
               get={get}
               give={give}
-              refetch={refetch}
             />
+          ) : (
+            <SelectsForm get={get} give={give} refetch={refetch} />
           )}
           <div onClick={toggleArrow} className={styles.resultArrow}>
             <ResultArrow isSuccess={collapsedForm} />
