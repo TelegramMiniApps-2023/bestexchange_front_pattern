@@ -7,6 +7,9 @@ import { Telegram } from "../components/telegram";
 export const MainPage = () => {
   const [progress, setProgress] = useState(0);
   const [preloaderFinished, setPreloaderFinished] = useState(false);
+
+  // telegram object
+  const tg = window.Telegram.WebApp;
   useEffect(() => {
     let prevProgress = 0;
 
@@ -22,7 +25,8 @@ export const MainPage = () => {
     setTimeout(() => {
       clearInterval(interval);
       setPreloaderFinished((prev) => !prev);
-    }, 3500);
+      tg.expand();
+    }, 1500);
 
     return () => clearInterval(interval);
   }, []);
@@ -34,7 +38,7 @@ export const MainPage = () => {
         <Main />
       ) : (
         <div className={styles.preloaderContainer}>
-          <Preloader progress={progress} strokeWidth={20} />
+          <Preloader step={20} progress={progress} strokeWidth={20} />
         </div>
       )}
     </div>

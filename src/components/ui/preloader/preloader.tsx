@@ -25,6 +25,7 @@ type ProgressProps = {
   suffix?: string;
   width?: number;
   height?: number;
+  step?: number;
 };
 
 export const Preloader: React.FC<ProgressProps> = ({
@@ -45,6 +46,7 @@ export const Preloader: React.FC<ProgressProps> = ({
   suffix = "%",
   height = 200,
   width = 200,
+  step = 10,
 }) => {
   const [preloaderProgress = progress, setPreloaderProgress] = useState(0);
   const center = width / 2;
@@ -61,7 +63,7 @@ export const Preloader: React.FC<ProgressProps> = ({
     let prevProgress = 0;
 
     const interval = setInterval(() => {
-      const randomIncrement = Math.ceil(Math.random() * 10);
+      const randomIncrement = Math.ceil(Math.random() * step);
       const newProgress = Math.min(prevProgress + randomIncrement, 100);
 
       setPreloaderProgress(newProgress);
