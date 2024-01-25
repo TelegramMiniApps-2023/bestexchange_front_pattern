@@ -2,4 +2,48 @@
   color: #fff;
   padding: 20px;
   background: #272826; border-radius: 25px;
+  
+}
+.selectsCollapse {
+  display: flex;
+  align-items: center;
+  justify-content: center;  // Change to space-around for equal spacing
+  color: black;
+  padding: 12px;
+  background: var(--primary-color);
+  border-radius: 40px;
+}
+.header{
+  font-size: 20px;
+}
+.nameText{
+  color:#111111;
+  font-weight: 500;
+}
+.select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;  // Add flex: 1 to make the selects take equal space
+}
+
+.separator {
+  height: 50px;
+  width: 2px;
+  border-radius: 15px;
+  background-color: #000;
+  margin: 0 12px;  // Add margin for spacing on both sides
+}
+
+figure {
+  width: 45px;
+  height: 45px;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    min-width: 45px;
+    min-height: 45px;
+    object-fit: contain;
+  }
 }
