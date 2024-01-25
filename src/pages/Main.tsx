@@ -3,10 +3,14 @@ import { Main } from "../components/main";
 import { Preloader } from "../components/ui/preloader/preloader";
 import styles from "./mainPage.module.scss";
 import { Telegram } from "../components/telegram";
+import clsx from "clsx";
 
 export const MainPage = () => {
   const [progress, setProgress] = useState(0);
   const [preloaderFinished, setPreloaderFinished] = useState(false);
+
+  // telegram object
+  const tg = window.Telegram.WebApp;
   useEffect(() => {
     let prevProgress = 0;
 
@@ -22,7 +26,8 @@ export const MainPage = () => {
     setTimeout(() => {
       clearInterval(interval);
       setPreloaderFinished((prev) => !prev);
-    }, 3500);
+      tg.expand();
+    }, 1500);
 
     return () => clearInterval(interval);
   }, []);
@@ -33,8 +38,12 @@ export const MainPage = () => {
       {preloaderFinished ? (
         <Main />
       ) : (
-        <div className={styles.preloaderContainer}>
-          <Preloader progress={progress} strokeWidth={20} />
+        <div
+          className={clsx(styles.preloaderContainer, {
+            [styles.preloaderFullHeight]: tg.isExpanded,
+          })}
+        >
+          <Preloader step={20} progress={progress} strokeWidth={20} />
         </div>
       )}
     </div>
