@@ -15,9 +15,9 @@ export const ResultArrow = (props: ResultArrowProps) => {
       })}
     >
       {isSuccess ? (
-        <IconDown className={styles.arrowIcon} />
+        <IconDown fill="black" className={styles.arrowIcon} />
       ) : (
-        <IconUp className={styles.arrowIcon} />
+        <IconUp fill="black" className={styles.arrowIcon} />
       )}
     </section>
   );

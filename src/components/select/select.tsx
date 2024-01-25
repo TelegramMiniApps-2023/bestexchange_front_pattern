@@ -1,6 +1,7 @@
 import clsx from "clsx";
-import { FC, memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { animated } from "react-spring";
 import { ResFetchAvailable, useFetchAvailable } from "../../api/api";
 import { queryClient } from "../../api/queryClient";
 import { availableKey } from "../../assets/consts";
@@ -11,14 +12,15 @@ import {
   useSelectsStore,
 } from "../../store/store";
 import { Modal } from "../modal/modal";
-import { SelectCard } from "../selectCard";
+
 import styles from "./select.module.scss";
+import { SelectCard } from "../selectCard";
 
 interface SelectProps {
   type: "give" | "get";
 }
 
-export const Select: FC<SelectProps> = memo(({ type }) => {
+export const Select = memo(({ type }: SelectProps) => {
   const { setFilter, setSearch, filter } = useFiltersStore((state) => state);
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
@@ -65,6 +67,7 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
       }
     }
   }, [i18n.language]);
+
   const handleModal = useCallback(() => {
     setShow((prevShow) => !prevShow);
     setFilter(null);
@@ -105,3 +108,4 @@ export const Select: FC<SelectProps> = memo(({ type }) => {
     </section>
   );
 });
+export const AnimatedSelect = animated(Select);
