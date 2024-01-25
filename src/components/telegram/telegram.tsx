@@ -6,7 +6,7 @@ export const Telegram = () => {
 
   useEffect(() => {
     tg.enableClosingConfirmation();
-    tg.expand();
+    // tg.expand();
     tg.ready();
   }, []);
 
