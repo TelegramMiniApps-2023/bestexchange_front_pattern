@@ -25,11 +25,7 @@ export const ExchangerCard: FC<ExchangerCardProps> = ({ card, location }) => {
   return (
     <article className={styles.exchangerItem}>
       {/* <a href={card.partner_link} target="_blank" rel="noopener noreferrer"> */}
-      <a
-        onClick={() => openLink(card.partner_link)}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a onClick={() => openLink(card.partner_link)} rel="noopener noreferrer">
         <header>
           <hgroup>
             <h2>{i18n.language === "ru" ? card.name.ru : card.name.en}</h2>
