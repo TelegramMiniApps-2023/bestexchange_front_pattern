@@ -41,7 +41,6 @@ export const ExchangerLoader = memo((props: ExchangerLoaderProps) => {
             className={styles.preloader}
             progress={0}
             strokeWidth={20}
-            hideValue={true}
           />
         </div>
       ) : error ? (
