@@ -27,7 +27,7 @@ export const MainPage = () => {
       clearInterval(interval);
       setPreloaderFinished((prev) => !prev);
       tg.expand();
-    }, 1500);
+    }, 1420);
 
     return () => clearInterval(interval);
   }, []);
