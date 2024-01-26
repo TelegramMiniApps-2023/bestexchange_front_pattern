@@ -47,20 +47,24 @@ export const OptionFilter: FC<OptionFilterProps> = memo(({ categories }) => {
       enableKeyboardControls={true}
       slidesToScroll={1}
       renderCenterLeftControls={({ previousSlide, previousDisabled }) => (
-        <IconLeft
-          className={clsx(styles.nextTab, {
-            [styles.nextTabDisabled]: previousDisabled,
-          })}
-          onClick={previousSlide}
-        />
+        <div className={styles.arrowContainer}>
+          <IconLeft
+            className={clsx(styles.nextTab, {
+              [styles.nextTabDisabled]: previousDisabled,
+            })}
+            onClick={previousSlide}
+          />
+        </div>
       )}
       renderCenterRightControls={({ nextSlide, nextDisabled }) => (
-        <IconRight
-          onClick={nextSlide}
-          className={clsx(styles.nextTab, {
-            [styles.nextTabDisabled]: nextDisabled,
-          })}
-        />
+        <div className={styles.arrowContainer}>
+          <IconRight
+            onClick={nextSlide}
+            className={clsx(styles.rightTab, {
+              [styles.nextTabDisabled]: nextDisabled,
+            })}
+          />
+        </div>
       )}
       className={styles.filter}
       tabbed={false}
