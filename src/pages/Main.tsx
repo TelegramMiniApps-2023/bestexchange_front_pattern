@@ -27,7 +27,7 @@ export const MainPage = () => {
       clearInterval(interval);
       setPreloaderFinished((prev) => !prev);
       tg.expand();
-    }, 1500);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);
@@ -43,7 +43,7 @@ export const MainPage = () => {
             [styles.preloaderFullHeight]: tg.isExpanded,
           })}
         >
-          <Preloader step={20} progress={progress} strokeWidth={20} />
+          <Preloader step={28} progress={progress} strokeWidth={20} />
         </div>
       )}
     </div>
