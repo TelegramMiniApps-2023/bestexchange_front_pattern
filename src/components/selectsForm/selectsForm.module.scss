@@ -5,26 +5,47 @@
   
 }
 .selectsCollapse {
-  display: flex;
+  display: grid;
+  grid-template: 1fr / 1fr minmax(3px, 5px) 1fr;
+  justify-content: center;
   align-items: center;
-  justify-content: center;  // Change to space-around for equal spacing
+  gap: 10px;
   color: black;
-  padding: 12px;
+  padding: 15px;
   background: var(--primary-color);
   border-radius: 40px;
+
+  @media (max-width: 397px) {
+    gap: 5px;
+    padding: 12px;
+  }
 }
 .header{
   font-size: 20px;
-}
-.nameText{
-  color:#111111;
-  font-weight: 500;
+  text-transform: uppercase;
+
+  @media (max-width: 397px) {
+    font-size: 16px;
+  }
 }
 .select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex: 1;  // Add flex: 1 to make the selects take equal space
+
+  .nameText {
+    color: #111111;
+    font-weight: 500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 30vw;
+    max-width: 150px;
+
+    @media (max-width: 397px) {
+      font-size: 12px;
+    }
+  }
 }
 
 .separator {
@@ -32,18 +53,31 @@
   width: 2px;
   border-radius: 15px;
   background-color: #000;
-  margin: 0 12px;  // Add margin for spacing on both sides
+
+  @media (max-width: 397px) {
+    height: 40px;
+  }
 }
 
 figure {
   width: 45px;
   height: 45px;
 
-  > img {
+  @media (max-width: 397px) {
+    width: 35px;
+    height: 35px;
+  }
+
+  >img {
     width: 100%;
     height: 100%;
     min-width: 45px;
     min-height: 45px;
     object-fit: contain;
+
+    @media (max-width: 397px) {
+      min-width: 35px;
+      min-height: 35px;
+    }
   }
 }

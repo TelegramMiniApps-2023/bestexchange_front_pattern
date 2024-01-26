@@ -51,8 +51,12 @@ export const Modal: FC<ModalProps> = ({
         {options && Object.keys(options).length > 0 ? (
           <>
             <h3>{type === "give" ? t("ОТДАЮ") : t("ПОЛУЧАЮ")}</h3>
-            <OptionSearch />
-            <OptionFilter categories={options} />
+            <div className={styles.search__container}>
+              <OptionSearch />
+            </div>
+            <div className={styles.filter__container}>
+              <OptionFilter categories={options} />
+            </div>
             <ul ref={ulRef}>
               {filteredOptions && filteredOptions?.length > 0 ? (
                 filteredOptions.map((option) => (
