@@ -20,7 +20,7 @@ export const Popup = (props: PopupProps) => {
       : "translate(-50%, -50%) scale(0.2)",
 
     from: { transform: "translate(-50%, 100%) scale(0.5)", opacity: 0 },
-    config: config.gentle,
+    config: { mass: 6, friction: 120, tension: 850 },
   });
 
   // Задаем класс для body в зависимости от статуса модального окна
