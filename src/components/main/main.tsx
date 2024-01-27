@@ -48,7 +48,7 @@ export const Main = memo(() => {
   const selectsFormSpring = useSpring({
     opacity: collapsedForm ? 0 : 1,
     transform: collapsedForm
-      ? "translateY(-50px) scale(0.8)"
+      ? "translateY(-50px) scale(0.4)"
       : "translateY(0) scale(1)",
     config: config.gentle,
   });
@@ -57,7 +57,7 @@ export const Main = memo(() => {
     opacity: collapsedForm ? 1 : 0,
     transform: collapsedForm
       ? "translateY(0) scale(1)"
-      : "translateY(50px) scale(0.8)",
+      : "translateY(50px) scale(0.4)",
     config: config.gentle,
   });
 
