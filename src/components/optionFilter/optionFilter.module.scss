@@ -14,10 +14,38 @@
 }
 .partialTab {width: 50%; overflow: hidden;}
 .filter_tab_item::last-of-type {border-right: none;}
-
+.arrowContainer{
+    
+}
+.leftTab{
+    cursor: pointer;
+    margin-top: 2px;
+    height: 40px;
+    width: 20px;
+    background-color: #585857;
+    border-bottom-right-radius: 10px;
+    &Disabled{display: none;}
+}
+.rightTab{
+    cursor: pointer;
+    margin-top: 4px;
+    height: 38px;
+    width: 20px;
+    background-color: #585857;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    &Disabled{display: none;}
+}
 .nextTab {
     cursor: pointer;
+    margin-top: 4px;
+    height: 38px;
+    width: 22px;
+    background-color: #585857;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
     &Disabled{display: none;}
+
 }
 
 .filterWrapper {display: flex;}
