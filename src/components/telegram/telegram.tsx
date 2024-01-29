@@ -1,19 +1,15 @@
 import { useEffect } from "react";
+import { useUserStore } from "../../store/store";
 
 export const Telegram = () => {
   // инициализация webapp
   const tg = window.Telegram.WebApp;
+  const { setUserData } = useUserStore((state) => state);
 
   useEffect(() => {
     tg.enableClosingConfirmation();
-    // tg.expand();
     tg.ready();
-    // const alertKeysAndValues = (obj: { [key: string]: any }) => {
-    //   for (const [key, value] of Object.entries(obj)) {
-    //     alert(`${key}: ${value}`);
-    //   }
-    // };
-    // alertKeysAndValues(tg.initDataUnsafe.user);
+    setUserData(tg.initDataUnsafe.user);
   }, []);
 
   return <div></div>;
