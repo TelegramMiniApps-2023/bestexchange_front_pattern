@@ -45,6 +45,22 @@ export const Main = memo(() => {
     }
   };
 
+  const selectsFormSpring = useSpring({
+    opacity: collapsedForm ? 0 : 1,
+    transform: collapsedForm
+      ? "translateY(-50px) scale(0.4)"
+      : "translateY(0) scale(1)",
+    config: config.gentle,
+  });
+
+  const selectsFormCollapseSpring = useSpring({
+    opacity: collapsedForm ? 1 : 0,
+    transform: collapsedForm
+      ? "translateY(0) scale(1)"
+      : "translateY(50px) scale(0.4)",
+    config: config.gentle,
+  });
+
   return (
     <main className={styles.main}>
       <DirectionTabs />
@@ -52,18 +68,25 @@ export const Main = memo(() => {
       <div className={styles.container}>
         <div>
           {collapsedForm ? (
-            <SelectsFormCollapse
-              toggleArrow={toggleArrow}
-              isSuccess={isSuccess}
-              get={get}
-              give={give}
-            />
+            <animated.div style={selectsFormCollapseSpring}>
+              <SelectsFormCollapse
+                toggleArrow={toggleArrow}
+                isSuccess={isSuccess}
+                get={get}
+                give={give}
+              />
+              <div onClick={toggleArrow} className={styles.resultArrow}>
+                <ResultArrow isSuccess={collapsedForm} />
+              </div>
+            </animated.div>
           ) : (
-            <SelectsForm get={get} give={give} refetch={refetch} />
+            <animated.div style={selectsFormSpring}>
+              <SelectsForm get={get} give={give} refetch={refetch} />
+              <div onClick={toggleArrow} className={styles.resultArrow}>
+                <ResultArrow isSuccess={collapsedForm} />
+              </div>
+            </animated.div>
           )}
-          <div onClick={toggleArrow} className={styles.resultArrow}>
-            <ResultArrow isSuccess={collapsedForm} />
-          </div>
         </div>
         <ExchangerLoader
           error={error}

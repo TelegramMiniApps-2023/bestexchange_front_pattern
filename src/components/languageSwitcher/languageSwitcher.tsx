@@ -10,7 +10,7 @@ export const LanguageSwitcher = memo(() => {
   const [spring, setSpring] = useSpring(() => ({
     from: { transform: "translateY(20px)", opacity: 0 },
     to: { transform: "translateY(0px)", opacity: 1 },
-    config: { duration: 1000 },
+    config: { duration: 500 },
   }));
 
   const toggle = async () => {
