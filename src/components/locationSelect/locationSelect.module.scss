@@ -6,9 +6,9 @@
   &.location__active {position: static; opacity: 1; visibility: visible;}
 
   > header {
-      color: #ffffff; 
+      color: var(--text-color); 
       padding: 10px; position: relative;
-      background: #272826; border-radius: 12px;  
+      background: var(--bg-color); border-radius: 12px;  
       display: flex; align-items: center;
 
       > figure {

@@ -1,7 +1,7 @@
 .selects {
-  color: #fff;
+  color: var(--text-color);
   padding: 20px;
-  background: #272826; border-radius: 25px;
+  background: var(--bg-color); border-radius: 25px;
   
 }
 .selectsCollapse {
@@ -10,9 +10,9 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  color: black;
+  color: var(--black-color);
   padding: 15px;
-  background: var(--primary-color);
+  background: var(--primary-color-gradient);
   border-radius: 40px;
 
   @media (max-width: 397px) {
@@ -34,7 +34,7 @@
   align-items: center;
 
   .nameText {
-    color: #111111;
+    color: var(--black-color);
     font-weight: 500;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -52,7 +52,7 @@
   height: 50px;
   width: 2px;
   border-radius: 15px;
-  background-color: #000;
+  background-color: var(--black-color);
 
   @media (max-width: 397px) {
     height: 40px;

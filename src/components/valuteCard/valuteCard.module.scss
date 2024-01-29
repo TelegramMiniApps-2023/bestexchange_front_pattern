@@ -2,12 +2,12 @@
   margin: 5px 0px;
   overflow: hidden;
   position: relative;
-  color: #fff;
+  color: var(--text-color);
   
   > header {
     padding: 15px;
     border-radius: 40px;
-    background: #585857;
+    background: var(--secondary-color);
     position: relative;
     display: flex;
     align-items: center;

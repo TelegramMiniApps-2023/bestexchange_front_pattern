@@ -3,10 +3,10 @@
   display: grid; gap: 10px; grid-template: 1fr / 1fr 1fr;
 }
 .direction_tabs_item {
-  color: #ffffff; 
+  color: var(--text-color); 
   font-size: 20px; text-align: center;
   padding: 20px;
-  background: #585857; border-radius: 25px;
+  background: var(--secondary-color); border-radius: 25px;
 
   @media (max-width: 420px) {
     font-size: 18px;
@@ -22,5 +22,5 @@
 }
 .active_direction {
   color: #111111;
-  background: linear-gradient(0deg, #026B45 0%, #3CAE6A 109%); border: 1px solid #2FAC66;
+  background: var(--primary-color-gradient); border: 1px solid var(--primary-color);
 }

@@ -2,10 +2,10 @@
   margin-bottom: 15px;
   cursor: pointer;
   transition: transform 0.15s ease-in;
-  background: #272826;
+  background: var(--bg-color);
   border-radius: 30px;
   padding: 20px;
-  color: #fff;
+  color: var(--text-color);
   cursor: pointer;
   transition: transform 0.15s ease-in;
 
@@ -19,7 +19,7 @@
       > h2 {font-size: 20px; font-weight: 500;
       }
       > h3 {
-        color: #3CAE6A;
+        color: var(--primary-color);
         font-size: 14px;
         text-align: left;
         margin: 0;
@@ -30,7 +30,7 @@
 
   > hr {
         margin: 10px -20px;
-        border-color: #585857;
+        border-color: var(--secondary-color);
       }
 
   > footer {
@@ -40,7 +40,7 @@
 
       > h2 {
         font-size: 20px;
-        color: #ffffff;
+        color: var(--text-color);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -79,7 +79,7 @@
       }
     }
 
-    > span {font-size: 14px; color: #3CAE6A}
+    > span {font-size: 14px; color: var(--primary-color)}
   }
 }
 }

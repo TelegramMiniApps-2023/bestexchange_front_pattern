@@ -1,6 +1,6 @@
 .filter {
     width: 100%;
-    background: #585857; border-radius: 12px;
+    background: var(--secondary-color); border-radius: 12px;
    margin-bottom: 15px;
 }
 
@@ -22,7 +22,7 @@
     margin-top: 2px;
     height: 40px;
     width: 20px;
-    background-color: #585857;
+    background-color: var(--secondary-color);
     border-bottom-right-radius: 10px;
     &Disabled{display: none;}
 }
@@ -31,7 +31,7 @@
     margin-top: 4px;
     height: 38px;
     width: 20px;
-    background-color: #585857;
+    background-color: var(--secondary-color);
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
     &Disabled{display: none;}
@@ -41,7 +41,7 @@
     margin-top: 4px;
     height: 38px;
     width: 22px;
-    background-color: #585857;
+    background-color: var(--secondary-color);
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
     &Disabled{display: none;}

@@ -1,10 +1,10 @@
 .country {
-  color: #fff;
+  color: var(--text-color);
   margin: 5px 0px; position: relative; overflow: hidden;
   
   > header {
     padding: 10px; position: relative;
-    background: #585857; border-radius: 40px;
+    background: var(--secondary-color); border-radius: 40px;
     display: flex; align-items: center;
     transition: all 0.2s ease-in;
 
@@ -35,8 +35,8 @@
   }
 
   .active_country {
-    color: #111111;
-    background: linear-gradient(0deg, #026B45 0%, #3CAE6A 109%); border: 1px solid #2FAC66;
+    color: var(--black-color);
+    background: var(--primary-color-gradient); border: 1px solid var(--primary-color);
 
     > h3 {
       max-width: 80%;

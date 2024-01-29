@@ -22,7 +22,7 @@
     }
 
     &.active {
-      &::before {background: #3CAE6A;}
-      &::after {background: #3CAE6A;}
+      &::before {background: var(--primary-color);}
+      &::after {background:  var(--primary-color);}
     }
 }
