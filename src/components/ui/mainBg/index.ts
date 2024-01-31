@@ -1,0 +1,1 @@
+export { MainBg } from "./mainBg"
