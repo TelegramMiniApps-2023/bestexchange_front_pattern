@@ -1,13 +1,21 @@
 .main {
   position: relative;
+  min-height: 100vh;
+  
   .container {
+    
     .resultArrow {
       margin-top: -10px;
-      display: flex; justify-content: center;
+      display: flex;
+      justify-content: center;
     }
-    .languageSwitcher{
-      display: flex; justify-content: center; position: relative;
-      
-    }
+  }
+  .languageSwitcher {
+    position: absolute; 
+    bottom: 0;
+    left: 0; 
+    width: 100%; 
+    display: flex;
+    justify-content: center;
   }
 }
