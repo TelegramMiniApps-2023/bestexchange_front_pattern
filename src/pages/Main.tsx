@@ -9,6 +9,7 @@ import { MainBg } from "../components/ui/mainBg";
 export const MainPage = () => {
   const [progress, setProgress] = useState(0);
   const [preloaderFinished, setPreloaderFinished] = useState(false);
+  const [preloaderExtro, setPreloaderExtro] = useState(false);
 
   // telegram object
   const tg = window.Telegram.WebApp;
@@ -23,6 +24,10 @@ export const MainPage = () => {
 
       prevProgress = newProgress;
     }, 100);
+
+    setTimeout(() => {
+      setPreloaderExtro(true);
+    }, 300);
 
     setTimeout(() => {
       clearInterval(interval);
@@ -42,6 +47,7 @@ export const MainPage = () => {
         <div
           className={clsx(styles.preloaderContainer, {
             [styles.preloaderFullHeight]: tg.isExpanded,
+            [styles.preloaderOpcacity]: preloaderExtro,
           })}
         >
           <Preloader step={20} progress={progress} strokeWidth={20} />
