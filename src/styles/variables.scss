@@ -1,15 +1,18 @@
 :root{
-    --bg-color: #262826;
-    --primary-color-gradient: linear-gradient(0deg, #026B45 0%, #3CAE6A 100%);
+    --bg-color: #272826;
+    --primary-color-gradient: linear-gradient(0deg, #026B45 0%, #3CAE6A 109%);
     --primary-color: #00DB82;
-    --secondary-color: #3A3A3A;
+    --secondary-color: #585857;
     --text-color:#ffffff;
     --black-color: #111111;
     //border-radius
+    --boder-radius-xs:5px;
     --border-radius-s: 15px;
     --border-radius-m: 30px;
+    --border-radius-l: 40px;
     --border-radius-full:50%;
 
+    --border-radius-filter-tab-item:10px;
 
     //индексы
     --modal-z-index: 1000;
