@@ -45,13 +45,13 @@ export const Main = memo(() => {
     }
   };
 
-  const selectsFormSpring = useSpring({
-    opacity: collapsedForm ? 0 : 1,
-    transform: collapsedForm
-      ? "translateY(-50px) scale(0.4)"
-      : "translateY(0) scale(1)",
-    config: config.gentle,
-  });
+  // const selectsFormSpring = useSpring({
+  //   opacity: collapsedForm ? 0 : 1,
+  //   transform: collapsedForm
+  //     ? "translateY(-50px) scale(0.4)"
+  //     : "translateY(0) scale(1)",
+  //   config: config.gentle,
+  // });
 
   const selectsFormCollapseSpring = useSpring({
     opacity: collapsedForm ? 1 : 0,
@@ -80,7 +80,8 @@ export const Main = memo(() => {
               </div>
             </animated.div>
           ) : (
-            <animated.div style={selectsFormSpring}>
+            // <animated.div style={selectsFormSpring}>
+            <animated.div>
               <SelectsForm get={get} give={give} refetch={refetch} />
               <div onClick={toggleArrow} className={styles.resultArrow}>
                 <ResultArrow isSuccess={collapsedForm} />
