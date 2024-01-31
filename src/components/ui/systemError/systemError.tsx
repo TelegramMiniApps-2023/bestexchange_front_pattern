@@ -1,6 +1,5 @@
 import { FC } from "react";
 import styles from "./systemError.module.scss";
-import ErrorEmoji from "../../../assets/icons/ErrorEmoji";
 import { useTranslation } from "react-i18next";
 
 interface SystemErrorProps {
@@ -23,9 +22,9 @@ export const SystemError: FC<SystemErrorProps> = ({
           : response && `${t("Системная ошибка")}`}
       </p>
       <div>
-        <ErrorEmoji />
-        <ErrorEmoji />
-        <ErrorEmoji />
+        <img src="/img/errorIcon.png" />
+        <img src="/img/errorIcon.png" />
+        <img src="/img/errorIcon.png" />
       </div>
     </section>
   );
