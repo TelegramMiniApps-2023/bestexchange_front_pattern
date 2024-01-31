@@ -95,10 +95,10 @@ export const Main = memo(() => {
           isFetching={isFetching}
           isLoading={isLoading}
         />
-        <footer className={styles.languageSwitcher}>
-          <LanguageSwitcher />
-        </footer>
       </div>
+      <footer className={styles.languageSwitcher}>
+        <LanguageSwitcher />
+      </footer>
     </main>
   );
 });
