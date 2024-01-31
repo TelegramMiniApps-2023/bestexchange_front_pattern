@@ -1,10 +1,10 @@
 .search {
   position: relative;
-  border-radius: 12px;
+  border-radius: var(--border-radius-s);
   padding: 10px 10px 10px 50px;
   background: var(--black-color);
   width: 100%;
-  font-size: 18px;
+  font-size: var(--font-size-s);
   color: var(--secondary-color);
   margin-bottom: 15px;
 

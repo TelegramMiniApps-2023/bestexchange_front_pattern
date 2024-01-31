@@ -10,7 +10,7 @@
     color: var(--text-color);
 
     > p {
-        font-size: 14px;
+        font-size: var(--font-size-ls);
         text-transform: uppercase;
         text-align: center;
         line-height: 1.5;

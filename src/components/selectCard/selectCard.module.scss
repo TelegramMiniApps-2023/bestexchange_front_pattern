@@ -1,6 +1,6 @@
 .select {
   > h2 {
-    color: var(--primary-color); font-size: 22px; font-weight: 500;
+    color: var(--primary-color); font-size: var(--font-size-l); font-weight: 800;
     margin-bottom: 15px;
 
     &.active_select {color: var(--primary-color);}
@@ -29,7 +29,7 @@
       }
 
     > h3 {
-        color: inherit; font-size: 20px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap;
+        color: inherit; font-size: var(--font-size-m); font-weight: 600; text-overflow: ellipsis; white-space: nowrap;
         margin: 0; max-width: 95%; overflow: hidden;
       }
     }

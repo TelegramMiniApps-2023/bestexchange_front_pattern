@@ -6,13 +6,12 @@
   
   > header {
     padding: 15px;
-    border-radius: 40px;
+    border-radius: var(--border-radius-l);
     background: var(--secondary-color);
     position: relative;
     display: flex;
     align-items: center;
     transition: all 0.2s ease-in;
-
     &:hover {
     }
     &:active{
@@ -36,8 +35,8 @@
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
-      font-size: 18px;
-      font-weight: 500;
+      font-size: var(--font-size-m);
+      font-weight: 600;
       color: inherit;
 
       .code {

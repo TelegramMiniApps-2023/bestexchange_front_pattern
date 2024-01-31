@@ -11,14 +11,14 @@
       content: " ";
       padding: 22.5px; position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      background: #585857; border-radius: 50%;
+      background: #585857; border-radius: var(--border-radius-full);
     }
 
     &::after {
       content: " ";
       padding: 2px; width: 100%; position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      background: #585857; border-radius: 5px;
+      background: #585857; border-radius: var( --boder-radius-xs);
     }
 
     &.active {
