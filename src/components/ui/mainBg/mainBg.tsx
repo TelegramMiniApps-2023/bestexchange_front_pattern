@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
 import styles from "./mainBg.module.scss";
 import clsx from "clsx";
+import { Path_1 } from "./path_1";
+import { Path_2 } from "./path_2";
+import { Path_3 } from "./path_3";
+import { Path_4 } from "./path_4";
+import { Path_5 } from "./path_5";
+import { Path_6 } from "./path_6";
 export const MainBg = (props: any) => {
-  const [isActiveOverlay, setActiveOverlay] = useState(true);
-  const [isActiveContainer, setActiveContainer] = useState(true);
+  const [isActiveOverlay, setActiveOverlay] = useState(false);
+  const [isActiveContainer, setActiveContainer] = useState(false);
   useEffect(() => {
     setTimeout(() => {
       setActiveOverlay(false);
-      setActiveContainer(false);
+      // setActiveContainer(true);
     }, 1000);
     setActiveOverlay(true);
+    setActiveContainer(true);
   }, []);
   return (
     <div
@@ -17,7 +24,7 @@ export const MainBg = (props: any) => {
         [styles.active_container]: isActiveContainer,
       })}
     >
-      <svg
+      {/* <svg
         xmlns="http://www.w3.org/2000/svg"
         id="_\u0421\u043B\u043E\u0439_2"
         data-name="\u0421\u043B\u043E\u0439 2"
@@ -2750,7 +2757,51 @@ export const MainBg = (props: any) => {
             <path d="M867.1 2591.88h26.73v5.12H867.1z" className="cls-3" />
           </g>
         </g>
-      </svg>
+      </svg> */}
+      <div className={styles.paths_container}>
+        <div
+          className={clsx(styles.path, {
+            [styles.path_1]: isActiveContainer,
+          })}
+        >
+          <Path_1 />
+        </div>
+        <div
+          className={clsx(styles.path, {
+            [styles.path_2]: isActiveContainer,
+          })}
+        >
+          <Path_2 />
+        </div>
+        <div
+          className={clsx(styles.path, {
+            [styles.path_3]: isActiveContainer,
+          })}
+        >
+          <Path_3 />
+        </div>
+        <div
+          className={clsx(styles.path, {
+            [styles.path_4]: isActiveContainer,
+          })}
+        >
+          <Path_4 />
+        </div>
+        <div
+          className={clsx(styles.path, {
+            [styles.path_5]: isActiveContainer,
+          })}
+        >
+          <Path_5 />
+        </div>
+        <div
+          className={clsx(styles.path, {
+            [styles.path_6]: isActiveContainer,
+          })}
+        >
+          <Path_6 />
+        </div>
+      </div>
       <div
         className={clsx(styles.overlay, {
           [styles.active_overlay]: isActiveOverlay,
