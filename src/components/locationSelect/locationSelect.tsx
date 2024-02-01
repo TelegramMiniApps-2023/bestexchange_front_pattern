@@ -10,6 +10,7 @@ import {
 import { useFetchCashCountries } from "../../api/api";
 import { directionTabsValute } from "../../assets/consts";
 import { useTranslation } from "react-i18next";
+import { LocationIcon } from "../../assets/icons/LocationIcon";
 
 interface LocationSelectProps {}
 
@@ -53,7 +54,8 @@ export const LocationSelect: FC<LocationSelectProps> = () => {
               alt={`Иконка ${location?.location.country.name}`}
             />
           ) : (
-            <img src="/img/empty_select.png" alt={`Иконка`} />
+            // <img src="/img/locationIcon.png" alt={`Иконка`} />
+            <LocationIcon />
           )}
         </figure>
         <h3>

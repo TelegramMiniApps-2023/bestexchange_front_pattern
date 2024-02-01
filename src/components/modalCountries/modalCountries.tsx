@@ -82,7 +82,7 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
       <section className={styles.countriesPopup}>
         <h2 className={styles.title}>{t("Выбор страны и города")}</h2>
         <div className={styles.search__container}>
-          <OptionSearch />
+          <OptionSearch type="cash" />
         </div>
         {filteredOptions.length > 0 ? (
           <ul className={styles.countries} ref={ulRef}>
