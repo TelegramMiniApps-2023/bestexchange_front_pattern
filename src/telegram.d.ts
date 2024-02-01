@@ -12,7 +12,7 @@ declare global {
           initData: string;
           initDataUnsafe: {
             user: {
-              id: number;
+              user_id: number;
               is_bot: boolean;
               first_name: string;
               last_name: string;

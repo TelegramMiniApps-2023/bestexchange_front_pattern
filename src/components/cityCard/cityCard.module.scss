@@ -1,8 +1,8 @@
 .city {
   > h3 {
-    color: #fff; font-size: 18px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap;
+    color: var(--text-color); font-size: 18px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap;
     padding: 15px 20px; margin-top: 5px; position: relative; overflow: hidden;
-    background: #585857; border-radius: 40px;
+    background: var(--secondary-color); border-radius:var(--border-radius-l);
 
     transition: all 0.1s ease-in;
   }

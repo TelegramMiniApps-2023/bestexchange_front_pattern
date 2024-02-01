@@ -7,11 +7,11 @@ import styles from "./languageSwitcher.module.scss";
 export const LanguageSwitcher = memo(() => {
   const { i18n, t } = useTranslation();
 
-  const [spring, setSpring] = useSpring(() => ({
-    from: { transform: "translateY(20px)", opacity: 0 },
-    to: { transform: "translateY(0px)", opacity: 1 },
-    config: { duration: 1000 },
-  }));
+  // const [spring, setSpring] = useSpring(() => ({
+  //   from: { transform: "translateY(20px)", opacity: 0 },
+  //   to: { transform: "translateY(0px)", opacity: 1 },
+  //   config: { duration: 500 },
+  // }));
 
   const toggle = async () => {
     // setSpring({ transform: "translateY(3px)" });
@@ -26,9 +26,9 @@ export const LanguageSwitcher = memo(() => {
       : t("Переключить на Русский");
 
   return (
-    <animated.div style={spring} className={styles.languageSwitcher}>
-      <label className={styles.currentLanguage}>{currentLang}</label>
+    <div className={styles.languageSwitcher}>
+      <label>{currentLang}</label>
       <Switch onClick={toggle} />
-    </animated.div>
+    </div>
   );
 });

@@ -4,6 +4,7 @@ import { Preloader } from "../components/ui/preloader/preloader";
 import styles from "./mainPage.module.scss";
 import { Telegram } from "../components/telegram";
 import clsx from "clsx";
+import { MainBg } from "../components/ui/mainBg";
 
 export const MainPage = () => {
   const [progress, setProgress] = useState(0);
@@ -27,7 +28,7 @@ export const MainPage = () => {
       clearInterval(interval);
       setPreloaderFinished((prev) => !prev);
       tg.expand();
-    }, 1500);
+    }, 1420);
 
     return () => clearInterval(interval);
   }, []);
@@ -46,6 +47,7 @@ export const MainPage = () => {
           <Preloader step={20} progress={progress} strokeWidth={20} />
         </div>
       )}
+      <MainBg />
     </div>
   );
 };

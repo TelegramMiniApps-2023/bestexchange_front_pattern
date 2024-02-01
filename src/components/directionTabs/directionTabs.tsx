@@ -55,11 +55,11 @@ export const DirectionTabs = memo(() => {
         filter={typeValute}
         classNameTab={styles.direction_tabs}
         classNameTabItem={styles.direction_tabs_item}
-        animationProps={{
-          from: { opacity: 0, transform: "translateY(40px)" },
-          to: { opacity: 1, transform: "translateY(0)" },
-          config: { tension: 300, friction: 50 },
-        }}
+        // animationProps={{
+        //   from: { opacity: 0, transform: "translateY(-40px)" },
+        //   to: { opacity: 1, transform: "translateY(0)" },
+        //   config: { tension: 700, friction: 50 },
+        // }}
         classNameActiveDirection={styles.active_direction}
       />
     </section>

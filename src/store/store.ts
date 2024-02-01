@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { Options } from "../model/Options";
 import { City, Country } from "../model";
+import { User } from "../model/user";
 
 interface SelectsState {
   giveSelect: Options | null;
@@ -74,3 +75,16 @@ export const useCashStore = create<CashState>()((set) => ({
   location: null,
   setLocation: (location) => set({ location: location }),
 }));
+
+//Store for User
+interface UserState {
+  user: User | null;
+  setUserData: (user: User) => void;
+}
+
+export const useUserStore = create<UserState>()(
+  (set) => ({
+    user: null,
+    setUserData: (user) => set({user: user}),
+  }),
+);
