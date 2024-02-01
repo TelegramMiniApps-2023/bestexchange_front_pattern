@@ -1,11 +1,11 @@
 .search {
   position: relative;
-  border-radius: 12px;
+  border-radius: var(--border-radius-s);
   padding: 10px 10px 10px 50px;
-  background: #111111;
+  background: var(--black-color);
   width: 100%;
-  font-size: 18px;
-  color: #585857;
+  font-size: var(--font-size-s);
+  color: var(--secondary-color);
   margin-bottom: 15px;
 
   > span {
@@ -21,7 +21,7 @@
   > input {
     border: none;
     background: transparent;
-    color: #fff;
+    color: var(--text-color);
     width: 100%;
     font-size: inherit;
 

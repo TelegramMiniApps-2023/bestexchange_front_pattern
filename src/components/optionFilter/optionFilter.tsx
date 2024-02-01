@@ -49,8 +49,9 @@ export const OptionFilter: FC<OptionFilterProps> = memo(({ categories }) => {
       renderCenterLeftControls={({ previousSlide, previousDisabled }) => (
         <div className={styles.arrowContainer}>
           <IconLeft
-            className={clsx(styles.nextTab, {
-              [styles.nextTabDisabled]: previousDisabled,
+            fill="white"
+            className={clsx(styles.leftTab, {
+              [styles.rightTabDisabled]: previousDisabled,
             })}
             onClick={previousSlide}
           />
@@ -59,9 +60,10 @@ export const OptionFilter: FC<OptionFilterProps> = memo(({ categories }) => {
       renderCenterRightControls={({ nextSlide, nextDisabled }) => (
         <div className={styles.arrowContainer}>
           <IconRight
+            fill="white"
             onClick={nextSlide}
             className={clsx(styles.rightTab, {
-              [styles.nextTabDisabled]: nextDisabled,
+              [styles.leftTabDisabled]: nextDisabled,
             })}
           />
         </div>

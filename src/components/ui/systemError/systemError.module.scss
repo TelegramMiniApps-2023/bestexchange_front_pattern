@@ -6,11 +6,11 @@
     gap: 25px;
     padding: 25px 20px;
     border-radius: 20px;
-    background: #272826;
-    color: #ffffff;
+    background: var(--bg-color);
+    color: var(--text-color);
 
-    >p {
-        font-size: 14px;
+    > p {
+        font-size: var(--font-size-ls);
         text-transform: uppercase;
         text-align: center;
         line-height: 1.5;
