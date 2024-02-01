@@ -30,8 +30,8 @@
   > section {max-height: 0; overflow: hidden; opacity: 0;}
 
   .active {
-    max-height: 200vh; overflow: auto; opacity: 1;  
-    transition: max-height 0.7s ease-out, opacity 0.5s ease-out 0.1s;
+    // max-height: 200vh; overflow: auto; opacity: 1;  
+    // transition: max-height 0.7s ease-out, opacity 0.5s ease-out 0.1s;
   }
 
   .active_country {
