@@ -5,6 +5,7 @@ import styles from "./mainPage.module.scss";
 import { Telegram } from "../components/telegram";
 import clsx from "clsx";
 import { MainBg } from "../components/ui/mainBg";
+import { SelectSkeleton } from "../components/ui/selectSkeleton";
 
 export const MainPage = () => {
   const [progress, setProgress] = useState(0);
@@ -41,6 +42,7 @@ export const MainPage = () => {
   return (
     <div data-testid="main-page" className="page__wrapper">
       <Telegram />
+      <SelectSkeleton />
       {preloaderFinished ? (
         <Main />
       ) : (
