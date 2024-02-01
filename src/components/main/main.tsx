@@ -50,6 +50,7 @@ export const Main = memo(() => {
   //   transform: collapsedForm
   //     ? "translateY(-50px) scale(0.4)"
   //     : "translateY(0) scale(1)",
+
   //   config: config.gentle,
   // });
 
@@ -80,7 +81,6 @@ export const Main = memo(() => {
               </div>
             </animated.div>
           ) : (
-            // <animated.div style={selectsFormSpring}>
             <animated.div>
               <SelectsForm get={get} give={give} refetch={refetch} />
               <div onClick={toggleArrow} className={styles.resultArrow}>
@@ -95,10 +95,10 @@ export const Main = memo(() => {
           isFetching={isFetching}
           isLoading={isLoading}
         />
-        <div className={styles.languageSwitcher}>
-          <LanguageSwitcher />
-        </div>
       </div>
+      <footer className={styles.languageSwitcher}>
+        <LanguageSwitcher />
+      </footer>
     </main>
   );
 });

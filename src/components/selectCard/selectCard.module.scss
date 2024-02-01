@@ -1,16 +1,16 @@
 .select {
   > h2 {
-    color: #3CAE6A; font-size: 22px; font-weight: 500;
+    color: var(--primary-color); font-size: var(--font-size-l); font-weight: 800;
     margin-bottom: 15px;
 
-    &.active_select {color: #3CAE6A;}
+    &.active_select {color: var(--primary-color);}
   }
 
   > section {
 
       > header {
       padding: 15px; position: relative;
-      background: #585857; border-radius: 40px;
+      background: var(--secondary-color); border-radius: 40px;
       display: flex; align-items: center;
 
       &.empty {
@@ -19,7 +19,7 @@
       }
       &.selected {
         color: #111111;
-        background: linear-gradient(0deg, #026B45 0%, #3CAE6A 109%); border: 1px solid #2FAC66;
+        background: var(--primary-color-gradient); border: 1px solid var(--primary-color);
       }
 
       > figure {
@@ -29,7 +29,7 @@
       }
 
     > h3 {
-        color: inherit; font-size: 20px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap;
+        color: inherit; font-size: var(--font-size-m); font-weight: 600; text-overflow: ellipsis; white-space: nowrap;
         margin: 0; max-width: 95%; overflow: hidden;
       }
     }

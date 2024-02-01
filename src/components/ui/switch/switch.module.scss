@@ -21,7 +21,7 @@
     background: #272826;
     border-radius: var(--border-radius-m);
     
-  }
+  } 
   
   .switchSpan::before {
     position: absolute;
@@ -37,7 +37,7 @@
   
   .switchInput:checked + .switchSpan::before {
     transform: translateX(29px);
-    background-color: var(--primary-color-switch);
+    background-color: var(--primary-color);
     
   }
   
