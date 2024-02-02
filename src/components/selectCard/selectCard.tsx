@@ -36,7 +36,7 @@ export const SelectCard = memo((props: SelectCardProps) => {
       <h2 className={clsx({ [styles.active_select]: give || get })}>
         {type === "give" ? t("Отдаю") : t("Получаю")}
       </h2>
-      {type === "give" && isLoading ? (
+      {type === "give" && !give && isLoading ? (
         <SelectSkeleton />
       ) : (
         <section>
