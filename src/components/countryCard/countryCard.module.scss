@@ -16,11 +16,12 @@
 
     > h3 {
       color: inherit; font-size: var(--font-size-m); font-weight: 500; white-space: nowrap; text-overflow: ellipsis; 
-      margin: 0; max-width: 85%; overflow: hidden;
+      margin: 0; max-width: 75%; overflow: hidden;
     }
 
     > i {
-      margin-left: 20px; position: absolute; right: 15px; top: 50%;
+      margin-left: 20px; position: absolute; right: 15px; 
+      // top: 50%;
       transform: translateY(-50%);
       
       display: flex; justify-content: center; align-items: center;

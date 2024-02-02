@@ -9,26 +9,36 @@ import { MainBg } from "../components/ui/mainBg";
 export const MainPage = () => {
   const [progress, setProgress] = useState(0);
   const [preloaderFinished, setPreloaderFinished] = useState(false);
+  const [preloaderExtro, setPreloaderExtro] = useState(false);
 
   // telegram object
   const tg = window.Telegram.WebApp;
+
   useEffect(() => {
     let prevProgress = 0;
-
     const interval = setInterval(() => {
       const randomIncrement = Math.ceil(Math.random() * 10);
       const newProgress = Math.min(prevProgress + randomIncrement, 100);
-
       setProgress(newProgress);
-
       prevProgress = newProgress;
     }, 100);
 
+    // setTimeout(() => {
+    //   setPreloaderExtro(true);
+    //   console.log("extro");
+    // }, 500);
+
     setTimeout(() => {
       clearInterval(interval);
-      setPreloaderFinished((prev) => !prev);
       tg.expand();
-    }, 1420);
+      console.log("expand");
+    }, 1520);
+
+    setTimeout(() => {
+      setPreloaderFinished((prev) => !prev);
+      setPreloaderExtro(true);
+      console.log("ui");
+    }, 2000);
 
     return () => clearInterval(interval);
   }, []);
@@ -42,6 +52,7 @@ export const MainPage = () => {
         <div
           className={clsx(styles.preloaderContainer, {
             [styles.preloaderFullHeight]: tg.isExpanded,
+            [styles.preloaderOpcacity]: preloaderExtro,
           })}
         >
           <Preloader step={20} progress={progress} strokeWidth={20} />
