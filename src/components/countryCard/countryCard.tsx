@@ -2,8 +2,8 @@ import React, { FC } from "react";
 import {
   useSpring,
   animated,
-  useTransition,
-  config,
+  // useTransition,
+  // config,
   useTrail,
 } from "react-spring";
 import { Country } from "../../model";
@@ -12,7 +12,7 @@ import styles from "./countryCard.module.scss";
 import ArrowDown from "../../assets/icons/ArrowDown";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
-import { transcode } from "buffer";
+// import { transcode } from "buffer";
 
 interface CountryCardProps {
   country: Country;
@@ -28,6 +28,17 @@ export const CountryCard: FC<CountryCardProps> = ({
   setAccordion,
 }) => {
   const { i18n } = useTranslation();
+
+  // open accordion in search logic
+  // const [isSearch, setIsSearch] = useState(false);
+  // const { search } = useFiltersStore((state) => state);
+  // useEffect(() => {
+  //   if (search) {
+  //     setIsSearch(true);
+  //   } else {
+  //     setIsSearch(false);
+  //   }
+  // }, [search]);
 
   const contentAnimation = useSpring({
     maxHeight: accordion ? "200vh" : "0",
@@ -52,7 +63,9 @@ export const CountryCard: FC<CountryCardProps> = ({
       })}
     >
       <header
-        className={clsx({ [styles.active_country]: accordion })}
+        className={clsx({
+          [styles.active_country]: accordion,
+        })}
         onClick={() => setAccordion(country.id)}
       >
         <figure>
