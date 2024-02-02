@@ -25,18 +25,15 @@ export const MainPage = () => {
 
     setTimeout(() => {
       setPreloaderExtro(true);
-      console.log("extro");
     }, 1200);
 
     setTimeout(() => {
       clearInterval(interval);
       tg.expand();
-      console.log("fullScreen");
     }, 1900);
 
     setTimeout(() => {
       setPreloaderFinished((prev) => !prev);
-      console.log("ui");
     }, 2250);
 
     return () => clearInterval(interval);
