@@ -10,7 +10,6 @@ export const MainPage = () => {
   const [progress, setProgress] = useState(0);
   const [preloaderFinished, setPreloaderFinished] = useState(false);
   const [preloaderExtro, setPreloaderExtro] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
 
   // telegram object
   const tg = window.Telegram.WebApp;
@@ -24,31 +23,22 @@ export const MainPage = () => {
       prevProgress = newProgress;
     }, 100);
 
-    // setTimeout(() => {
-    //   setPreloaderExtro(true);
-    //   console.log("extro");
-    // }, 500);
+    setTimeout(() => {
+      setPreloaderExtro(true);
+    }, 1300);
 
     setTimeout(() => {
       clearInterval(interval);
       tg.expand();
-      setPreloaderExtro(true);
-      console.log("expand");
+      // setPreloaderExtro(true);
     }, 1520);
 
     setTimeout(() => {
       setPreloaderFinished((prev) => !prev);
-      console.log("ui");
     }, 2200);
 
     return () => clearInterval(interval);
   }, []);
-
-  useEffect(() => {
-    if (tg.isExpanded) {
-      setIsExpanded(true);
-    }
-  }, [tg.isExpanded]);
 
   return (
     <div data-testid="main-page" className="page__wrapper">
@@ -58,7 +48,7 @@ export const MainPage = () => {
       ) : (
         <div
           className={clsx(styles.preloaderContainer, {
-            [styles.preloaderFullHeight]: isExpanded,
+            [styles.preloaderFullHeight]: tg.isExpanded,
             [styles.preloaderOpcacity]: preloaderExtro,
           })}
         >
