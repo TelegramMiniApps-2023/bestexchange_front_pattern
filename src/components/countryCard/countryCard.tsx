@@ -46,7 +46,11 @@ export const CountryCard: FC<CountryCardProps> = ({
   });
 
   return (
-    <div className={styles.country}>
+    <div
+      className={clsx(styles.country, {
+        [styles.active__container]: accordion,
+      })}
+    >
       <header
         className={clsx({ [styles.active_country]: accordion })}
         onClick={() => setAccordion(country.id)}
