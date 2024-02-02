@@ -25,19 +25,15 @@ export const MainPage = () => {
 
     setTimeout(() => {
       setPreloaderExtro(true);
-      console.log("extro");
     }, 1200);
 
     setTimeout(() => {
       clearInterval(interval);
       tg.expand();
-      // setPreloaderExtro(true);
-      console.log("expand");
     }, 1520);
 
     setTimeout(() => {
       setPreloaderFinished((prev) => !prev);
-      console.log("ui");
     }, 1900);
 
     return () => clearInterval(interval);
@@ -55,7 +51,7 @@ export const MainPage = () => {
             [styles.preloaderOpcacity]: preloaderExtro,
           })}
         >
-          <Preloader step={20} progress={progress} strokeWidth={20} />
+          <Preloader step={30} progress={progress} strokeWidth={20} />
         </div>
       )}
       <MainBg />
