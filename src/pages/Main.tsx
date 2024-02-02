@@ -31,14 +31,14 @@ export const MainPage = () => {
     setTimeout(() => {
       clearInterval(interval);
       tg.expand();
+      setPreloaderExtro(true);
       console.log("expand");
     }, 1520);
 
     setTimeout(() => {
       setPreloaderFinished((prev) => !prev);
-      setPreloaderExtro(true);
       console.log("ui");
-    }, 2000);
+    }, 2200);
 
     return () => clearInterval(interval);
   }, []);
