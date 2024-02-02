@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   opacity: 1;
-  transition: opacity 0.2s ease-in 1s;
+  transition: opacity 0.2s ease-in 1s, height 0.2 ease;
 }
 
 .preloaderFullHeight {
@@ -15,5 +15,5 @@
 .preloaderOpcacity {
   opacity: 0;
   transform: scale(3.2);
-  transition: opacity 0.3s ease-in 0.8s, transform 0.6s ease-out 0.9s;
+  transition: opacity 0.3s ease-in 0.2s, transform 0.6s ease-out 0.3s;
 }

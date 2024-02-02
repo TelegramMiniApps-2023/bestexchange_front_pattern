@@ -14,7 +14,7 @@ export const MainBg = (props: any) => {
     setTimeout(() => {
       setActiveOverlay(false);
       setActiveContainer(true);
-    }, 2000);
+    }, 1800);
     setActiveOverlay(true);
     // setActiveContainer(true);
   }, []);
