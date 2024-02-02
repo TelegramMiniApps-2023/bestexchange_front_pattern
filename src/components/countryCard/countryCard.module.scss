@@ -1,6 +1,6 @@
 .country {
   color: var(--text-color);
-  margin: 10px 0px; position: relative; overflow: hidden;
+  margin: 5px 0px; position: relative; overflow: hidden;
   
   > header {
     padding: 10px; position: relative;
@@ -38,9 +38,14 @@
   .active_country {
     color: var(--black-color);
     background: var(--primary-color-gradient); border: 1px solid var(--primary-color);
+    margin-top: 5px;
 
     > h3 {
       max-width: 80%;
     }
   }
+}
+
+.active__container {
+  margin-bottom: 10px;
 }
