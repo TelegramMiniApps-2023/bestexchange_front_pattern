@@ -70,27 +70,29 @@
 
 :root {
     --secondary-color: var(--secondary-color);
-    --shimmer-color: #f0f0f0;
+    --shimmer-color: #404040;
+    --element-color: #adaaaa;
   }
   
   .select {
+    background: var(--secondary-color);
+    border-radius: 40px;
     > section {
       > header {
         padding: 15px;
-        position: relative;
-        // background: var(--secondary-color);
+        border-radius: 40px;
         background: linear-gradient(90deg, transparent, var(--shimmer-color), transparent);
         background-size: 300% 100%;
-        border-radius: 40px;
         display: flex;
         align-items: center;
-        animation: shimmer 5.5s infinite linear;
+        animation: shimmer 1.5s infinite linear;
   
         > figure,
         > h3 {
-          background: linear-gradient(90deg, transparent, var(--shimmer-color), transparent);
+          background: linear-gradient(90deg, transparent, var(--element-color), transparent);
+          // background: var(--element-color);
           background-size: 200% 100%;
-          animation: shimmer 1.5s infinite linear;
+          animation: shimmer 1s infinite linear;
         }
   
         > figure {
@@ -103,11 +105,9 @@
   
         > h3 {
           margin: 0;
-          max-width: 95%;
-          margin: 10px 0px;
           border-radius: 20px;
-          width: 65%;
-          padding: 5%;
+          width: 50%;
+          padding: 3%;
         }
       }
     }
