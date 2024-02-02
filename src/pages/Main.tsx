@@ -14,27 +14,28 @@ export const MainPage = () => {
 
   // telegram object
   const tg = window.Telegram.WebApp;
+
   useEffect(() => {
     let prevProgress = 0;
-
     const interval = setInterval(() => {
       const randomIncrement = Math.ceil(Math.random() * 10);
       const newProgress = Math.min(prevProgress + randomIncrement, 100);
-
       setProgress(newProgress);
-
       prevProgress = newProgress;
     }, 100);
 
     setTimeout(() => {
       setPreloaderExtro(true);
-    }, 300);
+    }, 1200);
 
     setTimeout(() => {
       clearInterval(interval);
-      setPreloaderFinished((prev) => !prev);
       tg.expand();
-    }, 1420);
+    }, 1900);
+
+    setTimeout(() => {
+      setPreloaderFinished((prev) => !prev);
+    }, 2250);
 
     return () => clearInterval(interval);
   }, []);
@@ -52,7 +53,7 @@ export const MainPage = () => {
             [styles.preloaderOpcacity]: preloaderExtro,
           })}
         >
-          <Preloader step={20} progress={progress} strokeWidth={20} />
+          <Preloader step={25} progress={progress} strokeWidth={20} />
         </div>
       )}
       <MainBg />

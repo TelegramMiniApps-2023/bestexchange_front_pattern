@@ -16,11 +16,12 @@
 
     > h3 {
       color: inherit; font-size: var(--font-size-m); font-weight: 500; white-space: nowrap; text-overflow: ellipsis; 
-      margin: 0; max-width: 85%; overflow: hidden;
+      margin: 0; max-width: 75%; overflow: hidden;
     }
 
     > i {
-      margin-left: 20px; position: absolute; right: 15px; top: 50%;
+      margin-left: 20px; position: absolute; right: 15px; 
+      // top: 50%;
       transform: translateY(-50%);
       
       display: flex; justify-content: center; align-items: center;
@@ -30,16 +31,21 @@
   > section {max-height: 0; overflow: hidden; opacity: 0;}
 
   .active {
-    max-height: 200vh; overflow: auto; opacity: 1;  
-    transition: max-height 0.7s ease-out, opacity 0.5s ease-out 0.1s;
+    // max-height: 200vh; overflow: auto; opacity: 1;  
+    // transition: max-height 0.7s ease-out, opacity 0.5s ease-out 0.1s;
   }
 
   .active_country {
     color: var(--black-color);
     background: var(--primary-color-gradient); border: 1px solid var(--primary-color);
+    margin-top: 5px;
 
     > h3 {
       max-width: 80%;
     }
   }
+}
+
+.active__container {
+  margin-bottom: 10px;
 }

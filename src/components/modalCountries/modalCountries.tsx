@@ -20,12 +20,13 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
 }) => {
   // cities search
   const search = useFiltersStore((state) => state.search.toLowerCase());
+
   const { t, i18n } = useTranslation();
-  const currentLanguage = (country: Country) => {
-    const language =
-      i18n.language === "ru" ? country?.name?.ru : country?.name?.en;
-    return language;
-  };
+  // const currentLanguage = (country: Country) => {
+  //   const language =
+  //     i18n.language === "ru" ? country?.name?.ru : country?.name?.en;
+  //   return language;
+  // };
   const filteredOptions = countries
     .map((country) => {
       const isCountryMatch =
@@ -56,16 +57,34 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
   const handleAccordion = (countryId: number) => {
     setAccordionStates((prevStates) => {
       const newStates: { [key: number]: boolean } = { ...prevStates };
-      Object.keys(newStates).forEach((key) => {
-        const numericKey = parseInt(key, 10);
-        if (!isNaN(numericKey) && numericKey !== countryId) {
-          newStates[numericKey] = false;
-        }
-      });
-      newStates[countryId] = !prevStates[countryId];
+      if (search) {
+        newStates[countryId] = !prevStates[countryId];
+      } else {
+        Object.keys(newStates).forEach((key) => {
+          const numericKey = parseInt(key, 10);
+          if (!isNaN(numericKey) && numericKey !== countryId) {
+            newStates[numericKey] = false;
+          }
+        });
+        newStates[countryId] = !prevStates[countryId];
+      }
       return newStates;
     });
   };
+
+  useEffect(() => {
+    if (search) {
+      const allOpenStates: { [key: number]: boolean } = {};
+      filteredOptions.forEach((country) => {
+        if (country) {
+          allOpenStates[country.id] = true;
+        }
+      });
+      setAccordionStates(allOpenStates);
+    } else {
+      setAccordionStates({});
+    }
+  }, [search]);
 
   const ulRef = useRef<HTMLUListElement | null>(null);
 

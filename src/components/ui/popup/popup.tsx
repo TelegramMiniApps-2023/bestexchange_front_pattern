@@ -14,6 +14,7 @@ export const Popup = (props: PopupProps) => {
 
   // Анимация для появления/исчезновения модального окна
   const modalAnimation = useSpring({
+    display: show ? "block" : "none",
     opacity: show ? 1 : 0,
     transform: show
       ? "translate(-50%, -50%) scale(1)"
