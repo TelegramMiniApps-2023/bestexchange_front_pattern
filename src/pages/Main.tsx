@@ -25,7 +25,7 @@ export const MainPage = () => {
 
     setTimeout(() => {
       setPreloaderExtro(true);
-    }, 1200);
+    }, 1100);
 
     setTimeout(() => {
       clearInterval(interval);
@@ -51,7 +51,7 @@ export const MainPage = () => {
             [styles.preloaderOpcacity]: preloaderExtro,
           })}
         >
-          <Preloader step={30} progress={progress} strokeWidth={20} />
+          <Preloader step={25} progress={progress} strokeWidth={20} />
         </div>
       )}
       <MainBg />
