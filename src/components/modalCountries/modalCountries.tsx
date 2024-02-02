@@ -58,7 +58,7 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
     setAccordionStates((prevStates) => {
       const newStates: { [key: number]: boolean } = { ...prevStates };
       if (search) {
-        newStates[countryId] = false;
+        newStates[countryId] = !prevStates[countryId];
       } else {
         Object.keys(newStates).forEach((key) => {
           const numericKey = parseInt(key, 10);

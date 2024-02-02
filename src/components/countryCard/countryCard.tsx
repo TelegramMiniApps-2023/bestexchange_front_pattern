@@ -29,17 +29,6 @@ export const CountryCard: FC<CountryCardProps> = ({
 }) => {
   const { i18n } = useTranslation();
 
-  // open accordion in search logic
-  // const [isSearch, setIsSearch] = useState(false);
-  // const { search } = useFiltersStore((state) => state);
-  // useEffect(() => {
-  //   if (search) {
-  //     setIsSearch(true);
-  //   } else {
-  //     setIsSearch(false);
-  //   }
-  // }, [search]);
-
   const contentAnimation = useSpring({
     maxHeight: accordion ? "200vh" : "0",
     opacity: accordion ? 1 : 0,
