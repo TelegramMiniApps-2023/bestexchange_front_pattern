@@ -1,0 +1,125 @@
+// .select {
+//     >section {
+
+//         >header {
+//             padding: 15px;
+//             position: relative;
+//             background: var(--secondary-color);
+//             border-radius: 40px;
+//             display: flex;
+//             align-items: center;
+
+//             >figure {
+//                 margin-right: 15px;
+//                 width: 45px;
+//                 height: 45px;
+//                 background: #949494;
+//                 border-radius: 50%;
+//                 border: 2px solid #fff;
+//             }
+
+//             >h3 {
+//                 margin: 0;
+//                 max-width: 95%;
+//                 background: #949494;
+//                 margin: 10px 0px;
+//                 border-radius: 20px;
+//                 width: 65%;
+//                 padding: 5%;
+//             }
+//         }
+//     }
+
+// }
+
+// @keyframes pulse__container {
+//     0% {
+//         background: var(--secondary-color);
+//     }
+
+//     50% {
+//         background: #b0b0b0;
+//     }
+
+//     100% {
+//         background: #9d9d9d;
+//     }
+// }
+
+// @keyframes pulse__element {
+//     0% {
+//         background: #949494;
+//     }
+
+//     50% {
+//         background: #a5a5a5;
+//     }
+
+//     100% {
+//         background: #c5c5c5;
+//     }
+// }
+
+// .pulse__container {
+//     animation: pulse__container 2.5s infinite;
+// }
+// .pulse__element {
+//     animation: pulse__element 1.5s infinite;
+// }
+
+
+:root {
+    --secondary-color: var(--secondary-color);
+    --shimmer-color: #404040;
+    --element-color: #adaaaa;
+  }
+  
+  .select {
+    background: var(--secondary-color);
+    border-radius: 40px;
+    > section {
+      > header {
+        padding: 15px;
+        border-radius: 40px;
+        background: linear-gradient(90deg, transparent, var(--shimmer-color), transparent);
+        background-size: 300% 100%;
+        display: flex;
+        align-items: center;
+        animation: shimmer 1.5s infinite linear;
+  
+        > figure,
+        > h3 {
+          background: linear-gradient(90deg, transparent, var(--element-color), transparent);
+          // background: var(--element-color);
+          background-size: 200% 100%;
+          animation: shimmer 1s infinite linear;
+        }
+  
+        > figure {
+          margin-right: 15px;
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          border: 2px solid #fff;
+        }
+  
+        > h3 {
+          margin: 0;
+          border-radius: 20px;
+          width: 50%;
+          padding: 3%;
+        }
+      }
+    }
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+  
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  

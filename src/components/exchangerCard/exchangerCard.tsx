@@ -4,6 +4,7 @@ import styles from "./exchangerCard.module.scss";
 import ArrowRight from "../../assets/icons/ArrowRight";
 import { useTranslation } from "react-i18next";
 import { Location } from "../../store/store";
+import { RoundValute } from "../ui/roundValute";
 
 interface ExchangerCardProps {
   card: Exchanger;
@@ -24,7 +25,6 @@ export const ExchangerCard: FC<ExchangerCardProps> = ({ card, location }) => {
 
   return (
     <article className={styles.exchangerItem}>
-      {/* <a href={card.partner_link} target="_blank" rel="noopener noreferrer"> */}
       <a onClick={() => openLink(card.partner_link)} rel="noopener noreferrer">
         <header>
           <hgroup>
@@ -36,22 +36,9 @@ export const ExchangerCard: FC<ExchangerCardProps> = ({ card, location }) => {
         </header>
         <hr />
         <footer>
-          {/* <hgroup>
-            <h2>
-              {card.in_count}
-              <span>{card.valute_from}</span>
-              <i>
-                <ArrowRight />
-              </i>
-            </h2>
-            <h2>
-              {card.out_count}
-              <span>{card.valute_to}</span>
-            </h2>
-          </hgroup> */}
           <hgroup>
             <h2>
-              <span>{card.in_count}</span>
+              <RoundValute value={card.in_count} />
               <div>
                 <img
                   src={card.icon_valute_from}
@@ -63,7 +50,7 @@ export const ExchangerCard: FC<ExchangerCardProps> = ({ card, location }) => {
               </i>
             </h2>
             <h2>
-              <span>{card.out_count}</span>
+              <RoundValute value={card.out_count} />
               <div>
                 <img
                   src={card.icon_valute_to}
@@ -73,7 +60,8 @@ export const ExchangerCard: FC<ExchangerCardProps> = ({ card, location }) => {
             </h2>
           </hgroup>
           <span>
-            {t("Обмен")} {card.min_amount} {t("до")} {card.max_amount}
+            {t("Обмен")} <RoundValute value={card.min_amount} /> {t("до")}{" "}
+            <RoundValute value={card.max_amount} />
           </span>
         </footer>
       </a>
