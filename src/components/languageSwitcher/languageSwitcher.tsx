@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
-import { animated, useSpring } from "react-spring";
+import { RussiaIcon } from "../../assets/icons/IconRussia";
+import { USAIcon } from "../../assets/icons/IconUsa";
 import { Switch } from "../ui/switch";
 import styles from "./languageSwitcher.module.scss";
 
@@ -20,13 +21,16 @@ export const LanguageSwitcher = memo(() => {
     // setSpring({ transform: "translateY(0px)" });
   };
 
-  const currentLang =
-    i18n.language === "ru"
-      ? t("Переключить на Английский")
-      : t("Переключить на Русский");
-
+  const currentLang = i18n.language === "ru" ? "Русский" : "English";
+  const currentIcon =
+    i18n.language === "ru" ? (
+      <RussiaIcon width="50px" height="50px" />
+    ) : (
+      <USAIcon width="50px" height="50px" />
+    );
   return (
     <div className={styles.languageSwitcher}>
+      <span>{currentIcon}</span>
       <label>{currentLang}</label>
       <Switch onClick={toggle} />
     </div>
