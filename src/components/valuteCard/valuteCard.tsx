@@ -44,7 +44,7 @@ export const ValuteCard: FC<ValuteCardProps> = memo(
 
     return (
       <li className={styles.valute} onClick={() => handleChangeDirection()}>
-        <header>
+        <header className={styles.valuteHeader}>
           <div>
             <img src={option.icon_url} alt={`Иконка ${option.name}`} />
           </div>
