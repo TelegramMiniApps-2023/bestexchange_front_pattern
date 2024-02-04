@@ -5,6 +5,7 @@ import {
   useTransition,
   config,
   useTrail,
+  easings,
 } from "react-spring";
 import { Country } from "../../model";
 import { CityCard } from "../cityCard";
@@ -33,6 +34,11 @@ export const CountryCard: FC<CountryCardProps> = ({
     maxHeight: accordion ? "200vh" : "0",
     opacity: accordion ? 1 : 0,
     scale: accordion ? 1 : 0,
+    config: {
+      duration: 100,
+      tension: 210,
+      friction: 20,
+    },
   });
   const arrowAnimation = useSpring({
     transform: `rotate(${accordion ? 180 : 0}deg)`,
