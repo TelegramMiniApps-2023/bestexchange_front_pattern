@@ -7,7 +7,6 @@ import clsx from "clsx";
 import { MainBg } from "../components/ui/mainBg";
 
 export const MainPage = () => {
-  const [progress, setProgress] = useState(0);
   const [preloaderFinished, setPreloaderFinished] = useState(false);
   const [preloaderExtro, setPreloaderExtro] = useState(false);
 
@@ -15,28 +14,18 @@ export const MainPage = () => {
   const tg = window.Telegram.WebApp;
 
   useEffect(() => {
-    let prevProgress = 0;
-    const interval = setInterval(() => {
-      const randomIncrement = Math.ceil(Math.random() * 10);
-      const newProgress = Math.min(prevProgress + randomIncrement, 100);
-      setProgress(newProgress);
-      prevProgress = newProgress;
-    }, 100);
-
+    // preloader scale and opacity
     setTimeout(() => {
       setPreloaderExtro(true);
     }, 1200);
-
+    // webapp 100% height
     setTimeout(() => {
-      clearInterval(interval);
       tg.expand();
     }, 1900);
-
+    // preloader ends
     setTimeout(() => {
       setPreloaderFinished((prev) => !prev);
     }, 2250);
-
-    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -51,7 +40,7 @@ export const MainPage = () => {
             [styles.preloaderOpcacity]: preloaderExtro,
           })}
         >
-          <Preloader step={25} progress={progress} strokeWidth={20} />
+          <Preloader step={25} progress={0} strokeWidth={20} />
         </div>
       )}
       <MainBg />

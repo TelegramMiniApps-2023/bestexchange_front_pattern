@@ -7,7 +7,6 @@ import { LocationSelect } from "../locationSelect";
 import styles from "./main.module.scss";
 import { ResultArrow } from "../resultArrow";
 import { SelectsForm, SelectsFormCollapse } from "../selectsForm";
-import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "../languageSwitcher";
 import { animated, config, useSpring } from "react-spring";
 
@@ -15,9 +14,11 @@ export const Main = memo(() => {
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
   const setGetSelect = useSelectsStore((state) => state.setGetSelect);
-  const { i18n } = useTranslation();
   const { location } = useCashStore((state) => state);
   const [isCollapse, setIsCollapse] = useState(false);
+  // preloader
+  const [preloader, setPreloader] = useState(false);
+  //
   const {
     data: exchangers,
     isLoading,
@@ -38,7 +39,7 @@ export const Main = memo(() => {
       setGetSelect(null);
     }
   }, [error, setGetSelect]);
-  const collapsedForm = isSuccess && isCollapse;
+  const collapsedForm = isSuccess && !preloader && isCollapse;
   const toggleArrow = () => {
     if (isSuccess) {
       setIsCollapse((prev) => !prev);
@@ -61,6 +62,17 @@ export const Main = memo(() => {
       : "translateY(50px) scale(0.4)",
     config: config.gentle,
   });
+
+  // preloader
+  useEffect(() => {
+    if (isFetching || isLoading) {
+      setPreloader(true);
+      setTimeout(() => {
+        setPreloader(false);
+      }, 1000);
+    }
+  }, [isLoading, isFetching]);
+  //
 
   return (
     <main className={styles.main}>
@@ -94,6 +106,7 @@ export const Main = memo(() => {
           exchangers={exchangers}
           isFetching={isFetching}
           isLoading={isLoading}
+          preloader={preloader}
         />
       </div>
       <footer className={styles.languageSwitcher}>
