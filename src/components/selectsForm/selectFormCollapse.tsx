@@ -56,24 +56,24 @@ export const SelectsFormCollapse = (props: SelectsFormCollapseProps) => {
   }, [i18n.language]);
 
   return (
-    <section onClick={toggleArrow} className={styles.selectsCollapse}>
-      <animated.div className={styles.select}>
+    <section onClick={toggleArrow} className={styles.selectsFormCollapse}>
+      <animated.div className={styles.selectContainer}>
         <div>
-          <h2 className={styles.header}>{t("ОТДАЮ")}</h2>
-          <h3 className={styles.nameText}>{give?.name}</h3>
+          <h2 className={styles.selectsHeader}>{t("ОТДАЮ")}</h2>
+          <h3 className={styles.selectName}>{give?.name}</h3>
         </div>
-        <figure>
+        <figure className={styles.iconFigure}>
           <img src={give?.icon_url} alt={`Иконка ${give?.name}`} />
         </figure>
       </animated.div>
 
-      <div className={styles.separator}></div>
-      <animated.div className={styles.select}>
+      <div className={styles.separatorLine}></div>
+      <animated.div className={styles.selectContainer}>
         <div>
-          <h2 className={styles.header}>{t("ПОЛУЧАЮ")}</h2>
-          <h3 className={styles.nameText}>{get?.name}</h3>
+          <h2 className={styles.selectsHeader}>{t("ПОЛУЧАЮ")}</h2>
+          <h3 className={styles.selectName}>{get?.name}</h3>
         </div>
-        <figure>
+        <figure className={styles.iconFigure}>
           <img src={get?.icon_url} alt={`Иконка ${get?.name}`} />
         </figure>
       </animated.div>

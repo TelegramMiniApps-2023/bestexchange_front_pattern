@@ -33,18 +33,18 @@ export const SelectCard = memo((props: SelectCardProps) => {
   const { t } = useTranslation();
   return (
     <section className={styles.select}>
-      <h2 className={clsx({ [styles.active_select]: give || get })}>
+      <h2 className={clsx(styles.selectHeader,{ [styles.active_select]: give || get })}>
         {type === "give" ? t("Отдаю") : t("Получаю")}
       </h2>
       {type === "give" && !give && isLoading ? (
         <SelectSkeleton />
       ) : (
-        <section>
+        <section className={styles.section} >
           <header
             onClick={() => {
               handleModal();
             }}
-            className={clsx({
+            className={clsx(styles.header,{
               [styles.empty]:
                 (!give && type === "get") ||
                 (!availableDirection && type === "give") ||
@@ -55,7 +55,7 @@ export const SelectCard = memo((props: SelectCardProps) => {
             })}
           >
             {
-              <figure>
+              <figure className={styles.selectImage}>
                 {type === "give" && give ? (
                   <img src={give.icon_url} alt={`Иконка ${give.name}`} />
                 ) : get && !error ? (
@@ -65,7 +65,7 @@ export const SelectCard = memo((props: SelectCardProps) => {
                 )}
               </figure>
             }
-            <h3>
+            <h3 className={styles.valuteName}>
               {type === "give" && give
                 ? give.name
                 : get && !error

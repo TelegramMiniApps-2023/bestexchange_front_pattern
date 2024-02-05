@@ -17,10 +17,10 @@ export const ExchangersList: FC<ExchangersListProps> = memo(
     const location = useCashStore((state) => state.location);
     return (
       <section className={styles.exchangersList}>
-        <h2>
+        <h2 className={styles.header}>
           {t("Лучшие курсы")} {give?.name} {t("на")} {get?.name}
         </h2>
-        <div>
+        <div className={styles.cards}>
           {exchangers &&
             exchangers.map((card) => (
               <ExchangerCard key={card.id} card={card} location={location} />
