@@ -32,7 +32,7 @@ export const Main = memo(() => {
   });
   useEffect(() => {
     setIsCollapse(true);
-  }, [isSuccess]);
+  }, [exchangers]);
   useEffect(() => {
     if (error) {
       setGetSelect(null);
