@@ -15,16 +15,16 @@ export const SystemError: FC<SystemErrorProps> = ({
 }) => {
   const { t } = useTranslation();
   return (
-    <section className={styles.error}>
-      <p>
+    <section className={styles.systemError}>
+      <p className={styles.errorText}>
         {direction
           ? `${t("Выбранное направление недоступно")}`
           : response && `${t("Системная ошибка")}`}
       </p>
-      <div>
-        <img src="/img/errorIcon.png" />
-        <img src="/img/errorIcon.png" />
-        <img src="/img/errorIcon.png" />
+      <div className={styles.errorImages}>
+        <img src="/img/errorIcon.png" alt="Error Icon" />
+        <img src="/img/errorIcon.png" alt="Error Icon" />
+        <img src="/img/errorIcon.png" alt="Error Icon" />
       </div>
     </section>
   );

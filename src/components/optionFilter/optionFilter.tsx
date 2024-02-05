@@ -46,6 +46,7 @@ export const OptionFilter: FC<OptionFilterProps> = memo(({ categories }) => {
     <Carousel
       enableKeyboardControls={true}
       slidesToScroll={1}
+      swiping={false}
       renderCenterLeftControls={({ previousSlide, previousDisabled }) => (
         <div className={styles.arrowContainer}>
           <IconLeft
@@ -72,7 +73,7 @@ export const OptionFilter: FC<OptionFilterProps> = memo(({ categories }) => {
       tabbed={false}
       slidesToShow={2}
       disableEdgeSwiping={true}
-      dragging={true}
+ 
     >
       {tabsItem.map((tab) => (
         <Tab
