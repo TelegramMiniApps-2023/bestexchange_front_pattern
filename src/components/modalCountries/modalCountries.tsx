@@ -119,7 +119,7 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
             )}
           </ul>
         ) : (
-          <p>{t("Ничего не найдено...")}</p>
+          <p className={styles.errorMessages}>{t("Ничего не найдено...")}</p>
         )}
       </section>
     </Popup>

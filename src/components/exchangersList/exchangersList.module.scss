@@ -1,9 +1,9 @@
 .exchangersList {
   padding-bottom: 20px;
-  > h2 {
+  .header {
     color: var(--text-color); font-size: 14px; font-weight: 500; line-height: 1.5; text-align: start;
     margin: 0px 5%;
   }
 
-  > div {padding: 15px 0px}
+  .cards {padding: 15px 0px}
 }

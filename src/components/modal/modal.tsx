@@ -50,14 +50,14 @@ export const Modal: FC<ModalProps> = ({
       <section className={styles.valutesPopup}>
         {options && Object.keys(options).length > 0 ? (
           <>
-            <h3>{type === "give" ? t("ОТДАЮ") : t("ПОЛУЧАЮ")}</h3>
+            <h3 className={styles.title}>{type === "give" ? t("ОТДАЮ") : t("ПОЛУЧАЮ")}</h3>
             <div className={styles.search__container}>
               <OptionSearch />
             </div>
             <div className={styles.filter__container}>
               <OptionFilter categories={options} />
             </div>
-            <ul ref={ulRef}>
+            <ul className={styles.cardList} ref={ulRef}>
               {filteredOptions && filteredOptions?.length > 0 ? (
                 filteredOptions.map((option) => (
                   <ValuteCard
