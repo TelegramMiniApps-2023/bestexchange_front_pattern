@@ -4,6 +4,12 @@
   background-color: var(--secondary-color); border-radius: var(--border-radius-m);
   display: flex; align-items: center; justify-content: space-between;
 
+  .currentIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .currentLang {
     font-size: var(--font-size-s); margin-left: 10px;
     user-select: none;
