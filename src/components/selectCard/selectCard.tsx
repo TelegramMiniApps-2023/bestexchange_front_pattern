@@ -7,7 +7,6 @@ import { directionTabsValute } from "../../assets/consts";
 import { useCashStore, useSelectsStore } from "../../store/store";
 import { useTranslation } from "react-i18next";
 import { SelectSkeleton } from "../ui/selectSkeleton";
-import { animated, useSpring } from "react-spring";
 import { AxiosError } from "axios";
 
 type SelectCardProps = {
@@ -15,7 +14,7 @@ type SelectCardProps = {
   handleModal: () => void;
   give: Options | null;
   get: Options | null;
-  error: AxiosError;
+  error: AxiosError | null;
   availableDirection?: Categories;
   typeValute: string;
   isLoading: boolean;
@@ -33,24 +32,30 @@ export const SelectCard = memo((props: SelectCardProps) => {
   } = props;
   const { location } = useCashStore((state) => state);
   const { t } = useTranslation();
-  const exchangersError = useSelectsStore(state=> state?.exchangersError)
- 
+  const exchangersError = useSelectsStore((state) => state?.exchangersError);
 
-  
   return (
     <section className={styles.select}>
-      <h2 className={clsx(styles.selectHeader,{ [styles.active_select]: give || get })}>
+      <h2
+        className={clsx(styles.selectHeader, {
+          [styles.active_select]: give || get,
+        })}
+      >
         {type === "give" ? t("Отдаю") : t("Получаю")}
       </h2>
       {type === "give" && !give && isLoading ? (
         <SelectSkeleton />
       ) : (
-        <section className={clsx(styles.section,{[styles.onError]: exchangersError && type==='get'})} >
+        <section
+          className={clsx(styles.section, {
+            [styles.onError]: exchangersError && type === "get",
+          })}
+        >
           <header
             onClick={() => {
               handleModal();
             }}
-            className={clsx(styles.header,{
+            className={clsx(styles.header, {
               [styles.empty]:
                 (!give && type === "get") ||
                 (!availableDirection && type === "give") ||

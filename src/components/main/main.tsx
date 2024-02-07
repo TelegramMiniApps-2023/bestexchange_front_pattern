@@ -13,7 +13,9 @@ import { animated, config, useSpring } from "react-spring";
 export const Main = memo(() => {
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
-  const setExchangersError = useSelectsStore((state) => state.setExchangersError);
+  const setExchangersError = useSelectsStore(
+    (state) => state.setExchangersError
+  );
   const setGetSelect = useSelectsStore((state) => state.setGetSelect);
   const { location } = useCashStore((state) => state);
   const [isCollapse, setIsCollapse] = useState(false);
@@ -39,14 +41,16 @@ export const Main = memo(() => {
     if (error) {
       setGetSelect(null);
     }
-    setExchangersError(error)
+    if (error !== null) {
+      setExchangersError(error);
+    }
   }, [error]);
   const collapsedForm = isSuccess && !preloader && isCollapse;
   const toggleArrow = useCallback(() => {
     if (isSuccess) {
       setIsCollapse((prev) => !prev);
     }
-  },[isSuccess]);
+  }, [isSuccess]);
 
   // const selectsFormSpring = useSpring({
   //   opacity: collapsedForm ? 0 : 1,
