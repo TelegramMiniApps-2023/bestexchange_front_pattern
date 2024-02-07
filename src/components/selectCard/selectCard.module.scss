@@ -5,14 +5,16 @@
 
     &.active_select {color: var(--primary-color);}
   }
-
+  .section.onError {
+    animation: horizontal-shaking 1s;
+    animation-timing-function: ease-out;
+  }
   .section {
-
       .header {
       padding: 15px; position: relative;
       background: var(--secondary-color); border-radius: 40px;
       display: flex; align-items: center;
-
+     
       &.empty {
         opacity: 0.3;
         pointer-events: none;
@@ -35,4 +37,17 @@
     }
   }
 
+}
+@keyframes horizontal-shaking {
+  0% { transform: translateX(0) }
+  10% {transform: translateX(5px)}
+  20% {transform: translateX(-5px)}
+  30% {transform: translateX(5px)}
+  40% {transform: translateX(-5px)}
+  50% {transform: translateX(5px)}
+  60% {transform: translateX(-5px)}
+  70% { transform: translateX(5px) }
+  80% { transform: translateX(-5px) }
+  90% { transform: translateX(5px) }
+  100% { transform: translateX(0) }
 }

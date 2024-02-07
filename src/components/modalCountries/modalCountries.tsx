@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, memo, useEffect, useMemo, useRef, useState } from "react";
 import { Popup } from "../ui/popup";
 import { Country } from "../../model";
 import { CountryCard } from "../countryCard";
@@ -13,7 +13,7 @@ interface ModalCountriesProps {
   show: boolean;
 }
 
-export const ModalCountries: FC<ModalCountriesProps> = ({
+export const ModalCountries: FC<ModalCountriesProps> = memo(({
   countries,
   handleModal,
   show,
@@ -27,7 +27,7 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
   //     i18n.language === "ru" ? country?.name?.ru : country?.name?.en;
   //   return language;
   // };
-  const filteredOptions = countries
+  const filteredOptions = useMemo(()=>  countries
     .map((country) => {
       const isCountryMatch =
         i18n.language === "ru"
@@ -48,7 +48,7 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
       }
       return null;
     })
-    .filter((country) => country !== null);
+    .filter((country) => country !== null),[countries, i18n.language, search])
 
   // accrodion logic
   const [accordionStates, setAccordionStates] = useState<{
@@ -124,4 +124,4 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
       </section>
     </Popup>
   );
-};
+});

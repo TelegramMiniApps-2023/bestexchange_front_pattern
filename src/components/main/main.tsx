@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { useFetchExchangers } from "../../api/api";
 import { useCashStore, useSelectsStore } from "../../store/store";
 import { DirectionTabs } from "../directionTabs";
@@ -13,6 +13,7 @@ import { animated, config, useSpring } from "react-spring";
 export const Main = memo(() => {
   const give = useSelectsStore((state) => state.giveSelect);
   const get = useSelectsStore((state) => state.getSelect);
+  const setExchangersError = useSelectsStore((state) => state.setExchangersError);
   const setGetSelect = useSelectsStore((state) => state.setGetSelect);
   const { location } = useCashStore((state) => state);
   const [isCollapse, setIsCollapse] = useState(false);
@@ -38,13 +39,14 @@ export const Main = memo(() => {
     if (error) {
       setGetSelect(null);
     }
-  }, [error, setGetSelect]);
+    setExchangersError(error)
+  }, [error]);
   const collapsedForm = isSuccess && !preloader && isCollapse;
-  const toggleArrow = () => {
+  const toggleArrow = useCallback(() => {
     if (isSuccess) {
       setIsCollapse((prev) => !prev);
     }
-  };
+  },[isSuccess]);
 
   // const selectsFormSpring = useSpring({
   //   opacity: collapsedForm ? 0 : 1,

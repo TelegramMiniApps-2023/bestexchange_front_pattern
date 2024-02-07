@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from "react";
+import { FC, memo, useEffect, useRef } from "react";
 import { Categories } from "../../model/Categories";
 import { ValuteCard } from "../valuteCard";
 import { OptionFilter } from "../optionFilter";
@@ -17,7 +17,7 @@ interface ModalProps {
   show: boolean;
 }
 
-export const Modal: FC<ModalProps> = ({
+export const Modal: FC<ModalProps> = memo(({
   options,
   handleModal,
   type,
@@ -82,4 +82,4 @@ export const Modal: FC<ModalProps> = ({
       </section>
     </Popup>
   );
-};
+});

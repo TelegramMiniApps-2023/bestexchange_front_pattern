@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import styles from "./mainBg.module.scss";
 import clsx from "clsx";
 import { Path_1 } from "./path_1";
@@ -7,7 +7,7 @@ import { Path_3 } from "./path_3";
 import { Path_4 } from "./path_4";
 import { Path_5 } from "./path_5";
 import { Path_6 } from "./path_6";
-export const MainBg = (props: any) => {
+export const MainBg = memo((props: any) => {
   const [isActiveOverlay, setActiveOverlay] = useState(false);
   const [isActiveContainer, setActiveContainer] = useState(false);
   useEffect(() => {
@@ -159,4 +159,4 @@ export const MainBg = (props: any) => {
       ></div>
     </div>
   );
-};
+});
