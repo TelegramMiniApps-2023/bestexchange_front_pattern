@@ -30,7 +30,7 @@ export const LanguageSwitcher = memo(() => {
     );
   return (
     <div className={styles.languageSwitcher}>
-      <span>{currentIcon}</span>
+      <span className={styles.currentIcon}>{currentIcon}</span>
       <label className={styles.currentLang}>{currentLang}</label>
       <Switch onClick={toggle} />
     </div>
