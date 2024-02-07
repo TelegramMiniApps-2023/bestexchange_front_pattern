@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from "react";
+import { FC, memo, useCallback, useState } from "react";
 import clsx from "clsx";
 import { ModalCountries } from "../modalCountries/modalCountries";
 import styles from "./locationSelect.module.scss";
@@ -14,7 +14,7 @@ import { LocationIcon } from "../../assets/icons/LocationIcon";
 
 interface LocationSelectProps {}
 
-export const LocationSelect: FC<LocationSelectProps> = () => {
+export const LocationSelect: FC<LocationSelectProps> = memo(() => {
   const [show, setShow] = useState(false);
   const handleModal = useCallback(() => {
     setShow((prevShow) => !prevShow);
@@ -75,4 +75,4 @@ export const LocationSelect: FC<LocationSelectProps> = () => {
       </div>
     </section>
   );
-};
+});

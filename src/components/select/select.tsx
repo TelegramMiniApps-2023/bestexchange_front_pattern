@@ -47,7 +47,6 @@ export const Select = memo(({ type }: SelectProps) => {
   });
   const currentAvailableDirection =
     i18n.language === "ru" ? availableDirection?.ru : availableDirection?.en;
-
   useEffect(() => {
     if (error) {
       setGetSelect(null);

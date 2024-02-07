@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from "react";
+import { FC, memo, useEffect, useRef } from "react";
 import { Categories } from "../../model/Categories";
 import { ValuteCard } from "../valuteCard";
 import { OptionFilter } from "../optionFilter";
@@ -17,7 +17,7 @@ interface ModalProps {
   show: boolean;
 }
 
-export const Modal: FC<ModalProps> = ({
+export const Modal: FC<ModalProps> = memo(({
   options,
   handleModal,
   type,
@@ -50,7 +50,9 @@ export const Modal: FC<ModalProps> = ({
       <section className={styles.valutesPopup}>
         {options && Object.keys(options).length > 0 ? (
           <>
-            <h3 className={styles.title}>{type === "give" ? t("ОТДАЮ") : t("ПОЛУЧАЮ")}</h3>
+            <h3 className={styles.title}>
+              {type === "give" ? t("ОТДАЮ") : t("ПОЛУЧАЮ")}
+            </h3>
             <div className={styles.search__container}>
               <OptionSearch />
             </div>
@@ -80,4 +82,4 @@ export const Modal: FC<ModalProps> = ({
       </section>
     </Popup>
   );
-};
+});
