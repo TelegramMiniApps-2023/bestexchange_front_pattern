@@ -50,7 +50,9 @@ export const Modal: FC<ModalProps> = ({
       <section className={styles.valutesPopup}>
         {options && Object.keys(options).length > 0 ? (
           <>
-            <h3 className={styles.title}>{type === "give" ? t("ОТДАЮ") : t("ПОЛУЧАЮ")}</h3>
+            <h3 className={styles.title}>
+              {type === "give" ? t("ОТДАЮ") : t("ПОЛУЧАЮ")}
+            </h3>
             <div className={styles.search__container}>
               <OptionSearch />
             </div>

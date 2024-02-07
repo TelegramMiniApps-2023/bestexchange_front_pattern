@@ -1,0 +1,131 @@
+.popup {
+    height: 95vh;
+    width: 95%;
+    max-width: 480px;
+    padding: 20px 0px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-color);
+    z-index: 99;
+    border-radius: var(--border-radius-m);
+    overflow-y: hidden;
+
+    > i {
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        z-index: 99;
+      }
+}
+
+.backgrounds {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.background {
+    --offset: 0;
+    position: absolute;
+    left: var(--offset);
+    right: var(--offset);
+    bottom: var(--offset);
+    top: var(--offset);
+    background: linear-gradient(to right, #504bff, #4cfa63);
+    transform: scale(0);
+    transition: all 0.5s ease 0s;
+    border-radius: 50%;
+}
+
+.background2 {
+    --offset: 10%;
+    position: absolute;
+    left: var(--offset);
+    right: var(--offset);
+    bottom: var(--offset);
+    top: var(--offset);
+    background: linear-gradient(to right, #6665ff, #69fa7f);
+    transform: scale(0);
+    transition: all 0.5s ease 0.1s;
+}
+
+.background3 {
+    --offset: 20%;
+    position: absolute;
+    left: var(--offset);
+    right: var(--offset);
+    bottom: var(--offset);
+    top: var(--offset);
+    background: linear-gradient(to right, #8583ff, #85fa99);
+    z-index: 2;
+    transition: all 0.5s ease 0.2s;
+}
+
+.background4 {
+    --offset: 30%;
+    position: absolute;
+    left: var(--offset);
+    right: var(--offset);
+    bottom: var(--offset);
+    top: var(--offset);
+    background: linear-gradient(to right, #aaaaff, #a7fab7);
+    z-index: 3;
+    transition: all 0.5s ease 0.3s;
+}
+
+.background5 {
+    --offset: 40%;
+    position: absolute;
+    left: var(--offset);
+    right: var(--offset);
+    bottom: var(--offset);
+    top: var(--offset);
+    background: linear-gradient(to right, #c9c8ff, #c3fad1);
+    z-index: 4;
+    transition: all 0.5s ease 0.4s;
+}
+
+.background6 {
+    --offset: 40%;
+    position: absolute;
+    left: var(--offset);
+    right: var(--offset);
+    bottom: var(--offset);
+    top: var(--offset);
+    background: white;
+    // background: var(--bg-color);
+    z-index: 5;
+    transition: all 0.8s ease 0.4s;
+}
+
+.content {
+    height: 100%;
+    z-index: 6;
+}
+
+.popup.active .content {
+    opacity: 1;
+    // transform: none;
+}
+
+.popup.active .popup {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup.active .popup-inside {
+    border-radius: 0;
+}
+
+.popup.active .background {
+    transform: scale(1);
+}
+
+.popup.active .background6 {
+    transform: scale(10);
+}
