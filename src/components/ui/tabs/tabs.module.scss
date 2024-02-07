@@ -10,7 +10,8 @@
 }
 
 .active {
-    //border-bottom: 2.5px solid blue;
+    // border-bottom: 2.5px solid blue;
     color: var(--black-color);
-    background: var(--primary-color);
+    background: var(--primary-color-gradient);
+    // border: 1px solid var(--primary-color) !important;
 }
