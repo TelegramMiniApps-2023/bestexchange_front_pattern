@@ -4,16 +4,17 @@ import styles from "./selectCard.module.scss";
 import { memo } from "react";
 import { Categories } from "../../model/Categories";
 import { directionTabsValute } from "../../assets/consts";
-import { useCashStore } from "../../store/store";
+import { useCashStore, useSelectsStore } from "../../store/store";
 import { useTranslation } from "react-i18next";
 import { SelectSkeleton } from "../ui/selectSkeleton";
+import { AxiosError } from "axios";
 
 type SelectCardProps = {
   type: "give" | "get";
   handleModal: () => void;
   give: Options | null;
   get: Options | null;
-  error: unknown;
+  error: AxiosError | null;
   availableDirection?: Categories;
   typeValute: string;
   isLoading: boolean;
@@ -31,20 +32,30 @@ export const SelectCard = memo((props: SelectCardProps) => {
   } = props;
   const { location } = useCashStore((state) => state);
   const { t } = useTranslation();
+  const exchangersError = useSelectsStore((state) => state?.exchangersError);
+
   return (
     <section className={styles.select}>
-      <h2 className={clsx(styles.selectHeader,{ [styles.active_select]: give || get })}>
+      <h2
+        className={clsx(styles.selectHeader, {
+          [styles.active_select]: give || get,
+        })}
+      >
         {type === "give" ? t("Отдаю") : t("Получаю")}
       </h2>
       {type === "give" && !give && isLoading ? (
         <SelectSkeleton />
       ) : (
-        <section className={styles.section} >
+        <section
+          className={clsx(styles.section, {
+            [styles.onError]: exchangersError && type === "get",
+          })}
+        >
           <header
             onClick={() => {
               handleModal();
             }}
-            className={clsx(styles.header,{
+            className={clsx(styles.header, {
               [styles.empty]:
                 (!give && type === "get") ||
                 (!availableDirection && type === "give") ||

@@ -1,19 +1,20 @@
 
 
-import { FC } from "react";
+import { FC, memo } from "react";
 import { Exchanger } from "../../model/Exchanger";
 import styles from "./exchangerCard.module.scss";
 import ArrowRight from "../../assets/icons/ArrowRight";
 import { useTranslation } from "react-i18next";
 import { Location } from "../../store/store";
 import { RoundValute } from "../ui/roundValute";
+import { animated, useInView } from "react-spring";
 
 interface ExchangerCardProps {
   card: Exchanger;
   location: Location | null;
 }
 
-export const ExchangerCard: FC<ExchangerCardProps> = ({ card, location }) => {
+export const ExchangerCard: FC<ExchangerCardProps> = memo(({ card, location }) => {
   const { t, i18n } = useTranslation();
   const currentCityName =
     i18n.language === "ru"
@@ -24,9 +25,22 @@ export const ExchangerCard: FC<ExchangerCardProps> = ({ card, location }) => {
   const tg = window.Telegram.WebApp;
   const options = [{ try_instant_view: true }];
   const openLink = (url: string) => tg.openLink(url, options);
-
+  
+  const [ref, springs] = useInView(
+    () => ({
+      from: {
+        opacity: 0,
+      },
+      to: {
+        opacity: 1,
+      },
+      
+    })
+  
+  )
+  
   return (
-    <article className={styles.exchangerCard}>
+    <animated.article ref={ref} style ={springs} className={styles.exchangerCard}>
       <a className={styles.cardLink} onClick={() => openLink(card.partner_link)} rel="noopener noreferrer">
         <header className={styles.cardHeader}>
           <div className={styles.cardInfo}>
@@ -61,6 +75,6 @@ export const ExchangerCard: FC<ExchangerCardProps> = ({ card, location }) => {
           </span>
         </footer>
       </a>
-    </article>
+    </animated.article>
   );
-};
+});
