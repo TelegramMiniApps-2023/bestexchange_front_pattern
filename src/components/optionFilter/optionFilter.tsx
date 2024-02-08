@@ -1,8 +1,4 @@
-import clsx from "clsx";
-import Carousel from "nuka-carousel";
 import { FC, memo, useEffect, useMemo } from "react";
-import { IconLeft } from "../../assets/icons/IconLeft";
-import IconRight from "../../assets/icons/IconRight";
 import { Categories } from "../../model/Categories";
 import { useFiltersStore } from "../../store/store";
 import { TabsItem } from "../ui/tabs/tabs";
@@ -43,47 +39,6 @@ export const OptionFilter: FC<OptionFilterProps> = memo(({ categories }) => {
   }, [search, setFilter]);
 
   return (
-    // <Carousel
-    //   enableKeyboardControls={true}
-    //   slidesToScroll={1}
-    //   swiping={false}
-    //   renderCenterLeftControls={({ previousSlide, previousDisabled }) => (
-    //     <div className={styles.arrowContainer}>
-    //       <IconLeft
-    //         fill="white"
-    //         className={clsx(styles.leftTab, {
-    //           [styles.rightTabDisabled]: previousDisabled,
-    //         })}
-    //         onClick={previousSlide}
-    //       />
-    //     </div>
-    //   )}
-    //   renderCenterRightControls={({ nextSlide, nextDisabled }) => (
-    //     <div className={styles.arrowContainer}>
-    //       <IconRight
-    //         fill="white"
-    //         onClick={nextSlide}
-    //         className={clsx(styles.rightTab, {
-    //           [styles.leftTabDisabled]: nextDisabled,
-    //         })}
-    //       />
-    //     </div>
-    //   )}
-    //   className={styles.filter}
-    //   tabbed={false}
-    //   slidesToShow={2}
-    //   disableEdgeSwiping={true}
-    // >
-    //   {tabsItem.map((tab) => (
-    //     <Tab
-    //       onTabClick={(tab) => handleCategory(tab.value)}
-    //       classNameTabItem={styles.filter_tab_item}
-    //       tab={tab}
-    //       filter={filter}
-    //       key={tab.content}
-    //     />
-    //   ))}
-    // </Carousel>
     <div className={styles.filter}>
       {tabsItem.map((tab) => (
         <Tab
