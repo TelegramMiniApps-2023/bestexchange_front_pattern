@@ -85,7 +85,6 @@ export const Main = memo(() => {
 
   return (
     <main className={styles.main}>
-      
       <DirectionTabs />
       <LocationSelect />
       <div className={styles.container}>
