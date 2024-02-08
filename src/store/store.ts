@@ -9,7 +9,7 @@ interface SelectsState {
   giveSelect: Options | null;
   getSelect: Options | null;
   exchangersError:AxiosError | null;
-  setExchangersError: (error: AxiosError) => void;
+  setExchangersError: (error: AxiosError | null) => void;
   setGiveSelect: (option: Options | null) => void;
   setGetSelect: (option: Options | null) => Promise<void>;
   switchOptions: () => Promise<void>;
