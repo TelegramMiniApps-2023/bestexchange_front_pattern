@@ -58,12 +58,13 @@ export const PopupCustom: FC<PopupCustomProps> = (props) => {
         <div className={`${styles.background} ${styles.background3}`}></div>
         <div className={`${styles.background} ${styles.background4}`}></div>
         <div className={`${styles.background} ${styles.background5}`}></div>
-        <div className={`${styles.background} ${styles.background6}`}></div>
+        <div className={`${styles.background} ${styles.background6}`}>
+          <div className={styles.content}>{children}</div>
+        </div>
       </div>
       <i>
         <CloseModal width="25px" height="25px" onClick={closeModal} />
       </i>
-      <div className={styles.content}>{children}</div>
     </div>
   );
 };
