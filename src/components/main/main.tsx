@@ -34,6 +34,9 @@ export const Main = memo(() => {
     to: get?.code_name,
     city: location?.location?.city.code_name,
   });
+  useEffect(()=>{
+    setExchangersError(null)
+  },[isSuccess])
   useEffect(() => {
     setIsCollapse(true);
   }, [exchangers]);
@@ -82,6 +85,7 @@ export const Main = memo(() => {
 
   return (
     <main className={styles.main}>
+      
       <DirectionTabs />
       <LocationSelect />
       <div className={styles.container}>
