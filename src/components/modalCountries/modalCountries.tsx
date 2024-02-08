@@ -27,7 +27,7 @@ export const ModalCountries: FC<ModalCountriesProps> = memo(({
   //     i18n.language === "ru" ? country?.name?.ru : country?.name?.en;
   //   return language;
   // };
-  const filteredOptions = useMemo(()=>  countries
+  const filteredOptions = useMemo(()=>countries
     .map((country) => {
       const isCountryMatch =
         i18n.language === "ru"
