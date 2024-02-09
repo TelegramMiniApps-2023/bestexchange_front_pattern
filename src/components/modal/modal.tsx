@@ -9,6 +9,7 @@ import styles from "./modal.module.scss";
 import { useTranslation } from "react-i18next";
 import { SystemError } from "../ui/systemError";
 import { PopupCustom } from "../ui/popupCustom";
+import { PopupBg } from "../ui/popupBg";
 
 interface ModalProps {
   options?: Categories;
@@ -42,43 +43,85 @@ export const Modal: FC<ModalProps> = memo(
       }
     }, [show]);
     return (
-      <Popup closeModal={handleModal} show={show}>
-        <section className={styles.valutesPopup}>
-          {options && Object.keys(options).length > 0 ? (
-            <>
-              <h3 className={styles.title}>
-                {type === "give" ? t("ОТДАЮ") : t("ПОЛУЧАЮ")}
-              </h3>
-              <div className={styles.search__container}>
-                <OptionSearch />
-              </div>
-              <div className={styles.filter__container}>
-                <OptionFilter categories={options} />
-              </div>
-              <ul className={styles.cardList} ref={ulRef}>
-                {filteredOptions && filteredOptions?.length > 0 ? (
-                  filteredOptions.map((option) => (
-                    <ValuteCard
-                      key={option.id}
-                      option={option}
-                      handleModal={handleModal}
-                      type={type}
-                    />
-                  ))
-                ) : (
-                  <p className={styles.empty}>
-                    {t("Нет доступных направлений")}
-                  </p>
-                )}
-              </ul>
-            </>
-          ) : (
-            <div>
-              <SystemError direction={true} />
-            </div>
-          )}
-        </section>
-      </Popup>
+      <>
+        {type === "give" ? (
+          <PopupBg closeModal={handleModal} show={show}>
+            <section className={styles.valutesPopup}>
+              {options && Object.keys(options).length > 0 ? (
+                <>
+                  <h3 className={styles.title}>
+                    {type === "give" ? t("ОТДАЮ") : t("ПОЛУЧАЮ")}
+                  </h3>
+                  <div className={styles.search__container}>
+                    <OptionSearch />
+                  </div>
+                  <div className={styles.filter__container}>
+                    <OptionFilter categories={options} />
+                  </div>
+                  <ul className={styles.cardList} ref={ulRef}>
+                    {filteredOptions && filteredOptions?.length > 0 ? (
+                      filteredOptions.map((option) => (
+                        <ValuteCard
+                          key={option.id}
+                          option={option}
+                          handleModal={handleModal}
+                          type={type}
+                        />
+                      ))
+                    ) : (
+                      <p className={styles.empty}>
+                        {t("Нет доступных направлений")}
+                      </p>
+                    )}
+                  </ul>
+                </>
+              ) : (
+                <div>
+                  <SystemError direction={true} />
+                </div>
+              )}
+            </section>
+          </PopupBg>
+        ) : (
+          <PopupCustom closeModal={handleModal} show={show}>
+            <section className={styles.valutesPopup}>
+              {options && Object.keys(options).length > 0 ? (
+                <>
+                  <h3 className={styles.title}>
+                    {type === "give" ? t("ОТДАЮ") : t("ПОЛУЧАЮ")}
+                  </h3>
+                  <div className={styles.search__container}>
+                    <OptionSearch />
+                  </div>
+                  <div className={styles.filter__container}>
+                    <OptionFilter categories={options} />
+                  </div>
+                  <ul className={styles.cardList} ref={ulRef}>
+                    {filteredOptions && filteredOptions?.length > 0 ? (
+                      filteredOptions.map((option) => (
+                        <ValuteCard
+                          key={option.id}
+                          option={option}
+                          handleModal={handleModal}
+                          type={type}
+                        />
+                      ))
+                    ) : (
+                      <p className={styles.empty}>
+                        {t("Нет доступных направлений")}
+                      </p>
+                    )}
+                  </ul>
+                </>
+              ) : (
+                <div>
+                  <SystemError direction={true} />
+                </div>
+              )}
+            </section>
+          </PopupCustom>
+        )}
+      </>
     );
   }
 );
