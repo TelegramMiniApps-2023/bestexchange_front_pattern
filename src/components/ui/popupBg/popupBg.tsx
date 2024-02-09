@@ -1,15 +1,15 @@
 import { FC, ReactNode, useEffect } from "react";
-import styles from "./popupCustom.module.scss";
+import styles from "./popupBg.module.scss";
 import clsx from "clsx";
 import CloseModal from "../../../assets/icons/CloseModal";
 
-type PopupCustomProps = {
+type PopupBgProps = {
   children?: ReactNode;
   closeModal?: () => void;
   show?: boolean;
 };
 
-export const PopupCustom: FC<PopupCustomProps> = (props) => {
+export const PopupBg: FC<PopupBgProps> = (props) => {
   const { closeModal, children, show } = props;
 
   // Задаем класс для body в зависимости от статуса модального окна
@@ -32,10 +32,6 @@ export const PopupCustom: FC<PopupCustomProps> = (props) => {
     >
       <div className={styles.backgrounds}>
         <div className={styles.background}></div>
-        <div className={`${styles.background} ${styles.background2}`}></div>
-        <div className={`${styles.background} ${styles.background3}`}></div>
-        <div className={`${styles.background} ${styles.background4}`}></div>
-        <div className={`${styles.background} ${styles.background5}`}></div>
         <div className={`${styles.background} ${styles.background6}`}></div>
         <div className={styles.content}>{children}</div>
       </div>

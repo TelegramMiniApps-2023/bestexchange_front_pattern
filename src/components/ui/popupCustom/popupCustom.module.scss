@@ -7,7 +7,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: var(--bg-color);
+    // background: var(--bg-color);
     z-index: 99;
     border-radius: var(--border-radius-m);
     overflow-y: hidden;
@@ -17,6 +17,7 @@
         right: 20px;
         top: 15px;
         z-index: 99;
+        opacity: 0;
       }
 }
 
@@ -27,94 +28,109 @@
     height: 100%;
     width: 100%;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .background {
-    --offset: 0;
+    // background: linear-gradient(to right, #504bff, #4cfa63);
+    background: linear-gradient(to right, #9ff6b5, #78d790);
+    transform: scale(0);
+    transition: transform 0.2s ease 0s;
+    border-radius: 50px;
+}
+
+.background2 {
+    --offset: 5%;
     position: absolute;
     left: var(--offset);
     right: var(--offset);
     bottom: var(--offset);
     top: var(--offset);
-    background: linear-gradient(to right, #504bff, #4cfa63);
+    // background: linear-gradient(to right, #6665ff, #69fa7f);
+    background: linear-gradient(to right, #78d790, #57bc70);
     transform: scale(0);
-    transition: all 0.5s ease 0s;
-    border-radius: 50%;
+    transition: transform 0.2s ease 0.1s;
+    // margin: 45% 0px;
 }
 
-.background2 {
+.background3 {
     --offset: 10%;
     position: absolute;
     left: var(--offset);
     right: var(--offset);
     bottom: var(--offset);
     top: var(--offset);
-    background: linear-gradient(to right, #6665ff, #69fa7f);
-    transform: scale(0);
-    transition: all 0.5s ease 0.1s;
+    // background: linear-gradient(to right, #8583ff, #85fa99);
+    background: linear-gradient(to right, #57bc70, #3c9853);
+    z-index: 2;
+    transition: transform 0.2s ease 0.2s;
+    // margin: 45% 0px;
 }
 
-.background3 {
+.background4 {
+    --offset: 15%;
+    position: absolute;
+    left: var(--offset);
+    right: var(--offset);
+    bottom: var(--offset);
+    top: var(--offset);
+    // background: linear-gradient(to right, #aaaaff, #a7fab7);
+    background: linear-gradient(to right, #3c9853, #287b3d);
+    z-index: 3;
+    transition: transform 0.2s ease 0.3s;
+    // margin: 45% 0px;
+}
+
+.background5 {
     --offset: 20%;
     position: absolute;
     left: var(--offset);
     right: var(--offset);
     bottom: var(--offset);
     top: var(--offset);
-    background: linear-gradient(to right, #8583ff, #85fa99);
-    z-index: 2;
-    transition: all 0.5s ease 0.2s;
-}
-
-.background4 {
-    --offset: 30%;
-    position: absolute;
-    left: var(--offset);
-    right: var(--offset);
-    bottom: var(--offset);
-    top: var(--offset);
-    background: linear-gradient(to right, #aaaaff, #a7fab7);
-    z-index: 3;
-    transition: all 0.5s ease 0.3s;
-}
-
-.background5 {
-    --offset: 40%;
-    position: absolute;
-    left: var(--offset);
-    right: var(--offset);
-    bottom: var(--offset);
-    top: var(--offset);
-    background: linear-gradient(to right, #c9c8ff, #c3fad1);
+    // background: linear-gradient(to right, #c9c8ff, #c3fad1);
+    background: linear-gradient(to right, #287b3d, #0e4a1d);
     z-index: 4;
-    transition: all 0.5s ease 0.4s;
+    transition: transform 0.2s ease 0.4s;
+    // margin: 45% 0px;
 }
 
 .background6 {
-    --offset: 40%;
+    --offset: 25%;
     position: absolute;
     left: var(--offset);
     right: var(--offset);
     bottom: var(--offset);
     top: var(--offset);
-    background: white;
-    // background: var(--bg-color);
+    background: var(--bg-color);
     z-index: 5;
-    transition: all 0.8s ease 0.4s;
+    transition: transform 0.7s ease-out 0.5s;
 }
 
 .content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: scale(0.8);
-    // height: 100%;
+    height: 95vh;
+    width: 100%;
+    max-width: 480px;
+    padding: 20px 0px;
+    position: fixed;
+    transform: scale(0.5);
+    opacity: 0;
     z-index: 6;
+    transform-origin: center center;
+    // transition: transform 0.4s ease-out 0.4s, opacity 0.3s ease-in 0.4s;
+    transition: transform 0.2s ease-out 0.4s, opacity 0.3s ease-in 0.6s;
+}
+
+.popup.active i {
+    opacity: 1;
+    transition: opacity 0.5s ease 0.9s;
 }
 
 .popup.active .content {
     opacity: 1;
-    // transform: none;
+    transform: scale(1);
 }
 
 .popup.active .popup {
@@ -127,9 +143,9 @@
 }
 
 .popup.active .background {
-    transform: scale(1);
+    transform: scale(1.3);
 }
 
 .popup.active .background6 {
-    transform: scale(10);
+    transform: scale(7);
 }
