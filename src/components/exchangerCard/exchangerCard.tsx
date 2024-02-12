@@ -46,7 +46,8 @@ export const ExchangerCard: FC<ExchangerCardProps> = memo(
       >
         <a
           className={styles.cardLink}
-          onClick={() => openLink(card.partner_link)}
+          // onClick={() => openLink(card.partner_link)}
+          href={card.partner_link}
           rel="noopener noreferrer"
         >
           <header className={styles.cardHeader}>
