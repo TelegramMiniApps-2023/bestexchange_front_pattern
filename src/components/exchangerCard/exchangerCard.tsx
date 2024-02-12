@@ -25,8 +25,8 @@ export const ExchangerCard: FC<ExchangerCardProps> = memo(
     const options = [{ try_instant_view: true }];
     const openLink = (url: string) => {
       // if (url)
-      // tg.openLink(url, options);
-      tg.openTelegramLink(url);
+      tg.openLink(url, options);
+      // tg.openTelegramLink(url);
     };
 
     const [ref, springs] = useInView(() => ({
