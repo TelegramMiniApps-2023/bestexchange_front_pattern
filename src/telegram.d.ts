@@ -25,7 +25,7 @@ declare global {
             }
           };
           openLink: (url: string, options?: {try_instant_view: boolean}[]) => void;
-          isExpanded: boolean;
+          isExpanded?: boolean;
           openTelegramLink: (url: string) => void
         };
       };
