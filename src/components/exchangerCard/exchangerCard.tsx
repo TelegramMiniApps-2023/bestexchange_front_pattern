@@ -24,9 +24,7 @@ export const ExchangerCard: FC<ExchangerCardProps> = memo(
     const tg = window.Telegram.WebApp;
     const options = [{ try_instant_view: true }];
     const openLink = (url: string) => {
-      // if (url)
       tg.openLink(url, options);
-      // tg.openTelegramLink(url);
     };
 
     const [ref, springs] = useInView(() => ({
@@ -46,8 +44,7 @@ export const ExchangerCard: FC<ExchangerCardProps> = memo(
       >
         <a
           className={styles.cardLink}
-          // onClick={() => openLink(card.partner_link)}
-          href={card.partner_link}
+          onClick={() => openLink(card.partner_link)}
           rel="noopener noreferrer"
         >
           <header className={styles.cardHeader}>
