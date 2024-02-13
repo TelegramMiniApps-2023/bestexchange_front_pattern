@@ -23,8 +23,16 @@ export const ExchangerCard: FC<ExchangerCardProps> = memo(
     // Telegram object
     const tg = window.Telegram.WebApp;
     const options = [{ try_instant_view: true }];
+    const isTelegramLink = (url: string): boolean => {
+      const telegramLinkPattern = /(?:t\.me|telegram\.me)\/[^/\s]+\/?$/;
+      return telegramLinkPattern.test(url);
+    };
     const openLink = (url: string) => {
-      tg.openLink(url, options);
+      if (isTelegramLink(url)) {
+        tg.openTelegramLink(url);
+      } else {
+        tg.openLink(url, options);
+      }
     };
 
     const [ref, springs] = useInView(() => ({
