@@ -19,7 +19,6 @@ export const ExchangerCard: FC<ExchangerCardProps> = memo(
       i18n.language === "ru"
         ? location?.location.city.name.ru
         : location?.location.city.name.en;
-
     // Telegram object
     const tg = window.Telegram.WebApp;
     const options = [{ try_instant_view: true }];
@@ -57,14 +56,27 @@ export const ExchangerCard: FC<ExchangerCardProps> = memo(
         >
           <header className={styles.cardHeader}>
             <div className={styles.cardInfo}>
-              <h2 className={styles.cardName}>
-                {i18n.language === "ru" ? card.name.ru : card.name.en}
-              </h2>
-              <h3 className={styles.cityName}>
-                {location
-                  ? `${t("В г.")} ${currentCityName}`
-                  : t("Онлайн обмен")}
-              </h3>
+              <div>
+                <h2 className={styles.cardName}>
+                  {i18n.language === "ru" ? card.name.ru : card.name.en}
+                </h2>
+                <h3 className={styles.cityName}>
+                  {location
+                    ? `${t("В г.")} ${currentCityName}`
+                    : t("Онлайн обмен")}
+                </h3>
+              </div>
+              <div className={styles.reviewCountWrapper}>
+                <h3 className={styles.reviewCountPositive}>
+                  {card?.review_count} 
+                </h3>
+                <span className={styles.separator} >
+                  |
+                </span>
+                <h3 className={styles.reviewCountNegative}>
+                    0
+                </h3>
+              </div>
             </div>
           </header>
           <hr className={styles.cardSeparator} />
