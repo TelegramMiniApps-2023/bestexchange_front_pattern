@@ -12,4 +12,5 @@ export interface Exchanger {
   out_count: number;
   min_amount: string;
   max_amount: string;
+  review_count:number
 }
