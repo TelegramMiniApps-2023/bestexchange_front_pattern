@@ -6,7 +6,7 @@
 * {
   padding: 0px;
   margin: 0px;
-  // box-sizing: border-box;
+  box-sizing: border-box;
   font-family: var(--font-family-regular);
 }
 
@@ -15,20 +15,16 @@ html {
 }
 
 body {
-  background: #000;
+  // background: #000;
 }
 
 .main__wrapper {
-  // background: #1a1a1a;
   height: 100%;
   width: 100vw;
   min-height: 100vh;
   max-width: 500px;
   margin: 0 auto;
   color: #303030;
-  // background: url("/img/bg.png") no-repeat;
-  background-size: contain;
-  background-attachment: scroll;
 
   @media (max-width: 367px) {
     .page__wrapper {
@@ -42,7 +38,6 @@ body {
 }
 
 .directionTab {
-  background: #fff;
   border-radius: 20px;
   padding: 20px;
   font-size: 18px;

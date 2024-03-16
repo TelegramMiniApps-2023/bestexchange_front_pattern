@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, memo, useEffect, useMemo, useRef, useState } from "react";
 import { Popup } from "../ui/popup";
 import { Country } from "../../model";
 import { CountryCard } from "../countryCard";
@@ -13,20 +13,21 @@ interface ModalCountriesProps {
   show: boolean;
 }
 
-export const ModalCountries: FC<ModalCountriesProps> = ({
+export const ModalCountries: FC<ModalCountriesProps> = memo(({
   countries,
   handleModal,
   show,
 }) => {
   // cities search
   const search = useFiltersStore((state) => state.search.toLowerCase());
+
   const { t, i18n } = useTranslation();
-  const currentLanguage = (country: Country) => {
-    const language =
-      i18n.language === "ru" ? country?.name?.ru : country?.name?.en;
-    return language;
-  };
-  const filteredOptions = countries
+  // const currentLanguage = (country: Country) => {
+  //   const language =
+  //     i18n.language === "ru" ? country?.name?.ru : country?.name?.en;
+  //   return language;
+  // };
+  const filteredOptions = useMemo(()=>  countries
     .map((country) => {
       const isCountryMatch =
         i18n.language === "ru"
@@ -47,7 +48,7 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
       }
       return null;
     })
-    .filter((country) => country !== null);
+    .filter((country) => country !== null),[countries, i18n.language, search])
 
   // accrodion logic
   const [accordionStates, setAccordionStates] = useState<{
@@ -56,16 +57,34 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
   const handleAccordion = (countryId: number) => {
     setAccordionStates((prevStates) => {
       const newStates: { [key: number]: boolean } = { ...prevStates };
-      Object.keys(newStates).forEach((key) => {
-        const numericKey = parseInt(key, 10);
-        if (!isNaN(numericKey) && numericKey !== countryId) {
-          newStates[numericKey] = false;
-        }
-      });
-      newStates[countryId] = !prevStates[countryId];
+      if (search) {
+        newStates[countryId] = !prevStates[countryId];
+      } else {
+        Object.keys(newStates).forEach((key) => {
+          const numericKey = parseInt(key, 10);
+          if (!isNaN(numericKey) && numericKey !== countryId) {
+            newStates[numericKey] = false;
+          }
+        });
+        newStates[countryId] = !prevStates[countryId];
+      }
       return newStates;
     });
   };
+
+  useEffect(() => {
+    if (search) {
+      const allOpenStates: { [key: number]: boolean } = {};
+      filteredOptions.forEach((country) => {
+        if (country) {
+          allOpenStates[country.id] = true;
+        }
+      });
+      setAccordionStates(allOpenStates);
+    } else {
+      setAccordionStates({});
+    }
+  }, [search]);
 
   const ulRef = useRef<HTMLUListElement | null>(null);
 
@@ -100,9 +119,9 @@ export const ModalCountries: FC<ModalCountriesProps> = ({
             )}
           </ul>
         ) : (
-          <p>{t("Ничего не найдено...")}</p>
+          <p className={styles.errorMessages}>{t("Ничего не найдено...")}</p>
         )}
       </section>
     </Popup>
   );
-};
+});

@@ -37,13 +37,16 @@ export const Select = memo(({ type }: SelectProps) => {
     city?.location.city.code_name,
   ]);
   const currentOptions = i18n.language === "ru" ? options?.ru : options?.en;
-  const { data: availableDirection, error } = useFetchAvailable({
+  const {
+    data: availableDirection,
+    error,
+    isLoading,
+  } = useFetchAvailable({
     base: give?.code_name,
     city: city?.location.city.code_name,
   });
   const currentAvailableDirection =
     i18n.language === "ru" ? availableDirection?.ru : availableDirection?.en;
-
   useEffect(() => {
     if (error) {
       setGetSelect(null);
@@ -84,6 +87,7 @@ export const Select = memo(({ type }: SelectProps) => {
         type={type}
         availableDirection={currentOptions}
         typeValute={typeValute}
+        isLoading={isLoading}
       />
       <div className={clsx(styles.modal, { [styles.active]: show })}>
         {type === "give" && (

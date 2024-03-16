@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { City, Country } from "../../model";
 import styles from "./cityCard.module.scss";
 import { useCashStore, useSelectsStore } from "../../store/store";
@@ -12,7 +12,7 @@ interface CityCardProps {
   handleModal: () => void;
 }
 
-export const CityCard: FC<CityCardProps> = ({ city, country, handleModal }) => {
+export const CityCard: FC<CityCardProps> = memo(({ city, country, handleModal }) => {
   const { setLocation } = useCashStore((state) => state);
   // clear selects
   const { setGiveSelect, setGetSelect } = useSelectsStore((state) => state);
@@ -42,7 +42,7 @@ export const CityCard: FC<CityCardProps> = ({ city, country, handleModal }) => {
 
   return (
     <li className={styles.city} onClick={handleChangeLocation}>
-      <h3>{i18n.language === "ru" ? city.name.ru : city.name.en}</h3>
+      <h3 className={styles.name}>{i18n.language === "ru" ? city.name.ru : city.name.en}</h3>
     </li>
   );
-};
+});

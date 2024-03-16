@@ -24,6 +24,7 @@ export const Switcher: FC<SwitcherProps> = ({ refetch, give, get }) => {
       })}
     >
       <span
+        className={styles.icon}
         onClick={() => {
           get && give && handleSwitch();
         }}

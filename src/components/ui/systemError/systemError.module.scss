@@ -1,4 +1,4 @@
-.error {
+.systemError {
     display: grid;
     grid-template: 0.5fr 1fr / 1fr;
     justify-content: center;
@@ -8,29 +8,30 @@
     border-radius: 20px;
     background: var(--bg-color);
     color: var(--text-color);
-
-    > p {
-        font-size: var(--font-size-ls);
-        text-transform: uppercase;
-        text-align: center;
-        line-height: 1.5;
+  
+    .errorText {
+      font-size: var(--font-size-ls);
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.5;
     }
-
-    >div {
-        display: grid;
-        grid-template-columns: repeat(3, 50px);
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-
-        >svg {
-            width: 50px;
-            height: 50px;
-        }
-
-        img {
-            width: 50px;
-            height: 50px;
-        }
+  
+    .errorImages {
+      display: grid;
+      grid-template-columns: repeat(3, 50px);
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+  
+      .errorIcon {
+        width: 50px;
+        height: 50px;
+      }
+  
+      img {
+        width: 50px;
+        height: 50px;
+      }
     }
-}
+  }
+  

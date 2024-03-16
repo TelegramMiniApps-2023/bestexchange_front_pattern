@@ -3,10 +3,13 @@ import { devtools } from "zustand/middleware";
 import { Options } from "../model/Options";
 import { City, Country } from "../model";
 import { User } from "../model/user";
+import { AxiosError } from "axios";
 
 interface SelectsState {
   giveSelect: Options | null;
   getSelect: Options | null;
+  exchangersError:AxiosError | null;
+  setExchangersError: (error: AxiosError) => void;
   setGiveSelect: (option: Options | null) => void;
   setGetSelect: (option: Options | null) => Promise<void>;
   switchOptions: () => Promise<void>;
@@ -15,6 +18,8 @@ interface SelectsState {
 export const useSelectsStore = create<SelectsState>()(
   devtools(
     (set) => ({
+      exchangersError: null,
+      setExchangersError:(error) => set({exchangersError: error}),
       giveSelect: null,
       getSelect: null,
       setGiveSelect: (option) => set({ giveSelect: option }),

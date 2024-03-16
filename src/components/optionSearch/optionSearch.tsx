@@ -17,10 +17,11 @@ export const OptionSearch: FC<OptionSearchProps> = memo(({ type }) => {
   const placeholder = search ? search : t("Поиск");
   return (
     <section className={styles.search}>
-      <span>
+      <span  className={styles.icon}>
         <SearchIcon width="30px" height="30px" />
       </span>
       <input
+        className={styles.input}
         value={value}
         onChange={(e) => setValue(e.target.value)}
         type="text"

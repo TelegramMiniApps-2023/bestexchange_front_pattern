@@ -1,82 +1,80 @@
-import { FC } from "react";
+
+
+import { FC, memo } from "react";
 import { Exchanger } from "../../model/Exchanger";
 import styles from "./exchangerCard.module.scss";
 import ArrowRight from "../../assets/icons/ArrowRight";
 import { useTranslation } from "react-i18next";
 import { Location } from "../../store/store";
+import { RoundValute } from "../ui/roundValute";
+import { animated, useInView } from "react-spring";
 
 interface ExchangerCardProps {
   card: Exchanger;
   location: Location | null;
 }
 
-export const ExchangerCard: FC<ExchangerCardProps> = ({ card, location }) => {
+export const ExchangerCard: FC<ExchangerCardProps> = memo(({ card, location }) => {
   const { t, i18n } = useTranslation();
   const currentCityName =
     i18n.language === "ru"
       ? location?.location.city.name.ru
       : location?.location.city.name.en;
 
-  // telegram object
+  // Telegram object
   const tg = window.Telegram.WebApp;
   const options = [{ try_instant_view: true }];
   const openLink = (url: string) => tg.openLink(url, options);
-
+  
+  const [ref, springs] = useInView(
+    () => ({
+      from: {
+        opacity: 0,
+      },
+      to: {
+        opacity: 1,
+      },
+      
+    })
+  
+  )
+  
   return (
-    <article className={styles.exchangerItem}>
-      {/* <a href={card.partner_link} target="_blank" rel="noopener noreferrer"> */}
-      <a onClick={() => openLink(card.partner_link)} rel="noopener noreferrer">
-        <header>
-          <hgroup>
-            <h2>{i18n.language === "ru" ? card.name.ru : card.name.en}</h2>
-            <h3>
+    <animated.article ref={ref} style ={springs} className={styles.exchangerCard}>
+      <a className={styles.cardLink} onClick={() => openLink(card.partner_link)} rel="noopener noreferrer">
+        <header className={styles.cardHeader}>
+          <div className={styles.cardInfo}>
+            <h2 className={styles.cardName}>{i18n.language === "ru" ? card.name.ru : card.name.en}</h2>
+            <h3 className={styles.cityName}>
               {location ? `${t("В г.")} ${currentCityName}` : t("Онлайн обмен")}
             </h3>
-          </hgroup>
+          </div>
         </header>
-        <hr />
-        <footer>
-          {/* <hgroup>
-            <h2>
-              {card.in_count}
-              <span>{card.valute_from}</span>
-              <i>
+        <hr className={styles.cardSeparator}/>
+        <footer className={styles.cardFooter}>
+          <div className={styles.valuteInfo}>
+            <h2 className={styles.valuteExchange}>
+              <RoundValute value={card.in_count} />
+              <div className={styles.valuteIcon}>
+                <img src={card.icon_valute_from} alt={`Иконка ${card.valute_from}`} className={styles.valuteImage} />
+              </div>
+              <i className={styles.arrowIcon}>
                 <ArrowRight />
               </i>
             </h2>
-            <h2>
-              {card.out_count}
-              <span>{card.valute_to}</span>
-            </h2>
-          </hgroup> */}
-          <hgroup>
-            <h2>
-              <span>{card.in_count}</span>
-              <div>
-                <img
-                  src={card.icon_valute_from}
-                  alt={`Иконка ${card.valute_from}`}
-                />
-              </div>
-              <i>
-                <ArrowRight />
-              </i>
-            </h2>
-            <h2>
-              <span>{card.out_count}</span>
-              <div>
-                <img
-                  src={card.icon_valute_to}
-                  alt={`Иконка ${card.valute_to}`}
-                />
+            <h2 className={styles.valuteExchange}>
+              <RoundValute value={card.out_count} />
+              <div className={styles.valuteIcon}>
+                <img src={card.icon_valute_to} alt={`Иконка ${card.valute_to}`} className={styles.valuteImage} />
               </div>
             </h2>
-          </hgroup>
-          <span>
-            {t("Обмен")} {card.min_amount} {t("до")} {card.max_amount}
+          </div>
+          <span className={styles.valuteRange}>
+            {t("Обмен")} <RoundValute value={card.min_amount} /> {t("до")}{" "}
+            <RoundValute value={card.max_amount} />
           </span>
         </footer>
       </a>
-    </article>
+    </animated.article>
   );
-};
+});

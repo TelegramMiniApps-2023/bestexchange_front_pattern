@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from "react";
+import { FC, memo, useCallback, useState } from "react";
 import clsx from "clsx";
 import { ModalCountries } from "../modalCountries/modalCountries";
 import styles from "./locationSelect.module.scss";
@@ -14,7 +14,7 @@ import { LocationIcon } from "../../assets/icons/LocationIcon";
 
 interface LocationSelectProps {}
 
-export const LocationSelect: FC<LocationSelectProps> = () => {
+export const LocationSelect: FC<LocationSelectProps> = memo(() => {
   const [show, setShow] = useState(false);
   const handleModal = useCallback(() => {
     setShow((prevShow) => !prevShow);
@@ -46,8 +46,8 @@ export const LocationSelect: FC<LocationSelectProps> = () => {
         [styles.location__active]: typeValute === directionTabsValute[1].value,
       })}
     >
-      <header onClick={handleShowModal}>
-        <figure>
+      <header className={styles.header} onClick={handleShowModal}>
+        <figure className={styles.figure}>
           {location?.location ? (
             <img
               src={location?.location.country.icon_url}
@@ -58,7 +58,7 @@ export const LocationSelect: FC<LocationSelectProps> = () => {
             <LocationIcon />
           )}
         </figure>
-        <h3>
+        <h3 className={styles.selectCountry}>
           {location
             ? `${currentCountryName}, ${currentCityName}`
             : t("Выберите страну и город")}
@@ -75,4 +75,4 @@ export const LocationSelect: FC<LocationSelectProps> = () => {
       </div>
     </section>
   );
-};
+});
